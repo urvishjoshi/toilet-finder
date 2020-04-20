@@ -26,46 +26,46 @@
 
 
 			<li class="nav-item">
-			  <a href="{{ route('a.requests.index') }}" class="nav-link"><!--Kishan changed link-->
+			  <a href="{{ route('a.requests.index') }}" class="nav-link {{ (request()->is('admin/requests')) ? 'active' : '' }}"><!--Kishan changed link-->
 				<i class="fas fa-user-edit pl-2"></i>
-				<p>Request</p><!--Kishan changed Menu-->
+				<p>Requests</p><!--Kishan changed Menu-->
 				<span class="badge badge-info right">6</span>
 			  </a>
 			</li>  
 			<li class="nav-item"> <!-- Kishan changed removed menu-open class -->
-			  <a href="{{ route('a.toiletowners.index') }}" class="nav-link"> <!-- Kishan changed active class -->
+			  <a href="{{ route('a.toiletowners.index') }}" class="nav-link {{ (request()->is('admin/toiletowners')) ? 'active' : '' }}"> <!-- Kishan changed active class -->
 				<i class="nav-icon  fas fa-user-tie"></i>
 				<p>
-				  Toilet Owner
+				  Toilet Owners
 				 <!-- <i class="right fas fa-angle-left"></i>--><!-- Kishan changed removed dropdown icon -->
 				</p>
 			  </a>
 			</li>
 			<li class="nav-item"><!--Kishan changed link-->
-			  <a href="{{ route('a.sales.index') }}" class="nav-link">
+			  <a href="{{ route('a.sales.index') }}" class="nav-link {{ (request()->is('admin/sales')) ? 'active' : '' }}">
 				<i class="fa fa-inr nav-icon" style="font-size: 20px"></i>
 				  <p>Toilet Sales</p>
 			  </a>
 			</li> 
 			<li class="nav-item">
-				  <a href="{{ route('a.ratings.index') }}" class="nav-link">
+				  <a href="{{ route('a.ratings.index') }}" class="nav-link {{ (request()->is('admin/ratings')) ? 'active' : '' }}">
 					<i class="fa fa-star nav-icon"></i>
 					<p>Toilet Ratings</p>
 				  </a>
 			</li>
 			
 			<li class="nav-item">
-			  <a href="{{ route('a.toiletusers.index') }}" class="nav-link">
+			  <a href="{{ route('a.toiletusers.index') }}" class="nav-link {{ (request()->is('admin/toiletusers')) ? 'active' : '' }}">
 				<i class="nav-icon fas fa-users"></i>
 				<p>
-				  Toilet User
+				  Toilet Users
 				  <!-- kishan changed<i class="fas fa-angle-left right"></i> -->
 				  <!-- Kishan changed <span class="badge badge-info right">6</span>-->
 				</p>
 			  </a>
 			</li>
 			<li class="nav-item">
-			  <a href="{{ route('a.reports.index') }}" class="nav-link">
+			  <a href="{{ route('a.reports.index') }}" class="nav-link {{ (request()->is('admin/reports')) ? 'active' : '' }}">
 				<i class="nav-icon fas fa-chart-pie"></i>
 				<p>
 				 Toilet Reports
@@ -74,10 +74,10 @@
 			  </a>
 			</li>     
 			<li class="nav-item">
-			  <a href="{{ route('a.permissions.index') }}" class="nav-link">
+			  <a href="{{ route('a.permissions.index') }}" class="nav-link {{ (request()->is('admin/permissions')) ? 'active' : '' }}">
 				<i class="nav-icon fas fa-edit"></i>
 				<p>
-				  Permission      <!--Kishan changed Menu-->
+				  Permissions      <!--Kishan changed Menu-->
 				  <!-- Kishan changed <i class="fas fa-angle-left right"></i>-->
 				</p>
 			  </a>

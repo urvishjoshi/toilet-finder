@@ -31,13 +31,13 @@
           </li>
           <li class="nav-item">
                 <a href="{{ route('toilets.index') }}" class="nav-link {{ (request()->is('toiletowner/toilets')) ? 'active' : '' }}"><!--Kishan changed link-->
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-restroom"></i>
                   <p>Your Toilets</p><!--Kishan changed Menu-->
                 </a>
           </li>
           <li class="nav-item">
              <a href="{{ route('toiletusers.index') }}" class="nav-link {{ (request()->is('toiletowner/toiletusers')) ? 'active' : '' }}">
-                <i class="far fa-circle nav-icon"></i>
+                <i class="nav-icon fas fa-users"></i>
                 <p>Your Toilet Users</p>
               </a>
           </li>
