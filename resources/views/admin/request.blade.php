@@ -2,11 +2,10 @@
 @extends('admin.layouts.app')
 @section('request')	
 
-<div class="content-wrapper">
 	<section>
-		<div class="container pt-5">
+		<div class="container col-md-12 pt-5 ">
 			
-			<div class="row row-fluid">
+			<div class="row">
 				<div class="col-md-2">
 					<a class="badge badge-pill badge-success font-14" href="" style="">
 						
@@ -64,5 +63,4 @@
 		
 	</section>
 
-</div>
 @endsection
