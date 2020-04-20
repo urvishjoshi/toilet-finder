@@ -5,24 +5,22 @@
 	<section>
 
 	<div class="content-header pb-0 pt-3">
-		
-			<div class="col-md-12">
-				<div class="card">
-					<div class="card-header">
-						<div class="row align-items-center">
-							<div class="col-8">
-								<h3 class="mb-0" class="tooltip-test" title="Tooltip">Your Toilets</h3>
-							</div>
-							<div class="col-4 text-right">
-							  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewToilet">
-							  	  Add new Toilet
-							  	</button>
-							</div>
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<div class="row align-items-center">
+						<div class="col-8">
+							<h3 class="mb-0" class="tooltip-test" title="Tooltip">Your Toilets</h3>
+						</div>
+						<div class="col-4 text-right">
+						  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewToilet">
+						  	  Add new Toilet
+						  	</button>
 						</div>
 					</div>
 				</div>
-			</div>	
-		
+			</div>
+		</div>	
 	</div>
 	<div class="content-header pt-0">
 		<div class="container-fluid">
@@ -32,6 +30,7 @@
 				<tr class="thead-light">
 					<th scope="col" center>Id</th>
 					<th scope="col">Toilet name</th>
+					<th scope="col">Complex</th>
 					<th scope="col">Address</th>
 					<th scope="col">Status</th>
 					<th scope="col">Created on</th>
@@ -42,6 +41,7 @@
 					<tr>
 						<th scope="row">11</th>
 						<td>ABCDEF</td>
+						<td>ABCDEF complex</td>
 						<td>ABC,DEF,QWEERT</td>
 						<td>Active</td>
 						<td>27-05-2020</td>
@@ -49,6 +49,7 @@
 					</tr><tr>
 						<th scope="row">11</th>
 						<td>ABCDEF</td>
+						<td>ABCDEF complex</td>
 						<td>ABC,DEF,QWEERT</td>
 						<td>Active</td>
 						<td>27-05-2020</td>
@@ -56,6 +57,7 @@
 					</tr><tr>
 						<th scope="row">11</th>
 						<td>ABCDEF</td>
+						<td>ABCDEF complex</td>
 						<td>ABC,DEF,QWEERT</td>
 						<td>Active</td>
 						<td>27-05-2020</td>

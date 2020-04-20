@@ -1,14 +1,10 @@
 <?php
 
 Route::get('/', function () { return view('welcome'); });
-
-// Auth::routes();
-
 Route::get('/home', function () { return view('welcome'); });
-// Route::view('/home', 'home')->middleware('auth');
-
+// 					Admins
 Route::group(['prefix'=>'admin'],function(){
-	Route::get('/', function () { return redirect()->route('a.dash'); });
+	Route::get('/', function () { return redirect()->route('a.login'); });
 	Route::group(['namespace'=>'Admin'],function(){
 		Route::get('/login', 'AuthController@showLoginForm')->name('a.login');
 		Route::post('/login', 'AuthController@login');
@@ -25,7 +21,7 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::resource("/permissions",'PermissionController');
 	});
 });
-
+//					toiletowner
 Route::group(['prefix'=>'toiletowner'],function(){
 	Route::get('/', function () { return redirect()->route('to.login'); });
 	Route::group(['namespace'=>'Toiletowner'],function(){
@@ -41,5 +37,6 @@ Route::group(['prefix'=>'toiletowner'],function(){
 		Route::resource("/toiletowners",'ToiletController');
 		Route::resource("/toiletusers",'ToiletuserController');
 		Route::resource("/ratings",'RatingController');
+		Route::resource("/feedbacks",'FeedbackController');
 	});
 });
