@@ -34,15 +34,12 @@ class Handler extends ExceptionHandler
         }
 
         if ($request->is('admin') || $request->is('admin/*')) {
-            return redirect()->guest('/login/admin');
+            return redirect()->guest('admin/login');
         }
         if ($request->is('toiletowner') || $request->is('toiletowner/*')) {
-            return redirect()->guest('/login/toiletowner');
-        }
-        if ($request->is('toiletuser') || $request->is('toiletuser/*')) {
-            return redirect()->guest('/login/toiletuser');
+            return redirect()->guest('toiletowner/login');
         }
 
-        return redirect()->guest(route('login'));
+        return redirect()->guest(route('to.login'));
     }
 }
