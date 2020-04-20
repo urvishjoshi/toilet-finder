@@ -25,7 +25,7 @@
 										<input type="text" id="fdbksubject" class="form-control" placeholder="Subject" value="">
 									</div>
 									<div class="form-group">
-										<label class="form-control-label" for="fdbkdesc">Describre your suggestion</label>
+										<label class="form-control-label" for="fdbkdesc">Describe your suggestion</label>
 										<textarea id="fdbkdesc" class="form-control" rows="9"></textarea>
 									</div>
 								</div>

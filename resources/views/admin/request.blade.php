@@ -8,7 +8,7 @@
 		<div class="row">
 			<div class="col-md-auto d-flex align-items-end flex-column ml-3" title="Active users">
 				<a class="badge badge-pill badge-success font-14" href="usersInfo.php?status=1" style="float:right;margin: 0px -5px -10px 0px;padding: 2.6px 5px!important;z-index: 1;">
-					0
+					5
 				</a>
 				<a href="usersInfo.php?status=1" class="fas fa-user-check" style="font-size: 34px;color: black;text-decoration:none; "></a>
 			</div>
@@ -17,7 +17,7 @@
 			</div>
 			<div class="col-md-auto d-flex align-items-end flex-column mr-3" title="Denied users">
 				<a class="badge badge-pill badge-warning font-14" href="usersInfo.php?status=-1" style="float:right;margin: 0px -5px -10px 0px;padding: 2.6px 5px!important;z-index: 1;">
-					0
+					3
 				</a>
 				<a href="usersInfo.php?status=-1" class="fas fa-user-times" style="font-size: 36px;color: black;text-decoration:none; "></a>
 			</div>
@@ -30,8 +30,8 @@
 				    <tr class="thead-light">
 				      <th scope="col" center>Id</th>
 				      <th scope="col">Toilet owner</th>
-				      <th scope="col">Toilets owned</th>
-				      <th scope="col">Toilets active</th>
+				      <th scope="col">Email</th>
+				      <th scope="col">Contact</th>
 				      <th scope="col">Registered on</th>
 				      <th scope="col">Actions</th>
 				    </tr>
@@ -41,13 +41,14 @@
 						    <tr>
 								<th scope="row">3</th>
 								<td>ABC owner</td>
-								<td>3</td>
-								<td>1</td>
+								<td>a@b.c</td>
+								<td>9999999999</td>
 								<td>04-05-2020</td>
 								<td>
 								<form action="" method="POST">
-									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
+									
 									<button class="btn btn-success" name="approveBtn" type="submit" value="">Approve</button> &nbsp;&nbsp;
+									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
 									<button class="btn btn-danger" name="denyBtn" type="submit" value="">Deny</button>
 								</form>
 								</td>
@@ -55,13 +56,14 @@
 						    <tr>
 								<th scope="row">3</th>
 								<td>ABC owner</td>
-								<td>3</td>
-								<td>1</td>
+								<td>a@b.c</td>
+								<td>9999999999</td>
 								<td>04-05-2020</td>
 								<td>
 								<form action="" method="POST">
-									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
+									
 									<button class="btn btn-success" name="approveBtn" type="submit" value="">Approve</button> &nbsp;&nbsp;
+									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
 									<button class="btn btn-danger" name="denyBtn" type="submit" value="">Deny</button>
 								</form>
 								</td>
@@ -69,13 +71,14 @@
 						    <tr>
 								<th scope="row">3</th>
 								<td>ABC owner</td>
-								<td>3</td>
-								<td>1</td>
+								<td>a@b.c</td>
+								<td>9999999999</td>
 								<td>04-05-2020</td>
 								<td>
 								<form action="" method="POST">
-									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
+									
 									<button class="btn btn-success" name="approveBtn" type="submit" value="">Approve</button> &nbsp;&nbsp;
+									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
 									<button class="btn btn-danger" name="denyBtn" type="submit" value="">Deny</button>
 								</form>
 								</td>
@@ -83,13 +86,14 @@
 						    <tr>
 								<th scope="row">3</th>
 								<td>ABC owner</td>
-								<td>3</td>
-								<td>1</td>
+								<td>a@b.c</td>
+								<td>9999999999</td>
 								<td>04-05-2020</td>
 								<td>
 								<form action="" method="POST">
-									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
+									
 									<button class="btn btn-success" name="approveBtn" type="submit" value="">Approve</button> &nbsp;&nbsp;
+									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
 									<button class="btn btn-danger" name="denyBtn" type="submit" value="">Deny</button>
 								</form>
 								</td>

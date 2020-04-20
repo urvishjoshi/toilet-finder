@@ -47,7 +47,7 @@
                                     <a class="nav-link" href="{{ url("$url/login") }}">{{ __('Login') }}</a>
                                 </li>
                                 @endif
-                                @if (Route::has('register') && $url != 'admin')
+                                @if ($url != 'admin')
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ url("$url/register") }}">{{ __('Register') }}</a>
                                     </li>

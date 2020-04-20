@@ -3,54 +3,104 @@
 @section('toiletuser')
 
 <section>
-		<div class="content-header bg-danger">
-    		<div class="container-fluid ">
-    			<div class="row ">
+    	<!-- Content Header (Page header) -->
+    	<div class="content-header">
+    		<div class="container-fluid">
+    			<div class="row">
     				<div class="col-sm-6">
-    					<h1 class="m-0 text-dark">Toilet user</h1>
-    				</div>
+    					<h1 class="m-0 text-dark">Toilet Users</h1>
+    				</div><!-- /.col -->
+    			 <!--Kishan changed  (Removed column for breadcrumb)-->
 
-    			</div>
-    		</div>
+    			</div><!-- /.row -->
+    		</div><!-- /.container-fluid -->
     	</div>
-
-    	<div class="container">
-			<div class="row p-3">
-				<table class="table  table-hover">
-  					<thead class="alert alert-info">
-  						<tr>
-							<th>Id</th>
-							<th>Name</th>
-							<th>E-mail</th>
-							<th>Usage</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-						  <th scope="row">1</th>
-					      <td>Kishan</td>
-					      <td>abc@gmail.com</td>
-					      <td>Display by back end</td>
-					      <td><i class="material-icons">delete</i></td>
-					    </tr>
-					    <tr>
-						  <th scope="row">1</th>
-					      <td>Kishan</td>
-					      <td>abc@gmail.com</td>
-					      <td>Display by back end</td>
-					      <td><i class="material-icons">delete</i></td>
-					    </tr>
-					    <tr>
-						  <th scope="row">1</th>
-					      <td>Kishan</td>
-					      <td>abc@gmail.com</td>
-					      <td>Display by back end</td>
-					      <td><i class="material-icons">delete</i></td>
-					    </tr>
-				 	</tbody>
+    	<!-- /.content-header -->
+		<div class="content-header">
+		<div class="container-fluid">
+		<div class="container justify-content-center" id="requestTable">
+			<table class="table table-hover">
+				<thead>
+				<tr class="thead-light">
+					<th scope="col" center>Id</th>
+					<th scope="col">User name</th>
+					<th scope="col">User email</th>
+					<th scope="col">Toilet used</th>
+					<th scope="col">Approve this usage</th>
+					{{-- <th scope="col">View</th> --}}
+					<th scope="col">Manage</th>
+					
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">11</th>
+						<td>ABC</td>
+						<td>a@b.c</td>
+						<td>XYZ toilet</td>
+						<td>Yes | No</td>
+						{{-- <td>views</td> --}}
+						<td>
+							<form action="" method="POST">
+							<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
+							<button class="btn btn-success" name="approveBtn" type="submit" value="">Manage</button> &nbsp;&nbsp;
+							
+							</form>
+						</td>
+						
+					</tr>
+					<tr>
+						<th scope="row">11</th>
+						<td>ABC</td>
+						<td>a@b.c</td>
+						<td>XYZ toilet</td>
+						<td>Yes | No</td>
+						{{-- <td>views</td> --}}
+						<td>
+							<form action="" method="POST">
+							<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
+							<button class="btn btn-success" name="approveBtn" type="submit" value="">Manage</button> &nbsp;&nbsp;
+							
+							</form>
+						</td>
+						
+					</tr>
+					<tr>
+						<th scope="row">11</th>
+						<td>ABC</td>
+						<td>a@b.c</td>
+						<td>XYZ toilet</td>
+						<td>Yes | No</td>
+						{{-- <td>views</td> --}}
+						<td>
+							<form action="" method="POST">
+							<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
+							<button class="btn btn-success" name="approveBtn" type="submit" value="">Manage</button> &nbsp;&nbsp;
+							
+							</form>
+						</td>
+						
+					</tr>
+					<tr>
+						<th scope="row">11</th>
+						<td>ABC</td>
+						<td>a@b.c</td>
+						<td>XYZ toilet</td>
+						<td>Yes | No</td>
+						{{-- <td>views</td> --}}
+						<td>
+							<form action="" method="POST">
+							<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
+							<button class="btn btn-success" name="approveBtn" type="submit" value="">Manage</button> &nbsp;&nbsp;
+							
+							</form>
+						</td>
+						
+					</tr>
+				</tbody>
 			</table>
-		</div>
+			</div>
+			</div>	
 	</div>
-</section>
+    </section>
 @endsection

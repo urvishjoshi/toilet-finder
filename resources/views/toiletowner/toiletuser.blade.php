@@ -43,6 +43,36 @@
 						<td>27-05-2020</td>
 						<td>Send msg</td>
 					</tr>
+					<tr>
+						<th scope="row">11</th>
+						<td>ABC</td>
+						<td>a@b.c</td>
+						<td>XYZ toilet</td>
+						<td>Yes | No</td>
+						{{-- <td>views</td> --}}
+						<td>27-05-2020</td>
+						<td>Send msg</td>
+					</tr>
+					<tr>
+						<th scope="row">11</th>
+						<td>ABC</td>
+						<td>a@b.c</td>
+						<td>XYZ toilet</td>
+						<td>Yes | No</td>
+						{{-- <td>views</td> --}}
+						<td>27-05-2020</td>
+						<td>Send msg</td>
+					</tr>
+					<tr>
+						<th scope="row">11</th>
+						<td>ABC</td>
+						<td>a@b.c</td>
+						<td>XYZ toilet</td>
+						<td>Yes | No</td>
+						{{-- <td>views</td> --}}
+						<td>27-05-2020</td>
+						<td>Send msg</td>
+					</tr>
 				</tbody>
 			</table>
 			</div>

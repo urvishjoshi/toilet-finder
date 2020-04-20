@@ -43,6 +43,33 @@
 						<td>View all</td>
 						{{-- <td>27-05-2020</td> --}}
 					</tr>
+					<tr>
+						<th scope="row">11</th>
+						<td>ABC</td>
+						<td>ABCDEF complex</td>
+						<td>ABC,DEF,QWE</td>
+						<td>⭐⭐⭐⭐⭐</td>
+						<td>View all</td>
+						{{-- <td>27-05-2020</td> --}}
+					</tr>
+					<tr>
+						<th scope="row">11</th>
+						<td>ABC</td>
+						<td>ABCDEF complex</td>
+						<td>ABC,DEF,QWE</td>
+						<td>⭐⭐⭐⭐⭐</td>
+						<td>View all</td>
+						{{-- <td>27-05-2020</td> --}}
+					</tr>
+					<tr>
+						<th scope="row">11</th>
+						<td>ABC</td>
+						<td>ABCDEF complex</td>
+						<td>ABC,DEF,QWE</td>
+						<td>⭐⭐⭐⭐⭐</td>
+						<td>View all</td>
+						{{-- <td>27-05-2020</td> --}}
+					</tr>
 				</tbody>
 			</table>
 			</div>

@@ -1,9 +1,3 @@
-<style type="text/css">
-  h1
-  {
-    color:red;
-  }
-</style>
 @section('title','Dashboard')
 @extends('admin.layouts.app')
 @section('home')

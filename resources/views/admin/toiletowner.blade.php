@@ -1,64 +1,89 @@
 @section('title','Toiletowner')
 @extends('admin.layouts.app')
 @section('toiletowner')
+<section>
 
-
-	<section>
-		<div class="content-header bg-danger">
-    		<div class="container-fluid ">
-    			<div class="row ">
-    				<div class="col-sm-6">
-    					<h1 class="m-0 text-dark">Toilet Owner Infomation</h1>
-    				</div>
-
-    			</div>
-    		</div>
-    	</div>
-
-		<div class="container">
-			<div class="row p-3">
-				<table class="table  table-hover">
-  					<thead class="alert alert-info">
-  						<tr>
-							<th>Id</th>
-							<th>E-mail</th>
-							<th>Toilet Address</th>
-							<th>Contact</th>
-							<th>Rattings</th>
-							<th>Usage</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-					    <tr>
-					      <th scope="row">2</th>
-					      <td>abc@gmail.com</td>
-					      <td>Ghare</td>
-					      <td>1234567890</td>
-					      <td>Rat</td>
-					      <td>Usage display</td>
-					      <td><i class='fas fa-edit'></i><i class='fas fa-eye'style="padding-left: 10px;"></i></td>
-					    </tr>
-					     <tr>
-					      <th scope="row">3</th>
-					      <td>abc@gmail.com</td>
-					      <td>Ghare</td>
-					      <td>1234567890</td>
-					      <td>1234567890</td>
-					      <td>Usage will display</td>
-					      <td><i class='fas fa-edit'></i><i class='fas fa-eye'style="padding-left: 10px;"></i></td>
-					    </tr>
-					     <tr>
-					      <th scope="row">1</th>
-					      <td>abc@gmail.com</td>
-					      <td>Ghare</td>
-					      <td>1234567890</td>
-					      <td>1234567890</td>
-					      <td>Usage will display</td>
-					      <td><i class='fas fa-edit'></i><i class='fas fa-eye'style="padding-left: 10px;"></i></td>
-					    </tr>
-				</table>
-			</div>	
+	<div class="container pt-4">
+		<div class="container col-md-auto">
+		<div class="row">
+			<div class="col-md pl-3">
+				<h2>Toilet owners</h2>
+			</div>
 		</div>
-	</section>
+			<div class="container justify-content-center pt-3" id="requestTable">
+				<table class="table table-hover">
+				    <thead>
+				    <tr class="thead-light">
+				      <th scope="col" center>Id</th>
+				      <th scope="col">Toilet owner</th>
+				      <th scope="col">Toilets owned</th>
+				      <th scope="col">Toilets active</th>
+				      <th scope="col">Registered on</th>
+				      <th scope="col">Actions</th>
+				    </tr>
+				    </thead>
+				    <tbody>
+					{{-- <tr><td colspan="5"><center><h4>No records found</h4></center></td></tr> --}}
+						    <tr>
+								<th scope="row">3</th>
+								<td>ABC owner</td>
+								<td>3</td>
+								<td>1</td>
+								<td>04-05-2020</td>
+								<td>
+								<form action="" method="POST">
+									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
+									<button class="btn btn-success" name="approveBtn" type="submit" value="">Manage</button> &nbsp;&nbsp;
+								</form>
+								</td>
+						    </tr>
+						    <tr>
+								<th scope="row">3</th>
+								<td>ABC owner</td>
+								<td>3</td>
+								<td>1</td>
+								<td>04-05-2020</td>
+								<td>
+								<form action="" method="POST">
+									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
+									<button class="btn btn-success" name="approveBtn" type="submit" value="">Manage</button> &nbsp;&nbsp;
+								</form>
+								</td>
+						    </tr>
+						    <tr>
+								<th scope="row">3</th>
+								<td>ABC owner</td>
+								<td>3</td>
+								<td>1</td>
+								<td>04-05-2020</td>
+								<td>
+								<form action="" method="POST">
+									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
+									<button class="btn btn-success" name="approveBtn" type="submit" value="">Manage</button> &nbsp;&nbsp;
+								</form>
+								</td>
+						    </tr>
+						    <tr>
+								<th scope="row">3</th>
+								<td>ABC owner</td>
+								<td>3</td>
+								<td>1</td>
+								<td>04-05-2020</td>
+								<td>
+								<form action="" method="POST">
+									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
+									<button class="btn btn-success" name="approveBtn" type="submit" value="">Manage</button> &nbsp;&nbsp;
+									
+								</form>
+								</td>
+						    </tr>
+					  		
+				    </tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+
+</section>
 @endsection
