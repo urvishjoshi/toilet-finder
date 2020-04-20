@@ -27,8 +27,12 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- fontawesome icons-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!--TABLE RELATED CSS path:(public=>table) -->
-
+  <!--custom style for active class color in sidebars) -->
+  <style>
+    .active{
+      background-color: #6c757d!important;
+    }
+  </style>
 
 
 

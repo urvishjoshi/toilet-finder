@@ -3,7 +3,7 @@
 
 @section('personal')
     <section>
-    	<!-- Content Header (Page header) -->
+    <!-- Content Header (Page header) -->
 	<div class="content-header">
 	<div class="container-fluid pt-2">
 		<div class="col-xl-auto order-xl-1">

@@ -1,7 +1,6 @@
 <?php
-
 Route::get('/', function () { return view('welcome'); });
-Route::get('/home', function () { return view('welcome'); });
+
 // 					Admins
 Route::group(['prefix'=>'admin'],function(){
 	Route::get('/', function () { return redirect()->route('a.login'); });
@@ -34,7 +33,7 @@ Route::group(['prefix'=>'toiletowner'],function(){
 		Route::post('/logout', 'AuthController@logout')->name('logout');
 		Route::get('/dashboard', 'HomeController@index');
 		Route::resource("/personal",'PersonalController');
-		Route::resource("/toiletowners",'ToiletController');
+		Route::resource("/toilets",'ToiletController');
 		Route::resource("/toiletusers",'ToiletuserController');
 		Route::resource("/ratings",'RatingController');
 		Route::resource("/feedbacks",'FeedbackController');

@@ -15,6 +15,7 @@
 			@yield('toiletuser')
 			@yield('personal')
 			@yield('rating')
+			@yield('feedback')
 		</div>
 
 		@include('layouts.footer')

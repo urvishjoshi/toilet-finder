@@ -24,25 +24,25 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-                <a href="{{ route('personal.index') }}" class="nav-link"><!--Kishan changed link-->
+                <a href="{{ route('personal.index') }}" class="nav-link {{ (request()->is('toiletowner/personal')) ? 'active' : '' }}"><!--Kishan changed link-->
                   <i class="far fa-circle nav-icon"></i>
                   <p>Personal info</p><!--Kishan changed Menu-->
                 </a>
           </li>
           <li class="nav-item">
-                <a href="{{ route('toiletowners.index') }}" class="nav-link"><!--Kishan changed link-->
+                <a href="{{ route('toilets.index') }}" class="nav-link {{ (request()->is('toiletowner/toilets')) ? 'active' : '' }}"><!--Kishan changed link-->
                   <i class="far fa-circle nav-icon"></i>
                   <p>Your Toilets</p><!--Kishan changed Menu-->
                 </a>
           </li>
           <li class="nav-item">
-             <a href="{{ route('toiletusers.index') }}" class="nav-link">
+             <a href="{{ route('toiletusers.index') }}" class="nav-link {{ (request()->is('toiletowner/toiletusers')) ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Your Toilet Users</p>
               </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="{{ route('ratings.index') }}" class="nav-link">
+            <a href="{{ route('ratings.index') }}" class="nav-link {{ (request()->is('toiletowner/ratings')) ? 'active' : '' }}">
               <i class="nav-icon fa fa-star "></i>
                <p>
                 Your Ratings
@@ -51,7 +51,7 @@
           </li>  
           
           <li class="nav-item"><!--Kishan changed link-->
-            <a href="{{ route('feedbacks.index') }}" class="nav-link">
+            <a href="{{ route('feedbacks.index') }}" class="nav-link {{ (request()->is('toiletowner/feedbacks')) ? 'active' : '' }}">
               <i class="far fa-circle nav-icon"></i>
               <p>Feedback</p>
             </a>
