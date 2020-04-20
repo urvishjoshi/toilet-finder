@@ -38,7 +38,7 @@
                 <h4>Toilet Owner</h4><!--Kishan changed  New Orders -->
               </div>
               <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="fas fa-user-tie"></i>
               </div>
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -68,7 +68,7 @@
                 <h4>Active Toilet</h4><!--Kishan changed User Registrations-->
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="material-icons" style="color:##006652;">flash_on</i>
               </div>
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
