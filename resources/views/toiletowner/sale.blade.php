@@ -1,17 +1,21 @@
 @section('title','Sales')
-@extends('admin.layouts.app')
-@section('sale')
+@extends('toiletowner.layouts.app')
 
-<section>
+@section('sale')
+    <section>
     	<!-- Content Header (Page header) -->
     	<div class="content-header">
     		<div class="container-fluid">
     			<div class="row">
     				<div class="col-sm-6">
-    					<h1 class="m-0 text-dark">Your Toilet Users</h1>
+    					<h1 class="m-0 text-dark">Your Sales</h1>
     				</div><!-- /.col -->
-    			 <!--Kishan changed  (Removed column for breadcrumb)-->
-
+    			    <!--Kishan changed  (Removed column for breadcrumb)-->
+					<!-- Default checked -->
+					<div class="custom-control custom-switch">
+						<input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+						<label class="custom-control-label" for="customSwitch1">Auto allocate toilets</label>
+					</div>
     			</div><!-- /.row -->
     		</div><!-- /.container-fluid -->
     	</div>

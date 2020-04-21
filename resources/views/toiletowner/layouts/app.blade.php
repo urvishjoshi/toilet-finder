@@ -15,6 +15,7 @@
 			@yield('toiletuser')
 			@yield('personal')
 			@yield('rating')
+			@yield('sale')
 			@yield('feedback')
 		</div>
 

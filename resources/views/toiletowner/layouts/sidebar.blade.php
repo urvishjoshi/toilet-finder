@@ -41,6 +41,12 @@
                 <p>Your Toilet Users</p>
               </a>
           </li>
+          <li class="nav-item"><!--Kishan changed link-->
+            <a href="{{ route('sales.index') }}" class="nav-link {{ (request()->is('toiletowner/sales')) ? 'active' : '' }}">
+            <i class="fa fa-usd nav-icon" style="font-size: 20px"></i>
+              <p>Toilet Sales</p>
+            </a>
+          </li> 
           <li class="nav-item has-treeview">
             <a href="{{ route('ratings.index') }}" class="nav-link {{ (request()->is('toiletowner/ratings')) ? 'active' : '' }}">
               <i class="nav-icon fa fa-star "></i>

@@ -72,86 +72,104 @@
 	</section>
 
 	<!-- Modal -->
-	<div class="modal fade" id="addNewToilet" tabindex="-1" role="dialog" aria-labelledby="addNewToiletLabel" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
+	<div class="modal fade bd-example-modal-xl" id="addNewToilet" tabindex="-1" role="dialog" aria-labelledby="addNewToiletLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-xl" role="document">
 		<div class="modal-content">
-		  <div class="modal-header bg-light">
-			<h5 class="modal-title">Create new Toilet</h5>
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			  <span aria-hidden="true">&times;</span>
-			</button>
-		  </div>
-		  <div class="modal-body">
+		    <div class="modal-header bg-light">
+				<h5 class="modal-title">Create new Toilet</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+				</button>
+		    </div>
 		    <form action="" method="post">
-						<h6 class="heading-small text-muted mb-2">Toilet information</h6>
-						<div class="lg-4">
-							<div class="row">
-								<div class="col-lg-6">
-									<div class="form-group">
-										<label class="form-control-label" for="toiletname">Toilet name</label>
-										<input type="text" id="toiletname" class="form-control" placeholder="Toilet name" value="" required>
-									</div>
+		    	<div class="modal-body row">
+				<div class="col-6">
+					<h6 class="heading-small text-muted mb-2">Toilet information</h6>
+					<div class="lg-4">
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label class="form-control-label" for="toiletname">Toilet name</label>
+									<input type="text" id="toiletname" class="form-control" placeholder="Toilet name" value="" required>
 								</div>
-								<div class="col-lg-6">
-									<div class="form-group">
-										<label class="form-control-label" for="toiletstatus">Toilet status</label>
-										<select class="custom-select" id="toiletstatus" name="toiletstatus">
-											<option disabled>Status</option>
-												<option value="1" class="text-success">Active</option>
-												<option value="0" class="text-danger">Not active</option>
-										</select>
-									</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label class="form-control-label" for="toiletstatus">Toilet status</label>
+									<select class="custom-select" id="toiletstatus" name="toiletstatus">
+										<option disabled>Status</option>
+										<option value="1" class="text-success">Active</option>
+										<option value="0" class="text-danger">Not active</option>
+									</select>
 								</div>
 							</div>
 						</div>
-						<div class="lg-4">
-							<div class="row">
-								<div class="col-md-4">
-									<div class="form-group">
-										<label class="form-control-label" for="toiletype">Toilet type</label>
-										<select class="custom-select" id="toiletype" name="toiletype">
-											<option disabled>toilet for</option>
-											<option value="">Male & Female</option>
-											<option value="0">Male only</option>
-											<option value="0">Female only</option>
-										</select>
-									</div>
-								</div>
-								<div class="col-md-8">
-									<div class="form-group">
-										<label class="form-control-label" for="toiletaddress">Address</label>
-										<input id="toiletaddress" name="toiletaddress" class="form-control" placeholder="Toilet Address" value="" type="text" required>
-									</div>
+					</div>
+					<div class="lg-4">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="form-group">
+									<label class="form-control-label" for="toiletype">Toilet type</label>
+									<select class="custom-select" id="toiletype" name="toiletype">
+										<option disabled>toilet for</option>
+										<option value="" selected>Male & Female</option>
+										<option value="0">Male only</option>
+										<option value="0">Female only</option>
+									</select>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-lg-4">
-									<div class="form-group">
-										<label class="form-control-label" for="city">City</label>
-										<input type="text" id="city" class="form-control" placeholder="City" value="">
-									</div>
-								</div>
-								<div class="col-lg-4">
-									<div class="form-group">
-										<label class="form-control-label" for="country">Country</label>
-										<input type="text" id="country" class="form-control" placeholder="Country" value="">
-									</div>
-								</div>
-								<div class="col-lg-4">
-									<div class="form-group">
-										<label class="form-control-label" for="postal-code">Postal code</label>
-										<input type="number" id="postal-code" class="form-control" placeholder="6 digit code">
-									</div>
+							<div class="col-md-8">
+								<div class="form-group">
+									<label class="form-control-label" for="toiletaddress">Address</label>
+									<input id="toiletaddress" name="toiletaddress" class="form-control" placeholder="Toilet Address" value="" type="text" required>
 								</div>
 							</div>
-						
 						</div>
-		  </div>
-		  <div class="modal-footer bg-light">
-			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			<button type="submit" id="btn-personal" name="btn-personal" class="btn btn-primary">Update</button>
-					</form>
-		  </div>
+						<div class="row">
+							<div class="col-lg-4">
+								<div class="form-group">
+									<label class="form-control-label" for="city">City</label>
+									<input type="text" id="city" class="form-control" placeholder="City" value="">
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<div class="form-group">
+									<label class="form-control-label" for="country">Country</label>
+									<input type="text" id="country" class="form-control" placeholder="Country" value="">
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<div class="form-group">
+									<label class="form-control-label" for="postal-code">Postal code</label>
+									<input type="number" id="postal-code" class="form-control" placeholder="6 digit code">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> {{-- modal-body-row --}}
+					<div class="col-6" >
+						<div id="googleMap" style="width:100%;height:400px;"></div>
+						<script>
+							function toiletMap() {
+							var mapProp= {
+							  center:new google.maps.LatLng(51.508742,-0.120850),
+							  zoom:5,
+							};
+							var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+							var marker = new google.maps.Marker({position: myCenter});
+
+							marker.setMap(map);
+						}
+						</script>
+
+						<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuM60AoMrwB7dnMEOL7bge_3bM4DJtdn8&callback=toiletMap"></script>
+					</div>
+    			</div>
+				<div class="modal-footer bg-light">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" id="btn-personal" name="btn-personal" class="btn btn-primary">Add Toilet</button>
+				</div>
+			</form>
 		</div>
 	  </div>
 	</div>
