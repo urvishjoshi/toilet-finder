@@ -10,7 +10,7 @@
 				<div class="card-header">
 					<div class="row align-items-center">
 						<div class="col-8">
-							<h3 class="mb-0" class="tooltip-test" title="Tooltip">Your Toilets</h3>
+							<h3 class="mb-0" class="tooltip-test">Your Toilets</h3>
 						</div>
 						<div class="col-4 text-right">
 						  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewToilet">
@@ -148,22 +148,48 @@
 					</div>
 				</div> {{-- modal-body-row --}}
 					<div class="col-6" >
-						<div id="googleMap" style="width:100%;height:400px;"></div>
-						<script>
-							function toiletMap() {
-							var mapProp= {
-							  center:new google.maps.LatLng(51.508742,-0.120850),
-							  zoom:5,
-							};
-							var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-							var marker = new google.maps.Marker({position: myCenter});
+						<div id="map" style="width:100%;height:400px;"></div>
 
-							marker.setMap(map);
-						}
+						<script>
+						    var marker;
+						    var infowindow;
+
+						    function myMap() {
+						        var mapProp= {
+									center:new google.maps.LatLng(51.508742,-0.120850),
+									zoom:8,
+									gestureHandling: 'greedy'
+								};
+								var map = new google.maps.Map(document.getElementById("map"),mapProp);
+						        google.maps.event.addListener(map, 'click', function(event) {
+						            placeMarker(map, event.latLng);
+						        });
+						    }
+
+						    function placeMarker(map, location) {
+						        if (!marker || !marker.setPosition) {
+						            marker = new google.maps.Marker({
+						                position: location,
+						                map: map,
+						            });
+						        } else {
+						            marker.setPosition(location);
+						        }
+						        if (!!infowindow && !!infowindow.close) {
+						            infowindow.close();
+						        }
+						        infowindow = new google.maps.InfoWindow({
+						            content: 'Set this location as a toilet spot'
+						        });
+						        infowindow.open(map,marker);
+						    }
+
+
 						</script>
 
-						<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuM60AoMrwB7dnMEOL7bge_3bM4DJtdn8&callback=toiletMap"></script>
+						<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuM60AoMrwB7dnMEOL7bge_3bM4DJtdn8&callback=myMap"></script>
 					</div>
+						
     			</div>
 				<div class="modal-footer bg-light">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -174,4 +200,3 @@
 	  </div>
 	</div>
 @endsection
-
