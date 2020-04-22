@@ -18,15 +18,10 @@ class CreateToiletOwnersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('name');
-            $table->string('mobileno')->unique()->nullable();
-            $table->string('complex_name')->nullable();
-            $table->string('location_name')->nullable();
-            $table->string('location_lati')->nullable();
-            $table->string('location_long')->nullable();
-            $table->string('address')->nullable();
-            $table->string('price')->nullable();
+            $table->string('mobileno')->unique();
             $table->string('rating')->nullable();
-            $table->enum('status', ['0', '1'])->default('0')->comment('0-Not Active User,1-Active')->nullable();
+            $table->enum('status', ['0', '1'])->default('0')->comment('0-Not Active,1-Active');
+            $table->enum('auto_allocate', ['0', '1'])->default('1')->comment('0-Off,1-On');
             $table->timestamps();
         });
     }
