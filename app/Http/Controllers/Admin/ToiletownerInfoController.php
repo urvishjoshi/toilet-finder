@@ -14,7 +14,11 @@ class ToiletownerInfoController extends Controller
      */
     public function index()
     {
-        return view('admin.toiletownersinfo');
+        // function getStatus(Request $request){
+        //     return $request->input('status');
+        // }
+        $status = request()->input('status');
+        return view('admin.toiletownersinfo',compact('status'));
     }
 
     /**

@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="{{ url('toiletowner/dashboard') }}" class="brand-link"><!--Kishan changed Link-->
       <img src="{{ asset('favicon.png') }}" alt="Logo" class="brand-image img-circle elevation-3">
-      <span class="brand-text font-weight-light"><b>Toilet</b> Finder</span>
+      <span class="brand-text font-weight-light"> <b> 7as 7as</b></span>
     </a>
 
     <!-- Sidebar -->

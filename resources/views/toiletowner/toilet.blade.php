@@ -150,6 +150,20 @@
 					<div class="col-6" >
 						<div id="map" style="width:100%;height:400px;"></div>
 
+
+						<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuM60AoMrwB7dnMEOL7bge_3bM4DJtdn8&callback=myMap"></script>
+					</div>
+						
+    			</div>
+				<div class="modal-footer bg-light">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" id="btn-personal" name="btn-personal" class="btn btn-primary">Add Toilet</button>
+				</div>
+			</form>
+		</div>
+	  </div>
+	</div>
+@endsection
 						<script>
 						    var marker;
 						    var infowindow;
@@ -171,6 +185,7 @@
 						            marker = new google.maps.Marker({
 						                position: location,
 						                map: map,
+						                animation: google.maps.Animation.DROP
 						            });
 						        } else {
 						            marker.setPosition(location);
@@ -186,17 +201,3 @@
 
 
 						</script>
-
-						<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuM60AoMrwB7dnMEOL7bge_3bM4DJtdn8&callback=myMap"></script>
-					</div>
-						
-    			</div>
-				<div class="modal-footer bg-light">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" id="btn-personal" name="btn-personal" class="btn btn-primary">Add Toilet</button>
-				</div>
-			</form>
-		</div>
-	  </div>
-	</div>
-@endsection
