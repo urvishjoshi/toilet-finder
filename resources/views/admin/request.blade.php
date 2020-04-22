@@ -7,19 +7,19 @@
 		<div class="container col-md-auto">
 		<div class="row">
 			<div class="col-md-auto d-flex align-items-end flex-column ml-3" title="Active users">
-				<a class="badge badge-pill badge-success font-14" href="usersInfo.php?status=1" style="float:right;margin: 0px -5px -10px 0px;padding: 2.6px 5px!important;z-index: 1;">
+				<a class="badge badge-pill badge-success font-14" href="{{ url('admin/toiletownersinfo') }}" style="float:right;margin: 0px -5px -10px 0px;padding: 2.6px 5px!important;z-index: 1;">
 					5
 				</a>
-				<a href="usersInfo.php?status=1" class="fas fa-user-check" style="font-size: 34px;color: black;text-decoration:none; "></a>
+				<a href="{{ url('admin/toiletownersinfo') }}" class="fas fa-user-check" style="font-size: 34px;color: black;text-decoration:none; "></a>
 			</div>
 			<div class="col-md text-center">
 				<h2>Toilet owner pending requests</h2>
 			</div>
 			<div class="col-md-auto d-flex align-items-end flex-column mr-3" title="Denied users">
-				<a class="badge badge-pill badge-warning font-14" href="usersInfo.php?status=-1" style="float:right;margin: 0px -5px -10px 0px;padding: 2.6px 5px!important;z-index: 1;">
+				<a class="badge badge-pill badge-warning font-14" href="{{ url('admin/toiletownersinfo') }}" style="float:right;margin: 0px -5px -10px 0px;padding: 2.6px 5px!important;z-index: 1;">
 					3
 				</a>
-				<a href="usersInfo.php?status=-1" class="fas fa-user-times" style="font-size: 36px;color: black;text-decoration:none; "></a>
+				<a href="{{ url('admin/toiletownersinfo') }}" class="fas fa-user-times" style="font-size: 36px;color: black;text-decoration:none; "></a>
 			</div>
 		</div>
 

@@ -18,6 +18,7 @@
 			@yield('sale')		
 			@yield('toiletowner')
 			@yield('toiletuser')
+			@yield('toiletownersinfo')
 		</div>
 
 		@include('layouts.footer')

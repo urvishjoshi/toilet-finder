@@ -25,7 +25,7 @@
         <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-warning border border-dark">
+            <div class="small-box bg-warning border border-light">
               <div class="inner">
                 <h3 >150</h3>
 
@@ -40,7 +40,7 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-lightblue border border-dark">
+            <div class="small-box bg-lightblue border border-light">
               <div class="inner">
                 <h3>53</h3>
 
@@ -55,7 +55,7 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-teal border border-dark">
+            <div class="small-box bg-teal border border-light">
               <div class="inner">
                 <h3>44</h3>
 
@@ -70,7 +70,7 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-maroon border border-dark">
+            <div class="small-box bg-maroon border border-light">
               <div class="inner">
                 <h3>65</h3>
 

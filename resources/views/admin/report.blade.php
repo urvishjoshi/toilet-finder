@@ -2,7 +2,7 @@
 @extends('admin.layouts.app')
 @section('report')
 <section>
-	<div class="container mt-4">
+	<div class="container pt-4">
 			<div class="container col-auto">
 				<div>
 
