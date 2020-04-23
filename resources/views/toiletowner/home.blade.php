@@ -20,63 +20,32 @@
 		<div class="container-fluid">
 			<!-- Small boxes (Stat box) -->
 			<div class="row">
-				<div class="col-lg-3 col-6">
+				<div class=" col-lg-3 col-6">
 					<!-- small box -->
-					<div class="small-box bg-info">
-						<div class="inner">
-							<h3>150</h3>
+					<div class="small-box bg-success" style="height: 150px;">
 
-							<h4>Toilet Owner</h4><!--Kishan changed  New Orders -->
-						</div>
-						<div class="icon">
-							<i class="ion ion-bag"></i>
-						</div>
-						<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-					</div>
-				</div>
-				<!-- ./col -->
-				<div class="col-lg-3 col-6">
-					<!-- small box -->
-					<div class="small-box bg-success">
-						<div class="inner">
+						<div class="inner pl-3">
 							<h3>53</h3>
 
-							<h4>Toilet User</h4><!--Kishan changed Bounce Rate-->
+							<h4 class="">Toilet user</h4>
 						</div>
 						<div class="icon">
-							<i class="ion ion-stats-bars"></i>
+						   <i class="fas fa-users"></i>
 						</div>
-						<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-					</div>
+				</div>
 				</div>
 				<!-- ./col -->
-				<div class="col-lg-3 col-6">
+				<div class="col-lg-3 col-6 ml-4">
 					<!-- small box -->
-					<div class="small-box bg-warning">
+					<div class="small-box bg-warning" style="height: 150px;">
 						<div class="inner">
-							<h3>44</h3>
-
+							<span style="font-size: 35px;font-weight: bold;">3/</span>5				
 							<h4>Active Toilet</h4><!--Kishan changed User Registrations-->
 						</div>
 						<div class="icon">
-							<i class="ion ion-person-add"></i>
+                			<i class="material-icons" style="color:##006652;">flash_on</i>
 						</div>
-						<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-					</div>
-				</div>
-				<!-- ./col -->
-				<div class="col-lg-3 col-6">
-					<!-- small box -->
-					<div class="small-box bg-danger">
-						<div class="inner">
-							<h3>65</h3>
-
-							<p>Unique Visitors</p>
-						</div>
-						<div class="icon">
-							<i class="ion ion-pie-graph"></i>
-						</div>
-						<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+						
 					</div>
 				</div>
 				<!-- ./col -->

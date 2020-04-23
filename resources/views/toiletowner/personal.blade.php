@@ -23,13 +23,13 @@
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label class="form-control-label" for="name">Your name</label>
-										<input type="text" id="name" class="form-control" placeholder="First name" value="">
+										<input type="text" id="ownername" name="ownername" class="form-control" placeholder="First name" value=""><!-- Owner Name -->
 									</div>
 								</div>
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label class="form-control-label" for="email">Email address</label>
-										<input type="email" id="email" class="form-control" placeholder="Email">
+										<input type="email" id="email" name="email" class="form-control" placeholder="Email"><!-- Owner Email -->
 									</div>
 								</div>
 							</div>
@@ -42,13 +42,13 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label class="form-control-label" for="contactno">Contact no</label>
-										<input type="text" id="contactno" class="form-control" placeholder="Contact" value="">
+										<input type="text" id="contactno" name="contactno" class="form-control" placeholder="Contact" value=""><!-- Owner Contact No. -->
 									</div>
 								</div>
 								<div class="col-md-8">
 									<div class="form-group">
 										<label class="form-control-label" for="address">Address</label>
-										<input id="address" class="form-control" placeholder="Home Address" value="" type="text">
+										<input id="address" class="form-control" name="address"  placeholder="Home Address" value="" type="text"><!-- Owner Address -->
 									</div>
 								</div>
 							</div>
@@ -56,23 +56,23 @@
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label class="form-control-label" for="city">City</label>
-										<input type="text" id="city" class="form-control" placeholder="City" value="">
+										<input type="text" id="city" name="city" class="form-control" placeholder="City"  value=""><!-- Owner city -->
 									</div>
 								</div>
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label class="form-control-label" for="country">Country</label>
-										<input type="text" id="country" class="form-control" placeholder="Country" value="">
+										<input type="text" id="country" name="country" class="form-control" placeholder="Country" value=""><!-- Owner countary -->
 									</div>
 								</div>
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label class="form-control-label" for="postal-code">Postal code</label>
-										<input type="number" id="postal-code" class="form-control" placeholder="6 digit code">
+										<input type="number" id="postalcode" name="postalcode" class="form-control" placeholder="6 digit code"><!-- Owner Postal code -->
 									</div>
 								</div>
 							</div>
-						<button type="submit" id="btn-personal" name="btn-personal" class="btn btn-primary">Update</button>
+						<button type="submit" id="submitbtn" name="submitbtn" class="btn btn-primary">Submit</button>
 						</div>
 					</form>
 				</div>
