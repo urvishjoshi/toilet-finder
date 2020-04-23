@@ -89,14 +89,8 @@
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
 
+<!-- kishan removed  3 unnecessary div  -->
 
-
-</div>
-
-
-
-    </div>
-  </div>
   </section>
   <!-- /.content -->
 @endsection
