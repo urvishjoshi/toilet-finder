@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class ToiletOwner extends Authenticatable
 {
 	protected $fillable = [
-        'email', 'password','name','mobileno','complex_name','location_name','location_map','address','price','rating','status',
+        'email', 'password','name','mobileno','rating','status','auto_allocate',
     ];
 
 }

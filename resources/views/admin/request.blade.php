@@ -28,81 +28,40 @@
 				<table class="table table-hover">
 				    <thead>
 				    <tr class="thead-light">
-				      <th scope="col" center>Id</th>
-				      <th scope="col">Toilet owner</th>
-				      <th scope="col">Email</th>
-				      <th scope="col">Contact</th>
-				      <th scope="col">Registered on</th>
-				      <th scope="col">Actions</th>
+						<th scope="col" center>Id</th>
+						<th scope="col">Toilet owner</th>
+						<th scope="col">Email</th>
+						<th scope="col">Contact</th>
+						<th scope="col">Registered on</th>
+						<th scope="col" width="30%">Actions</th>
 				    </tr>
 				    </thead>
 				    <tbody>
-					{{-- <tr><td colspan="5"><center><h4>No records found</h4></center></td></tr> --}}
+					@if( count($allRequests) == 0 )
+						<tr><td colspan="6"><center><h2>No Requests</h2><hr></center></td></tr>
+					@else
+						@foreach($allRequests as $request)
 						    <tr>
-								<th scope="row">3</th>
-								<td>ABC owner</td>
-								<td>a@b.c</td>
-								<td>9999999999</td>
-								<td>04-05-2020</td>
+								<th scope="row">{{ $request->id }}</th>
+								<td>{{ $request->name }}</td>
+								<td>{{ $request->email }}</td>
+								<td>{{ $request->mobileno }}</td>
+								<td>{{ $request->created_at }}</td>
 								<td>
 								<form action="" method="POST">
 									
-									<button class="btn btn-success" name="approveBtn" type="submit" value="">Approve</button> &nbsp;&nbsp;
-									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
-									<button class="btn btn-danger" name="denyBtn" type="submit" value="">Deny</button>
+									<button class="btn btn-success" name="approveBtn" type="submit" value="{{ $request->id }}">Approve</button> &nbsp;&nbsp;
+									<button class="btn btn-primary" name="approveBtn" type="submit" value="{{ $request->id }}">View</button> &nbsp;&nbsp;
+									<button class="btn btn-danger" name="denyBtn" type="submit" value="{{ $request->id }}">Deny</button>
+
 								</form>
 								</td>
 						    </tr>
-						    <tr>
-								<th scope="row">3</th>
-								<td>ABC owner</td>
-								<td>a@b.c</td>
-								<td>9999999999</td>
-								<td>04-05-2020</td>
-								<td>
-								<form action="" method="POST">
-									
-									<button class="btn btn-success" name="approveBtn" type="submit" value="">Approve</button> &nbsp;&nbsp;
-									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
-									<button class="btn btn-danger" name="denyBtn" type="submit" value="">Deny</button>
-								</form>
-								</td>
-						    </tr>
-						    <tr>
-								<th scope="row">3</th>
-								<td>ABC owner</td>
-								<td>a@b.c</td>
-								<td>9999999999</td>
-								<td>04-05-2020</td>
-								<td>
-								<form action="" method="POST">
-									
-									<button class="btn btn-success" name="approveBtn" type="submit" value="">Approve</button> &nbsp;&nbsp;
-									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
-									<button class="btn btn-danger" name="denyBtn" type="submit" value="">Deny</button>
-								</form>
-								</td>
-						    </tr>
-						    <tr>
-								<th scope="row">3</th>
-								<td>ABC owner</td>
-								<td>a@b.c</td>
-								<td>9999999999</td>
-								<td>04-05-2020</td>
-								<td>
-								<form action="" method="POST">
-									
-									<button class="btn btn-success" name="approveBtn" type="submit" value="">Approve</button> &nbsp;&nbsp;
-									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
-									<button class="btn btn-danger" name="denyBtn" type="submit" value="">Deny</button>
-								</form>
-								</td>
-						    </tr>
-					  		
+						@endforeach
+					@endif
 				    </tbody>
 				</table>
 			</div>
-
 		</div>
 	</div>
 
