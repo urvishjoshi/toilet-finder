@@ -38,7 +38,6 @@
 
 
 
-
   <!-- css -->
   @section('admincss')<!---Admin=>layouts=>app.blade  -> -->
     <style type="text/css">

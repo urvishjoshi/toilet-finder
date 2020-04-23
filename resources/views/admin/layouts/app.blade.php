@@ -19,6 +19,8 @@
 			@yield('toiletowner')
 			@yield('toiletuser')
 			@yield('toiletownersinfo')
+			@yield('search')		
+
 		</div>
 
 		@include('layouts.footer')

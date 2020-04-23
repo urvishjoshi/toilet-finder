@@ -10,6 +10,14 @@
 				<h2>Toilet owners</h2>
 			</div>
 		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">Search the Data</div>
+			<div class="panel-body">
+				<input type="text" name="search" id="search" class="form-control" placeholder="Enter name">
+			</div>
+		</div>
+
+
 			<div class="container justify-content-center pt-3" id="requestTable">
 				<table class="table table-hover">
 				    <thead>
@@ -39,7 +47,7 @@
 						    </tr>
 						    <tr>
 								<th scope="row">3</th>
-								<td>ABC owner</td>
+								<td>urvish owner</td>
 								<td>3</td>
 								<td>1</td>
 								<td>04-05-2020</td>
@@ -52,7 +60,7 @@
 						    </tr>
 						    <tr>
 								<th scope="row">3</th>
-								<td>ABC owner</td>
+								<td>kishan owner</td>
 								<td>3</td>
 								<td>1</td>
 								<td>04-05-2020</td>
@@ -65,7 +73,7 @@
 						    </tr>
 						    <tr>
 								<th scope="row">3</th>
-								<td>ABC owner</td>
+								<td>tit-tit owner</td>
 								<td>3</td>
 								<td>1</td>
 								<td>04-05-2020</td>
@@ -86,4 +94,24 @@
 	</div>
 
 </section>
+
+<script>
+	$(document).ready(function()
+	{
+		function fetch_customer_data(query = '')
+		{
+			$.ajax({
+				url:"return view('admin')",
+				method:GET,
+				data:{query,query},
+				dataType:'Json'
+				sucess:function(data)
+				{
+					$('tbody').html(data.table_data);
+					$('#text_records').text(data.total_data)
+				}
+			})
+		}
+	});
+</script>
 @endsection
