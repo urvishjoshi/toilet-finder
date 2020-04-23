@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\ToiletInfo;
+use App\Model\ToiletOwner;
+use Illuminate\Http\Request;
 
 class ToiletownerController extends Controller
 {
@@ -14,7 +16,14 @@ class ToiletownerController extends Controller
      */
     public function index()
     {
-        return view('admin.toiletowner');
+        $data = [
+            'activeOwners'=> ToiletOwner::where('status','=','0')->get(),
+            'activeToilets' => ToiletInfo::where('status','=','1')->get()
+        ];
+        $data = (object) $data;     //convert array into obj 
+
+
+        return view('admin.toiletowner',compact('data'));
     }
 
     /**

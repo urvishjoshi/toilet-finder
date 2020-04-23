@@ -8,7 +8,7 @@
 		<div class="row">
 			<div class="col-md-auto d-flex align-items-end flex-column ml-3" title="Active users">
 				<a class="badge badge-pill badge-success font-14" href="{{ url('admin/toiletownersinfo?status=1') }}" style="float:right;margin: 0px -5px -10px 0px;padding: 2.6px 5px!important;z-index: 1;">
-					5
+					{{ count($data->allActives) }}
 				</a>
 				<a href="{{ url('admin/toiletownersinfo?status=1') }}" class="fas fa-user-check" style="font-size: 34px;color: black;text-decoration:none; "></a>
 			</div>
@@ -17,7 +17,7 @@
 			</div>
 			<div class="col-md-auto d-flex align-items-end flex-column mr-3" title="Denied users">
 				<a class="badge badge-pill badge-warning font-14" href="{{ url('admin/toiletownersinfo?status=-1') }}" style="float:right;margin: 0px -5px -10px 0px;padding: 2.6px 5px!important;z-index: 1;">
-					3
+					{{ count($data->allDeactives) }}
 				</a>
 				<a href="{{ url('admin/toiletownersinfo?status=-1') }}" class="fas fa-user-times" style="font-size: 36px;color: black;text-decoration:none; "></a>
 			</div>
@@ -37,10 +37,10 @@
 				    </tr>
 				    </thead>
 				    <tbody>
-					@if( count($allRequests) == 0 )
+					@if( count($data->allRequests) == 0 )
 						<tr><td colspan="6"><center><h2>No Requests</h2><hr></center></td></tr>
 					@else
-						@foreach($allRequests as $request)
+						@foreach($data->allRequests as $request)
 						    <tr>
 								<th scope="row">{{ $request->id }}</th>
 								<td>{{ $request->name }}</td>

@@ -32,51 +32,28 @@
 				</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<th scope="row">11</th>
-						<td>ABC</td>
-						<td>DEF</td>
-						<td>XYZ toilet</td>
-						<td>27-05-2020</td>
-						<td>$5</td>
-						<td>
-							<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">11</th>
-						<td>ABC</td>
-						<td>DEF</td>
-						<td>XYZ toilet</td>
-						<td>27-05-2020</td>
-						<td>$5</td>
-						<td>
-							<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">11</th>
-						<td>ABC</td>
-						<td>DEF</td>
-						<td>XYZ toilet</td>
-						<td>27-05-2020</td>
-						<td>$5</td>
-						<td>
-							<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">11</th>
-						<td>ABC</td>
-						<td>DEF</td>
-						<td>XYZ toilet</td>
-						<td>27-05-2020</td>
-						<td>$5</td>
-						<td>
-							<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button>
-						</td>
-					</tr>
-					
+					@if( count($data) == 0 )
+						<tr><td colspan="6"><center><h2>No Requests</h2><hr></center></td></tr>
+					@else
+						@foreach($data as $toiletInfo)
+						    <tr>
+								<th scope="row">{{ $toiletInfo->id }}</th>
+								<td>{{ $toiletInfo->name }}</td>
+								<td>{{ $toiletInfo->email }}</td>
+								<td>{{ $toiletInfo->mobileno }}</td>
+								<td>{{ $toiletInfo->created_at }}</td>
+								<td>
+								<form action="" method="POST">
+									
+									<button class="btn btn-success" name="approveBtn" type="submit" value="{{ $toiletInfo->id }}">Approve</button> &nbsp;&nbsp;
+									<button class="btn btn-primary" name="approveBtn" type="submit" value="{{ $toiletInfo->id }}">View</button> &nbsp;&nbsp;
+									<button class="btn btn-danger" name="denyBtn" type="submit" value="{{ $toiletInfo->id }}">Deny</button>
+
+								</form>
+								</td>
+						    </tr>
+						@endforeach
+					@endif
 				</tbody>
 			</table>
 			</div>

@@ -15,28 +15,21 @@ class RequestController extends Controller
      */
     public function index()
     {
-        $allRequests = ToiletOwner::where('status','=','0')->get();
-        $allActives = ToiletOwner::where('status','=','1')->get();
-        $allDeactives = ToiletOwner::where('status','=','0')->get();
-        return view('admin.request',compact('allRequests'));
+        $data = [
+            'allRequests'=> ToiletOwner::where('status','=','0')->get(),
+            'allActives'=> ToiletOwner::where('status','=','1')->get(),
+            'allDeactives'=> ToiletOwner::where('status','=','-1')->get()
+        ];
+        $data = (object) $data;     //convert array into obj 
+
+        return view('admin.request',compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //

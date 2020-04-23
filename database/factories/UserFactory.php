@@ -20,8 +20,10 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'remember_token' => Str::random(10),
+        'mobileno' => $faker->numberBetween(6666666666,9999999999),
+        'gender' => $faker->randomElement(['1','0']),
+        'age' => $faker->numberBetween(18,80),
+
     ];
 });

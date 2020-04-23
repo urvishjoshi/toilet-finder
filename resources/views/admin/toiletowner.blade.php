@@ -31,61 +31,28 @@
 				    </tr>
 				    </thead>
 				    <tbody>
-					{{-- <tr><td colspan="5"><center><h4>No records found</h4></center></td></tr> --}}
+					@if( count($data->activeOwners) == 0 )
+						<tr><td colspan="6"><center><h2>No Record found</h2><hr></center></td></tr>
+					@else
+						@foreach($data->activeOwners as $owner)
 						    <tr>
-								<th scope="row">3</th>
-								<td>ABC owner</td>
-								<td>3</td>
-								<td>1</td>
-								<td>04-05-2020</td>
+								<th scope="row">{{ $owner->id }}</th>
+								<td>{{ $owner->name }}</td>
+								<td>{{ count($data->activeToilets) }}</td>
+								<td>{{ count($data->activeToilets) }}</td>
+								<td>{{ $owner->created_at }}</td>
 								<td>
 								<form action="" method="POST">
-									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
-									<button class="btn btn-success" name="approveBtn" type="submit" value="">Manage</button> &nbsp;&nbsp;
-								</form>
-								</td>
-						    </tr>
-						    <tr>
-								<th scope="row">3</th>
-								<td>urvish owner</td>
-								<td>3</td>
-								<td>1</td>
-								<td>04-05-2020</td>
-								<td>
-								<form action="" method="POST">
-									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
-									<button class="btn btn-success" name="approveBtn" type="submit" value="">Manage</button> &nbsp;&nbsp;
-								</form>
-								</td>
-						    </tr>
-						    <tr>
-								<th scope="row">3</th>
-								<td>kishan owner</td>
-								<td>3</td>
-								<td>1</td>
-								<td>04-05-2020</td>
-								<td>
-								<form action="" method="POST">
-									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
-									<button class="btn btn-success" name="approveBtn" type="submit" value="">Manage</button> &nbsp;&nbsp;
-								</form>
-								</td>
-						    </tr>
-						    <tr>
-								<th scope="row">3</th>
-								<td>tit-tit owner</td>
-								<td>3</td>
-								<td>1</td>
-								<td>04-05-2020</td>
-								<td>
-								<form action="" method="POST">
-									<button class="btn btn-primary" name="approveBtn" type="submit" value="">View</button> &nbsp;&nbsp;
-									<button class="btn btn-success" name="approveBtn" type="submit" value="">Manage</button> &nbsp;&nbsp;
 									
+									<button class="btn btn-success" name="approveBtn" type="submit" value="{{ $owner->id }}">Approve</button> &nbsp;&nbsp;
+									<button class="btn btn-primary" name="approveBtn" type="submit" value="{{ $owner->id }}">View</button> &nbsp;&nbsp;
+									<button class="btn btn-danger" name="denyBtn" type="submit" value="{{ $owner->id }}">Deny</button>
+
 								</form>
 								</td>
 						    </tr>
-					  		
+						@endforeach
+					@endif
 				    </tbody>
 				</table>
 			</div>

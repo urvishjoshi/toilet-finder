@@ -15,6 +15,7 @@ class CreateToiletUsageInfosTable extends Migration
     {
         Schema::create('toilet_usage_infos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('transaction_id')->unique();
             $table->unsignedBigInteger('owner_id');
             $table->foreign('owner_id')
                     ->references('id')
@@ -30,7 +31,11 @@ class CreateToiletUsageInfosTable extends Migration
                     ->references('id')
                     ->on('toilet_infos')
                     ->onDelete('cascade');
-
+            // $table->unsignedBigInteger('price')->fillable();
+            // $table->foreign('price')
+            //         ->references('price')
+            //         ->on('toilet_infos')
+            //         ->onDelete('cascade');
             $table->timestamps();
         });
     }

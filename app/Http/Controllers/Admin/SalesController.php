@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Model\ToiletUsageInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,10 @@ class SalesController extends Controller
      */
     public function index()
     {
-        return view('admin.sale');
+        $toiletInfo = ToiletUsageInfo::all();
+        $data = (object) $toiletInfo;     //convert array into obj 
+
+        return view('admin.sale',compact('data'));
     }
 
     /**

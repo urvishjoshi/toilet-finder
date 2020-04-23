@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('name');
             $table->string('mobileno')->unique()->nullable();
-            $table->enum('gender', ['Male', 'Female'])->default('Male');
+            $table->enum('gender', ['1', '0'])->default('1');
             $table->string('age')->nullable();
             $table->timestamps();
         });
