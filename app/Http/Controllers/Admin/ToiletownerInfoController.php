@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\ToiletOwner;
+use Illuminate\Http\Request;
 
 class ToiletownerInfoController extends Controller
 {
@@ -14,11 +15,10 @@ class ToiletownerInfoController extends Controller
      */
     public function index()
     {
-        // function getStatus(Request $request){
-        //     return $request->input('status');
-        // }
         $status = request()->input('status');
-        return view('admin.toiletownersinfo',compact('status'));
+        $active = ToiletOwner::where('status','=',$status)->count();
+
+        return view('admin.toiletownersinfo',compact('active'));
     }
 
     /**

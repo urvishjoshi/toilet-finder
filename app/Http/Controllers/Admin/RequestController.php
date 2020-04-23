@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\ToiletOwner;
+use Illuminate\Http\Request;
 
 class RequestController extends Controller
 {
@@ -14,7 +15,10 @@ class RequestController extends Controller
      */
     public function index()
     {
-        return view('admin.request');
+        $allRequests = ToiletOwner::where('status','=','0')->get();
+        $allActives = ToiletOwner::where('status','=','1')->get();
+        $allDeactives = ToiletOwner::where('status','=','0')->get();
+        return view('admin.request',compact('allRequests'));
     }
 
     /**

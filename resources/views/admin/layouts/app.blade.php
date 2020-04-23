@@ -3,6 +3,7 @@
 <head>
 	@section('session','Admin')
 	@include('layouts.head')
+	<style>th,td{text-align: center;}</style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini layout-fixed">
 	<div class="wrapper">

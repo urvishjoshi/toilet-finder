@@ -1,6 +1,5 @@
 <?php
 Route::get('/', function () { return view('welcome'); });
-
 // 					Admins
 Route::group(['prefix'=>'admin'],function(){
 	Route::get('/', function () { return redirect()->route('a.login'); });
@@ -19,7 +18,7 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::resource("reports",'ReportController');
 		Route::resource("permissions",'PermissionController');
 		// Route::get('toiletownersinfo', 'ToiletownerInfoController@display');
-		Route::resource("toiletownersinfo",'ToiletownerInfoController');
+		Route::apiResource("toiletownersinfo",'ToiletownerInfoController');
 	});
 });
 //					toiletowner
