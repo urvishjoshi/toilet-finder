@@ -25,7 +25,7 @@
         <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-warning border border-light">
+            <div class="h-100 small-box bg-warning border border-light">
               <div class="inner">
                 <h3 >150</h3>
 
@@ -34,13 +34,13 @@
               <div class="icon">
                 <i class="fas fa-user-tie"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-lightblue border border-light">
+            <div class="h-100 small-box bg-lightblue border border-light">
               <div class="inner">
                 <h3>53</h3>
 
@@ -49,13 +49,13 @@
               <div class="icon">
                 <i class="fas fa-users"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <!--<a href="#" class="h-100 small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>-->
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-teal border border-light">
+            <div class="h-100 small-box bg-teal border border-light">
               <div class="inner">
                 <h3>44</h3>
 
@@ -64,14 +64,14 @@
               <div class="icon">
                 <i class="material-icons" style="color:##006652;">flash_on</i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-maroon border border-light">
-              <div class="inner">
+            <div class="h-100 small-box bg-maroon border border-light">
+              <div class=" inner">
                 <h3>65</h3>
 
                 <p>Unique Visitors</p>
@@ -79,7 +79,6 @@
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
