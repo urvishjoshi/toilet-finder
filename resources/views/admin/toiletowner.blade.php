@@ -31,15 +31,15 @@
 				    </tr>
 				    </thead>
 				    <tbody>
-					@if( count($data->activeOwners) == 0 )
+					@if( count((object)$activeOwners) == 0 )
 						<tr><td colspan="6"><center><h2>No Record found</h2><hr></center></td></tr>
 					@else
-						@foreach($data->activeOwners as $owner)
+						@foreach($activeOwners as $owner)
 						    <tr>
 								<th scope="row">{{ $owner->id }}</th>
 								<td>{{ $owner->name }}</td>
-								<td>{{ count($data->activeToilets) }}</td>
-								<td>{{ count($data->activeToilets) }}</td>
+								<td></td>
+								<td></td>
 								<td>{{ $owner->created_at }}</td>
 								<td>
 								<form action="" method="POST">

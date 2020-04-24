@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Model\Rating;
 use App\Model\ToiletUsageInfo;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class SalesController extends Controller
 {
@@ -15,9 +16,9 @@ class SalesController extends Controller
      */
     public function index()
     {
-        $toiletInfo = ToiletUsageInfo::all();
+        $toiletInfo = Rating::with('toilet')->get();
         $data = (object) $toiletInfo;     //convert array into obj 
-
+        return $data;
         return view('admin.sale',compact('data'));
     }
 

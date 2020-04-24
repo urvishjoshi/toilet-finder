@@ -38,7 +38,7 @@
 						@foreach($data as $toiletInfo)
 						    <tr>
 								<th scope="row">{{ $toiletInfo->id }}</th>
-								<td>{{ $toiletInfo->name }}</td>
+								<td>{{ $toiletInfo->owner }}</td>
 								<td>{{ $toiletInfo->email }}</td>
 								<td>{{ $toiletInfo->mobileno }}</td>
 								<td>{{ $toiletInfo->created_at }}</td>

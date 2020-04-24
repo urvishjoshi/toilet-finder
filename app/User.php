@@ -10,20 +10,15 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'email', 'password','name','mobileno','gender','age',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+    public function toiletusages()
+    {
+        return $this->hasMany(ToiletInfo::class,'user_id');
+    }
+
     protected $hidden = [
         'password', 'remember_token',
     ];

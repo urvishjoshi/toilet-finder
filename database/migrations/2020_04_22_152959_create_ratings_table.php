@@ -31,7 +31,7 @@ class CreateRatingsTable extends Migration
                     ->on('users')
                     ->onDelete('cascade');
             $table->string('rating')->nullable();
-            $table->string('desc')->nullable();
+            $table->text('desc')->nullable();
             $table->timestamps();
         });
     }

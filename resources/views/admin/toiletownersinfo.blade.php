@@ -35,18 +35,28 @@
 								<td>{{ $owner->name }}</td>
 								<td>{{ $owner->email }}</td>
 								<td>{{ $owner->created_at }}</td>
-								<td>
-								<form action="{{ route('a.toiletownersinfo.update',$owner->id) }}" method="POST">
+								<td width="25%">
+								<div class="row justify-content-center">
+
+								<form action="{{ route('a.toiletownersinfo.update',$owner->id) }}" method="POST" class="form-inline">
 								@method('PUT') @csrf
 								
 									<button class="btn btn-primary" name="btn" type="submit" value="0">View</button>&nbsp;&nbsp;
 								@if( $status==-1 )
 									<button class="btn btn-success" name="btn" type="submit" value="1">Approve</button>&nbsp;&nbsp;
 								@else
-									<button class="btn btn-danger" name="btn" type="submit" value="-1">Deny</button> &nbsp;&nbsp;
+									<button class="btn btn-warning" name="btn" type="submit" value="-1">Deny</button> &nbsp;&nbsp;
 								@endif
-
 								</form>
+
+								@if( $status==-1 )
+									<form action="{{ route('a.toiletownersinfo.update',$owner->id) }}" method="POST" class="form-inline">
+									@method('DELETE') @csrf
+										<button class="btn btn-danger" name="btn" type="submit" value="-2">Delete</button>&nbsp;&nbsp;
+									</form>
+								@endif
+								
+								</div>
 								</td>
 						    </tr>
 						@endforeach
@@ -56,5 +66,5 @@
 			</div>
 
 		</div>
-	</section>	
+	</section>
 @endsection

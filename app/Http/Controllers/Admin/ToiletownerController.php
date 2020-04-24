@@ -16,14 +16,10 @@ class ToiletownerController extends Controller
      */
     public function index()
     {
-        $data = [
-            'activeOwners'=> ToiletOwner::where('status','=','0')->get(),
-            'activeToilets' => ToiletInfo::where('status','=','1')->get()
-        ];
-        $data = (object) $data;     //convert array into obj 
-
-
-        return view('admin.toiletowner',compact('data'));
+        $activeOwners = ToiletOwner::where('status','=','1')->with('toilets')->get();
+        $activeToilets = ToiletInfo::with('owner')->get();
+        $activeOwners = (object)$activeOwners;
+        return view('admin.toiletowner',compact('activeOwners'));
     }
 
     /**
