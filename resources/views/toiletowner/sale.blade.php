@@ -7,16 +7,22 @@
     	<div class="content-header">
     		<div class="container-fluid">
     			<div class="row">
-    				<div class="col-sm-6">
-    					<h1 class="m-0 text-dark">Your Sales</h1>
+    				<div class="col-md text-center">
+    					<h2>Your Sales</h2>
     				</div><!-- /.col -->
-    			    <!--Kishan changed  (Removed column for breadcrumb)-->
+    			</div>
+    			 <HR width=50%>
+
+    			<div class="row">
+    				<div class="col ">
 					<!-- Default checked -->
-					<div class="custom-control custom-switch">
-						<input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-						<label class="custom-control-label" for="customSwitch1">Auto allocate toilets</label>
+						<div class="custom-control custom-switch">
+							<input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+							<label class="custom-control-label" style="font-size: 25px;" for="customSwitch1">Auto allocate toilets</label>
+						</div>
 					</div>
     			</div><!-- /.row -->
+
     		</div><!-- /.container-fluid -->
     	</div>
     	<!-- /.content-header -->

@@ -4,6 +4,16 @@
 <section>
 	<div class="container pt-4">
 			<div class="container col-auto">
+					<div class="row">
+						<div class="col-md text-center">
+							<h2>Toilet Reports</h2>
+						</div>
+					</div>
+					<HR width=50%>
+			</div>
+	</div>
+	<div class="content-header">
+		<div class="container-fluid">
 				<div>
 
 					<form action="home.php" method="post" id="form" class="row justify-content-center">

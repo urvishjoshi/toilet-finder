@@ -7,14 +7,16 @@
     	<div class="content-header">
     		<div class="container-fluid">
     			<div class="row">
-    				<div class="col-sm-6">
-    					<h1 class="m-0 text-dark">Your Toilet Ratings</h1>
+    				<div class="col-md text-center">
+    					<h2>Your Toilet Ratings</h2>
     				</div><!-- /.col -->
     			 <!--Kishan changed  (Removed column for breadcrumb)-->
 
     			</div><!-- /.row -->
+    			<HR width=50%>
     		</div><!-- /.container-fluid -->
     	</div>
+
     	<!-- /.content-header -->
 		<div class="content-header">
 		<div class="container-fluid">
