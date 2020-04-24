@@ -6,8 +6,8 @@
 	<div class="container pt-4">
 		<div class="container col-md-auto">
 		<div class="row">
-			<div class="col-md pl-3">
-				<h2>Toilet owners</h2>
+			<div class="col-md text-center">
+				<h2>Toilet owner</h2>
 			</div>
 		</div>
 		<div class="panel panel-default">
@@ -16,7 +16,6 @@
 				<input type="text" name="search" id="search" class="form-control" placeholder="Enter name">
 			</div>
 		</div>
-
 
 			<div class="container justify-content-center pt-3" id="requestTable">
 				<table class="table table-hover">

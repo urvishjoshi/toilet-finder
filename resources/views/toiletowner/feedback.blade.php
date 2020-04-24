@@ -21,12 +21,12 @@
 							<div class="row">
 								<div class="col-lg-12">
 									<div class="form-group">
-										<label class="form-control-label" for="fdbksubject">Feedback subject</label>
-										<input type="text" id="fdbksubject" class="form-control" placeholder="Subject" value="">
+										<label class="form-control-label" for="fsubject">Feedback subject</label>
+										<input type="text" id="fsubject" name="fsubject" class="form-control" placeholder="Subject" value="">
 									</div>
 									<div class="form-group">
-										<label class="form-control-label" for="fdbkdesc">Describe your suggestion</label>
-										<textarea id="fdbkdesc" class="form-control" rows="9"></textarea>
+										<label class="form-control-label" for="fdiscription">Describe your suggestion</label>
+										<textarea id="fdiscription" name="fdiscription" class="form-control" rows="9"></textarea>
 									</div>
 								</div>
 							</div>

@@ -60,12 +60,12 @@
 
 			  <h3 class="mt-4 mb-4">Social Widgets</h3>
 
-        		<div class="row">
-        			<div class="col-md-4">
+        		<div class="row d-flex justify-content-center">
+        			<div class="col-md-7">
             <!-- Widget: user widget style 1 -->
             <div class="card card-widget widget-user">
               <!-- Add the bg color to the header using any of the bg-* classes -->
-              <div class="widget-user-header bg-info">
+              <div class="widget-user-header bg-info ">
                 <h3 class="widget-user-username">Toilet owner Name</h3>
                 <h5 class="widget-user-desc">Abc Def</h5>
               </div>
