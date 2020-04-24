@@ -1,6 +1,6 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>@yield('title') | @yield('session') Toilet Finder @yield('session')</title>
+  <title>@yield('title') | @yield('session') Toilet Finder</title>
   <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon" class="img-circle" />
   <!-- Tell the browser to be responsive to screen width -->
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">

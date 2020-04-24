@@ -9,69 +9,40 @@ use Illuminate\Http\Request;
 
 class ToiletownerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $url = 'admin.toiletowner.';    //for route path prefix
+
     public function index()
     {
-        $activeOwners = ToiletOwner::where('status','=','1')->with('toilets')->get();
-        $activeToilets = ToiletInfo::with('owner')->get();
-        $activeOwners = (object)$activeOwners;
-        return view('admin.toiletowner',compact('activeOwners'));
+        $activeOwners = ToiletOwner::where('status','=','1')
+                        ->with('toilets')->with('toiletusages')->get();
+        // $activeToilets = ToiletInfo::with('owner')->where('status','=','1')->get();
+
+        return view($this->url.'index',compact('activeOwners'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function show($id)
+    {
+        $name = request()->input('name');
+        $toilets = ToiletInfo::where('owner_id','=',$id)->with('owner')->get();
+
+        return view($this->url.'show',compact('toilets','name'));
+    }
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //

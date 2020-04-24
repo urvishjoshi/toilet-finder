@@ -3,23 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Model\Rating;
 use App\Model\ToiletInfo;
 use Illuminate\Http\Request;
 
-class RatingController extends Controller
+class ToiletController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $url = 'admin.toilet.';
     public function index()
     {
-        $ratings = Rating::with('toilet')->get();
-        $toilets = ToiletInfo::with('ratings')->get();
-
-        return view('admin.rating',compact('ratings','toilets'));
+        $toilets = ToiletInfo::with('owner')->orderBy('status', 'desc')->get();
+        return view($this->url.'index',compact('toilets'));
     }
 
     /**

@@ -1,6 +1,10 @@
 @section('title','Dashboard')
 @extends('admin.layouts.app')
 @section('home')
+<?php $owners=\App\Model\ToiletOwner::all()->count(); ?>
+<?php $users=\App\User::all()->count(); ?>
+<?php $toilets=\App\Model\ToiletInfo::where('status','=','1')->count(); ?>
+<?php $sales=\App\Model\ToiletUsageInfo::all()->count(); ?>
   <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -27,9 +31,9 @@
             <!-- small box -->
             <div class="h-100 small-box bg-warning border border-light">
               <div class="inner">
-                <h3 >150</h3>
+                <h3 >{{$owners}}</h3>
 
-                <h4>Toilet Owner</h4><!--Kishan changed  New Orders -->
+                <h4>Toilet Owners</h4><!--Kishan changed  New Orders -->
               </div>
               <div class="icon">
                 <i class="fas fa-user-tie"></i>
@@ -42,9 +46,9 @@
             <!-- small box -->
             <div class="h-100 small-box bg-lightblue border border-light">
               <div class="inner">
-                <h3>53</h3>
+                <h3>{{$users}}</h3>
 
-                <h4>Toilet User</h4><!--Kishan changed Bounce Rate-->
+                <h4>Toilet Users</h4><!--Kishan changed Bounce Rate-->
               </div>
               <div class="icon">
                 <i class="fas fa-users"></i>
@@ -57,9 +61,9 @@
             <!-- small box -->
             <div class="h-100 small-box bg-teal border border-light">
               <div class="inner">
-                <h3>44</h3>
+                <h3>{{$toilets}}</h3>
 
-                <h4>Active Toilet</h4><!--Kishan changed User Registrations-->
+                <h4>Active Toilets</h4><!--Kishan changed User Registrations-->
               </div>
               <div class="icon">
                 <i class="material-icons" style="color:##006652;">flash_on</i>
@@ -72,12 +76,12 @@
             <!-- small box -->
             <div class="h-100 small-box bg-maroon border border-light">
               <div class=" inner">
-                <h3>65</h3>
+                <h3>{{$sales}}</h3>
 
-                <p>Unique Visitors</p>
+                <h4>Sales</h4>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="fa fa-line-chart" aria-hidden="true"></i>
               </div>
             </div>
           </div>

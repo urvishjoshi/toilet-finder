@@ -12,12 +12,12 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('dashboard', 'HomeController@index')->name('dash');
 		Route::resource("requests",'RequestController');
 		Route::resource("toiletowners",'ToiletownerController');
+		Route::resource("toilets",'ToiletController');
 		Route::resource("sales",'SalesController');
 		Route::resource("ratings",'RatingController');
 		Route::resource("toiletusers",'ToiletuserController');
 		Route::resource("reports",'ReportController');
 		Route::resource("permissions",'PermissionController');
-		Route::Resource("/toiletownersinfo",'ToiletownerInfoController');
 	});
 });
 //					toiletowner

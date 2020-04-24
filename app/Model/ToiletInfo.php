@@ -17,8 +17,8 @@ class ToiletInfo extends Model
     	return $this->belongsTo(ToiletOwner::class);
     }
 
-    public function rating()
+    public function ratings()
     {
-    	return $this->hasMany(Rating::class);
+    	return $this->hasMany(Rating::class,'toilet_id');
     }
 }

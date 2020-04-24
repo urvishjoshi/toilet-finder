@@ -2,9 +2,10 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
+use App\Model\ToiletUsageInfo;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
 
     public function toiletusages()
     {
-        return $this->hasMany(ToiletInfo::class,'user_id');
+        return $this->hasMany(ToiletUsageInfo::class,'user_id');
     }
 
     protected $hidden = [

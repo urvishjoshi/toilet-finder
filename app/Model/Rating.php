@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Model\ToiletInfo;
+use App\Model\ToiletOwner;
 use Illuminate\Database\Eloquent\Model;
 
 class Rating extends Model

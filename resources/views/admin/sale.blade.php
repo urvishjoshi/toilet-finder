@@ -8,7 +8,7 @@
     		<div class="container-fluid">
     			<div class="row">
 					<div class="col-md text-center">
-    					<h2>Your Toilet Users</h2>
+    					<h2>Toilet Sales</h2>
     				</div><!-- /.col -->
 
     			 <!--Kishan changed  (Removed column for breadcrumb)-->
@@ -24,35 +24,34 @@
 			<table class="table table-hover">
 				<thead>
 				<tr class="thead-light">
-					<th scope="col" center>Id</th>
-					<th scope="col">Owner name</th>
-					<th scope="col">User name</th>
-					<th scope="col">Toilet used</th>
-					<th scope="col">Used on</th>
+					<th scope="col">Id</th>
+					<th scope="col">Transact Id</th>
+					<th scope="col">Owner id</th>
+					<th scope="col">User id</th>
+					<th scope="col">Toilet id</th>
 					<th scope="col">Paid</th>
-					<th scope="col">View</th>
+					<th scope="col">Used on</th>
 				</tr>
 				</thead>
 				<tbody>
-					@if( count($data) == 0 )
+					@if( count($sales) == 0 )
 						<tr><td colspan="6"><center><h2>No Requests</h2><hr></center></td></tr>
 					@else
-						@foreach($data as $toiletInfo)
+						@foreach($sales as $sale)
 						    <tr>
-								<th scope="row">{{ $toiletInfo->id }}</th>
-								<td>{{ $toiletInfo->owner }}</td>
-								<td>{{ $toiletInfo->email }}</td>
-								<td>{{ $toiletInfo->mobileno }}</td>
-								<td>{{ $toiletInfo->created_at }}</td>
-								<td>
-								<form action="" method="POST">
-									
-									<button class="btn btn-success" name="approveBtn" type="submit" value="{{ $toiletInfo->id }}">Approve</button> &nbsp;&nbsp;
-									<button class="btn btn-primary" name="approveBtn" type="submit" value="{{ $toiletInfo->id }}">View</button> &nbsp;&nbsp;
-									<button class="btn btn-danger" name="denyBtn" type="submit" value="{{ $toiletInfo->id }}">Deny</button>
-
-								</form>
+								<th scope="row">{{ $sale->id }}</th>
+								<td>{{ $sale->transaction_id }}</td>
+								<td title="{{ $sale->owner['email'] }}">
+									{{ $sale->owner['id'] }}
 								</td>
+								<td title="{{ $sale->user['email'] }}">
+									{{ $sale->user['id'] }}
+								</td>
+								<td title="{{ $sale->toilet['toilet_name'] }}">
+									{{ $sale->toilet_id }}
+								</td>
+								<td><b>${{ $sale->toilet['price'] }}</b></td>
+								<td>{{ $sale->created_at }}</td>
 						    </tr>
 						@endforeach
 					@endif

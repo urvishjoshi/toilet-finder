@@ -1,15 +1,15 @@
 @section('title','Requests')
 @extends('admin.layouts.app')
-@section('request')	
-<?php $active=route('a.toiletownersinfo.index',['status'=>'1']); 
-$denied=route('a.toiletownersinfo.index',['status'=>'-1']); ?>
+@section('request.index')	
+<?php $active=route('a.requests.show',['status'=>'1']); 
+$denied=route('a.requests.show',['status'=>'-1']); ?>
 <section>
 
 	<div class="container pt-4">
 		<div class="container col-md-auto">
 		<div class="row">
 			<div class="col-md-auto d-flex align-items-end flex-column ml-3" title="Active users">
-				<a class="badge badge-pill badge-success font-14" href="{{ $active }}" style="float:right;margin: 0px -5px -10px 0px;padding: 2.6px 5px!important;z-index: 1;">
+				<a class="badge badge-pill badge-success font-14 style" href="{{ $active }}">
 					{{ count($data->allActives) }}
 				</a>
 				<a href="{{ $active }}" class="fas fa-user-check" style="font-size: 34px;color: black;text-decoration:none; "></a>
@@ -18,7 +18,7 @@ $denied=route('a.toiletownersinfo.index',['status'=>'-1']); ?>
 				<h2>Toilet owner pending requests</h2>
 			</div>
 			<div class="col-md-auto d-flex align-items-end flex-column mr-3" title="Denied users">
-				<a class="badge badge-pill badge-warning font-14" href="{{ $denied }}" style="float:right;margin: 0px -5px -10px 0px;padding: 2.6px 5px!important;z-index: 1;">
+				<a class="badge badge-pill badge-warning font-14 style" href="{{ $denied }}">
 					{{ count($data->allDeactives) }}
 				</a>
 				<a href="{{ $denied }}" class="fas fa-user-times" style="font-size: 36px;color: black;text-decoration:none; "></a>
@@ -54,7 +54,7 @@ $denied=route('a.toiletownersinfo.index',['status'=>'-1']); ?>
 								@method('PUT') @csrf
 									
 									<button class="btn btn-success" name="btn" type="submit" value="1">Approve</button> &nbsp;&nbsp;
-									<button class="btn btn-primary" name="btn" type="submit" value="0">View</button> &nbsp;&nbsp;
+									<a href="{{ route('a.toiletowners.show',['id'=>$owner->id,'name'=>$owner->name]) }}" class="btn btn-primary" name="view">View</a>&nbsp;&nbsp;
 									<button class="btn btn-warning" name="btn" type="submit" value="-1">Deny</button>
 
 								</form>

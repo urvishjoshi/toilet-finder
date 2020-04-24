@@ -16,10 +16,9 @@ class SalesController extends Controller
      */
     public function index()
     {
-        $toiletInfo = Rating::with('toilet')->get();
-        $data = (object) $toiletInfo;     //convert array into obj 
-        return $data;
-        return view('admin.sale',compact('data'));
+        $sales = ToiletUsageInfo::with('user')->with('owner')->with('toilet')->get();
+
+        return view('admin.sale',compact('sales'));
     }
 
     /**

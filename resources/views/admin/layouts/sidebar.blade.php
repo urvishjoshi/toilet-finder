@@ -33,14 +33,23 @@
 			  </a>
 			</li>  
 			<li class="nav-item"> <!-- Kishan changed removed menu-open class -->
-			  <a href="{{ route('a.toiletowners.index') }}" class="nav-link {{ (request()->is('admin/toiletowners')) ? 'active' : '' }}"> <!-- Kishan changed active class -->
+			  <a href="{{ route('a.toiletowners.index') }}" class="nav-link {{ (request()->is('admin/toiletowners')) ? 'active' : '' }}">
 				<i class="nav-icon  fas fa-user-tie"></i>
-				<p>
-				  Toilet Owners
-				 <!-- <i class="right fas fa-angle-left"></i>--><!-- Kishan changed removed dropdown icon -->
-				</p>
+				<p>Toilet Owners</p>
 			  </a>
 			</li>
+			<li class="nav-item">
+			  <a href="{{ route('a.toiletusers.index') }}" class="nav-link {{ (request()->is('admin/toiletusers')) ? 'active' : '' }}">
+				<i class="nav-icon fas fa-users"></i>
+				<p>Toilet Users</p>
+			  </a>
+			</li>
+			<li class="nav-item"><!--Kishan changed link-->
+			  <a href="{{ route('a.toilets.index') }}" class="nav-link {{ (request()->is('admin/toilets')) ? 'active' : '' }}">
+				<i class="fas fa-restroom pl-1 pr-1"></i>
+				  <p>Toilets All</p>
+			  </a>
+			</li> 
 			<li class="nav-item"><!--Kishan changed link-->
 			  <a href="{{ route('a.sales.index') }}" class="nav-link {{ (request()->is('admin/sales')) ? 'active' : '' }}">
 				<i class="fa fa-usd nav-icon" style="font-size: 20px"></i>
@@ -54,16 +63,6 @@
 				  </a>
 			</li>
 			
-			<li class="nav-item">
-			  <a href="{{ route('a.toiletusers.index') }}" class="nav-link {{ (request()->is('admin/toiletusers')) ? 'active' : '' }}">
-				<i class="nav-icon fas fa-users"></i>
-				<p>
-				  Toilet Users
-				  <!-- kishan changed<i class="fas fa-angle-left right"></i> -->
-				  <!-- Kishan changed <span class="badge badge-info right">6</span>-->
-				</p>
-			  </a>
-			</li>
 			<li class="nav-item">
 			  <a href="{{ route('a.reports.index') }}" class="nav-link {{ (request()->is('admin/reports')) ? 'active' : '' }}">
 				<i class="nav-icon fas fa-chart-pie"></i>

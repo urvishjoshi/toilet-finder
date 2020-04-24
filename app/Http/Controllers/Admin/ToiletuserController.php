@@ -2,52 +2,40 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\ToiletUsageInfo;
+use App\User;
+use Illuminate\Http\Request;
 
 class ToiletuserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $url = 'admin.toiletuser.';
+
     public function index()
     {
-        return view('admin.toiletuser');
+        $users = User::with('toiletusages')->get();
+        return view($this->url.'index',compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function show($id)
+    {
+        $name = request()->input('name');
+        $usages = ToiletUsageInfo::with('user')
+                ->where('user_id','=',$id)->with('owner')->get();
+
+        return view($this->url.'show',compact('usages','name'));
+    }
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -80,6 +68,8 @@ class ToiletuserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = User::find($id);
+        $delete->delete();
+        return back();
     }
 }

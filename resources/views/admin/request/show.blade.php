@@ -1,6 +1,6 @@
 @section('title','Toiletowners Status')
 @extends('admin.layouts.app')
-@section('toiletownersinfo')
+@section('request.show')
 	<section>
 		<div class="container pt-4 px-3">
 			<div class="row">
@@ -38,10 +38,10 @@
 								<td width="25%">
 								<div class="row justify-content-center">
 
-								<form action="{{ route('a.toiletownersinfo.update',$owner->id) }}" method="POST" class="form-inline">
+								<form action="{{ route('a.requests.update',$owner->id) }}" method="POST" class="form-inline">
 								@method('PUT') @csrf
 								
-									<button class="btn btn-primary" name="btn" type="submit" value="0">View</button>&nbsp;&nbsp;
+									<a href="{{ route('a.toiletowners.show',['id'=>$owner->id,'name'=>$owner->name]) }}" class="btn btn-primary" name="btn">View</a>&nbsp;&nbsp;
 								@if( $status==-1 )
 									<button class="btn btn-success" name="btn" type="submit" value="1">Approve</button>&nbsp;&nbsp;
 								@else
@@ -50,7 +50,7 @@
 								</form>
 
 								@if( $status==-1 )
-									<form action="{{ route('a.toiletownersinfo.update',$owner->id) }}" method="POST" class="form-inline">
+									<form action="{{ route('a.requests.update',$owner->id) }}" method="POST" class="form-inline">
 									@method('DELETE') @csrf
 										<button class="btn btn-danger" name="btn" type="submit" value="-2">Delete</button>&nbsp;&nbsp;
 									</form>

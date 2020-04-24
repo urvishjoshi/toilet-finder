@@ -8,13 +8,12 @@
     		<div class="container-fluid">
     			<div class="row">
     				<div class="col-md text-center">
-    					<h2>Your Toilet Ratings</h2>
+    					<h2>Toilet Ratings</h2>
     				</div><!-- /.col -->
-    			 <!--Kishan changed  (Removed column for breadcrumb)-->
 
     			</div><!-- /.row -->
     			<HR width=50%>
-
+				
     		</div><!-- /.container-fluid -->
     	</div>
     	<!-- /.content-header -->
@@ -24,61 +23,27 @@
 			<table class="table table-hover">
 				<thead>
 				<tr class="thead-light">
-					<th scope="col" center>Id</th>
-					<th scope="col">Owner</th>
-					<th scope="col">Toilet name</th>
-					<th scope="col">Complex</th>
-					<th scope="col">Toilet address</th>
+					<th scope="col">Id</th>
+					<th scope="col">Toil	et name</th>
+					<th scope="col">Owner Id</th>
 					<th scope="col">Ratings</th>
-					<th scope="col">View</th>
+					<th scope="col">Description</th>
 					{{-- <th scope="col">View</th> --}}
 					{{-- <th scope="col">Used on</th> --}}
 					
 				</tr>
 				</thead>
 				<tbody>
+				@foreach($ratings as $rating)
 					<tr>
-						<th scope="row">11</th>
-						<td>ABC</td>
-						<td>DEF</td>
-						<td>ABCDEF complex</td>
+						<th scope="row">{{ $rating->id }}</th>
+						<td>{{ $rating->toilet_name }}</td>
+						<td>{{ $rating->ratings[1]['owner_id'] }}</td>
+						<td></td>
 						<td>ABC,DEF,QWE</td>
-						<td>⭐⭐⭐⭐⭐</td>
-						<td>View owner</td>
 						{{-- <td>27-05-2020</td> --}}
 					</tr>
-					<tr>
-						<th scope="row">11</th>
-						<td>ABC</td>
-						<td>DEF</td>
-						<td>ABCDEF complex</td>
-						<td>ABC,DEF,QWE</td>
-						<td>⭐⭐⭐⭐⭐</td>
-						<td>View owner</td>
-						{{-- <td>27-05-2020</td> --}}
-					</tr>
-					<tr>
-						<th scope="row">11</th>
-						<td>ABC</td>
-						<td>DEF</td>
-						<td>ABCDEF complex</td>
-						<td>ABC,DEF,QWE</td>
-						<td>⭐⭐⭐⭐⭐</td>
-						<td>View owner</td>
-						{{-- <td>27-05-2020</td> --}}
-					</tr>
-					<tr>
-						<th scope="row">11</th>
-						<td>ABC</td>
-						<td>DEF</td>
-						<td>ABCDEF complex</td>
-						<td>ABC,DEF,QWE</td>
-						<td>⭐⭐⭐⭐⭐</td>
-						<td>View owner</td>
-						{{-- <td>27-05-2020</td> --}}
-					</tr>
-
-					
+				@endforeach
 				</tbody>
 			</table>
 			</div>
