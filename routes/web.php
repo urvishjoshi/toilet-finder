@@ -17,8 +17,7 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::resource("toiletusers",'ToiletuserController');
 		Route::resource("reports",'ReportController');
 		Route::resource("permissions",'PermissionController');
-		// Route::get('toiletownersinfo', 'ToiletownerInfoController@display');
-		Route::apiResource("toiletownersinfo",'ToiletownerInfoController');
+		Route::Resource("/toiletownersinfo",'ToiletownerInfoController');
 	});
 });
 //					toiletowner

@@ -29,7 +29,7 @@
 			  <a href="{{ route('a.requests.index') }}" class="nav-link {{ (request()->is('admin/requests')) ? 'active' : '' }}"><!--Kishan changed link-->
 				<i class="fas fa-user-edit pl-2"></i>&nbsp;
 				<p>Requests</p><!--Kishan changed Menu-->
-				<span class="badge badge-info right font-14 py-auto">{{ count($allRequests) }}</span>
+				<span class="badge badge-info right font-14 py-1">{{ count($allRequests) }}</span>
 			  </a>
 			</li>  
 			<li class="nav-item"> <!-- Kishan changed removed menu-open class -->

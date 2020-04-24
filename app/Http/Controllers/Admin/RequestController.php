@@ -21,7 +21,6 @@ class RequestController extends Controller
             'allDeactives'=> ToiletOwner::where('status','=','-1')->get()
         ];
         $data = (object) $data;     //convert array into obj 
-
         return view('admin.request',compact('data'));
     }
 
@@ -66,7 +65,17 @@ class RequestController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($request->btn=='1'){
+            $edit = ToiletOwner::find($id);
+            $edit->status = '1';
+            $edit->save();
+        }
+        if($request->btn=='-1'){
+            $edit = ToiletOwner::find($id);
+            $edit->status = '-1';
+            $edit->save();
+        }
+        return back();
     }
 
     /**
