@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Model\Rating;
 use App\Model\ToiletUsageInfo;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,6 +19,11 @@ class User extends Authenticatable
     public function toiletusages()
     {
         return $this->hasMany(ToiletUsageInfo::class,'user_id');
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class,'user_id');
     }
 
     protected $hidden = [

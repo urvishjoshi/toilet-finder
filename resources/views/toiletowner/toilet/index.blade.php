@@ -1,7 +1,7 @@
 @section('title','Toilet')
 @extends('toiletowner.layouts.app')
 
-@section('toilet')
+@section('toilet.index')
 	<section>
 
 	<div class="content-header pb-0 pt-3">
@@ -33,36 +33,36 @@
 					<th scope="col">Complex</th>
 					<th scope="col">Address</th>
 					<th scope="col">Status</th>
+					<th scope="col">Price</th>
 					<th scope="col">Created on</th>
 					<th scope="col">Action</th>
 				</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<th scope="row">11</th>
-						<td>ABCDEF</td>
-						<td>ABCDEF complex</td>
-						<td>ABC,DEF,QWEERT</td>
-						<td>Active</td>
-						<td>27-05-2020</td>
-						<td>Edit | Delete</td>
-					</tr><tr>
-						<th scope="row">11</th>
-						<td>ABCDEF</td>
-						<td>ABCDEF complex</td>
-						<td>ABC,DEF,QWEERT</td>
-						<td>Active</td>
-						<td>27-05-2020</td>
-						<td>Edit | Delete</td>
-					</tr><tr>
-						<th scope="row">11</th>
-						<td>ABCDEF</td>
-						<td>ABCDEF complex</td>
-						<td>ABC,DEF,QWEERT</td>
-						<td>Active</td>
-						<td>27-05-2020</td>
-						<td>Edit | Delete</td>
-					</tr>
+					@if( count($toilets) == 0 )
+						<tr><td colspan="6"><center><h2>No Toilets created</h2><hr></center></td></tr>
+					@else
+						@foreach($toilets as $toilet)
+						    <tr>
+								<th scope="row">{{ $toilet->id }}</th>
+								<td>{{ $toilet->toilet_name }}</td>
+								<td>{{ $toilet->complex_name }}</td>
+								<td>{{ $toilet->address }}</td>
+								<td>
+									@if($toilet->status==1) <f class="text-success">Active</f> @else <f class="text-danger">Not Active</f> @endif
+								</td>
+								<td><b>${{ $toilet->price }}</b></td>
+								<td>{{ $toilet->created_at }}</td>
+								<td>
+									<form action="{{ route('toilets.destroy',$toilet->id) }}" method="POST">
+									@method('DELETE') @csrf
+									<a href="{{ route('toilets.show',$toilet->id) }}" class="btn btn-success" name="btn">Edit</a>&nbsp;&nbsp;
+										<button type="submit" class="btn btn-danger" name="btn">Delete</button>
+									</form>
+								</td>
+						    </tr>
+						@endforeach
+					@endif
 				</tbody>
 			</table>
 			</div>
@@ -81,7 +81,8 @@
 			    <span aria-hidden="true">&times;</span>
 				</button>
 		    </div>
-		    <form action="" method="post">
+		    <form action="{{ route('toilets.create') }}" method="post">
+		    @method('GET') @csrf
 		    	<div class="modal-body row">
 				<div class="col-6">
 					<h6 class="heading-small text-muted mb-2">Toilet information</h6>
@@ -112,8 +113,8 @@
 									<label class="form-control-label" for="toiletype">Toilet type</label>
 									<select class="custom-select" id="toiletype" name="toiletype">
 										<option disabled>toilet for</option>
-										<option value="" selected>Male & Female</option>
-										<option value="0">Male only</option>
+										<option value="2" selected>Male & Female</option>
+										<option value="1">Male only</option>
 										<option value="0">Female only</option>
 									</select>
 								</div>

@@ -24,9 +24,11 @@
 				<thead>
 				<tr class="thead-light">
 					<th scope="col">Id</th>
-					<th scope="col">Toil	et name</th>
+					<th scope="col">Toilet name</th>
 					<th scope="col">Owner Id</th>
+					<th scope="col">User Ids</th>
 					<th scope="col">Ratings</th>
+					<th scope="col">Votes</th>
 					<th scope="col">Description</th>
 					{{-- <th scope="col">View</th> --}}
 					{{-- <th scope="col">Used on</th> --}}
@@ -34,12 +36,18 @@
 				</tr>
 				</thead>
 				<tbody>
-				@foreach($ratings as $rating)
+				@foreach($toilets as $toilet)
 					<tr>
-						<th scope="row">{{ $rating->id }}</th>
-						<td>{{ $rating->toilet_name }}</td>
-						<td>{{ $rating->ratings[1]['owner_id'] }}</td>
-						<td></td>
+						<th scope="row">{{ $toilet->id }}</th>
+						<td>{{ $toilet->toilet_name }}</td>
+						<td>{{ $toilet->owner_id }}</td>
+						<td>
+						@for($i=0;$i<count($toilet->ratings);$i++)
+							{{ $toilet->ratings[$i]['user_id'].',' }}
+						@endfor
+						</td>
+						<td>{{ $toilet->getAverageRating() }}</td>
+						<td>{{count($toilet->ratings)}}</td>
 						<td>ABC,DEF,QWE</td>
 						{{-- <td>27-05-2020</td> --}}
 					</tr>

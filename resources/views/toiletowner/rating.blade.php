@@ -24,54 +24,31 @@
 			<table class="table table-hover">
 				<thead>
 				<tr class="thead-light">
-					<th scope="col" center>Id</th>
-					<th scope="col">Toilet name</th>
-					<th scope="col">Complex</th>
-					<th scope="col">Toilet address</th>
-					<th scope="col">Ratings</th>
-					<th scope="col">Reviews</th>
-					{{-- <th scope="col">View</th> --}}
-					{{-- <th scope="col">Used on</th> --}}
-					
+					<th>Id</th>
+					<th>Toilet id</th>
+					<th>Toilet name</th>
+					<th>User id</th>
+					<th>Rated</th>
+					<th width="40%">Review</th>
+					<th width="20%">Rated on</th>
 				</tr>
 				</thead>
 				<tbody>
+				@foreach($ratings as $rating)
 					<tr>
-						<th scope="row">11</th>
-						<td>ABC</td>
-						<td>ABCDEF complex</td>
-						<td>ABC,DEF,QWE</td>
-						<td>⭐⭐⭐⭐⭐</td>
-						<td>View all</td>
-						{{-- <td>27-05-2020</td> --}}
+						<th scope="row">{{ $rating->id }}</th>
+						<td>{{ $rating->toilet_id }}</td>
+						<td title="{{ $rating->toilet['address'] }}">
+							{{ $rating->toilet['toilet_name'] }}
+						</td>
+						<td title="{{ $rating->user['name'].' - '.$rating->user['email'] }}">
+							{{ $rating->user_id }}
+						</td>
+						<td>{{ $rating->rating }}</td>
+						<td>{{ $rating->desc }}</td>
+						<td>{{ $rating->created_at->format('d/m/Y').' at '.$rating->created_at->format('g:i A') }}</td>
 					</tr>
-					<tr>
-						<th scope="row">11</th>
-						<td>ABC</td>
-						<td>ABCDEF complex</td>
-						<td>ABC,DEF,QWE</td>
-						<td>⭐⭐⭐⭐⭐</td>
-						<td>View all</td>
-						{{-- <td>27-05-2020</td> --}}
-					</tr>
-					<tr>
-						<th scope="row">11</th>
-						<td>ABC</td>
-						<td>ABCDEF complex</td>
-						<td>ABC,DEF,QWE</td>
-						<td>⭐⭐⭐⭐⭐</td>
-						<td>View all</td>
-						{{-- <td>27-05-2020</td> --}}
-					</tr>
-					<tr>
-						<th scope="row">11</th>
-						<td>ABC</td>
-						<td>ABCDEF complex</td>
-						<td>ABC,DEF,QWE</td>
-						<td>⭐⭐⭐⭐⭐</td>
-						<td>View all</td>
-						{{-- <td>27-05-2020</td> --}}
-					</tr>
+				@endforeach
 				</tbody>
 			</table>
 			</div>

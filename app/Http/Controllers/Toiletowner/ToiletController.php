@@ -2,51 +2,34 @@
 
 namespace App\Http\Controllers\Toiletowner;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Model\ToiletInfo;
+use App\Model\ToiletOwner;
+use Auth;
+use Illuminate\Http\Request;
 class ToiletController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $url = 'toiletowner.toilet.';
     public function index()
     {
-        return view('toiletowner.toilet');
+        $toilets = ToiletInfo::with('owner')->where('owner_id','=',Auth::user()->id)->orderBy('status','desc')->get();
+        return view($this->url.'index',compact('toilets'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $toilets = ToiletInfo::find($id)->where('owner_id','=',Auth::user()->id)->get();
+        return view($this->url.'show',compact('toilets'));
     }
 
     /**

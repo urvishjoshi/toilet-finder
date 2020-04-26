@@ -11,7 +11,9 @@
 
 		<div class="content-wrapper">
 			@yield('home')
-			@yield('toilet')
+			@yield('toilet.index')
+				@yield('toilet.show')
+
 			@yield('toiletuser')
 			@yield('personal')
 			@yield('rating')

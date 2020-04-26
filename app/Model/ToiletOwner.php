@@ -22,5 +22,10 @@ class ToiletOwner extends Authenticatable
     	return $this->hasMany(ToiletInfo::class,'owner_id');
     }
 
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class,'owner_id');
+    }
+
     
 }

@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers\Toiletowner;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\Rating;
+use App\Model\ToiletInfo;
+use App\Model\ToiletOwner;
+use Auth;
+use Illuminate\Http\Request;
 
 class RatingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $dates = ['created_at'];
     public function index()
     {
-        return view('toiletowner.rating');
+        $ratings = Rating::where('owner_id','=',Auth::user()->id)->with('toilet')->with('user')->get();
+        // return ToiletInfo::with('ratings')->where('owner_id','=',Auth::user()->id)->get();
+        return view('toiletowner.rating',compact('ratings'));
     }
 
     /**

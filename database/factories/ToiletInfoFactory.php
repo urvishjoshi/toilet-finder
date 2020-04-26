@@ -2,6 +2,9 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Model\City;
+use App\Model\Country;
+use App\Model\State;
 use App\Model\ToiletInfo;
 use App\Model\ToiletOwner;
 use Faker\Generator as Faker;
@@ -15,6 +18,15 @@ $factory->define(ToiletInfo::class, function (Faker $faker) {
         'price' => $faker->numberBetween(0,8),
         'complex_name' => $faker->word,
         'address' => $faker->address,
+        'city_id' => function(){
+            return City::all()->random();
+        },
+        'state_id' => function(){
+            return State::all()->random();
+        },
+        'country_id' => function(){
+            return Country::all()->random();
+        },
         'toilet_lat' => $faker->numberBetween(00.6666,99.9999),
         'toilet_lng' => $faker->numberBetween(00.6666,99.9999),
         'status' => $faker->randomElement(['1','0']),

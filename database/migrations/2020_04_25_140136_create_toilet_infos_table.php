@@ -24,6 +24,21 @@ class CreateToiletInfosTable extends Migration
             $table->unsignedBigInteger('price')->index()->fillable();
             $table->string('complex_name')->nullable();
             $table->string('address');
+            $table->unsignedBigInteger('city_id');
+            $table->foreign('city_id')
+                    ->references('id')
+                    ->on('cities')
+                    ->onDelete('cascade');
+            $table->unsignedBigInteger('state_id');
+            $table->foreign('state_id')
+                    ->references('id')
+                    ->on('states')
+                    ->onDelete('cascade');
+            $table->unsignedBigInteger('country_id');
+            $table->foreign('country_id')
+                    ->references('id')
+                    ->on('countries')
+                    ->onDelete('cascade');
             $table->string('toilet_lat');
             $table->string('toilet_lng');
             $table->enum('status', ['0', '1'])->default('0')->comment('0-Not Active,1-Active');
