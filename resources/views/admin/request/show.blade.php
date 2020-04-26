@@ -4,8 +4,8 @@
 	<section>
 		<div class="container pt-4 px-3">
 			<div class="row">
-				<div class="col-md-1 d-flex align-items-start flex-column" title="Active users">
-					<a href="{{ route('a.requests.index') }}" class="fas fa-arrow-left pt-3 pl-2" style="font-size: 30px;text-decoration:none; "></a>
+				<div class="col-md-1 d-flex align-items-start flex-column">
+					<a href="{{ url()->previous() }}" class="fas fa-arrow-left pt-3 pl-2" style="font-size: 30px;text-decoration:none; "></a>
 				</div>
 				<div class="col-md text-center">
 					<h2 class="mb-0"> {{$status==1 ? 'Active owners' : 'Denied owners'}}</h2>
@@ -34,7 +34,7 @@
 								<th scope="row">{{ $owner->id }}</th>
 								<td>{{ $owner->name }}</td>
 								<td>{{ $owner->email }}</td>
-								<td>{{ $owner->created_at }}</td>
+								<td>{{ $owner->created_at->format('d/m/Y').' at '.$owner->created_at->format('g:i A') }}</td>
 								<td width="25%">
 								<div class="row justify-content-center">
 

@@ -1,17 +1,21 @@
 @section('title','Toilets')
 @extends('admin.layouts.app')
-@section('toilet.index')
+@section('toilet.show')
 
 <section>
     	<!-- Content Header (Page header) -->
     	<div class="content pt-4">
     		<div class="container-fluid">
     			<div class="row">
+    				<div class="col-md-1 d-flex align-items-start flex-column">
+						<a href="{{ url()->previous() }}" class="fas fa-arrow-left pt-3 pl-2" style="font-size: 30px;text-decoration:none; "></a>
+					</div>
 					<div class="col-md text-center">
-    					<h2>All Toilets</h2>
+    					<h2>Toilets of <b>{{ $name }}</b></h2>
     				</div><!-- /.col -->
     			</div><!-- /.row -->
 				<HR width=20%>
+
     		</div><!-- /.container-fluid -->
     	</div>
     	<!-- /.content-header -->
@@ -28,13 +32,13 @@
 					<th>Complex</th>
 					<th>Address</th>
 					<th>Status</th>
-					<th width="10%">Created on</th>
+					<th>Created on</th>
 					<th>Map</th>
 				</tr>
 				</thead>
 				<tbody>
 					@if( count($toilets) == 0 )
-						<tr><td colspan="6"><center><h2>No Toilets registered</h2><hr></center></td></tr>
+						<tr><td colspan="9"><center><h2>No Toilets registered</h2><hr></center></td></tr>
 					@else
 						@foreach($toilets as $toilet)
 						    <tr>

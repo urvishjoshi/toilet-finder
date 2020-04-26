@@ -46,7 +46,7 @@
 								<td>{{ $user->mobileno }}</td>
 								<td>{{ $user->gender==1 ? 'Male' : 'Female' }}</td>
 								<td>{{ $user->age }}</td>
-								<td>{{ $user->created_at }}</td>
+								<td>{{ $user->created_at->format('d/m/Y').' at '.$user->created_at->format('g:i A') }}</td>
 								<td>{{ count($user->toiletusages) }}</td>
 								<td>
 								<form action="{{ route('a.toiletusers.destroy',$user->id) }}" method="POST">

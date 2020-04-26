@@ -6,7 +6,7 @@
 	<div class="container pt-4">
 		<div class="container col-md-auto">
 		<div class="row">
-			<div class="col-md-1 d-flex align-items-start flex-column" title="Active users">
+			<div class="col-md-1 d-flex align-items-start flex-column">
 					<a href="{{ url()->previous() }}" class="fas fa-arrow-left pt-3 pl-2" style="font-size: 30px;text-decoration:none; "></a>
 			</div>
 			<div class="col-md text-center">
@@ -48,7 +48,7 @@
 									{{ $toilet->status=='1' ? 'Active' : 'Not active'}}
 								</td>
 								{{-- <td>{{ count($toilet->toiletusages) }}</td> --}}
-								<td>{{ $toilet->created_at }}</td>
+								<td>{{ $toilet->created_at->format('d/m/Y').' at '.$toilet->created_at->format('g:i A') }}</td>
 								<td><b>${{ $toilet->price }}</b></td>
 								{{-- <form action="{{ route('a.toiletowners.show',$toilet->id) }}" method="POST">
 								@method('GET') @csrf

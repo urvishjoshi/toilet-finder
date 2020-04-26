@@ -28,8 +28,8 @@ class ToiletController extends Controller
 
     public function show($id)
     {
-        $toilets = ToiletInfo::find($id)->where('owner_id','=',Auth::user()->id)->get();
-        return view($this->url.'show',compact('toilets'));
+        $toilet = ToiletInfo::find($id)->where('owner_id','=',Auth::user()->id)->get();
+        return view($this->url.'show',compact('toilet'));
     }
 
     /**

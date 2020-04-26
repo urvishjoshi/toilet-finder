@@ -48,7 +48,7 @@ $denied=route('a.requests.show',['status'=>'-1']); ?>
 								<td>{{ $owner->name }}</td>
 								<td>{{ $owner->email }}</td>
 								<td>{{ $owner->mobileno }}</td>
-								<td>{{ $owner->created_at }}</td>
+								<td>{{ $owner->created_at->format('d/m/Y').' at '.$owner->created_at->format('g:i A') }}</td>
 								<td>
 								<form action="{{ route('a.requests.update',$owner->id) }}" method="POST">
 								@method('PUT') @csrf

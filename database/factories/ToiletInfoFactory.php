@@ -17,7 +17,7 @@ $factory->define(ToiletInfo::class, function (Faker $faker) {
         'toilet_name' => $faker->word,
         'price' => $faker->numberBetween(0,8),
         'complex_name' => $faker->word,
-        'address' => $faker->address,
+        'address' => $faker->streetAddress,
         'city_id' => function(){
             return City::all()->random();
         },
@@ -29,6 +29,7 @@ $factory->define(ToiletInfo::class, function (Faker $faker) {
         },
         'toilet_lat' => $faker->numberBetween(00.6666,99.9999),
         'toilet_lng' => $faker->numberBetween(00.6666,99.9999),
+        'type' => $faker->randomElement(['2','1','0']),
         'status' => $faker->randomElement(['1','0']),
     ];
 });

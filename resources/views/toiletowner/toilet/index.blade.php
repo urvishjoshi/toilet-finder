@@ -52,7 +52,7 @@
 									@if($toilet->status==1) <f class="text-success">Active</f> @else <f class="text-danger">Not Active</f> @endif
 								</td>
 								<td><b>${{ $toilet->price }}</b></td>
-								<td>{{ $toilet->created_at }}</td>
+								<td>{{ $toilet->created_at->format('d/m/Y').' at '.$toilet->created_at->format('g:i A') }}</td>
 								<td>
 									<form action="{{ route('toilets.destroy',$toilet->id) }}" method="POST">
 									@method('DELETE') @csrf
