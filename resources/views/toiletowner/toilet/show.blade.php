@@ -2,28 +2,22 @@
 @extends('toiletowner.layouts.app')
 
 @section('toilet.show')
-	<section>
-
-	<div class="content-header pb-0 pt-3">
-		<div class="col-md-12">
-			<div class="card">
-				<div class="card-header">
-					<div class="row align-items-center">
-						<div class="col-8">
-							<h3 class="mb-0" class="tooltip-test">Your Toilets</h3>
-						</div>
-						<div class="col-4 text-right">
-						  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewToilet">
-						  	  Add new Toilet
-						  	</button>
-						</div>
+	<section class="content">
+		<div class="container pt-3">
+				<div class="container col-md-auto">
+				<div class="row">
+					<div class="col-md-1">
+							<a href="{{ url()->previous() }}" class="fas fa-arrow-left pt-3 pl-2" style="font-size: 30px;text-decoration:none; "></a>
+					</div>
+					<div class="col-md text-center mr-4">
+						<h2>Edit toilet<b></b></h2>
+						<hr width=25%>
 					</div>
 				</div>
-			</div>
-		</div>	
-	</div>
+    		</div><!-- /.container-fluid -->
+    	</div>
 		    <form action="" method="post">
-		    	<div class="modal-body row">
+		    	<div class="modal-body row bg-white">
 				<div class="col-6">
 					<h6 class="heading-small text-muted mb-2">Toilet information</h6>
 					<div class="lg-4">
@@ -31,7 +25,7 @@
 							<div class="col-lg-6">
 								<div class="form-group">
 									<label class="form-control-label" for="toiletname">Toilet name</label>
-									<input type="text" id="toiletname" class="form-control" placeholder="Toilet name" value="" required>
+									<input type="text" id="toiletname" class="form-control" placeholder="Toilet name" value="{{ $toilet[0]->toilet_name }}" required>
 								</div>
 							</div>
 							<div class="col-lg-6">
@@ -39,8 +33,8 @@
 									<label class="form-control-label" for="toiletstatus">Toilet status</label>
 									<select class="custom-select" id="toiletstatus" name="toiletstatus">
 										<option disabled>Status</option>
-										<option value="1" class="text-success">Active</option>
-										<option value="0" class="text-danger">Not active</option>
+										<option value="1" class="text-success" {{ $toilet[0]->status==1 ? 'selected' : '' }}>Active</option>
+										<option value="0" class="text-danger" {{ $toilet[0]->status==0 ? 'selected' : '' }}>Not active</option>
 									</select>
 								</div>
 							</div>
@@ -53,16 +47,16 @@
 									<label class="form-control-label" for="toiletype">Toilet type</label>
 									<select class="custom-select" id="toiletype" name="toiletype">
 										<option disabled>toilet for</option>
-										<option value="" selected>Male & Female</option>
-										<option value="0">Male only</option>
-										<option value="0">Female only</option>
+										<option value="" {{ $toilet[0]->type==2 ? 'selected' : '' }}>Male & Female</option>
+										<option value="0" {{ $toilet[0]->type==1 ? 'selected' : '' }}>Male only</option>
+										<option value="0" {{ $toilet[0]->type==0 ? 'selected' : '' }}>Female only</option>
 									</select>
 								</div>
 							</div>
 							<div class="col-md-8">
 								<div class="form-group">
 									<label class="form-control-label" for="toiletaddress">Address</label>
-									<input id="toiletaddress" name="toiletaddress" class="form-control" placeholder="Toilet Address" value="" type="text" required>
+									<input id="toiletaddress" name="toiletaddress" class="form-control" placeholder="Toilet Address" value="{{ $toilet[0]->address }}" type="text" required>
 								</div>
 							</div>
 						</div>
@@ -88,57 +82,59 @@
 						</div>
 					</div>
 				</div> {{-- modal-body-row --}}
-					<div class="col-6" >
-						<div id="map" style="width:100%;height:400px;"></div>
-
-
+					<div class="col-6 pr-0" >
+						<div id="map" style="width:100%;height:400px;">
+						</div>
 						<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuM60AoMrwB7dnMEOL7bge_3bM4DJtdn8&callback=myMap"></script>
 					</div>
-						
     			</div>
 				<div class="modal-footer bg-light">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" id="btn-personal" name="btn-personal" class="btn btn-primary">Add Toilet</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+					<button type="submit" id="btn-personal" name="btn-personal" class="btn btn-primary">Update Toilet</button>
 				</div>
 			</form>
-			
 	</section>
-
 @endsection
-						<script>
-						    var marker;
-						    var infowindow;
+<script>
 
-						    function myMap() {
-						        var mapProp= {
-									center:new google.maps.LatLng(51.508742,-0.120850),
-									zoom:8,
-									gestureHandling: 'greedy'
-								};
-								var map = new google.maps.Map(document.getElementById("map"),mapProp);
-						        google.maps.event.addListener(map, 'click', function(event) {
-						            placeMarker(map, event.latLng);
-						        });
-						    }
+    var marker;
+    var infowindow;
+    var myLatLng = {
+     	lat: {{ $toilet[0]->toilet_lat }} , 
+     	lng: {{ $toilet[0]->toilet_lng }}
+    };
+    function myMap() {
+        var mapProp= {
+			center: myLatLng,
+			zoom:15,
+			gestureHandling: 'greedy'
+		};
+		var map = new google.maps.Map(document.getElementById("map"),mapProp);
 
-						    function placeMarker(map, location) {
-						        if (!marker || !marker.setPosition) {
-						            marker = new google.maps.Marker({
-						                position: location,
-						                map: map,
-						                animation: google.maps.Animation.DROP
-						            });
-						        } else {
-						            marker.setPosition(location);
-						        }
-						        if (!!infowindow && !!infowindow.close) {
-						            infowindow.close();
-						        }
-						        infowindow = new google.maps.InfoWindow({
-						            content: 'Set this location as a toilet spot'
-						        });
-						        infowindow.open(map,marker);
-						    }
+		placeMarker(map, myLatLng);
+        google.maps.event.addListener(map, 'click', function(event) {
+            placeMarker(map, event.latLng);
+        });
+    }
+
+    function placeMarker(map, location) {
+        if (!marker || !marker.setPosition) {
+            marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                animation: google.maps.Animation.DROP
+            });
+        } else {
+        }
+        marker.setPosition(location);
+        if (infowindow && infowindow.close) {
+            infowindow.close();
+        }
+        infowindow = new google.maps.InfoWindow({
+            content: 'Set this location as a toilet spot '
+        });
+        infowindow.open(map,marker);
+    }
 
 
-						</script>
+</script>

@@ -15,6 +15,12 @@ class ToiletController extends Controller
         return view($this->url.'index',compact('toilets'));
     }
 
+    public function show($id)
+    {
+        $name = request()->input('name');
+        $toilets = ToiletInfo::where('owner_id','=',$id)->with('owner')->orderBy('status', 'desc')->get();
+        return view($this->url.'show',compact('toilets','name'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -42,10 +48,6 @@ class ToiletController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

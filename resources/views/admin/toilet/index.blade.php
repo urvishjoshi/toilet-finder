@@ -12,7 +12,6 @@
     				</div><!-- /.col -->
     			</div><!-- /.row -->
 				<HR width=20%>
-
     		</div><!-- /.container-fluid -->
     	</div>
     	<!-- /.content-header -->
@@ -29,8 +28,8 @@
 					<th>Complex</th>
 					<th>Address</th>
 					<th>Status</th>
+					<th width="10%">Created on</th>
 					<th>Map</th>
-					<th>Created on</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -46,14 +45,14 @@
 								<td>{{ $toilet->toilet_name }}</td>
 								<td><b>${{ $toilet->price }}</b></td>
 								<td>{{ $toilet->complex_name }}</td>
-								<td>{{ $toilet->address }}</td>
+								<td>{{ $toilet->address.$toilet->getFullAddress() }}</td>
 								<td>
 									@if($toilet->status==1) <f class="text-success">Active</f> @else <f class="text-warning">Not Active</f> @endif
 								</td>
+								<td>{{ $toilet->created_at->format('d/m/Y').' at '.$toilet->created_at->format('g:i A') }}</td>
 								<td>
-									<button class="btn btn-success" name="btn" type="" value="1">Map</button>&nbsp;&nbsp;
+									<button class="btn btn-success" data-toggle="modal" data-target="{{$toilet->toilet_lat . $toilet->toilet_lng}}">Map</button>&nbsp;&nbsp;
 								</td>
-								<td>{{ $toilet->created_at }}</td>
 						    </tr>
 						@endforeach
 					@endif
@@ -63,4 +62,55 @@
 			</div>	
 	</div>
 </section>
+
+	<div class="modal fade bd-example-modal-lg mt-4 ml-5 ml-5" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content p-1">
+			<div id="map" style="width:100%;height:500px;">
+			</div>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuM60AoMrwB7dnMEOL7bge_3bM4DJtdn8&callback=myMap"></script>
+	    </div>
+	  </div>
+	</div>
 @endsection
+<script>
+
+    var marker;
+    var infowindow;
+    var myLatLng = {
+     	lat: 21.640575, 
+     	lng: 70.605965
+    };
+    function myMap() {
+        var mapProp= {
+			center: myLatLng,
+			zoom:15,
+			gestureHandling: 'greedy'
+		};
+		var map = new google.maps.Map(document.getElementById("map"),mapProp);
+
+		placeMarker(map, myLatLng);
+        google.maps.event.addListener(map, 'click', function(event) {
+            placeMarker(map, event.latLng);
+        });
+    }
+
+    function placeMarker(map, location) {
+        if (!marker || !marker.setPosition) {
+            marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                animation: google.maps.Animation.DROP
+            });
+        } else {
+        }
+        marker.setPosition(location);
+        if (infowindow && infowindow.close) {
+            infowindow.close();
+        }
+        infowindow = new google.maps.InfoWindow({
+            content: 'Set this location as a toilet spot'
+        });
+        infowindow.open(map,marker);
+    }
+</script>

@@ -39,7 +39,7 @@ class ToiletInfo extends Model
     {
         // $address =  $this->city;
         // $address =  $address.", ".$this->state;
-        return $address = $this->city.", ".$this->state.", ".$this->country;
+        return $address = ", ".$this->city['city'].", ".$this->state['state'].", ".$this->country['country'];
     }
     public function getAverageRating()
     {

@@ -7,10 +7,10 @@
 		<div class="container col-md-auto">
 		<div class="row">
 			<div class="col-md text-center">
-				<h2>Toilet owners</h2>
+				<h2>Active Toilet owners</h2>
 			</div>
 		</div>
-		<hr width=25%>
+		<hr width=35%>
 		{{-- <div class="panel panel-default">
 			<div class="panel-heading">Search the Data</div>
 			<div class="panel-body">
@@ -22,12 +22,12 @@
 				<table class="table table-hover">
 				    <thead>
 				    <tr class="thead-light">
-				      <th scope="col" center>Id</th>
-				      <th scope="col">Email</th>
-				      <th scope="col">Toilets owned</th>
-				      {{-- <th scope="col">Toilets usages</th> --}}
-				      <th scope="col">Registered on</th>
-				      <th scope="col">View Toilet</th>
+				      <th>Id</th>
+				      <th>Email</th>
+				      <th>Toilets owned</th>
+				      <th>Registered on</th>
+				      <th width="11%">View Owner</th>
+				      <th width="11%">View Toilets</th>
 				    </tr>
 				    </thead>
 				    <tbody>
@@ -40,14 +40,12 @@
 								<td>{{ $owner->email }}</td>
 								<td>{{ count($owner->toilets) }}</td>
 								{{-- <td>{{ count($owner->toiletusages) }}</td> --}}
-								<td>{{ $owner->created_at }}</td>
+								<td>{{ $owner->created_at->format('d/m/Y').' at '.$owner->created_at->format('g:i A') }}</td>
 								<td>
-								<form action="{{ route('a.toiletowners.show',$owner->id) }}" method="POST">
-								@method('GET') @csrf
-									
-									<button class="btn btn-primary" name="name" type="submit" value="{{ $owner->name }}">View</button>
-
-								</form>
+									<a href="{{ route('a.toiletowners.show',['id'=>$owner->id,'name'=>$owner->name]) }}" class="btn btn-primary" name="view">View</a>
+								</td>
+								<td>
+									<a href="{{ route('a.toilets.show',['id'=>$owner->id,'name'=>$owner->name]) }}" class="btn btn-primary" name="view">View</a>
 								</td>
 						    </tr>
 						@endforeach

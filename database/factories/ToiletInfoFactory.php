@@ -29,6 +29,7 @@ $factory->define(ToiletInfo::class, function (Faker $faker) {
         },
         'toilet_lat' => $faker->numberBetween(00.6666,99.9999),
         'toilet_lng' => $faker->numberBetween(00.6666,99.9999),
+        'type' => $faker->randomElement(['2','1','0']),
         'status' => $faker->randomElement(['1','0']),
     ];
 });

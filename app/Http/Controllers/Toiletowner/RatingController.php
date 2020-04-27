@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 
 class RatingController extends Controller
 {
-    protected $dates = ['created_at'];
     public function index()
     {
         $ratings = Rating::where('owner_id','=',Auth::user()->id)->with('toilet')->with('user')->get();

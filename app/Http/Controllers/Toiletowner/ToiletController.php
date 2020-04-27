@@ -16,6 +16,11 @@ class ToiletController extends Controller
         return view($this->url.'index',compact('toilets'));
     }
 
+    public function show($id)
+    {
+        $toilet = ToiletInfo::where('id','=',$id)->where('owner_id','=',Auth::user()->id)->get();
+        return view($this->url.'show',compact('toilet'));
+    }
     public function create()
     {
         //
@@ -26,11 +31,6 @@ class ToiletController extends Controller
         //
     }
 
-    public function show($id)
-    {
-        $toilets = ToiletInfo::find($id)->where('owner_id','=',Auth::user()->id)->get();
-        return view($this->url.'show',compact('toilets'));
-    }
 
     /**
      * Show the form for editing the specified resource.
