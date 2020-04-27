@@ -32,6 +32,7 @@ Route::group(['prefix'=>'toiletowner'],function(){
 	Route::group(['middleware'=>'auth:toiletowner','namespace'=>'Toiletowner'],function(){
 		Route::post('logout', 'AuthController@logout')->name('logout');
 		Route::get('dashboard', 'HomeController@index');
+		Route::post('dashboard', 'HomeController@autoalloc');
 		Route::resource("personal",'PersonalController');
 		Route::resource("toilets",'ToiletController');
 		Route::resource("toiletusers",'ToiletuserController');

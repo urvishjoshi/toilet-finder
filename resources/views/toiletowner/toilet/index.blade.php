@@ -40,7 +40,7 @@
 				</thead>
 				<tbody>
 					@if( count($toilets) == 0 )
-						<tr><td colspan="6"><center><h2>No Toilets created</h2><hr></center></td></tr>
+						<tr><td colspan="8"><center><h2>No Toilets created</h2><hr></center></td></tr>
 					@else
 						@foreach($toilets as $toilet)
 						    <tr>
@@ -81,8 +81,8 @@
 			    <span aria-hidden="true">&times;</span>
 				</button>
 		    </div>
-		    <form action="{{ route('toilets.create') }}" method="post">
-		    @method('GET') @csrf
+		    <form action="{{ route('toilets.store') }}" method="post">
+		    @method('POST') @csrf
 		    	<div class="modal-body row">
 				<div class="col-6">
 					<h6 class="heading-small text-muted mb-2">Toilet information</h6>
@@ -91,7 +91,7 @@
 							<div class="col-lg-6">
 								<div class="form-group">
 									<label class="form-control-label" for="toiletname">Toilet name</label>
-									<input type="text" id="toiletname" class="form-control" placeholder="Toilet name" value="" required>
+									<input type="text" id="toiletname" name="toiletname" class="form-control" placeholder="Toilet name" value="" required>
 								</div>
 							</div>
 							<div class="col-lg-6">
@@ -108,10 +108,14 @@
 					</div>
 					<div class="lg-4">
 						<div class="row">
+							<div class="form-group col-md-2">
+								<label class="form-control-label" for="toiletprice">Price in <b>$</b></label>
+								<input id="toiletprice" name="toiletprice" class="form-control" placeholder="$" value="" type="number" required>
+							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-									<label class="form-control-label" for="toiletype">Toilet type</label>
-									<select class="custom-select" id="toiletype" name="toiletype">
+									<label class="form-control-label" for="toilettype">Toilet type</label>
+									<select class="custom-select" id="toilettype" name="toilettype">
 										<option disabled>toilet for</option>
 										<option value="2" selected>Male & Female</option>
 										<option value="1">Male only</option>
@@ -119,24 +123,30 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-md-8">
+							<div class="col-md-6">
 								<div class="form-group">
-									<label class="form-control-label" for="toiletaddress">Address</label>
-									<input id="toiletaddress" name="toiletaddress" class="form-control" placeholder="Toilet Address" value="" type="text" required>
+									<label class="form-control-label" for="complexname">Complex name</label>
+									<input id="complexname" name="complexname" class="form-control" placeholder="Toilet Complex" value="" type="text" required>
 								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-lg-12">
+								<label class="form-control-label" for="address">Street Address</label>
+								<input type="text" id="address" name="address" class="form-control" placeholder="Street address of your toilet" value="">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-lg-4">
 								<div class="form-group">
 									<label class="form-control-label" for="city">City</label>
-									<input type="text" id="city" class="form-control" placeholder="City" value="">
+									<input type="text" id="city" name="city" class="form-control" placeholder="City" value="">
 								</div>
 							</div>
 							<div class="col-lg-4">
 								<div class="form-group">
 									<label class="form-control-label" for="country">Country</label>
-									<input type="text" id="country" class="form-control" placeholder="Country" value="">
+									<input type="text" id="country" name="country" class="form-control" placeholder="Country" value="">
 								</div>
 							</div>
 							<div class="col-lg-4">
@@ -151,54 +161,57 @@
 					<div class="col-6" >
 						<div id="map" style="width:100%;height:400px;"></div>
 
-
+						<input type="hidden" name="newLat" id="newLat" value="">
+						<input type="hidden" name="newLng" id="newLng" value="">
 						<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuM60AoMrwB7dnMEOL7bge_3bM4DJtdn8&callback=myMap"></script>
 					</div>
+
 						
     			</div>
 				<div class="modal-footer bg-light">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" id="btn-personal" name="btn-personal" class="btn btn-primary">Add Toilet</button>
+					<button type="submit" id="btn-addtoilet" name="btn-addtoilet" class="btn btn-primary">Add Toilet</button>
 				</div>
 			</form>
 		</div>
 	  </div>
 	</div>
 @endsection
-						<script>
-						    var marker;
-						    var infowindow;
+<script>
+    var marker;
+    var infowindow;
 
-						    function myMap() {
-						        var mapProp= {
-									center:new google.maps.LatLng(51.508742,-0.120850),
-									zoom:8,
-									gestureHandling: 'greedy'
-								};
-								var map = new google.maps.Map(document.getElementById("map"),mapProp);
-						        google.maps.event.addListener(map, 'click', function(event) {
-						            placeMarker(map, event.latLng);
-						        });
-						    }
+    function myMap() {
+        var mapProp= {
+			center:new google.maps.LatLng(51.508742,-0.120850),
+			zoom:8,
+			gestureHandling: 'greedy'
+		};
+		var map = new google.maps.Map(document.getElementById("map"),mapProp);
+        google.maps.event.addListener(map, 'click', function(event) {
+            placeMarker(map, event.latLng);
+        	document.getElementById("newLat").value = event.latLng.lat();
+        	document.getElementById("newLng").value = event.latLng.lng();
+        });
+    }
 
-						    function placeMarker(map, location) {
-						        if (!marker || !marker.setPosition) {
-						            marker = new google.maps.Marker({
-						                position: location,
-						                map: map,
-						                animation: google.maps.Animation.DROP
-						            });
-						        } else {
-						            marker.setPosition(location);
-						        }
-						        if (!!infowindow && !!infowindow.close) {
-						            infowindow.close();
-						        }
-						        infowindow = new google.maps.InfoWindow({
-						            content: 'Set this location as a toilet spot'
-						        });
-						        infowindow.open(map,marker);
-						    }
+    function placeMarker(map, location) {
+        if (!marker || !marker.setPosition) {
+            marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                animation: google.maps.Animation.DROP
+            });
+        } else {
+            marker.setPosition(location);
+        }
+        if (!!infowindow && !!infowindow.close) {
+            infowindow.close();
+        }
+        infowindow = new google.maps.InfoWindow();
+        infowindow.setContent('Set this location as a toilet spot')
+        infowindow.open(map,marker);
+    }
 
 
-						</script>
+</script>

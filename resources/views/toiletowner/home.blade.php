@@ -1,15 +1,18 @@
 @section('title','Dashboard')
 @extends('toiletowner.layouts.app')
 @section('home')
+<?php $owner=\App\Model\ToiletOwner::find(Auth::user()->id); ?>
 	<!-- Content Header (Page header) -->
 	<div class="content-header">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-sm-6">
+				<div class="col-sm-9">
 					<h1 class="m-0 text-dark">Dashboard</h1>
 				</div><!-- /.col -->
-			 <!--Kishan changed  (Removed column for breadcrumb)-->
-
+				<div class="custom-control custom-switch">
+					<input type="checkbox" class="custom-control-input" name="autoalloc" id="autoalloc" value="1">
+					<label class="custom-control-label" style="font-size: 18px;" for="autoalloc">Auto allocate toilets</label>
+				</div>
 			</div><!-- /.row -->
 		</div><!-- /.container-fluid -->
 	</div>
@@ -25,9 +28,9 @@
 					<div class="small-box bg-success border border-light" style="height: 150px;">
 
 						<div class="inner pl-3">
-							<h3>53</h3>
+							<h3>{{ $data['usages'] }}</h3>
 
-							<h4 class="">Toilet user</h4>
+							<h4 class="">Toilet usages</h4>
 						</div>
 						<div class="icon">
 						   <i class="fas fa-users"></i>
@@ -38,9 +41,9 @@
 				<div class="col-lg-3 col-6 ml-4">
 					<!-- small box -->
 					<div class="small-box bg-warning border border-light" style="height: 150px;">
-						<div class="inner">
-							<span style="font-size: 35px;font-weight: bold;">3/</span>5				
-							<h4>Active Toilet</h4><!--Kishan changed User Registrations-->
+						<div class="inner pl-3">
+							<span style="font-size: 35px;"><b>{{ $data['active'] }}</b>/</span>{{ $data['toilets'] }}
+							<h4>Active Toilets</h4><!--Kishan changed User Registrations-->
 						</div>
 						<div class="icon">
                 			<i class="material-icons" style="color:##006652;">flash_on</i>
@@ -51,12 +54,6 @@
 				<!-- ./col -->
 			</div>
 			<!-- /.row -->
-
-
-
-
-
-			
 
 			  <h3 class="mt-4 mb-4">Social Widgets</h3>
 
@@ -107,13 +104,31 @@
           <!-- /.col -->
       	</div><!-- Row 2nd end -->
 
-
-
-
-
-
-
 		</div><!-- /.container-fluid -->
 	</section>
 	<!-- /.content -->
+<script>
+$(document).ready(function() {
+    //set initial state.
+    $('#autoalloc').change(function() {
+        if(this.checked) {
+            $.ajax({
+	            url: {{ url('toiletowner/dashboard') }},
+	            data: {
+	                   'autoalloc': 1,
+	                    '_token': $('input[name=_token]').val(),
+	                  },
+	            type: 'POST',
+	            dataType: 'json',
+	            success: function (response) {
+	                console.log('Data downloaded.');
+	            }
+	        });
+        }
+        else{
+
+        }
+    });
+});
+</script>
 @endsection

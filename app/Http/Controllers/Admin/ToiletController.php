@@ -21,26 +21,17 @@ class ToiletController extends Controller
         $toilets = ToiletInfo::where('owner_id','=',$id)->with('owner')->orderBy('status', 'desc')->get();
         return view($this->url.'show',compact('toilets','name'));
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function store(Request $request)
     {
+        
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function create()
     {
-        //
     }
+
 
     /**
      * Display the specified resource.

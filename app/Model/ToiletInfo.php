@@ -15,6 +15,17 @@ class ToiletInfo extends Model
         'owner_id', 'toilet_name','price','complex_name','address','toilet_lat','toilet_lng','status',
     ];
 
+    public function getFullAddress()
+    {
+        // $address =  $this->city;
+        // $address =  $address.", ".$this->state;
+        return $address = ", ".$this->city['city'].", ".$this->state['state'].", ".$this->country['country'];
+    }
+    public function getAverageRating()
+    {
+        return $this->ratings->count() > 0 ? round($this->ratings->sum('rating')/$this->ratings->count(),1) : 0;
+    }
+    
     public function owner()
     {
     	return $this->belongsTo(ToiletOwner::class);
@@ -34,15 +45,5 @@ class ToiletInfo extends Model
     public function ratings()
     {
     	return $this->hasMany(Rating::class,'toilet_id');
-    }
-    public function getFullAddress()
-    {
-        // $address =  $this->city;
-        // $address =  $address.", ".$this->state;
-        return $address = ", ".$this->city['city'].", ".$this->state['state'].", ".$this->country['country'];
-    }
-    public function getAverageRating()
-    {
-        return $this->ratings->count() > 0 ? round($this->ratings->sum('rating')/$this->ratings->count(),1) : 0;
     }
 }

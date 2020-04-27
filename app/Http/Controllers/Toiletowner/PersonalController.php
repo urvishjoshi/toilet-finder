@@ -2,26 +2,25 @@
 
 namespace App\Http\Controllers\Toiletowner;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\ToiletOwner;
+use Auth;
+use Illuminate\Http\Request;
 
 class PersonalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('toiletowner.personal');
+        $info = ToiletOwner::where('id',Auth::user()->id)->get();
+        return view('toiletowner.personal',compact('info'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function update(Request $request, $id)
+    {
+        return $request;
+        return back();
+    }
+
     public function create()
     {
         //
@@ -67,10 +66,6 @@ class PersonalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

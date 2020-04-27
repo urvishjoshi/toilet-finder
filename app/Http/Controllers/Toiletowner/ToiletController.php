@@ -21,48 +21,42 @@ class ToiletController extends Controller
         $toilet = ToiletInfo::where('id','=',$id)->where('owner_id','=',Auth::user()->id)->get();
         return view($this->url.'show',compact('toilet'));
     }
+
+    public function store(Request $request)
+    {
+        // $new = new ToiletInfo;
+
+    }
+
     public function create()
     {
         //
     }
 
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $toilet = ToiletInfo::find($id);
+        $toilet->toilet_name = $request->toiletname;
+        $toilet->price = $request->toiletprice;
+        $toilet->complex_name = $request->complexname;
+        $toilet->address = $request->address;
+        $toilet->toilet_lat = $request->newLat;
+        $toilet->toilet_lng = $request->newLng;
+        $toilet->type = $request->toilettype;
+        $toilet->status = $request->toiletstatus;
+        $toilet->save();
+        return redirect(route('toilets.index'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $delete = ToiletInfo::find($id);
+        $delete->delete();
+        return back();
     }
 }

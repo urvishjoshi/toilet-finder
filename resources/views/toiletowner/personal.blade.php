@@ -16,20 +16,21 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<form>
+					<form action="{{ route('personal.update',Auth::user()->id) }}" method="post">
+						@method('PUT') @csrf
 						<h6 class="heading-small text-muted mb-4">User information</h6>
 						<div class="pl-lg-4">
 							<div class="row">
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label class="form-control-label" for="name">Your name</label>
-										<input type="text" id="ownername" name="ownername" class="form-control" placeholder="First name" value=""><!-- Owner Name -->
+										<input type="text" id="ownername" name="ownername" class="form-control" placeholder="Name" value="{{$info[0]['name']}}"><!-- Owner Name -->
 									</div>
 								</div>
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label class="form-control-label" for="email">Email address</label>
-										<input type="email" id="email" name="email" class="form-control" placeholder="Email"><!-- Owner Email -->
+										<input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{$info[0]['email']}}"><!-- Owner Email -->
 									</div>
 								</div>
 							</div>
@@ -42,13 +43,13 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label class="form-control-label" for="contactno">Contact no</label>
-										<input type="text" id="contactno" name="contactno" class="form-control" placeholder="Contact" value=""><!-- Owner Contact No. -->
+										<input type="text" id="contactno" name="contactno" class="form-control" placeholder="Contact" value="{{$info[0]['mobileno']}}"><!-- Owner Contact No. -->
 									</div>
 								</div>
 								<div class="col-md-8">
 									<div class="form-group">
 										<label class="form-control-label" for="address">Address</label>
-										<input id="address" class="form-control" name="address"  placeholder="Home Address" value="" type="text"><!-- Owner Address -->
+										<input id="address" class="form-control" name="address"  placeholder="Home Address" value="{{$info[0]['address']}}" type="text"><!-- Owner Address -->
 									</div>
 								</div>
 							</div>

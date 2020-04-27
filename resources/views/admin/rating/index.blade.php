@@ -45,6 +45,7 @@
 							@for ($i = 0; $i < 5; ++$i)
 							    <i class="font-20 fa fa-star{{ $toilet->getAverageRating()<=$i?'-o':'' }}" aria-hidden="true"></i>
 							@endfor
+						</td>
 						<td>
 							<a href="{{ route('a.ratings.show',['id'=>$toilet->id,'name'=>$toilet->owner['name']]) }}" class="btn btn-primary" name="view">View</a>
 						</td>

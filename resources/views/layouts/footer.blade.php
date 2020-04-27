@@ -1,8 +1,7 @@
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="#">Footer</a>.</strong><!-- Kishan changed removed link--->
-    All rights reserved.
+    <strong>Copyright &copy; 2020 <a href="#">7as 7as</a>.</strong><!-- Kishan changed removed link--->
     <div class="float-right d-none d-sm-inline-block">
-      <b>Bold</b> Normal text
+      Contact us | All rights reserved.
     </div>
   </footer>
 
@@ -48,4 +47,3 @@
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js') }}"></script>
-

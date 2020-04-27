@@ -27,21 +27,27 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- fontawesome icons-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  {{-- newly added jquery --}}
+  <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+
 
   <!--custom style for active class color in sidebars) -->
-  <style>
-    .active{
-      background-color: #6c757d!important;
-    }
-  </style>
-
+<style>
+	.active{
+		background-color: #6c757d!important;
+	}
+	th,td{text-align: center;} 
+	.font-14{ font-size: 14px!important; } 
+	.font-20{ font-size: 24px!important; } 
+	.style{float:right;margin: 0px -5px -10px 0px;padding: 2.6px 5px!important;z-index: 1;}
+</style>
 
 
 
 
   <!-- css -->
   @section('admincss')<!---Admin=>layouts=>app.blade  -> -->
-    <style type="text/css">
+	<style type="text/css">
    
-    </style>
+	</style>
   @endsection

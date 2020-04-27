@@ -3,8 +3,7 @@
 <head>
 	@section('session','Admin')
 	@include('layouts.head')
-	<style> th,td{text-align: center;} .font-14{ font-size: 14px!important; } .font-20{ font-size: 24px!important; } 
-	.style{float:right;margin: 0px -5px -10px 0px;padding: 2.6px 5px!important;z-index: 1;}</style>
+	
 	<?php $allRequests=\App\Model\ToiletOwner::where('status','=','0')->get(); ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini layout-fixed">

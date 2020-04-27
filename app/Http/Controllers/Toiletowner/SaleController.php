@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Toiletowner;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\ToiletUsageInfo;
+use Auth;
+use Illuminate\Http\Request;
 
 class SaleController extends Controller
 {
@@ -14,7 +16,8 @@ class SaleController extends Controller
      */
     public function index()
     {
-        return view('toiletowner.sale');
+        $sales = ToiletUsageInfo::where('owner_id',Auth::user()->id)->with('user')->with('toilet')->get();
+        return view('toiletowner.sale',compact('sales'));
     }
 
     /**
