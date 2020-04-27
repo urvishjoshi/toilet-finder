@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Model\ToiletInfo;
+use App\Model\ToiletUsageInfo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -19,7 +20,7 @@ class ToiletOwner extends Authenticatable
 
     public function toiletusages()
     {
-    	return $this->hasMany(ToiletInfo::class,'owner_id');
+    	return $this->hasMany(ToiletUsageInfo::class,'owner_id');
     }
 
     public function ratings()

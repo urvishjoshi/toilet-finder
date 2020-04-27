@@ -7,6 +7,7 @@ use App\Model\Country;
 use App\Model\Rating;
 use App\Model\State;
 use App\Model\ToiletOwner;
+use App\Model\ToiletUsageInfo;
 use Illuminate\Database\Eloquent\Model;
 
 class ToiletInfo extends Model
@@ -45,5 +46,9 @@ class ToiletInfo extends Model
     public function ratings()
     {
     	return $this->hasMany(Rating::class,'toilet_id');
+    }
+    public function usages()
+    {
+        return $this->hasMany(ToiletUsageInfo::class,'toilet_id');
     }
 }

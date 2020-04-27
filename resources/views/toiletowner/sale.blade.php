@@ -24,7 +24,7 @@
 					<th scope="col">Toilet Id</th>
 					<th scope="col">Transact Id</th>
 					<th scope="col">Toilet name</th>
-					<th scope="col">User name</th>
+					<th scope="col">User email</th>
 					<th scope="col">Paid</th>
 					<th scope="col">Used on	</th>
 				</tr>

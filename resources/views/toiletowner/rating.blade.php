@@ -33,24 +33,28 @@
 				</tr>
 				</thead>
 				<tbody>
-				@foreach($ratings as $rating)
-					<tr>
-						<td>{{ $rating->toilet_id }}</td>
-						<td title="{{ $rating->toilet['address'] }}">
-							{{ $rating->toilet['toilet_name'] }}
-						</td>
-						<td title="{{ $rating->user['name'] }}">
-							{{ $rating->user['email'] }}
-						</td>
-						<td title="{{ $rating->rating }}">
-							@for ($i = 0; $i < 5; ++$i)
-							    <i class="font-20 fa fa-star{{ $rating->rating<=$i?'-o':'' }}" aria-hidden="true"></i>
-							@endfor
-						</td>
-						<td>{{ $rating->desc }}</td>
-						<td>{{ $rating->created_at->format('d/m/Y').' at '.$rating->created_at->format('g:i A') }}</td>
-					</tr>
-				@endforeach
+				@if( count($ratings) == 0 )
+						<tr><td colspan="6"><center><h2>No ratings yet</h2><hr></center></td></tr>
+				@else
+					@foreach($ratings as $rating)
+						<tr>
+							<td>{{ $rating->toilet_id }}</td>
+							<td title="{{ $rating->toilet['address'] }}">
+								{{ $rating->toilet['toilet_name'] }}
+							</td>
+							<td title="{{ $rating->user['name'] }}">
+								{{ $rating->user['email'] }}
+							</td>
+							<td title="{{ $rating->rating }}">
+								@for ($i = 0; $i < 5; ++$i)
+								    <i class="font-20 fa fa-star{{ $rating->rating<=$i?'-o':'' }}" aria-hidden="true"></i>
+								@endfor
+							</td>
+							<td>{{ $rating->desc }}</td>
+							<td>{{ $rating->created_at->format('d/m/Y').' at '.$rating->created_at->format('g:i A') }}</td>
+						</tr>
+					@endforeach
+				@endif
 				</tbody>
 			</table>
 			</div>

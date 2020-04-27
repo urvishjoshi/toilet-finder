@@ -11,10 +11,11 @@
 
 		<div class="content-wrapper">
 			@yield('home')
-			@yield('toilet.index')
+				@yield('toilet.index')
 				@yield('toilet.show')
 
-			@yield('toiletuser')
+				@yield('toiletuser.index')
+				@yield('toiletuser.show')
 			@yield('personal')
 			@yield('rating')
 			@yield('sale')

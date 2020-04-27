@@ -2,21 +2,29 @@
 
 namespace App\Http\Controllers\Toiletowner;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\ToiletInfo;
+use App\Model\ToiletOwner;
+use App\Model\ToiletUsageInfo;
+use Auth;
+use Illuminate\Http\Request;
 
 class ToiletuserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $url = 'toiletowner.toiletuser.';
     public function index()
     {
-        return view('toiletowner.toiletuser');
+        $usages = ToiletInfo::where('owner_id','=',Auth::user()->id)->with('usages')->get();
+        return view($this->url.'index',compact('usages'));
     }
 
+    public function show($id)
+    {
+        $toilet = request()->input('toilet');
+        $usages = ToiletUsageInfo::where('toilet_id','=',$id)->with('user')->get();
+
+        return view($this->url.'show',compact('usages','toilet'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -44,10 +52,6 @@ class ToiletuserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
