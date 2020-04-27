@@ -17,7 +17,7 @@ $factory->define(ToiletInfo::class, function (Faker $faker) {
         'toilet_name' => $faker->word,
         'price' => $faker->numberBetween(0,8),
         'complex_name' => $faker->word,
-        'address' => $faker->address,
+        'address' => $faker->streetAddress,
         'city_id' => function(){
             return City::all()->random();
         },

@@ -1,0 +1,7 @@
+.subcat option{
+  display:none;
+}
+
+.subcat option.label{
+  display:block;
+}

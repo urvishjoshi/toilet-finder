@@ -30,7 +30,8 @@
 			@yield('permission')
 			@yield('rating')
 			@yield('report')
-			@yield('search')		
+			@yield('search')	
+			@yield('addlocation')	
 		</div>
 
 		@include('layouts.footer')
