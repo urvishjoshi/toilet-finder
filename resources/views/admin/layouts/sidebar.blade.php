@@ -32,6 +32,15 @@
 				<span class="badge badge-info right font-14 py-1">{{ count($allRequests) }}</span>
 			  </a>
 			</li>  
+
+			<li class="nav-item">
+			  <a href="{{ route('a.addlocations.index') }}" class="nav-link {{ (request()->is('admin/addlocations')) ? 'active' : '' }}"><!--Kishan changed link-->
+				<i class="fas fa-user-edit pl-2"></i>&nbsp;
+				<p>Add Location</p><!--Kishan changed Menu-->
+				
+			  </a>
+			</li>  
+
 			<li class="nav-item"> <!-- Kishan changed removed menu-open class -->
 			  <a href="{{ route('a.toiletowners.index') }}" class="nav-link {{ (request()->is('admin/toiletowners')) ? 'active' : '' }}">
 				<i class="nav-icon  fas fa-user-tie"></i>

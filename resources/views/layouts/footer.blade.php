@@ -13,6 +13,8 @@
 </div>
 <!-- ./wrapper -->
 
+
+
 <!-- jQuery -->
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -47,3 +49,7 @@
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js') }}"></script>
+
+<!-- CSS For add location page-->
+<link rel="stylesheet" type="text/css" href="{{ asset ('css/style.css')}}">
+

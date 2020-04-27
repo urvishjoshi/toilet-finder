@@ -30,7 +30,8 @@
 			@yield('sale')		
 			@yield('permission')
 			@yield('report')
-			@yield('search')		
+			@yield('search')	
+			@yield('addlocation')	
 		</div>
 
 		@include('layouts.footer')
