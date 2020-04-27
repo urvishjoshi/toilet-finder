@@ -83,12 +83,10 @@
 					</div>
 				</div> {{-- modal-body-row --}}
 					<div class="col-6 pr-0" >
-						<div id="map" style="width:100%;height:400px;"></div>
-
-
+						<div id="map" style="width:100%;height:400px;">
+						</div>
 						<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuM60AoMrwB7dnMEOL7bge_3bM4DJtdn8&callback=myMap"></script>
 					</div>
-						
     			</div>
 				<div class="modal-footer bg-light">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -98,11 +96,12 @@
 	</section>
 @endsection
 <script>
+
     var marker;
     var infowindow;
     var myLatLng = {
-     	lat: 21.640575 , 
-     	lng: 69.605965
+     	lat: {{ $toilet[0]->toilet_lat }} , 
+     	lng: {{ $toilet[0]->toilet_lng }}
     };
     function myMap() {
         var mapProp= {
@@ -132,7 +131,7 @@
             infowindow.close();
         }
         infowindow = new google.maps.InfoWindow({
-            content: 'Set this location as a toilet spot'
+            content: 'Set this location as a toilet spot '
         });
         infowindow.open(map,marker);
     }

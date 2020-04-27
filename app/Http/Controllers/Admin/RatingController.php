@@ -9,19 +9,22 @@ use Illuminate\Http\Request;
 
 class RatingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $url = 'admin.rating.';
     public function index()
     {
-        $ratings = Rating::with('toilet')->get();
-        $toilets = ToiletInfo::with('ratings')->get();
+        $ratings = Rating::with('toilet')->with('user')->get();
+        $toilets = ToiletInfo::with('ratings')->with('owner')->get();
 
-        return view('admin.rating',compact('ratings','toilets'));
+        return view($this->url.'index',compact('ratings','toilets'));
     }
 
+    public function show($id)
+    {
+        $name = request()->input('name');
+        $ratings = ToiletInfo::where('id','=',$id)->with('ratings')->get();
+
+        return view($this->url.'show',compact('ratings','name'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -49,10 +52,6 @@ class RatingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

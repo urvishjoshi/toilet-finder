@@ -51,7 +51,7 @@
 									{{ $sale->toilet_id }}
 								</td>
 								<td><b>${{ $sale->toilet['price'] }}</b></td>
-								<td>{{ $sale->created_at->format('d/m/Y').' at '.$rating->created_at->format('g:i A') }}</td>
+								<td>{{ $sale->created_at->format('d/m/Y').' at '.$sale->created_at->format('g:i A') }}</td>
 						    </tr>
 						@endforeach
 					@endif

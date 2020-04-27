@@ -1,6 +1,6 @@
 @section('title','Ratings')
 @extends('admin.layouts.app')
-@section('rating')
+@section('rating.index')
 
 <section>
 		<!-- Content Header (Page header) -->
@@ -23,16 +23,12 @@
 			<table class="table table-hover">
 				<thead>
 				<tr class="thead-light">
-					<th scope="col">Id</th>
-					<th scope="col">Toilet name</th>
-					<th scope="col">Owner Id</th>
-					<th scope="col">User Ids</th>
-					<th scope="col">Ratings</th>
-					<th scope="col">Votes</th>
-					<th scope="col">Description</th>
-					{{-- <th scope="col">View</th> --}}
-					{{-- <th scope="col">Used on</th> --}}
-					
+					<th>Id</th>
+					<th>Toilet name</th>
+					<th>Owner Id</th>
+					<th>Votes</th>
+					<th>Avg Rating</th>
+					<th>View</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -40,16 +36,18 @@
 					<tr>
 						<th scope="row">{{ $toilet->id }}</th>
 						<td>{{ $toilet->toilet_name }}</td>
-						<td>{{ $toilet->owner_id }}</td>
+						<td title="{{$toilet->owner['email']}}">
+							{{ $toilet->owner_id }}</td>
 						<td>
-						@for($i=0;$i<count($toilet->ratings);$i++)
-							{{ $toilet->ratings[$i]['user_id'].',' }}
-						@endfor
+							{{ count($toilet->ratings) }}
 						</td>
-						<td>{{ $toilet->getAverageRating() }}</td>
-						<td>{{count($toilet->ratings)}}</td>
-						<td>ABC,DEF,QWE</td>
-						{{-- <td>27-05-2020</td> --}}
+						<td title="{{ $toilet->getAverageRating() }}">
+							@for ($i = 0; $i < 5; ++$i)
+							    <i class="font-20 fa fa-star{{ $toilet->getAverageRating()<=$i?'-o':'' }}" aria-hidden="true"></i>
+							@endfor
+						<td>
+							<a href="{{ route('a.ratings.show',['id'=>$toilet->id,'name'=>$toilet->owner['name']]) }}" class="btn btn-primary" name="view">View</a>
+						</td>
 					</tr>
 				@endforeach
 				</tbody>
