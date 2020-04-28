@@ -41,9 +41,11 @@
 							<td title="{{ $usage->getFullAddress() }}">
 								{{ $usage['address'] }}
 							</td>
-							<td>{{ count($usage->usages) }}</td>
+							<td title="{{ count($usage->usages) }} peoples used this toilet">
+								{{ count($usage->usages) }}
+							</td>
 							<td>
-								<a href="{{ route('toiletusers.show',['id'=>$usage['id'],'name'=>$usage['toilet_name']]) }}" class="btn btn-primary" name="view">View</a>
+								<a href="{{ route('toiletusers.show',['id'=>$usage['id'],'toilet'=>$usage['toilet_name']]) }}" class="btn btn-primary" name="view">View</a>
 							</td>
 						</tr>
 					@endforeach

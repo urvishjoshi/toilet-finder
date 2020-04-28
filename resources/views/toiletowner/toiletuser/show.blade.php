@@ -7,42 +7,45 @@
     	<div class="content-header">
     		<div class="container-fluid">
     			<div class="row">
+    			<div class="col-md-1 d-flex align-items-start flex-column">
+					<a href="{{ url()->previous() }}" class="fas fa-arrow-left pt-3 pl-2" style="font-size: 30px;text-decoration:none; "></a>
+				</div>
 				<div class="col-md text-center">    					
 					<h2>Users of <b>{{$toilet}}</b> Toilet</h2>
     			</div><!-- /.col -->
-
+				<div class="col-md-1"></div>
     			</div><!-- /.row -->
-    			<HR width=50%>
+    			<HR width=40%>
     		</div><!-- /.container-fluid -->
     	</div>
     	<!-- /.content-header -->
-		<div class="content-header">
+		<div class="content-header pt-0">
 		<div class="container-fluid">
 		<div class="container justify-content-center" id="requestTable">
 			<table class="table table-hover">
 				<thead>
 				<tr class="thead-light">
-					<th scope="col" center>Id</th>
-					<th scope="col">Toilet name</th>
-					<th scope="col">Address</th>
-					<th scope="col">Usages</th>
-					<th scope="col">View</th>
+					<th>Transaction Id</th>
+					<th>User email</th>
+					<th>User name</th>
+					<th>Gender</th>
+					<th>Used on</th>
 				</tr>
 				</thead>
 				<tbody>
 				@if( count($usages) == 0 )
-					<tr><td colspan="5"><center><h2>No usages yet</h2><hr></center></td></tr>
+					<tr><td colspan="6"><center><h2>No usages yet</h2><hr></center></td></tr>
 				@else
 					@foreach($usages as $usage)
 						<tr>
-							<td>{{ $usage['id'] }}</td>
-							<td>{{ $usage['toilet_name'] }}</td>
-							<td title="{{ $usage->getFullAddress() }}">
-								{{ $usage['address'] }}
-							</td>
-							<td>{{ count($usage->usages) }}</td>
+							<td>{{ $usage->transaction_id }}</td>
+							<td>{{ $usage->user['email'] }}</td>
+							<td>{{ $usage->user['name'] }}</td>
 							<td>
-								<a href="{{ route('toiletusers.show',['id'=>$usage['id'],'name'=>$usage['toilet_name']]) }}" class="btn btn-primary" name="view">View</a>
+								{{ $usage->user['gender']==1 ? 'Male' : 'Female'}}
+							</td>
+							<td>
+								{{ $usage->created_at->format('d/m/Y').' at '.$usage->created_at->format('g:i A') }}
 							</td>
 						</tr>
 					@endforeach

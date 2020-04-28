@@ -20,8 +20,8 @@ class ToiletuserController extends Controller
     public function show($id)
     {
         $name = request()->input('name');
-        $usages = ToiletUsageInfo::with('user')
-                ->where('user_id','=',$id)->with('owner')->get();
+        $usages = ToiletUsageInfo::where('user_id','=',$id)->with('user')
+                ->with('owner')->get();
 
         return view($this->url.'show',compact('usages','name'));
     }

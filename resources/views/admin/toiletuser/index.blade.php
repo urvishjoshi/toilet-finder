@@ -23,15 +23,15 @@
 			<table class="table table-hover">
 				<thead>
 				<tr class="thead-light">
-					<th scope="col" center>Id</th>
-					<th scope="col">User name</th>
-					<th scope="col">User email</th>
-					<th scope="col">Mobile no</th>
-					<th scope="col">Gender</th>
-					<th scope="col">Age</th>
-					<th scope="col">Registered on</th>
-					<th scope="col">Usages</th>
-					<th scope="col">View</th>
+					<th center>Id</th>
+					<th>User name</th>
+					<th>User email</th>
+					<th>Mobile no</th>
+					<th>Gender</th>
+					<th>Age</th>
+					<th>Registered on</th>
+					<th>Usages</th>
+					<th width="17%">View</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -51,6 +51,7 @@
 								<td>
 								<form action="{{ route('a.toiletusers.destroy',$user->id) }}" method="POST">
 								@method('DELETE') @csrf
+									<a href="{{ route('a.toiletusers.show',[$user->id,'name'=>$user->name]) }}" class="btn btn-primary" name="btn" type="submit" value="view">View</a>
 									
 									<button class="btn btn-danger" name="btn" type="submit" value="delete">Delete</button>
 

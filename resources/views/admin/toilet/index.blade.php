@@ -51,7 +51,7 @@
 								</td>
 								<td>{{ $toilet->created_at->format('d/m/Y').' at '.$toilet->created_at->format('g:i A') }}</td>
 								<td>
-									<button class="btn btn-success" data-toggle="modal" data-target="{{$toilet->toilet_lat . $toilet->toilet_lng}}">Map</button>&nbsp;&nbsp;
+									<button class="btn btn-success" id="mapButton" data-toggle="modal"  data-target=".bd-example-modal-lg" onclick="myMap({{ $toilet->toilet_lng }},{{ $toilet->toilet_lng }})">Map</button>&nbsp;&nbsp;
 								</td>
 						    </tr>
 						@endforeach
@@ -74,14 +74,11 @@
 	</div>
 @endsection
 <script>
-
-    var marker;
-    var infowindow;
-    var myLatLng = {
-     	lat: 21.640575, 
-     	lng: 70.605965
-    };
-    function myMap() {
+    function myMap(currentLat,currentLng) {
+    	var myLatLng = {
+    	 	lat: currentLat, 
+    	 	lng: currentLng
+    	};
         var mapProp= {
 			center: myLatLng,
 			zoom:15,
@@ -89,13 +86,12 @@
 		};
 		var map = new google.maps.Map(document.getElementById("map"),mapProp);
 
-		placeMarker(map, myLatLng);
-        google.maps.event.addListener(map, 'click', function(event) {
-            placeMarker(map, event.latLng);
-        });
+		placeMarker(map, myLatLng);  //place a stable marker in map
     }
 
     function placeMarker(map, location) {
+    	var marker;
+    	var infowindow;
         if (!marker || !marker.setPosition) {
             marker = new google.maps.Marker({
                 position: location,
@@ -109,7 +105,7 @@
             infowindow.close();
         }
         infowindow = new google.maps.InfoWindow({
-            content: 'Set this location as a toilet spot'
+            content: 'This location is setted as a toilet spot'
         });
         infowindow.open(map,marker);
     }

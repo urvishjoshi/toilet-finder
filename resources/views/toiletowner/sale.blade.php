@@ -21,10 +21,9 @@
 			<table class="table table-hover">
 				<thead>
 				<tr class="thead-light">
-					<th scope="col">Toilet Id</th>
 					<th scope="col">Transact Id</th>
 					<th scope="col">Toilet name</th>
-					<th scope="col">User email</th>
+					<th scope="col">User id</th>
 					<th scope="col">Paid</th>
 					<th scope="col">Used on	</th>
 				</tr>
@@ -34,19 +33,17 @@
 						<tr><td colspan="6"><center><h2>No sales yet</h2><hr></center></td></tr>
 					@else
 						@foreach($sales as $sale)
+						@for($i=0;$i<count($sale->usages);$i++)
 						    <tr>
-								<td>{{ $sale->toilet['id'] }}</td>
-								<td>{{ $sale->transaction_id }}</td>
-								<td title="{{ $sale->toilet['address'] }}">
-									{{ $sale->toilet['toilet_name'] }}
+								<td>{{ $sale->usages[$i]['transaction_id'] }}</td>
+								<td>{{ $sale['toilet_name'] }}</td>
+								<td>
+									{{ $sale->usages[$i]['id'] }}
 								</td>
-								<td title="{{ $sale->user['name'] }}">
-									{{ $sale->user['email'] }}
-								</td>
-								<td><b>${{ $sale->toilet['price'] }}</b></td>
-								<td>{{ $sale->created_at->format('d/m/Y').' at '.$sale->created_at->format('g:i A') }}
-								</td>
+								<td><b>${{ $sale['price'] }}</b></td>
+								<td>{{ $sale->usages[$i]['created_at']->format('d/m/Y').' at '.$sale->usages[$i]['created_at']->format('g:i A') }}</td>
 						    </tr>
+						   @endfor
 						@endforeach
 					@endif
 				</tbody>
