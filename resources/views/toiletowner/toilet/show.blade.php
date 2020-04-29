@@ -74,20 +74,25 @@
 						<div class="row">
 							<div class="col-lg-4">
 								<div class="form-group">
-									<label class="form-control-label" for="city">City</label>
-									<input type="text" id="city" class="form-control" placeholder="City" value="">
+									<label for="country">Country</label>
+									<select name="country" class="form-control" id="country">
+				 						<option>select</option>
+										@foreach ($countries as $country)
+										<option value="{{ $country->id }}">{{ $country->country }}</option>
+										@endforeach
+			 						</select>
 								</div>
 							</div>
 							<div class="col-lg-4">
 								<div class="form-group">
-									<label class="form-control-label" for="country">Country</label>
-									<input type="text" id="country" class="form-control" placeholder="Country" value="">
+									<label for="state">State</label>
+ 									<select name="state" class="form-control" id="state"></select>
 								</div>
 							</div>
 							<div class="col-lg-4">
 								<div class="form-group">
-									<label class="form-control-label" for="postal-code">Postal code</label>
-									<input type="number" id="postal-code" class="form-control" placeholder="6 digit code">
+									<label for="city">City</label>
+									<select name="city" class="form-control" id="city"></select>
 								</div>
 							</div>
 						</div>
@@ -107,7 +112,43 @@
 				</div>
 			</form>
 	</section>
+<script>
+$(document).ready(function(){
+	$("#country").on('change',function(){
+		$.ajax({
+			method:"GET",
+			url:"{{ route('toilets.show',1) }}",
+			data: {
+               'country_id': $(this).val(),
+                '_token': $('input[name=_token]').val(),
+                '_method': '{{method_field('GET')}}',
+            },
+			dataType:'html',
+			success:function(data){
+				$("#state").html(data);
+			}
+		});
+	});
+
+	$("#state").on('change',function(){
+		$.ajax({
+			method:"GET",
+			url:"{{ route('toilets.show',1) }}",
+			data: {
+               'state_id': $(this).val(),
+                '_token': $('input[name=_token]').val(),
+                '_method': '{{method_field('GET')}}',
+            },
+			dataType:'html',
+			success:function(data){
+				$("#city").html(data);
+			}
+		});
+	});
+});
+</script>
 @endsection
+
 <script>
 
     var marker;

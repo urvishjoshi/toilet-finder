@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Toiletowner;
 
 use App\Http\Controllers\Controller;
+use App\Model\City;
+use App\Model\Country;
+use App\Model\State;
 use App\Model\ToiletInfo;
 use App\Model\ToiletOwner;
 use Auth;
@@ -13,19 +16,50 @@ class ToiletController extends Controller
     public function index()
     {
         $toilets = ToiletInfo::with('owner')->where('owner_id','=',Auth::user()->id)->orderBy('status','desc')->get();
-        return view($this->url.'index',compact('toilets'));
+        $countries = Country::orderBy('country')->get();
+        return view($this->url.'index',compact('toilets','countries'));
     }
 
     public function show($id)
     {
+        if(request()->input('country_id')) {
+            $states = State::where('country_id',request()->input('country_id'))->get();
+            $data='';
+            foreach ($states as $state) {
+                $data = $data.'<option value="'.$state->id.'">'.$state->state.'</option>';
+            }
+            return $data;
+        }
+        if(request()->input('state_id')) {
+            $cities = City::where('state_id',request()->input('state_id'))->get();
+            $data='';
+            foreach ($cities as $city) {
+                $data = $data.'<option value="'.$city->id.'">'.$city->city.'</option>';
+            }
+            return $data;
+        }
+        $countries = Country::orderBy('country')->get();
         $toilet = ToiletInfo::where('id','=',$id)->where('owner_id','=',Auth::user()->id)->get();
-        return view($this->url.'show',compact('toilet'));
+        return view($this->url.'show',compact('toilet','countries'));
     }
 
     public function store(Request $request)
     {
-        // $new = new ToiletInfo;
-
+        $toilet = new ToiletInfo;
+        $toilet->owner_id = Auth::user()->id;
+        $toilet->toilet_name = $request->toiletname;
+        $toilet->status = $request->toiletstatus;
+        $toilet->price = $request->toiletprice;
+        $toilet->toilet_name = $request->toilettype;
+        $toilet->complex_name = $request->complexname;
+        $toilet->address = $request->address;
+        $toilet->country_id = $request->country;
+        $toilet->state_id = $request->state;
+        $toilet->city_id = $request->city;
+        $toilet->toilet_lat = $request->newLat;
+        $toilet->toilet_lng = $request->newLng;
+        $toilet->save();
+        return back();
     }
 
     public function create()

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use DB;
+use App\Model\City;
+use App\Model\Country;
+use App\Model\State;
+use Illuminate\Http\Request;
 
 class LocationController extends Controller
 {
@@ -15,10 +17,29 @@ class LocationController extends Controller
      */
     public function index()
     {
-        $countries = DB::table('countries')->get();//kishan changed
-        return view('admin/addLocation',['countries'=>$countries]);//kishan changed
+        $countries = Country::orderBy('country')->get();
+        return view('admin/location',compact('countries'));
     }
 
+    public function show($id)
+    {
+        if(request()->input('country_id')) {
+            $states = State::where('country_id',request()->input('country_id'))->get();
+            $data='';
+            foreach ($states as $state) {
+                $data = $data.'<option value="'.$state->id.'">'.$state->state.'</option>';
+            }
+            return $data;
+        }
+        if(request()->input('state_id')) {
+            $cities = City::where('state_id',request()->input('state_id'))->get();
+            $data='';
+            foreach ($cities as $city) {
+                $data = $data.'<option value="'.$city->id.'">'.$city->city.'</option>';
+            }
+            return $data;
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -46,10 +67,6 @@ class LocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

@@ -34,7 +34,7 @@
 			</li>  
 
 			<li class="nav-item">
-			  <a href="{{ route('a.addlocations.index') }}" class="nav-link {{ (request()->is('admin/addlocations')) ? 'active' : '' }}"><!--Kishan changed link-->
+			  <a href="{{ route('a.locations.index') }}" class="nav-link {{ (request()->is('admin/locations')) ? 'active' : '' }}"><!--Kishan changed link-->
 				<i class="fas fa-user-edit pl-2"></i>&nbsp;
 				<p>Add Location</p><!--Kishan changed Menu-->
 				
