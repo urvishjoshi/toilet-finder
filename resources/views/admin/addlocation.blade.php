@@ -17,60 +17,53 @@
 
 	<div class="content-header">
 		<div class="container-fluid">
- 			<div class="row">
- 				<select id="item1">
- 					<option disabled="disabled" selected="selected">--select--</option>
-				    <option value="0">India</option>
-				    <option value="1">US</option>
-				    <option value="2">UK</option>
-				</select>
+ 			
+ 				<div class="form-group">
+ 					<label for="Country">Select Country</label>
+ 					<select name="Country" class="form-control" id="Country">
+ 						<option>--select--</option><!--Coding for display country from countries-->
+ 						<?php
+						foreach ($countries as $countries) {
+							echo countries->country;
+						}
+						?>
+ 					</select>
+ 				</div>
 
-				<select id="item2">
-				    <option value="">-- select one -- </option>
-				</select>
+ 				<div class="form-group">
+ 					<label for="State">Select State</label>
+ 					<select name="State" class="form-control" id="State">
+ 						<option>--select--</option>
+ 						
+ 					</select>
+ 				</div>
 
-				<select id="item3">
-				<option> -- select another one --</option>
-				</select>
-
+ 				<div class="form-group">
+ 					<label for="City">Select City</label>
+ 					<select name="City" class="form-control" id="City">
+ 						<option>--select--</option>
+ 						
+ 					</select>
+ 				</div>
 			</div>
 		</div>
-	</div>		
-
+	</div>
 </section>
 <script>
-	$(document).ready(function() {
-
-
-    $("#item1, #item2").change(function() {
-        var value = $(this).val();
-        $("#item2").html(options[value]);
-        
-        var value1 =$("#item2").val();
-        $("#item3").html(options1[value]);
-    });
-
-
-    var options = [
-       "<option value='test'>IN state-1</option><option value='test2'>IN state-2</option>",
-
-
-    "<option value='test'>US state-1</option><option value='test2'>US state-2</option>",
-
-
-    "<option value='test'>UK state-1</option><option value='test2'>UK state-2</option>"
-    ];
-
-
-var options1 = [
-
-	"<option value='test'>IN-state -1 city 1</option><option value='test3'>IN-state -2 city 1</option>",
-
-	"<option value='test'>US -state -1 city-1</option><option value='test3'>US -state -1 city-2</option>",
-
-	"<option value='test'>UK -state -1 city-1</option><option value='test3'>UK -state -1 city-2</option>"];
-});
-
+	$(document).ready(function(){
+		$("#Country").on('change',function(){
+			var countryId=$(this).val();
+			$.ajax({
+				method:"POST",
+				url:"ajax.php",
+				data:{id:countryId},
+				dataType:"php",//may be somthing or
+				sucess:function(data){
+					$("#state").php(data);//may be something or
+				}
+			});
+		});
+	});
 </script>
 @endsection
 
