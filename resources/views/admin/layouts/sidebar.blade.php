@@ -1,7 +1,7 @@
  <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
 	<!-- Brand Logo -->
-	<a href="{{ route('a.dash') }}" class="brand-link"><!--Kishan changed Link-->
+	<a href="{{ route('a.dashboard.index') }}" class="brand-link"><!--Kishan changed Link-->
 	  <img src="{{ asset('favicon.png') }}" alt="Logo" class="brand-image img-circle elevation-3">
 	  <span class="brand-text font-weight-light"> <b> 7as 7as</b></span>
 	</a>

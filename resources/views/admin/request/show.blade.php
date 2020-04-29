@@ -5,7 +5,7 @@
 		<div class="container pt-4 px-3">
 			<div class="row">
 				<div class="col-md-1 d-flex align-items-start flex-column">
-					<a href="{{ url()->previous() }}" class="fas fa-arrow-left pt-3 pl-2" style="font-size: 30px;text-decoration:none; "></a>
+					<a href="{{ route('a.requests.index') }}" class="fas fa-arrow-left pt-3 pl-2" style="font-size: 30px;text-decoration:none; "></a>
 				</div>
 				<div class="col-md text-center">
 					<h2 class="mb-0"> {{$status==1 ? 'Active owners' : 'Denied owners'}}</h2>

@@ -27,8 +27,9 @@
 					<th width="1%">Price</th>
 					<th>Complex</th>
 					<th>Address</th>
+					<th>Toilet type</th>
 					<th>Status</th>
-					<th width="10%">Created on</th>
+					<th width="12%">Created on</th>
 					<th>Map</th>
 				</tr>
 				</thead>
@@ -46,6 +47,8 @@
 								<td><b>${{ $toilet->price }}</b></td>
 								<td>{{ $toilet->complex_name }}</td>
 								<td>{{ $toilet->address.$toilet->getFullAddress() }}</td>
+								<td>{{ $toilet->type==1 ? 'Male' : 'Female'}}</td>
+
 								<td>
 									@if($toilet->status==1) <f class="text-success">Active</f> @else <f class="text-warning">Not Active</f> @endif
 								</td>
@@ -98,7 +101,6 @@
                 map: map,
                 animation: google.maps.Animation.DROP
             });
-        } else {
         }
         marker.setPosition(location);
         if (infowindow && infowindow.close) {

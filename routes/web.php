@@ -9,7 +9,7 @@ Route::group(['prefix'=>'admin'],function(){
 	});
 	Route::group(['middleware'=>'auth:admin','namespace'=>'Admin','as'=>'a.'],function(){
 		Route::post('logout', 'AuthController@logout')->name('logout');
-		Route::get('dashboard', 'HomeController@index')->name('dash');
+		Route::resource('dashboard', 'HomeController');
 		Route::resource("requests",'RequestController');
 		Route::resource("toiletowners",'ToiletownerController');
 		Route::resource("toilets",'ToiletController');
@@ -19,7 +19,6 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::resource("reports",'ReportController');
 		Route::resource("permissions",'PermissionController');
 	    Route::resource("addlocations",'LocationController');
-
 	});
 });
 //					toiletowner
@@ -33,8 +32,8 @@ Route::group(['prefix'=>'toiletowner'],function(){
 	});
 	Route::group(['middleware'=>'auth:toiletowner','namespace'=>'Toiletowner'],function(){
 		Route::post('logout', 'AuthController@logout')->name('logout');
-		Route::get('dashboard', 'HomeController@index');
-		Route::post('dashboard', 'HomeController@autoalloc');
+		Route::resource('dashboard', 'HomeController');
+		// Route::post('dashboard', 'HomeController@autoalloc');
 		Route::resource("personal",'PersonalController');
 		Route::resource("toilets",'ToiletController');
 		Route::resource("toiletusers",'ToiletuserController');

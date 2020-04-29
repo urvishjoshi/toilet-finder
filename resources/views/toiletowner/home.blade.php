@@ -1,7 +1,6 @@
 @section('title','Dashboard')
 @extends('toiletowner.layouts.app')
 @section('home')
-<?php $owner=\App\Model\ToiletOwner::find(Auth::user()->id); ?>
 	<!-- Content Header (Page header) -->
 	<div class="content-header">
 		<div class="container-fluid">
@@ -10,7 +9,8 @@
 					<h1 class="m-0 text-dark">Dashboard</h1>
 				</div><!-- /.col -->
 				<div class="custom-control custom-switch">
-					<input type="checkbox" class="custom-control-input" name="autoalloc" id="autoalloc" value="1">
+					<input type="checkbox" class="custom-control-input" name="autoalloc" id="autoalloc" value="{{$autoalloc[0]['auto_allocate']==0 ? '0' : '1'}}" {{$autoalloc[0]['auto_allocate']==1 ? 'checked' : ''}}>
+					@method('POST') @csrf
 					<label class="custom-control-label" style="font-size: 18px;" for="autoalloc">Auto allocate toilets</label>
 				</div>
 			</div><!-- /.row -->
@@ -108,26 +108,22 @@
 	</section>
 	<!-- /.content -->
 <script>
-$(document).ready(function() {
-    //set initial state.
-    $('#autoalloc').change(function() {
-        if(this.checked) {
-            $.ajax({
-	            url: {{ url('toiletowner/dashboard') }},
-	            data: {
-	                   'autoalloc': 1,
-	                    '_token': $('input[name=_token]').val(),
-	                  },
-	            type: 'POST',
-	            dataType: 'json',
-	            success: function (response) {
-	                console.log('Data downloaded.');
-	            }
-	        });
-        }
-        else{
 
-        }
+$(document).ready(function() {
+    $('#autoalloc').change(function() {
+        $.ajax({
+            url: '{{ route('dashboard.store') }}',
+            data: {
+                   'autoalloc': $('#autoalloc').val(),
+                    '_token': $('input[name=_token]').val(),
+                    '_method': $('input[name=_method]').val(),
+                  },
+            type: 'POST',
+            dataType: 'json',
+            success: function (response) {
+            	$('#autoalloc').attr('value', response.status);
+            }
+        });
     });
 });
 </script>

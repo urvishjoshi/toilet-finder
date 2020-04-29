@@ -45,16 +45,14 @@ class RequestController extends Controller
 
     public function update(Request $request, $id)
     {
+        $edit = ToiletOwner::find($id);
         if($request->btn=='1'){
-            $edit = ToiletOwner::find($id);
             $edit->status = '1';
-            $edit->save();
         }
         if($request->btn=='-1'){
-            $edit = ToiletOwner::find($id);
             $edit->status = '-1';
-            $edit->save();
         }
+        $edit->save();
         return back();
     }
 
