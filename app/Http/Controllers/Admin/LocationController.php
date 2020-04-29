@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class LocationController extends Controller
 {
@@ -14,7 +15,8 @@ class LocationController extends Controller
      */
     public function index()
     {
-        return view('admin/addLocation');
+        $countries = DB::table('countries')->get();//kishan changed
+        return view('admin/addLocation',['countries'=>$countries]);//kishan changed
     }
 
     /**
