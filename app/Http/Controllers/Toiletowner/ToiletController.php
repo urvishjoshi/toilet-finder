@@ -15,7 +15,7 @@ class ToiletController extends Controller
     private $url = 'toiletowner.toilet.';
     public function index()
     {
-        $toilets = ToiletInfo::with('owner')->where('owner_id','=',Auth::user()->id)->orderBy('status','desc')->get();
+        $toilets = ToiletInfo::where('owner_id','=',Auth::user()->id)->with('owner')->orderBy('status','desc')->get();
         $countries = Country::orderBy('country')->get();
         return view($this->url.'index',compact('toilets','countries'));
     }
@@ -79,6 +79,9 @@ class ToiletController extends Controller
         $toilet->price = $request->toiletprice;
         $toilet->complex_name = $request->complexname;
         $toilet->address = $request->address;
+        $toilet->country_id = $request->country;
+        $toilet->state_id = $request->state;
+        $toilet->city_id = $request->city;
         $toilet->toilet_lat = $request->newLat;
         $toilet->toilet_lng = $request->newLng;
         $toilet->type = $request->toilettype;

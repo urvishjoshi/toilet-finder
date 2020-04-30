@@ -16,17 +16,18 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<form>
+					<form action="{{ route('feedbacks.store') }}" method="post">
+						@method('POST') @csrf
 						<div class="lg-4">
 							<div class="row">
 								<div class="col-lg-12">
 									<div class="form-group">
-										<label class="form-control-label" for="fsubject">Feedback subject</label>
-										<input type="text" id="fsubject" name="fsubject" class="form-control" placeholder="Subject" value="">
+										<label class="form-control-label" for="subject">Feedback subject</label>
+										<input type="text" id="subject" name="subject" class="form-control" placeholder="Subject" value="">
 									</div>
 									<div class="form-group">
-										<label class="form-control-label" for="fdiscription">Describe your suggestion</label>
-										<textarea id="fdiscription" name="fdiscription" class="form-control" rows="9"></textarea>
+										<label class="form-control-label" for="description">Describe your suggestion</label>
+										<textarea id="description" name="description" class="form-control" rows="9"></textarea>
 									</div>
 								</div>
 							</div>

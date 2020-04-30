@@ -8,9 +8,10 @@
 				<div class="col-sm-9">
 					<h1 class="m-0 text-dark">Dashboard</h1>
 				</div><!-- /.col -->
-				<div class="custom-control custom-switch">
+				<div class="custom-control custom-switch ml-5">
 					<input type="checkbox" class="custom-control-input" name="autoalloc" id="autoalloc" value="{{$autoalloc[0]['auto_allocate']==0 ? '0' : '1'}}" {{$autoalloc[0]['auto_allocate']==1 ? 'checked' : ''}}>
 					@method('POST') @csrf
+          
 					<label class="custom-control-label" style="font-size: 18px;" for="autoalloc">Auto allocate toilets</label>
 				</div>
 			</div><!-- /.row -->
@@ -111,6 +112,10 @@
 
 $(document).ready(function() {
     $('#autoalloc').change(function() {
+        if($('#autoalloc').val()=='0')
+        	$("#requestlink").hide();
+        else
+            $("#requestlink").show();
         $.ajax({
             url: '{{ route('dashboard.store') }}',
             data: {
@@ -121,7 +126,9 @@ $(document).ready(function() {
             type: 'POST',
             dataType: 'json',
             success: function (response) {
-            	$('#autoalloc').attr('value', response.status);
+
+                $('#autoalloc').attr('value', response.status);
+
             }
         });
     });

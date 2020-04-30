@@ -17,7 +17,10 @@ class SaleController extends Controller
      */
     public function index()
     {
-        $sales = ToiletInfo::where('owner_id','=',Auth::user()->id)->with('usages')->get();
+        $sales = ToiletInfo::where('owner_id','=',Auth::user()->id)
+            ->with(array('usages'=>function($query){
+                    $query->where('status','1');
+                }))->get();
         return view('toiletowner.sale',compact('sales'));
     }
 

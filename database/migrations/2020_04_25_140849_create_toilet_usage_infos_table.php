@@ -31,6 +31,7 @@ class CreateToiletUsageInfosTable extends Migration
                     ->references('id')
                     ->on('toilet_infos')
                     ->onDelete('cascade');
+            $table->enum('status', ['0', '1','-1'])->default('0')->comment('0-Pending,1-Done,-1:Rejected');
             // $table->unsignedBigInteger('price')->fillable();
             // $table->foreign('price')
             //         ->references('price')

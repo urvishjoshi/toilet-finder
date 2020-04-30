@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Toiletowner;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class FeedbackController extends Controller
+class FeedbackContoller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,19 +13,9 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        return view('toiletowner.feedback');
+        //
     }
 
-    public function store(Request $request)
-    {
-        $feedback = new Feedback;
-        $feedback->feedbacker_id = Auth::user()->id;
-        $feedback->feedbacker_type = '1';
-        $feedback->subject = $request->subject;
-        $feedback->desc = $request->description;
-        $feedback->save();
-        return back();
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -43,6 +32,10 @@ class FeedbackController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function store(Request $request)
+    {
+        //
+    }
 
     /**
      * Display the specified resource.

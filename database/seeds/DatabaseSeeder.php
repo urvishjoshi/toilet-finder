@@ -2,6 +2,7 @@
 
 use App\Model\City;
 use App\Model\Country;
+use App\Model\Feedback;
 use App\Model\Rating;
 use App\Model\State;
 use App\Model\ToiletInfo;
@@ -24,9 +25,10 @@ class DatabaseSeeder extends Seeder
         factory(App\Model\Country::class,10)->create();
         factory(App\Model\State::class,20)->create();
         factory(App\Model\City::class,50)->create();
-        factory(App\Model\ToiletOwner::class,20)->create();
+        factory(App\Model\ToiletOwner::class,10)->create();
         factory(App\Model\ToiletInfo::class,20)->create();
-        factory(App\Model\ToiletUsageInfo::class,10)->create();
+        factory(App\Model\ToiletUsageInfo::class,50)->create();
         factory(App\Model\Rating::class,50)->create();
+        factory(App\Model\Feedback::class,50)->create();
     }
 }

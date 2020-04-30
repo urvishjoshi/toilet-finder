@@ -20,6 +20,7 @@ $factory->define(ToiletUsageInfo::class, function (Faker $faker) {
         'toilet_id' => function(){
         	return ToiletInfo::all()->random();
         },
+        'status' => $faker->randomElement(['1','0']),
         // 'price' => function(){
         // 	return ToiletOwner::all()->random();
         // },

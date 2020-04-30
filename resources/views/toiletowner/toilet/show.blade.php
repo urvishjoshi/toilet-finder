@@ -7,7 +7,7 @@
 				<div class="container col-md-auto">
 				<div class="row">
 					<div class="col-md-1">
-							<a href="{{ url()->previous() }}" class="fas fa-arrow-left pt-3 pl-2" style="font-size: 30px;text-decoration:none; "></a>
+						<a href="{{ url()->previous() }}" class="fas fa-arrow-left pt-3 pl-2" style="font-size: 30px;text-decoration:none; "></a>
 					</div>
 					<div class="col-md text-center mr-4">
 						<h2>Edit toilet<b></b></h2>
@@ -76,9 +76,16 @@
 								<div class="form-group">
 									<label for="country">Country</label>
 									<select name="country" class="form-control" id="country">
-				 						<option>select</option>
+				 						<option>select</option>{{-- 
 										@foreach ($countries as $country)
 										<option value="{{ $country->id }}">{{ $country->country }}</option>
+										@endforeach --}}
+										@foreach ($countries as $country)
+										    <option value="{{ $country->id }}"
+										    @if ($country == $toilet[0]->country)
+										        selected="selected"
+										    @endif
+										    >{{  $country->country }}</option>
 										@endforeach
 			 						</select>
 								</div>

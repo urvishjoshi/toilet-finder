@@ -21,9 +21,6 @@
 	  <!-- Sidebar Menu -->
 	  <nav class="mt-2">
 		<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-				  <!-- Add icons to the links using the .nav-icon class
-				  with font-awesome or any other icon font library -->
-
 
 			<li class="nav-item">
 			  <a href="{{ route('a.requests.index') }}" class="nav-link {{ (request()->is('admin/requests')) ? 'active' : '' }}"><!--Kishan changed link-->
@@ -37,7 +34,6 @@
 			  <a href="{{ route('a.locations.index') }}" class="nav-link {{ (request()->is('admin/locations')) ? 'active' : '' }}"><!--Kishan changed link-->
 				<i class="fas fa-user-edit pl-2"></i>&nbsp;
 				<p>Add Location</p><!--Kishan changed Menu-->
-				
 			  </a>
 			</li>  
 
@@ -77,19 +73,17 @@
 				<i class="nav-icon fas fa-chart-pie"></i>
 				<p>
 				 Toilet Reports
-				  <!-- kishan changed<i class="right fas fa-angle-left"></i>-->
 				</p>
 			  </a>
 			</li>     
-			{{-- <li class="nav-item">
-			  <a href="{{ route('a.permissions.index') }}" class="nav-link {{ (request()->is('admin/permissions')) ? 'active' : '' }}">
+			<li class="nav-item">
+			  <a href="{{ route('a.feedbacks.index') }}" class="nav-link {{ (request()->is('admin/feedbacks')) ? 'active' : '' }}">
 				<i class="nav-icon fas fa-edit"></i>
 				<p>
-				  Permissions      <!--Kishan changed Menu-->
-				  <!-- Kishan changed <i class="fas fa-angle-left right"></i>-->
+				  Feedbacks      <!--Kishan changed Menu-->
 				</p>
 			  </a>
-			</li><hr>   --}}
+			</li><hr>  
 		
 		</ul>
 	  </nav>

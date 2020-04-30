@@ -30,7 +30,7 @@
 			@yield('sale')		
 			@yield('permission')
 			@yield('report')
-			@yield('search')	
+			@yield('feedback')	
 			@yield('location')	
 		</div>
 

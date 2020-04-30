@@ -14,21 +14,21 @@
           <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="" class="d-block">{{ Auth::user()->name }}</a>
+          <a href="{{ route('personal.index') }}" class="d-block {{ (request()->is('toiletowner/personal')) ? 'active' : '' }}">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-                <a href="{{ route('personal.index') }}" class="nav-link {{ (request()->is('toiletowner/personal')) ? 'active' : '' }}"><!--Kishan changed link-->
-                  <i class="fas fa-info-circle pl-2"></i>
-                  <p class="pl-2">Personal info</p><!--Kishan changed Menu-->
-                </a>
-          </li>
+
+          <li class="nav-item" id="requestlink" style="display: {{ $autoalloc[0]['auto_allocate']=='1' ? 'none' : 'block' }};">
+            <a href="{{ route('requests.index') }}" class="nav-link {{ (request()->is('toiletowner/requests')) ? 'active' : '' }}"><!--Kishan changed link-->
+            <i class="fas fa-user-edit pl-2"></i>&nbsp;
+            <p>Requests</p><!--Kishan changed Menu-->
+            <span class="badge badge-info right font-14 py-1">{{ count($allRequests) }}</span>
+            </a>
+          </li> 
           <li class="nav-item">
                 <a href="{{ route('toilets.index') }}" class="nav-link {{ (request()->is('toiletowner/toilets')) ? 'active' : '' }}"><!--Kishan changed link-->
                   <i class="fas fa-restroom pl-1"></i>
