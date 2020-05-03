@@ -8,13 +8,14 @@ use App\Model\State;
 use Faker\Generator as Faker;
 
 $factory->define(City::class, function (Faker $faker) {
+	$country = Country::all()->random();
+    $state = State::where('country_id',$country->id)->whereNotNull('country_id')->inRandomOrder()->first();
+    if($state['id']==null)
+    	$state['id']=1;
+
     return [
         'city' => $faker->city,
-        'country_id' => function(){
-            return Country::all()->random();
-        },
-        'state_id' => function(){
-            return State::all()->random();
-        },
+        'country_id' => $country->id,
+        'state_id' => $state['id'],
     ];
 });

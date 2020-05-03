@@ -23,24 +23,36 @@ class ToiletController extends Controller
     public function show($id)
     {
         if(request()->input('country_id')) {
-            $states = State::where('country_id',request()->input('country_id'))->get();
-            $data='';
-            foreach ($states as $state) {
-                $data = $data.'<option value="'.$state->id.'">'.$state->state.'</option>';
+            $states = State::where('country_id',request()->input('country_id'))->orderBy('state')->get();
+            if(count($states)>0) {
+                $data='<option>-select state-</option>';
+                foreach ($states as $state) {
+                    $data = $data.'<option value="'.$state->id.'">'.$state->state.'</option>';
+                }
+                return $data;
             }
-            return $data;
+            else return $data=0;
         }
         if(request()->input('state_id')) {
-            $cities = City::where('state_id',request()->input('state_id'))->get();
-            $data='';
-            foreach ($cities as $city) {
-                $data = $data.'<option value="'.$city->id.'">'.$city->city.'</option>';
+            $cities = City::where('state_id',request()->input('state_id'))->orderBy('city')->get();
+            if(count($cities)>0) {
+                $data='<option>-select city-</option>';
+                foreach ($cities as $city) {
+                    $data = $data.'<option value="'.$city->id.'">'.$city->city.'</option>';
+                }
+                return $data;
             }
-            return $data;
+            else return $data=0;
         }
-        $countries = Country::orderBy('country')->get();
+
         $toilet = ToiletInfo::where('id','=',$id)->where('owner_id','=',Auth::user()->id)->get();
-        return view($this->url.'show',compact('toilet','countries'));
+        $datas = [
+            'countries' => Country::orderBy('country')->get(),
+            'states' => State::where('country_id',$toilet[0]['country_id'])->orderBy('state')->get(),
+            'cities' => City::where('state_id',$toilet[0]['state_id'])->orderBy('city')->get(),
+        ];
+        $datas = (object)$datas;
+        return view($this->url.'show',compact('toilet','datas'));
     }
 
     public function store(Request $request)

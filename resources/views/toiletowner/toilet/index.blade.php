@@ -151,13 +151,13 @@
 							<div class="col-lg-4">
 								<div class="form-group">
 									<label for="state">State</label>
- 									<select name="state" class="form-control" id="state"></select>
+ 									<select name="state" class="form-control" id="state"><option>-select-</option></select>
 								</div>
 							</div>
 							<div class="col-lg-4">
 								<div class="form-group">
 									<label for="city">City</label>
-									<select name="city" class="form-control" id="city"></select>
+									<select name="city" class="form-control" id="city"><option>-select-</option></select>
 								</div>
 							</div>
 						</div>
@@ -195,7 +195,10 @@ $(document).ready(function(){
             },
 			dataType:'html',
 			success:function(data){
-				$("#state").html(data);
+				if(data<1)
+					$("#state").html('<option>-No state found-</option>');
+				else
+					$("#state").html(data);
 			}
 		});
 	});
@@ -211,7 +214,10 @@ $(document).ready(function(){
             },
 			dataType:'html',
 			success:function(data){
-				$("#city").html(data);
+				if(data<1)
+					$("#city").html('<option>-No city found-</option>');
+				else
+					$("#city").html(data);
 			}
 		});
 	});

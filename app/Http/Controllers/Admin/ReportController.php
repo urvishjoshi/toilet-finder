@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\ToiletUsageInfo;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class ReportController extends Controller
 {
@@ -17,6 +19,16 @@ class ReportController extends Controller
         return view('admin.report');
     }
 
+    public function show($id)
+    {
+        $range = request('selectRange');
+        if(($range%6)!=0){
+            return $sales = ToiletUsageInfo::where('created_at','>=',Carbon::now()->subdays($range))->get();
+        }
+        else{
+            return $sales = ToiletUsageInfo::where("created_at",">=", Carbon::now()->subMonths($range))->get();
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -44,10 +56,6 @@ class ReportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

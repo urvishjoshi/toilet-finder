@@ -76,16 +76,16 @@
 								<div class="form-group">
 									<label for="country">Country</label>
 									<select name="country" class="form-control" id="country">
-				 						<option>select</option>{{-- 
+				 						{{-- 
 										@foreach ($countries as $country)
 										<option value="{{ $country->id }}">{{ $country->country }}</option>
 										@endforeach --}}
-										@foreach ($countries as $country)
-										    <option value="{{ $country->id }}"
-										    @if ($country == $toilet[0]->country)
+										@foreach ($datas->countries as $country)
+										    <option value="{{ $country['id'] }}"
+										    @if ($country['id'] == $toilet[0]->country_id)
 										        selected="selected"
 										    @endif
-										    >{{  $country->country }}</option>
+										    >{{  $country['country'] }}</option>
 										@endforeach
 			 						</select>
 								</div>
@@ -93,13 +93,29 @@
 							<div class="col-lg-4">
 								<div class="form-group">
 									<label for="state">State</label>
- 									<select name="state" class="form-control" id="state"></select>
+ 									<select name="state" class="form-control" id="state">
+ 										@foreach ($datas->states as $state)
+										    <option value="{{ $state['id'] }}"
+										    @if ($state['id'] == $toilet[0]->state_id)
+										        selected="selected"
+										    @endif
+										    >{{  $state['state'] }}</option>
+										@endforeach
+ 									</select>
 								</div>
 							</div>
 							<div class="col-lg-4">
 								<div class="form-group">
 									<label for="city">City</label>
-									<select name="city" class="form-control" id="city"></select>
+									<select name="city" class="form-control" id="city">
+										@foreach ($datas->cities as $city)
+										    <option value="{{ $city['id'] }}"
+										    @if ($city['id'] == $toilet[0]->city_id)
+										        selected="selected"
+										    @endif
+										    >{{  $city['city'] }}</option>
+										@endforeach
+									</select>
 								</div>
 							</div>
 						</div>
@@ -132,6 +148,7 @@ $(document).ready(function(){
             },
 			dataType:'html',
 			success:function(data){
+				console.log(data)
 				$("#state").html(data);
 			}
 		});

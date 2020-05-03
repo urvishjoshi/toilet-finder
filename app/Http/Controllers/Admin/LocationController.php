@@ -18,26 +18,33 @@ class LocationController extends Controller
     public function index()
     {
         $countries = Country::orderBy('country')->get();
-        return view('admin/location',compact('countries'));
+        $states = State::orderBy('state')->get();
+        return view('admin/location',compact('countries','states'));
     }
 
     public function show($id)
     {
         if(request()->input('country_id')) {
-            $states = State::where('country_id',request()->input('country_id'))->get();
-            $data='';
-            foreach ($states as $state) {
-                $data = $data.'<option value="'.$state->id.'">'.$state->state.'</option>';
+            $states = State::where('country_id',request()->input('country_id'))->orderBy('state')->get();
+            if(count($states)>0) {
+                $data='<option>-select state-</option>';
+                foreach ($states as $state) {
+                    $data = $data.'<option value="'.$state->id.'">'.$state->state.'</option>';
+                }
+                return $data;
             }
-            return $data;
+            else return $data=0;
         }
         if(request()->input('state_id')) {
-            $cities = City::where('state_id',request()->input('state_id'))->get();
-            $data='';
-            foreach ($cities as $city) {
-                $data = $data.'<option value="'.$city->id.'">'.$city->city.'</option>';
+            $cities = City::where('state_id',request()->input('state_id'))->orderBy('city')->get();
+            if(count($cities)>0) {
+                $data='<option>-select city-</option>';
+                foreach ($cities as $city) {
+                    $data = $data.'<option value="'.$city->id.'">'.$city->city.'</option>';
+                }
+                return $data;
             }
-            return $data;
+            else return $data=0;
         }
     }
     /**
@@ -58,7 +65,27 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->addCountry){
+            $country = new Country;
+            $country->country =  $request->addCountry;
+            $country->save();
+            return back();
+        }
+        if($request->addState){
+            $state = new State;
+            $state->country_id =  $request->countryId;
+            $state->state =  $request->addState;
+            $state->save();
+            return back();
+        }
+        if($request->addCity){
+            $city = new City;
+            $city->country_id =  $request->countryId;
+            $city->state_id =  $request->stateId;
+            $city->city =  $request->addCity;
+            $city->save();
+            return back();
+        }
     }
 
     /**

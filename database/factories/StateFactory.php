@@ -8,10 +8,9 @@ use App\Model\State;
 use Faker\Generator as Faker;
 
 $factory->define(State::class, function (Faker $faker) {
+	$country = Country::all()->random();
     return [
         'state' => $faker->state,
-        'country_id' => function(){
-            return Country::all()->random();
-        },
+        'country_id' => $country->id,
     ];
 });
