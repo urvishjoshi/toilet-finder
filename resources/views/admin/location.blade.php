@@ -4,7 +4,7 @@
 
 <section>
 	<div class="content pt-4">
-    		<div class="container-fluid">
+    		<div class="container">
     			<div class="row">
     				<div class="col-md text-center">
     					<h2>Add Location</h2>
@@ -16,25 +16,38 @@
     </div>
 
 	<div class="content-header">
-		<div class="container-fluid">
+		<div class="container">
  			@method('GET') @csrf
- 				<div class="form-group">
- 					<label for="country">Select Country</label>
- 					<select name="country" class="form-control" id="country">
- 						<option>select</option>
-						@foreach ($countries as $country)
-							<option value="{{ $country->id }}">{{ $country->country }}</option>
-						@endforeach
- 					</select>
- 				</div>
- 				<div class="form-group">
- 					<label for="state">Select State</label>
- 					<select name="state" class="form-control" id="state"></select>
- 				</div>
- 				<div class="form-group">
- 					<label for="city">Select City</label>
- 					<select name="city" class="form-control" id="city"></select>
- 				</div>
+ 				<div class="row">
+					<div class="col-lg-3">
+						<div class="form-group">
+							<label for="country">Country</label>
+							<select name="country" class="form-control" id="country">
+		 						<option>select</option>
+								@foreach ($countries as $country)
+									<option value="{{ $country->id }}">{{ $country->country }}</option>
+								@endforeach
+	 						</select>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="form-group">
+							<label for="state">State</label>
+								<select name="state" class="form-control" id="state"></select>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="form-group">
+							<label for="city">City</label>
+							<input type="text" name="city" id="city" class="form-control" placeholder="Add city">
+						</div>
+					</div>
+						<div class="col-lg-2">
+							<div class="form-group">
+							<label for="city"></label>
+							<button type="submit" class="btn btn-primary d-flex align-items-end mt-2">Add</button>
+						</div></div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -68,7 +81,7 @@ $(document).ready(function(){
             },
 			dataType:'html',
 			success:function(data){
-				$("#city").html(data);
+				// $("#city").html(data);
 			}
 		});
 	});

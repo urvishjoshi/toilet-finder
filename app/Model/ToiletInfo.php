@@ -16,15 +16,37 @@ class ToiletInfo extends Model
         'owner_id', 'toilet_name','price','complex_name','address','toilet_lat','toilet_lng','status',
     ];
 
+    public function getOwner()
+    {
+        return $owner = $this->owner['name'];
+    }
     public function getFullAddress()
     {
-        // $address =  $this->city;
-        // $address =  $address.", ".$this->state;
         return $address = ", ".$this->city['city'].", ".$this->state['state'].", ".$this->country['country'];
     }
     public function getAverageRating()
     {
-        return $this->ratings->count() > 0 ? round($this->ratings->sum('rating')/$this->ratings->count(),1) : 0;
+        return $this->ratings->count() > 0 ? round($this->ratings->sum('rating')/$this->ratings->count(),2) : 0;
+    }
+    public function getType()
+    {
+        if($this->type=='0') $t = 'Female'; elseif ($this->type=='1')   $t = 'Male'; else  $t = 'Male & Female'; return $t;
+    }
+    public function getStatus()
+    {
+        return $this->status=='0' ? 'Not active' : 'Active';
+    }
+    public function getCountry()
+    {
+        return $this->country['country'];
+    }
+    public function getState()
+    {
+        return $this->state['state'];
+    }
+    public function getCity()
+    {
+        return $this->city['city'];
     }
     
     public function owner()

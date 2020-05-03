@@ -19,7 +19,7 @@ $factory->define(Rating::class, function (Faker $faker) {
         'user_id' => function(){
         	return User::all()->random();
         },
-        'rating' => $faker->numberBetween(0,5),
+        'rating' => $faker->numberBetween(1,5),
         'desc' => $faker->paragraph,
     ];
 });
