@@ -18,7 +18,7 @@
     	</div>
 
     	<!-- /.content-header -->
-		<div class="content-header">
+		<div class="content-header mt-0 pt-0">
 		<div class="container-fluid">
 		<div class="container justify-content-center" id="requestTable">
 			<table class="table table-hover">

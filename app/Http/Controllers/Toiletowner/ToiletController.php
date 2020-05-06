@@ -15,9 +15,10 @@ class ToiletController extends Controller
     private $url = 'toiletowner.toilet.';
     public function index()
     {
+        $thisOwner=\App\Model\ToiletOwner::where('id',Auth::user()->id)->get();
         $toilets = ToiletInfo::where('owner_id','=',Auth::user()->id)->with('owner')->orderBy('status','desc')->get();
         $countries = Country::orderBy('country')->get();
-        return view($this->url.'index',compact('toilets','countries'));
+        return view($this->url.'index',compact('toilets','countries','thisOwner'));
     }
 
     public function show($id)
@@ -66,6 +67,7 @@ class ToiletController extends Controller
         $toilet->complex_name = $request->complexname;
         $toilet->address = $request->address;
         $toilet->country_id = $request->country;
+        $toilet->type = $request->toilettype;
         $toilet->state_id = $request->state;
         $toilet->city_id = $request->city;
         $toilet->toilet_lat = $request->newLat;

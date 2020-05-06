@@ -32,7 +32,7 @@
 
 			<li class="nav-item">
 			  <a href="{{ route('a.locations.index') }}" class="nav-link {{ (request()->is('admin/locations')) ? 'active' : '' }}"><!--Kishan changed link-->
-				<i class="fas fa-user-edit pl-2"></i>&nbsp;
+				<i class="fas fa-map-marker-alt pl-2"></i>&nbsp;&nbsp;&nbsp;
 				<p>Add Location</p><!--Kishan changed Menu-->
 			  </a>
 			</li>  
@@ -78,10 +78,8 @@
 			</li>     
 			<li class="nav-item">
 			  <a href="{{ route('a.feedbacks.index') }}" class="nav-link {{ (request()->is('admin/feedbacks')) ? 'active' : '' }}">
-				<i class="nav-icon fas fa-edit"></i>
-				<p>
-				  Feedbacks      <!--Kishan changed Menu-->
-				</p>
+				<i class="fas fa-envelope" style="padding-left: 5px;"></i>
+				<p class="pl-2">Feedbacks</p>
 			  </a>
 			</li><hr>  
 		

@@ -2,18 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Feedback;
 use Illuminate\Http\Request;
+use Auth;
 
-class FeedbackContoller extends Controller
+class FeedbackController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $feedbacks = Feedback::where('feedbacker_id',Auth::user()->id)->where('feedbacker_type','1')->get();
+        return view('toiletowner.feedback',compact('feedbacks'));
+    }
+    
+    public function store(Request $request)
+    {
+        $feedback = new Feedback;
+        $feedback->feedbacker_id = Auth::user()->id;
+        $feedback->feedbacker_type = '1';
+        $feedback->subject = $request->subject;
+        $feedback->desc = $request->description;
+        $feedback->save();
+        return back();
     }
 
     /**
@@ -32,10 +41,6 @@ class FeedbackContoller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.

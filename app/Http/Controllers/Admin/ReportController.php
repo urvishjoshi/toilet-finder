@@ -9,25 +9,25 @@ use Illuminate\Support\Carbon;
 
 class ReportController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $url = 'admin.report.';
     public function index()
     {
-        return view('admin.report');
+        return view($this->url.'index');
     }
 
     public function show($id)
     {
         $range = request('selectRange');
         if(($range%6)!=0){
-            return $sales = ToiletUsageInfo::where('created_at','>=',Carbon::now()->subdays($range))->get();
+            if($range==1)
+                $sales = ToiletUsageInfo::all();
+            else
+                $sales = ToiletUsageInfo::where('created_at','>=',Carbon::now()->subdays($range))->get();
         }
         else{
-            return $sales = ToiletUsageInfo::where("created_at",">=", Carbon::now()->subMonths($range))->get();
+            $sales = ToiletUsageInfo::where("created_at",">=", Carbon::now()->subMonths($range))->get();
         }
+        return view($this->url.'show',compact('sales'));
     }
     /**
      * Show the form for creating a new resource.

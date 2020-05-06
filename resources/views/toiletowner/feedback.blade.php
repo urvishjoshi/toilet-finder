@@ -32,11 +32,38 @@
 								</div>
 							</div>
 						</div>
-						<button type="submit" id="fdbksend" name="fdbksend" class="btn btn-primary">Send Feedback</button>
+						<button type="submit" id="ownerfdbk" name="ownerfdbk" class="btn btn-primary">Send Feedback</button>
 						</div>
 					</form>
 				</div>
 			</div>
+			@if( count($feedbacks) >= 1 )
+			<hr>
+			<div class="row pb-0 mb-0">
+    				<div class="col-md text-center">
+    					<h2 class="mb-0">Past feedback records</h2>
+    				</div><!-- /.col -->
+    			</div>
+			<HR width=40% class="mt-2">
+			<table class="table table-hover">
+			<thead>
+			<tr class="thead-light">
+				<th>Subject</th>
+				<th>Description</th>
+				<th>Sent on</th>
+			</tr>
+			</thead>
+			<tbody>
+				@foreach($feedbacks as $feedback)
+			    <tr>
+					<td>{{ $feedback->subject }}</td>
+					<td>{{ $feedback->desc }}</td>
+					<td>{{ $feedback->created_at->format('d/m/Y').' at '.$feedback->created_at->format('g:i A') }}</td>
+			    </tr>
+				@endforeach
+			@endif
+			</tbody>
+		</table>
 		</div>
 	</div>
 	</div>

@@ -148,8 +148,11 @@ $(document).ready(function(){
             },
 			dataType:'html',
 			success:function(data){
-				console.log(data)
-				$("#state").html(data);
+				if(data<1)
+					$("#state").html('<option>-No state found-</option>');
+				else
+					$("#state").html(data);
+				$("#city").html('<option>-select-</option>');
 			}
 		});
 	});
@@ -165,7 +168,10 @@ $(document).ready(function(){
             },
 			dataType:'html',
 			success:function(data){
-				$("#city").html(data);
+				if(data<1)
+					$("#city").html('<option>-No city found-</option>');
+				else
+					$("#city").html(data);
 			}
 		});
 	});

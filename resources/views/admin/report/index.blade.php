@@ -19,15 +19,16 @@
 					@method('GET') @csrf
 					<div class="col-md-auto" id="monthDiv">
 						<select class="custom-select" id="selectRange" name="selectRange">
-							<option disabled>Select range</option>
+							<option>Select range</option>
 							<option value="7">7 days</option>
 							<option value="31">30 days</option>
 							<option value="6">6 months</option>
 							<option value="12">1 year</option>
+							<option value="1">All</option>
 						</select>
 					</div>
 					<div class="col-md-auto">
-						<button class="btn btn-primary" value="getRecord" name="getRecord" type="submit">Get Record</button>
+						<button class="btn btn-primary" value="getReport" name="getReport" type="submit">Get Reports</button>
 					</div>
 					</form>
 				</div>

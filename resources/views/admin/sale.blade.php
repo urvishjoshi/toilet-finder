@@ -35,7 +35,7 @@
 				</thead>
 				<tbody>
 					@if( count($sales) == 0 )
-						<tr><td colspan="6"><center><h2>No Requests</h2><hr></center></td></tr>
+						<tr><td colspan="7"><center><h2>No Requests</h2><hr></center></td></tr>
 					@else
 						@foreach($sales as $sale)
 						    <tr>

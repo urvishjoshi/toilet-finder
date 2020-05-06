@@ -3,8 +3,8 @@
 <head>
 	@section('session','Toiletowner')
 	@include('layouts.head') 
-	<?php $allRequests=\App\Model\ToiletUsageInfo::where('status','=','0')->where('owner_id',Auth::user()->id)->get();
-	$autoalloc=\App\Model\ToiletOwner::where('id',Auth::user()->id)->get(); ?>
+	<?php $allRequests=\App\Model\ToiletUsageInfo::where('status','=','0')->where('owner_id',Auth::user()->id)->get(); 
+	$thisOwner=\App\Model\ToiletOwner::where('id',Auth::user()->id)->get(); ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini layout-fixed">
 	<div class="wrapper">

@@ -1,9 +1,41 @@
 @section('title','Toilet')
 @extends('toiletowner.layouts.app')
-
 @section('toilet.index')
-	<section>
 
+@if($thisOwner[0]['status']=='0')
+    <script>
+		$(function() {  //disables all inputs
+			$("div *").attr("disabled", "disabled").off('click');
+			$("div *").attr("title", "Your account is not active yet, you can't create new toilets");
+		})
+    </script>
+    <div class="container-fluid row justify-content-center pt-4" id="toast">
+		<div class="alert bg-warning text-center font-20" id="toast-body">
+			You can't create new toilets, Please <a href="{{ route('feedbacks.index') }}" >contact</a> admin for more details.
+		</div>
+    </div>
+
+	<section>
+	<div class="content-header pb-0 pt-3">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<div class="row align-items-center">
+						<div class="col-8">
+							<h3 class="mb-0" class="tooltip-test">Your Toilets</h3>
+						</div>
+						<div class="col-4 text-right">
+						  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewToilet">
+						  	  Add new Toilet
+						  	</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+@else
+	<section>
 	<div class="content-header pb-0 pt-3">
 		<div class="col-md-12">
 			<div class="card">
@@ -28,14 +60,14 @@
 			<table class="table table-hover">
 				<thead>
 				<tr class="thead-light">
-					<th scope="col" center>Id</th>
-					<th scope="col">Toilet name</th>
-					<th scope="col">Complex</th>
-					<th scope="col">Address</th>
-					<th scope="col">Status</th>
-					<th scope="col">Price</th>
-					<th scope="col">Created on</th>
-					<th scope="col">Action</th>
+					<th center>Id</th>
+					<th>Toilet name</th>
+					<th>Complex</th>
+					<th>Address</th>
+					<th>Status</th>
+					<th>Price</th>
+					<th>Created on</th>
+					<th>Action</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -199,6 +231,7 @@ $(document).ready(function(){
 					$("#state").html('<option>-No state found-</option>');
 				else
 					$("#state").html(data);
+				$("#city").html('<option>-select-</option>');
 			}
 		});
 	});
@@ -223,6 +256,7 @@ $(document).ready(function(){
 	});
 });
 </script>
+@endif
 @endsection
 <script>
 	    var marker;

@@ -25,6 +25,7 @@
 				      <th>Id</th>
 				      <th>Email</th>
 				      <th>Toilets owned</th>
+				      <th>Auto allocate</th>
 				      <th>Registered on</th>
 				      <th width="11%">View Owner</th>
 				      <th width="11%">View Toilets</th>
@@ -39,7 +40,9 @@
 								<th scope="row">{{ $owner->id }}</th>
 								<td>{{ $owner->email }}</td>
 								<td>{{ count($owner->toilets) }}</td>
-								{{-- <td>{{ count($owner->toiletusages) }}</td> --}}
+								<td>
+									{{ $owner->auto_allocate=='1' ? 'On' : 'Off' }}
+								</td>
 								<td>{{ $owner->created_at->format('d/m/Y').' at '.$owner->created_at->format('g:i A') }}</td>
 								<td>
 									<a href="{{ route('a.toiletowners.show',['id'=>$owner->id,'name'=>$owner->name]) }}" class="btn btn-primary" name="view">View</a>

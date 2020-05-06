@@ -22,7 +22,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-          <li class="nav-item" id="requestlink" style="display: {{ $autoalloc[0]['auto_allocate']=='1' ? 'none' : 'block' }};">
+          <li class="nav-item" id="requestlink" style="display: {{ $thisOwner[0]['auto_allocate']=='1' ? 'none' : 'block' }};">
             <a href="{{ route('requests.index') }}" class="nav-link {{ (request()->is('toiletowner/requests')) ? 'active' : '' }}"><!--Kishan changed link-->
             <i class="fas fa-user-edit pl-2"></i>&nbsp;
             <p>Requests</p><!--Kishan changed Menu-->
@@ -56,22 +56,10 @@
           
           <li class="nav-item"><!--Kishan changed link-->
             <a href="{{ route('feedbacks.index') }}" class="nav-link {{ (request()->is('toiletowner/feedbacks')) ? 'active' : '' }}">
-              <i class="fas fa-envelope pl-2"></i>
+              <i class="fas fa-envelope" style="padding-left: 5px;"></i>
               <p class="pl-2">Feedback</p>
             </a>
           </li>
-            
-      
-         
-              
-
-          
-          <!--Kishan changed LOG IN AND ANOTHER TAB
-          Register,forgot etc..
-          -->
-        
-          
-        
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
