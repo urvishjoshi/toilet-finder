@@ -32,6 +32,7 @@
 
   <!--custom style for active class color in sidebars) -->
 <style>
+  #toast-body{position:fixed;top:80%;z-index: 9999;opacity: 0.9}
 	.active{
 		background-color: #6c757d!important;
 	}

@@ -27,13 +27,22 @@
 
 				@yield('rating.index')
 				@yield('rating.show')
-			@yield('sale')		
+			@yield('sale')
 			@yield('permission')
 			@yield('report')
-			@yield('feedback')	
-			@yield('location')	
-		</div>
+			@yield('feedback')
+			@yield('location')
 
+			@if(Session::has('toast'))
+				<div id="toast" class="mx-auto container row justify-content-center">
+					<div class="alert bg-dark text-white" id="toast-body">
+						{{ Session::get('toast') }}
+					</div>
+				</div>
+				<script>setTimeout(function() { $('#toast').fadeOut('slow'); }, 3500);</script>
+			@endif
+			
+		</div>
 		@include('layouts.footer')
 	</div>
 </body>

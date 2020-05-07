@@ -1,5 +1,5 @@
 @section('title','Reports')
-@extends('admin.layouts.app')
+@extends('toiletowner.layouts.app')
 @section('report')
 <section>
 	<div class="container pt-3">
@@ -17,7 +17,7 @@
 			<div class="row">
 				<div class="col-md-1"></div>
 				<div class="col-md-10">
-					<form action="{{ route('a.reports.show',1) }}" method="post" id="form" class="row justify-content-center">
+					<form action="{{ route('reports.show',1) }}" method="post" id="form" class="row justify-content-center">
 						@method('GET') @csrf
 						<div class="col-md-auto">
 							<select class="custom-select" id="selectRange" name="selectRange">
@@ -53,7 +53,7 @@ $(document).ready(function(){
 		var value = $('#selectRange :selected').val();
 		$.ajax({
 			method:"POST",
-			url:"{{ route('a.reports.show',1) }}",
+			url:"{{ route('reports.show',1) }}",
 			data: {
                'selectRange': value,
                 '_token': $('input[name=_token]').val(),

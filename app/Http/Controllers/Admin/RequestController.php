@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Model\ToiletOwner;
+use App\Model\ToiletInfo;
 use Illuminate\Http\Request;
+use Session;
 
 class RequestController extends Controller
 {
@@ -17,6 +19,7 @@ class RequestController extends Controller
             'allDeactives'=> ToiletOwner::where('status','=','-1')->get()
         ];
         $data = (object) $data;     //convert array into obj 
+
         return view($this->url.'index',compact('data'));
     }
 
@@ -48,18 +51,23 @@ class RequestController extends Controller
         $edit = ToiletOwner::find($id);
         if($request->btn=='1'){
             $edit->status = '1';
+            $msg = 'Owner '.$edit->email.' has been successfully approved';
         }
         if($request->btn=='-1'){
             $edit->status = '-1';
+            $remove = ToiletInfo::where('owner_id',$id)->get();
+            $remove->each->delete();
+            $msg = 'Owner '.$edit->email.' has been successfully denied';
         }
         $edit->save();
-        return back();
+        return back()->with('toast',$msg);
     }
 
     public function destroy($id)
     {
         $delete = ToiletOwner::find($id);
+        $msg = 'Owner '.$delete->email.' has been successfully denied';
         $delete->delete();
-        return back();
+        return back()->with('toast',$msg);
     }
 }

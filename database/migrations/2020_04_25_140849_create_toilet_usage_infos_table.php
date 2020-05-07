@@ -19,18 +19,15 @@ class CreateToiletUsageInfosTable extends Migration
             $table->unsignedBigInteger('owner_id');
             $table->foreign('owner_id')
                     ->references('id')
-                    ->on('toilet_owners')
-                    ->onDelete('cascade');
+                    ->on('toilet_owners');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                     ->references('id')
-                    ->on('users')
-                    ->onDelete('cascade');
+                    ->on('users');
             $table->unsignedBigInteger('toilet_id');
             $table->foreign('toilet_id')
                     ->references('id')
-                    ->on('toilet_infos')
-                    ->onDelete('cascade');
+                    ->on('toilet_infos');
             $table->enum('status', ['0', '1','-1'])->default('0')->comment('0-Pending,1-Done,-1:Rejected');
             // $table->unsignedBigInteger('price')->fillable();
             // $table->foreign('price')

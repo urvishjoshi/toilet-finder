@@ -43,6 +43,7 @@ Route::group(['prefix'=>'toiletowner'],function(){
 			Route::resource("toiletusers",'ToiletuserController');
 			Route::resource("sales",'SaleController');
 			Route::resource("ratings",'RatingController');
+			Route::resource("reports",'ReportController');
 		});
 	});
 });

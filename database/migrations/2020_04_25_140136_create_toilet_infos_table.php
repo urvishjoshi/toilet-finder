@@ -39,8 +39,8 @@ class CreateToiletInfosTable extends Migration
                     ->references('id')
                     ->on('countries')
                     ->onDelete('cascade');
-            $table->string('toilet_lat');
-            $table->string('toilet_lng');
+            $table->string('toilet_lat')->nullable();
+            $table->string('toilet_lng')->nullable();
             $table->enum('type', ['0', '1','2'])->default('2')->comment('0-Female,1-Male,2-Both');
             $table->enum('status', ['0', '1'])->default('0')->comment('0-Not Active,1-Active');
             $table->timestamps();

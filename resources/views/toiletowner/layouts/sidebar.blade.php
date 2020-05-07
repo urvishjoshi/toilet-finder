@@ -50,7 +50,13 @@
           <li class="nav-item has-treeview">
             <a href="{{ route('ratings.index') }}" class="nav-link {{ (request()->is('toiletowner/ratings')) ? 'active' : '' }}">
               <i class="nav-icon fa fa-star "></i>
-               <p>Your Ratings</p>
+               <p>Toilet Ratings</p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{{ route('reports.index') }}" class="nav-link {{ (request()->is('toiletowner/reports')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-chart-pie"></i>
+               <p>Toilet Reports</p>
             </a>
           </li>  
           

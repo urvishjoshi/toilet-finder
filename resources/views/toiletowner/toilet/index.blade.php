@@ -9,8 +9,8 @@
 			$("div *").attr("title", "Your account is not active yet, you can't create new toilets");
 		})
     </script>
-    <div class="container-fluid row justify-content-center pt-4" id="toast">
-		<div class="alert bg-warning text-center font-20" id="toast-body">
+    <div class="container-fluid row justify-content-center pt-4">
+		<div class="alert bg-warning text-center font-20">
 			You can't create new toilets, Please <a href="{{ route('feedbacks.index') }}" >contact</a> admin for more details.
 		</div>
     </div>

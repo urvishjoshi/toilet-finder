@@ -69,7 +69,8 @@ class ToiletuserController extends Controller
     public function destroy($id)
     {
         $delete = User::find($id);
+        $msg = 'User '.$delete->email.' has been successfully deleted';
         $delete->delete();
-        return back();
+        return back()->with('toast',$msg);
     }
 }

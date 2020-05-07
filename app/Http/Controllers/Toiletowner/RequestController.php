@@ -22,12 +22,14 @@ class RequestController extends Controller
         if($request->btn=='1'){
             $edit->status = '1';
             //transaction process
+            $msg = 'approved';
             $edit->save();
         }
         if($request->btn=='-1'){
+            $msg = 'denied';
             $edit->delete();
         }
-        return back();
+        return back()->with('toast.o','Request '.$msg);
     }
 
     public function create()

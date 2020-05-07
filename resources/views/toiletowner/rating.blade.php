@@ -27,7 +27,7 @@
 					<th>Toilet id</th>
 					<th>Toilet name</th>
 					<th>User id</th>
-					<th width="18%">Rated</th>
+					<th width="22%">Rated</th>
 					<th width="40%">Review</th>
 					<th width="15%">Rated on</th>
 				</tr>

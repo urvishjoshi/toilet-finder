@@ -51,7 +51,7 @@
 								<td>
 								<form action="{{ route('a.toiletusers.destroy',$user->id) }}" method="POST">
 								@method('DELETE') @csrf
-									<a href="{{ route('a.toiletusers.show',[$user->id,'name'=>$user->name]) }}" class="btn btn-primary" name="btn" type="submit" value="view">View</a>
+									<a href="{{ route('a.toiletusers.show',[$user->id,'name'=>$user->name]) }}" class="btn btn-primary" name="btn" type="submit" value="view">View</a>&nbsp;
 									
 									<button class="btn btn-danger" name="btn" type="submit" value="delete">Delete</button>
 

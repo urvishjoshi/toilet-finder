@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Toiletowner;
 
 use App\Http\Controllers\Controller;
 use App\Model\ToiletUsageInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Auth;
 use PDF;
 
 class ReportController extends Controller
 {
-    private $url = 'admin.report';
+    private $url = 'toiletowner.report';
     public function index()
     {
         if(!request('pdf'))
@@ -43,12 +44,12 @@ class ReportController extends Controller
     {
         if(($range%6)!=0){
             if($range==1)
-                $sales = ToiletUsageInfo::where('status','1')->get();
+                $sales = ToiletUsageInfo::where('status','1')->where('owner_id',Auth::user()->id)->get();
             else
-                $sales = ToiletUsageInfo::where('status','1')->where('created_at','>=',Carbon::now()->subdays($range))->get();
+                $sales = ToiletUsageInfo::where('status','1')->where('owner_id',Auth::user()->id)->where('created_at','>=',Carbon::now()->subdays($range))->get();
         }
         else{
-            $sales = ToiletUsageInfo::where('status','1')->where("created_at",">=", Carbon::now()->subMonths($range))->get();
+            $sales = ToiletUsageInfo::where('status','1')->where('owner_id',Auth::user()->id)->where("created_at",">=", Carbon::now()->subMonths($range))->get();
         }
         $total=0;
         foreach($sales as $sale) {
@@ -60,9 +61,8 @@ class ReportController extends Controller
                 <tr class="thead-light">
                     <th>Id</th>
                     <th>Transact Id</th>
-                    <th>Owner email</th>
+                    <th>Toilet name</th>
                     <th>User email</th>
-                    <th>Toilet id</th>
                     <th title="Total revenue is $'.$total.'" width=10%>
                         Paid | <b style="color:#28a745;">$'.$total.'</b>
                     </th>
@@ -80,14 +80,11 @@ class ReportController extends Controller
                 $data.='<tr>
                     <th scope="row">'.$sale->id.'</th>
                     <td>'.$sale->transaction_id.'</td>
-                    <td title="id-'.$sale->owner['id'].'">
-                        '.$sale->owner['email'].'
+                    <td title="id='.$sale->toilet_id.'">
+                        '.$sale->toilet['toilet_name'].'
                     </td>
                     <td title="id-'.$sale->user['id'].'">
                         '.$sale->user['email'].'
-                    </td>
-                    <td title="'.$sale->toilet['toilet_name'].'">
-                        '.$sale->toilet_id.'
                     </td>
                     <td><b>'.$sale->toilet['price'].'</b></td>
                     <td>'.$sale->created_at->format('d/m/Y').' at '.$sale->created_at->format('g:i A').'</td>
@@ -99,7 +96,6 @@ class ReportController extends Controller
 
         return $data;
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -120,13 +116,6 @@ class ReportController extends Controller
     {
         //
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 
     /**
      * Show the form for editing the specified resource.

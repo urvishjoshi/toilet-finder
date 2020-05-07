@@ -15,7 +15,7 @@ class ToiletController extends Controller
     private $url = 'toiletowner.toilet.';
     public function index()
     {
-        $thisOwner=\App\Model\ToiletOwner::where('id',Auth::user()->id)->get();
+        $thisOwner = ToiletOwner::where('id',Auth::user()->id)->get();
         $toilets = ToiletInfo::where('owner_id','=',Auth::user()->id)->with('owner')->orderBy('status','desc')->get();
         $countries = Country::orderBy('country')->get();
         return view($this->url.'index',compact('toilets','countries','thisOwner'));
@@ -73,7 +73,7 @@ class ToiletController extends Controller
         $toilet->toilet_lat = $request->newLat;
         $toilet->toilet_lng = $request->newLng;
         $toilet->save();
-        return back();
+        return back()->with('toast.o','Toilet '.$request->toiletname.' created');
     }
 
     public function create()
@@ -101,13 +101,14 @@ class ToiletController extends Controller
         $toilet->type = $request->toilettype;
         $toilet->status = $request->toiletstatus;
         $toilet->save();
-        return redirect(route('toilets.index'));
+        return redirect(route('toilets.index'))->with('toast.o','Toilet '.$request->toiletname.' updated');
     }
 
     public function destroy($id)
     {
         $delete = ToiletInfo::find($id);
+        $toilet = $delete->toilet_name;
         $delete->delete();
-        return back();
+        return back()->with('toast.o','Toilet '.$toilet.' deleted!');
     }
 }

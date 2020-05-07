@@ -24,6 +24,17 @@
 			@yield('rating')
 			@yield('sale')
 			@yield('feedback')
+			@yield('report')
+
+			@if(Session::has('toast.o'))
+				<div id="toast" class="mx-auto container row justify-content-center">
+					<div class="alert bg-dark text-white" id="toast-body">
+						{{ Session::get('toast.o') }}
+					</div>
+				</div>
+				<script>setTimeout(function() { $('#toast').fadeOut('slow'); }, 3500);</script>
+			@endif
+
 		</div>
 
 		@include('layouts.footer')

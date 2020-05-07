@@ -2,7 +2,7 @@
 @extends('admin.layouts.app')
 @section('request.show')
 	<section>
-		<div class="container pt-4 px-3">
+		<div class="container pt-3 px-3">
 			<div class="row">
 				<div class="col-md-1 d-flex align-items-start flex-column">
 					<a href="{{ route('a.requests.index') }}" class="fas fa-arrow-left pt-3 pl-2" style="font-size: 30px;text-decoration:none; "></a>
@@ -13,7 +13,7 @@
 				<div class="col-md-1"></div>
 			</div>
 
-			<HR width=20%>
+			<HR width=30% class="mt-1">
 			<div class="container justify-content-center" id="requestTable">
 				<table class="table table-hover">
 				    <thead>
@@ -45,7 +45,7 @@
 								@if( $status==-1 )
 									<button class="btn btn-success" name="btn" type="submit" value="1">Approve</button>&nbsp;&nbsp;
 								@else
-									<button class="btn btn-warning" name="btn" type="submit" value="-1">Deny</button> &nbsp;&nbsp;
+									<button class="btn btn-warning" name="btn" type="submit" value="-1" onclick="return confirm('Denying a owner will remove all their toilets! Are you sure?');">Deny</button> &nbsp;&nbsp;
 								@endif
 								</form>
 
@@ -64,7 +64,6 @@
 				    </tbody>
 				</table>
 			</div>
-
 		</div>
 	</section>
 @endsection
