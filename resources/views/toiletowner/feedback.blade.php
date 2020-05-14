@@ -23,11 +23,21 @@
 								<div class="col-lg-12">
 									<div class="form-group">
 										<label class="form-control-label" for="subject">Feedback subject</label>
-										<input type="text" id="subject" name="subject" class="form-control" placeholder="Subject" value="">
+										<input type="text" id="subject" name="subject" class="form-control" placeholder="Subject" value="{{old('subject')}}">
+										@error('subject')
+										    <span class="text-danger font-14" role="alert">
+										        <strong>{{ $message }}</strong>
+										    </span>
+										@enderror
 									</div>
 									<div class="form-group">
 										<label class="form-control-label" for="description">Describe your suggestion</label>
-										<textarea id="description" name="description" class="form-control" rows="9"></textarea>
+										<textarea id="description" name="description" class="form-control" rows="9" value="{{old('description')}}"></textarea>
+										@error('description')
+										    <span class="text-danger font-14" role="alert">
+										        <strong>{{ $message }}</strong>
+										    </span>
+										@enderror
 									</div>
 								</div>
 							</div>

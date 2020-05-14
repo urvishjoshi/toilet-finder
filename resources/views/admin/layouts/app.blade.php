@@ -33,10 +33,10 @@
 			@yield('feedback')
 			@yield('location')
 
-			@if(Session::has('toast'))
+			@if(Session::has('a.toast'))
 				<div id="toast" class="mx-auto container row justify-content-center">
 					<div class="alert bg-dark text-white" id="toast-body">
-						{{ Session::get('toast') }}
+						{{ Session::get('a.toast') }}
 					</div>
 				</div>
 				<script>setTimeout(function() { $('#toast').fadeOut('slow'); }, 3500);</script>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Feedback;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -16,13 +17,23 @@ class FeedbackController extends Controller
     
     public function store(Request $request)
     {
+        $validate = Validator::make($request->all(), [
+            'subject'   => 'required|string|max:255',
+            'description'   => 'required|min:25',
+        ]);
+
+        if($validate->fails())
+        {
+            return back()->withInput($request->all())->withErrors($validate);
+        }
+
         $feedback = new Feedback;
         $feedback->feedbacker_id = Auth::user()->id;
         $feedback->feedbacker_type = '1';
         $feedback->subject = $request->subject;
         $feedback->desc = $request->description;
         $feedback->save();
-        return back();
+        return back()->with('toast.o','Thanks for your feedback');
     }
 
     /**

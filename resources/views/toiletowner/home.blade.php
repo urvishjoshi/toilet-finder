@@ -56,7 +56,7 @@
 			</div>
 			<!-- /.row -->
 
-			  <h3 class="mt-4 mb-4">Social Widgets</h3>
+			{{--   <h3 class="mt-4 mb-4">Social Widgets</h3>
 
         		<div class="row d-flex justify-content-center">
         			<div class="col-md-7">
@@ -99,9 +99,9 @@
                 </div>
                 <!-- /.row -->
               </div>
-            </div>
+            </div> --}}
             <!-- /.widget-user -->
-          </div>
+          {{-- </div> --}}
           <!-- /.col -->
       	</div><!-- Row 2nd end -->
 

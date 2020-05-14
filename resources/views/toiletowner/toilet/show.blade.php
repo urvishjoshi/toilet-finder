@@ -7,7 +7,7 @@
 				<div class="container col-md-auto">
 				<div class="row">
 					<div class="col-md-1">
-						<a href="{{ url()->previous() }}" class="fas fa-arrow-left pt-3 pl-2" style="font-size: 30px;text-decoration:none; "></a>
+						<a href="{{ url('toiletowner/toilets') }}" class="fas fa-arrow-left pt-3 pl-2" style="font-size: 30px;text-decoration:none; "></a>
 					</div>
 					<div class="col-md text-center mr-4">
 						<h2>Edit toilet<b></b></h2>
@@ -26,7 +26,12 @@
 							<div class="col-lg-6">
 								<div class="form-group">
 									<label class="form-control-label" for="toiletname">Toilet name</label>
-									<input type="text" id="toiletname" name="toiletname" class="form-control" placeholder="Toilet name" value="{{ $toilet[0]->toilet_name }}" required>
+									<input type="text" id="toiletname" name="toiletname" class="form-control" placeholder="Toilet name" value="{{ $toilet[0]->toilet_name }}">
+									@error('toiletname')
+									    <span class="text-danger font-14" role="alert">
+									        <strong>{{ $message }}</strong>
+									    </span>
+									@enderror
 								</div>
 							</div>
 							<div class="col-lg-6">
@@ -45,7 +50,12 @@
 						<div class="row">
 							<div class="form-group col-md-2">
 								<label class="form-control-label" for="toiletprice">Price in <b>$</b></label>
-								<input id="toiletprice" name="toiletprice" class="form-control" placeholder="$" value="{{ $toilet[0]->price }}" type="number" required>
+								<input id="toiletprice" name="toiletprice" class="form-control" placeholder="$" value="{{ $toilet[0]->price }}" type="number">
+								@error('toiletprice')
+								    <span class="text-danger font-14" role="alert">
+								        <strong>{{ $message }}</strong>
+								    </span>
+								@enderror
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
@@ -61,7 +71,12 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="form-control-label" for="complexname">Complex name</label>
-									<input id="complexname" name="complexname" class="form-control" placeholder="Toilet Address" value="{{ $toilet[0]->complex_name }}" type="text" required>
+									<input id="complexname" name="complexname" class="form-control" placeholder="Toilet Address" value="{{ $toilet[0]->complex_name }}" type="text">
+									@error('complexname')
+									    <span class="text-danger font-14" role="alert">
+									        <strong>{{ $message }}</strong>
+									    </span>
+									@enderror
 								</div>
 							</div>
 						</div>
@@ -69,13 +84,18 @@
 							<div class="form-group col-lg-12">
 								<label class="form-control-label" for="address">Street Address</label>
 								<input type="text" id="address" name="address" class="form-control" placeholder="Street address of your toilet" value="{{ $toilet[0]->address }}">
+								@error('address')
+								    <span class="text-danger font-14" role="alert">
+								        <strong>{{ $message }}</strong>
+								    </span>
+								@enderror
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-lg-4">
 								<div class="form-group">
 									<label for="country">Country</label>
-									<select name="country" class="form-control" id="country">
+									<select name="country" class="form-control" id="country" required>
 				 						{{-- 
 										@foreach ($countries as $country)
 										<option value="{{ $country->id }}">{{ $country->country }}</option>
@@ -93,7 +113,7 @@
 							<div class="col-lg-4">
 								<div class="form-group">
 									<label for="state">State</label>
- 									<select name="state" class="form-control" id="state">
+ 									<select name="state" class="form-control" id="state" required>
  										@foreach ($datas->states as $state)
 										    <option value="{{ $state['id'] }}"
 										    @if ($state['id'] == $toilet[0]->state_id)
@@ -107,7 +127,7 @@
 							<div class="col-lg-4">
 								<div class="form-group">
 									<label for="city">City</label>
-									<select name="city" class="form-control" id="city">
+									<select name="city" class="form-control" id="city" required>
 										@foreach ($datas->cities as $city)
 										    <option value="{{ $city['id'] }}"
 										    @if ($city['id'] == $toilet[0]->city_id)
@@ -126,7 +146,7 @@
 						</div>
 						<input type="hidden" name="newLat" id="newLat" value="{{ $toilet[0]->toilet_lat }}">
 						<input type="hidden" name="newLng" id="newLng" value="{{ $toilet[0]->toilet_lng }}">
-						<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuM60AoMrwB7dnMEOL7bge_3bM4DJtdn8&callback=myMap"></script>
+						<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGBvEqVEGH6-O3GAzwlH1aon9m0iVslTo&callback=myMap"></script>
 					</div>
     			</div>
 				<div class="modal-footer bg-light">
@@ -184,8 +204,8 @@ $(document).ready(function(){
     var marker;
     var infowindow;
     var myLatLng = {
-     	lat: {{ $toilet[0]->toilet_lat }} , 
-     	lng: {{ $toilet[0]->toilet_lng }}
+     	lat: {{ $toilet[0]->toilet_lat==null ? '51.508742' : $toilet[0]->toilet_lat }} , 
+     	lng: {{ $toilet[0]->toilet_lng==null ? '-0.120850' : $toilet[0]->toilet_lng }}
     };
     function myMap() {
         var mapProp= {
@@ -195,7 +215,7 @@ $(document).ready(function(){
 		};
 		var map = new google.maps.Map(document.getElementById("map"),mapProp);
 
-		placeMarker(map, myLatLng);
+		{{$toilet[0]->toilet_lat==null ? '' : 'placeMarker(map, myLatLng);'}}
         google.maps.event.addListener(map, 'click', function(event) {
             placeMarker(map, event.latLng);
         	document.getElementById("newLat").value = event.latLng.lat();

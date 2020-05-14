@@ -6,15 +6,18 @@
 <?php $toilets=\App\Model\ToiletInfo::where('status','=','1')->count(); ?>
 <?php $sales=\App\Model\ToiletUsageInfo::all()->count(); ?>
   <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
-            <!--Kishan changed breadcrumb from right side to this-->
-             
-
-          </div><!-- /.col -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-9">
+          <h1 class="m-0 text-dark">Dashboard</h1>
+        </div><!-- /.col -->
+          <div class="custom-control custom-switch ml-4">
+          <input type="checkbox" class="custom-control-input" name="autoalloc" id="autoalloc" value={{-- "{{$autoalloc[0]['auto_allocate']==0 ? '0' : '1'}}" {{$autoalloc[0]['auto_allocate']==1 ? 'checked' : ''}} --}}>
+          @method('POST') @csrf
+          
+          <label class="custom-control-label" style="font-size: 18px;" for="autoalloc">Auto approve requests</label>
+        </div>
          <!--Kishan changed  (Removed column for breadcrumb)-->
 
         </div><!-- /.row -->

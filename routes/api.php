@@ -3,11 +3,13 @@
 Route::group(['prefix'=>'','as'=>'api.'],function(){
 	Route::group(['namespace'=>'Api'],function(){
 		Route::post('login', 'AuthController@login')->name('login');
-		Route::post('logout', 'AuthController@logout')->name('logout');
 		Route::post('register', 'AuthController@create')->name('register');
+		Route::post('logout', 'AuthController@logout')->name('logout');
 		Route::resource("toilets",'ToiletController');
 		Route::resource("toilets/{toilet}/book",'BookController');
 		Route::resource("toilets/{toilet}/ratings",'RatingController');
+		// Route::group(['middleware'=>'auth:user'],function(){
+		// });
 	});
 	// Route::group(['namespace'=>'User'],function(){
 	// 	Route::post('logout', 'AuthController@logout')->name('logout');

@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function index()
     {
     	$data = [
-	    	'active' => ToiletInfo::where('owner_id','=',Auth::user()->id)->where('status','=',1)->count(),
+	    	'active' => ToiletInfo::where('owner_id','=',Auth::user()->id)->where('status','1')->count(),
 	    	'toilets' => ToiletInfo::where('owner_id','=',Auth::user()->id)->count(),
 	    	'usages' => ToiletUsageInfo::where('owner_id','=',Auth::user()->id)->count(),
     	];

@@ -48,6 +48,10 @@ return [
             'driver' => 'session',
             'provider' => 'toiletowners',
         ],
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
 
         'api' => [
             'driver' => 'token',
@@ -86,6 +90,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Model\ToiletOwner::class,
         ],
+        // 'toiletusers' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\User::class,
+        // ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

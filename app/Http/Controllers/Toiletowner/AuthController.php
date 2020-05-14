@@ -23,7 +23,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
 	{
-	   $validate = Validator::make($request->all(), [
+	    $validate = Validator::make($request->all(), [
             'email'   => 'required|email|exists:toilet_owners,email',
             'password' => 'required|min:6'
         ],
@@ -57,17 +57,18 @@ class AuthController extends Controller
             'name'   => 'required|string|max:255',
             'email'   => 'required|email|unique:toilet_owners,email',
             'password' => 'required|min:6|confirmed',
-            'mobileno' => 'required|numeric',
+            'mobileno' => 'required|numeric|min:10|unique:toilet_owners,mobileno',
         ],
         [
             'email.unique' => 'Email already exists try logging-in or use another!',
+            'mobileno.unique' => 'Phone number exists try logging-in or use another!',
             'email.required' => 'Please enter an Email!',
             'password.required' => 'Please enter a Password!',
         ] );
 
         if($validate->fails())
         {
-            return back()->withInput($request->only('name','email'))->withErrors($validate);
+            return back()->withInput($request->except('password'))->withErrors($validate);
         }
         $writer = ToiletOwner::create([
             'name' => $request['name'],
@@ -75,7 +76,7 @@ class AuthController extends Controller
             'mobileno' => $request['mobileno'],
             'password' => Hash::make($request['password']),
         ]);
-        return redirect()->intended('toiletowner/login')->withInput($request->only('email'));
+        return redirect()->intended('toiletowner/login')->withInput($request->only('email'))->with('reg.msg',' Registered successfully, please login');
     }
     
 	public function logout(Request $request)

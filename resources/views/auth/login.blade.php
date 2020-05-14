@@ -85,4 +85,12 @@
     <!-- /.login-card-body -->
   </div>
 </div>
+@if(Session::has('reg.msg'))
+    <div id="toast" class="mx-auto container row justify-content-center">
+        <div class="alert bg-dark text-white" id="toast-body">
+            {{ Session::get('reg.msg') }}
+        </div>
+    </div>
+    <script>setTimeout(function() { $('#toast').fadeOut('slow'); }, 3500);</script>
+@endif
 @endsection

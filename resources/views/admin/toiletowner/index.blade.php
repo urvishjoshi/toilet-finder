@@ -5,38 +5,39 @@
 
 	<div class="container pt-4">
 		<div class="container col-md-auto">
-		<div class="row">
-			<div class="col-md text-center">
-				<h2>Active Toilet owners</h2>
+			<div class="row">
+				<div class="col-md text-center">
+					<h2>Active Toilet owners</h2>
+				</div>
 			</div>
-		</div>
-		<hr width=35%>
+			<hr width=35%>
 		{{-- <div class="panel panel-default">
 			<div class="panel-heading">Search the Data</div>
 			<div class="panel-body">
 				<input type="text" name="search" id="search" class="form-control" placeholder="Enter name">
 			</div>
 		</div> --}}
-
-			<div class="container justify-content-center pt-3" id="requestTable">
-				<table class="table table-hover">
-				    <thead>
-				    <tr class="thead-light">
-				      <th>Id</th>
-				      <th>Email</th>
-				      <th>Toilets owned</th>
-				      <th>Auto allocate</th>
-				      <th>Registered on</th>
-				      <th width="11%">View Owner</th>
-				      <th width="11%">View Toilets</th>
-				    </tr>
-				    </thead>
-				    <tbody>
-					@if( count($activeOwners) == 0 )
-						<tr><td colspan="6"><center><h2>No Record found</h2><hr></center></td></tr>
-					@else
-						@foreach($activeOwners as $owner)
-						    <tr>
+		<div class="card">
+			<div class="card-header border-0 p-0">
+				<div class="container justify-content-center p-0" id="requestTable">
+					<table class="table align-items-center table-flush text-center">
+						<thead>
+							<tr class="thead-light">
+								<th>Id</th>
+								<th>Email</th>
+								<th>Toilets owned</th>
+								<th>Auto allocate</th>
+								<th>Registered on</th>
+								<th width="11%">View Owner</th>
+								<th width="11%">View Toilets</th>
+							</tr>
+						</thead>
+						<tbody>
+							@if( count($activeOwners) == 0 )
+							<tr><td colspan="6"><center><h2>No Record found</h2><hr></center></td></tr>
+							@else
+							@foreach($activeOwners as $owner)
+							<tr>
 								<th scope="row">{{ $owner->id }}</th>
 								<td>{{ $owner->email }}</td>
 								<td>{{ count($owner->toilets) }}</td>
@@ -50,15 +51,17 @@
 								<td>
 									<a href="{{ route('a.toilets.show',['id'=>$owner->id,'name'=>$owner->name]) }}" class="btn btn-primary" name="view">View</a>
 								</td>
-						    </tr>
-						@endforeach
-					@endif
-				    </tbody>
-				</table>
+							</tr>
+							@endforeach
+							@endif
+						</tbody>
+					</table>
+				</div>
 			</div>
-
 		</div>
 	</div>
+
+</div>
 
 </section>
 

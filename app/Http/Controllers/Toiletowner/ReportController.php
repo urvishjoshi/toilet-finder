@@ -25,7 +25,7 @@ class ReportController extends Controller
             case '1': $title='All'; break;
         }
         $data ='<center><h1>Report for '.$title.' sales</h1>
-                <style>table{font-size:10;}th,td{text-align: center;}</style><table border=1 cellspacing=0>';
+                <style>table{font-size:12;}th,td{text-align: center;}</style><table border=1 cellspacing=0>';
         $pdf = PDF::loadHTML($this->getRecords( request('pdf'),$data ));
         $pdf->setOptions(["footer-right" => '[page]',]);
         return $pdf->stream(request('pdf').' Reports.pdf');
@@ -59,7 +59,6 @@ class ReportController extends Controller
         $data.='
                 <thead>
                 <tr class="thead-light">
-                    <th>Id</th>
                     <th>Transact Id</th>
                     <th>Toilet name</th>
                     <th>User email</th>
@@ -71,14 +70,13 @@ class ReportController extends Controller
                 </thead>
                 <tbody>';
         if( count($sales) == 0 )
-            $data.='<tr><td colspan="7"><center><h2>No Reports found</h2><hr></center></td></tr>';
+            $data.='<tr><td colspan="5"><center><h2>No Reports found</h2><hr></center></td></tr>';
         else{
             foreach($sales as $sale) {
                 if($sale->toilet['price']==0)
                     $sale->toilet['price']='<b style="color:#28a745;">Free</b>';
                 else $sale->toilet['price']='$'.$sale->toilet['price'];
                 $data.='<tr>
-                    <th scope="row">'.$sale->id.'</th>
                     <td>'.$sale->transaction_id.'</td>
                     <td title="id='.$sale->toilet_id.'">
                         '.$sale->toilet['toilet_name'].'

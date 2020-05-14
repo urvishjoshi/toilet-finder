@@ -71,7 +71,7 @@
 	    <div class="modal-content p-1">
 			<div id="map" style="width:100%;height:500px;">
 			</div>
-			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuM60AoMrwB7dnMEOL7bge_3bM4DJtdn8&callback=myMap"></script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGBvEqVEGH6-O3GAzwlH1aon9m0iVslTo&callback=myMap"></script>
 	    </div>
 	  </div>
 	</div>

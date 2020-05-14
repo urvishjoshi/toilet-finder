@@ -12,8 +12,9 @@
 			<div class="col-md text-center">
 				<h2>Profile of <b>{{ $name }}</b></h2>
 			</div>
+			<div class="col-md-1"></div>
 		</div>
-		<hr width=25%>
+		<hr width=50%>
 		{{-- <div class="panel panel-default">
 			<div class="panel-heading">Search the Data</div>
 			<div class="panel-body">

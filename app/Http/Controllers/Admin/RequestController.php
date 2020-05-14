@@ -60,7 +60,7 @@ class RequestController extends Controller
             $msg = 'Owner '.$edit->email.' has been successfully denied';
         }
         $edit->save();
-        return back()->with('toast',$msg);
+        return back()->with('a.toast',$msg);
     }
 
     public function destroy($id)
@@ -68,6 +68,6 @@ class RequestController extends Controller
         $delete = ToiletOwner::find($id);
         $msg = 'Owner '.$delete->email.' has been successfully denied';
         $delete->delete();
-        return back()->with('toast',$msg);
+        return back()->with('a.toast',$msg);
     }
 }

@@ -3,50 +3,58 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
+use App\User;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
-use Auth;
 
 class AuthController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest:web')->except('api.logout');
+        $this->middleware('guest:user')->except('api.logout');
     }
 
     public function login(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'email' => [
-                'required',
-                Rule::exists('users')->where('email',$request->email),
-            ],
-            'password' => 'required'
+            'email'   => 'required|email|exists:users,email',
+            'password' => 'required|min:6'
         ],
         [
-            'email.exists' => "Email is not exists.",
-            'email.required' => 'The Email is required.',
-            'email.email' => 'Please enter valid email.',
-        ]);
-        
+            'email.exists' => "Email doesn't exist!",
+            'email.required' => 'Please enter an Email!',
+            'password.required' => 'Please enter a Password!',
+        ] );
+
         if($validate->fails())
         {
-            return Redirect()->back()->with(['status'=>false,'msg'=>"Validation Error.",'errors'=>$validate->errors()]);
+            $response = [
+                'Validation Error' => $validate->errors(),
+                'message' => 'Login Unsuccessful',
+            ];
+            return response()->json($response,200);
         }
 
-        if (Auth::guard()->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        if (Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
             
-            return redirect('admin/dashboard');
+            $response = [
+                'message' => 'Login Successful',
+                'data'    => new UserResource($request),
+                'token' => session()->all(),
+            ];
+            return response()->json($response,200);
         }
-        return back()->withInput($request->only('email', 'remember'));
+        return response()->json(['error'=>'something went wrong'],200);
     }
 
     public function logout(Request $request)
     {
         Auth::guard()->logout();
 
-        $request->session()->forget('web');
+        $request->session()->forget('user');
 
         return redirect()->route('api.login');
     }
