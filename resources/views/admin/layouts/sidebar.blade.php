@@ -23,7 +23,7 @@
 		<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
 			<li class="nav-item">
-			  <a href="{{ route('a.requests.index') }}" class="nav-link {{ (request()->is('admin/requests')) ? 'active' : '' }}"><!--Kishan changed link-->
+			  <a href="{{ route('a.requests.index') }}" class="nav-link {{ (request()->is('admin/requests*')) ? 'active' : '' }}"><!--Kishan changed link-->
 				<i class="fas fa-user-edit pl-2"></i>&nbsp;
 				<p>Requests</p><!--Kishan changed Menu-->
 				<span class="badge badge-info right font-14 py-1">{{ count($allRequests) }}</span>
@@ -31,45 +31,45 @@
 			</li>  
 
 			<li class="nav-item">
-			  <a href="{{ route('a.locations.index') }}" class="nav-link {{ (request()->is('admin/locations')) ? 'active' : '' }}"><!--Kishan changed link-->
+			  <a href="{{ route('a.locations.index') }}" class="nav-link {{ (request()->is('admin/locations*')) ? 'active' : '' }}"><!--Kishan changed link-->
 				<i class="fas fa-map-marker-alt pl-2"></i>&nbsp;&nbsp;&nbsp;
 				<p>Add Location</p><!--Kishan changed Menu-->
 			  </a>
 			</li>  
 
 			<li class="nav-item"> <!-- Kishan changed removed menu-open class -->
-			  <a href="{{ route('a.toiletowners.index') }}" class="nav-link {{ (request()->is('admin/toiletowners')) ? 'active' : '' }}">
+			  <a href="{{ route('a.toiletowners.index') }}" class="nav-link {{ (request()->is('admin/toiletowners*')) ? 'active' : '' }}">
 				<i class="nav-icon  fas fa-user-tie"></i>
 				<p>Toilet Owners</p>
 			  </a>
 			</li>
 			<li class="nav-item">
-			  <a href="{{ route('a.toiletusers.index') }}" class="nav-link {{ (request()->is('admin/toiletusers')) ? 'active' : '' }}">
+			  <a href="{{ route('a.toiletusers.index') }}" class="nav-link {{ (request()->is('admin/toiletusers*')) ? 'active' : '' }}">
 				<i class="nav-icon fas fa-users"></i>
 				<p>Toilet Users</p>
 			  </a>
 			</li>
 			<li class="nav-item"><!--Kishan changed link-->
-			  <a href="{{ route('a.toilets.index') }}" class="nav-link {{ (request()->is('admin/toilets')) ? 'active' : '' }}">
+			  <a href="{{ route('a.toilets.index') }}" class="nav-link {{ (request()->is('admin/toilets*')) ? 'active' : '' }}">
 				<i class="fas fa-restroom pl-1 pr-1"></i>
 				  <p>Toilets All</p>
 			  </a>
 			</li> 
 			<li class="nav-item"><!--Kishan changed link-->
-			  <a href="{{ route('a.sales.index') }}" class="nav-link {{ (request()->is('admin/sales')) ? 'active' : '' }}">
+			  <a href="{{ route('a.sales.index') }}" class="nav-link {{ (request()->is('admin/sales*')) ? 'active' : '' }}">
 				<i class="fa fa-usd nav-icon" style="font-size: 20px"></i>
 				  <p>Toilet Sales</p>
 			  </a>
 			</li> 
 			<li class="nav-item">
-				  <a href="{{ route('a.ratings.index') }}" class="nav-link {{ (request()->is('admin/ratings')) ? 'active' : '' }}">
+				  <a href="{{ route('a.ratings.index') }}" class="nav-link {{ (request()->is('admin/ratings*')) ? 'active' : '' }}">
 					<i class="fa fa-star nav-icon"></i>
 					<p>Toilet Ratings</p>
 				  </a>
 			</li>
 			
 			<li class="nav-item">
-			  <a href="{{ route('a.reports.index') }}" class="nav-link {{ (request()->is('admin/reports')) ? 'active' : '' }}">
+			  <a href="{{ route('a.reports.index') }}" class="nav-link {{ (request()->is('admin/reports*')) ? 'active' : '' }}">
 				<i class="nav-icon fas fa-chart-pie"></i>
 				<p>
 				 Toilet Reports
@@ -77,7 +77,7 @@
 			  </a>
 			</li>     
 			<li class="nav-item">
-			  <a href="{{ route('a.feedbacks.index') }}" class="nav-link {{ (request()->is('admin/feedbacks')) ? 'active' : '' }}">
+			  <a href="{{ route('a.feedbacks.index') }}" class="nav-link {{ (request()->is('admin/feedbacks*')) ? 'active' : '' }}">
 				<i class="fas fa-envelope" style="padding-left: 5px;"></i>
 				<p class="pl-2">Feedbacks</p>
 			  </a>
