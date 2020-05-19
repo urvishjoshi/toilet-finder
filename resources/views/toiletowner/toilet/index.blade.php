@@ -232,7 +232,7 @@
 
 					<input type="hidden" name="newLat" id="newLat" value="">
 					<input type="hidden" name="newLng" id="newLng" value="">
-					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGBvEqVEGH6-O3GAzwlH1aon9m0iVslTo&callback=myMap"></script>
+					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuM60AoMrwB7dnMEOL7bge_3bM4DJtdn8&callback=myMap"></script>
 				</div>
 
 				</div>
