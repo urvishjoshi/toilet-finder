@@ -20,6 +20,10 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::resource("reports",'ReportController');
 		Route::resource("permissions",'PermissionController');
 		Route::resource("feedbacks",'FeedbackController');
+<<<<<<< HEAD
+=======
+		Route::resource("settings",'SettingController');
+>>>>>>> 7b9e507... adf
 	});
 });
 //					toiletowner

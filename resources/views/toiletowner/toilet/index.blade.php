@@ -1,6 +1,10 @@
 @section('title','Toilet')
 @extends('toiletowner.layouts.app')
 @section('toilet.index')
+<<<<<<< HEAD
+=======
+<?php $key=\App\Model\Admin::first('mapkey'); ?>
+>>>>>>> 7b9e507... adf
 
 @if($thisOwner[0]['status']=='0')
 	<script>
@@ -232,7 +236,11 @@
 
 					<input type="hidden" name="newLat" id="newLat" value="">
 					<input type="hidden" name="newLng" id="newLng" value="">
+<<<<<<< HEAD
 					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuM60AoMrwB7dnMEOL7bge_3bM4DJtdn8&callback=myMap"></script>
+=======
+					<script src="https://maps.googleapis.com/maps/api/js?key={{$key->mapkey}}&callback=myMap"></script>
+>>>>>>> 7b9e507... adf
 				</div>
 
 				</div>

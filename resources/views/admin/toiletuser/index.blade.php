@@ -31,7 +31,11 @@
 					<th>Age</th>
 					<th>Registered on</th>
 					<th>Usages</th>
+<<<<<<< HEAD
 					<th width="17%">View</th>
+=======
+					<th width="20%">View</th>
+>>>>>>> 7b9e507... adf
 				</tr>
 				</thead>
 				<tbody>
@@ -51,9 +55,17 @@
 								<td>
 								<form action="{{ route('a.toiletusers.destroy',$user->id) }}" method="POST">
 								@method('DELETE') @csrf
+<<<<<<< HEAD
 									<a href="{{ route('a.toiletusers.show',[$user->id,'name'=>$user->name]) }}" class="btn btn-primary" name="btn" type="submit" value="view">View</a>&nbsp;
 									
 									<button class="btn btn-danger" name="btn" type="submit" value="delete">Delete</button>
+=======
+									<a href="{{ route('a.toiletusers.show',[$user->id,'name'=>$user->name]) }}" class="btn btn-sm btn-success" name="btn" type="submit" value="view">View</a>&nbsp;
+									
+									<a href="{{ route('a.toiletusers.show','profile') }}" class="btn btn-sm btn-primary" name="btn" type="submit" value="view">Edit</a>&nbsp;
+
+									<button class="btn btn-sm btn-danger" name="btn" type="submit" value="delete">Delete</button>
+>>>>>>> 7b9e507... adf
 
 								</form>
 								</td>
