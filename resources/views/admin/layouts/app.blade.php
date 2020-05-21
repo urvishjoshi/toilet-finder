@@ -5,6 +5,7 @@
 	@include('layouts.head')
 	
 	<?php $allRequests=\App\Model\ToiletOwner::where('status','=','0')->get(); ?>
+	
 </head>
 <body class="hold-transition skin-blue sidebar-mini layout-fixed">
 	<div class="wrapper">
@@ -21,6 +22,7 @@
 
 				@yield('toiletuser.index')
 				@yield('toiletuser.show')
+				@yield('toiletuser.profile')
 
 				@yield('toilet.index')
 				@yield('toilet.show')
@@ -32,11 +34,12 @@
 			@yield('report')
 			@yield('feedback')
 			@yield('location')
+			@yield('setting')
 
-			@if(Session::has('a.toast'))
+			@if(Session::has('toast'))
 				<div id="toast" class="mx-auto container row justify-content-center">
 					<div class="alert bg-dark text-white" id="toast-body">
-						{{ Session::get('a.toast') }}
+						{{ Session::get('toast') }}
 					</div>
 				</div>
 				<script>setTimeout(function() { $('#toast').fadeOut('slow'); }, 3500);</script>

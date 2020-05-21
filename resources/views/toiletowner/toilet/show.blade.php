@@ -1,5 +1,6 @@
 @section('title','Toilet')
 @extends('toiletowner.layouts.app')
+<?php $key=\App\Model\Admin::first('mapkey'); ?>
 
 @section('toilet.show')
 	<section class="content">
@@ -146,7 +147,7 @@
 						</div>
 						<input type="hidden" name="newLat" id="newLat" value="{{ $toilet[0]->toilet_lat }}">
 						<input type="hidden" name="newLng" id="newLng" value="{{ $toilet[0]->toilet_lng }}">
-						<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGBvEqVEGH6-O3GAzwlH1aon9m0iVslTo&callback=myMap"></script>
+						<script src="https://maps.googleapis.com/maps/api/js?key={{$key->mapkey}}&callback=myMap"></script>
 					</div>
     			</div>
 				<div class="modal-footer bg-light">
