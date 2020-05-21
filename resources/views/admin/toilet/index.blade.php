@@ -72,15 +72,7 @@
 	    <div class="modal-content p-1">
 			<div id="map" style="width:100%;height:500px;">
 			</div>
-<<<<<<< HEAD
 			<script src="https://maps.googleapis.com/maps/api/js?key={{$key->mapkey}}&callback=myMap"></script>
-=======
-<<<<<<< HEAD
-			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGBvEqVEGH6-O3GAzwlH1aon9m0iVslTo&callback=myMap"></script>
-=======
-			<script src="https://maps.googleapis.com/maps/api/js?key={{$key->mapkey}}&callback=myMap"></script>
->>>>>>> 7b9e507... adf
->>>>>>> 2182b64fd4fcba06d290ed2c8a0afe0db727d432
 	    </div>
 	  </div>
 	</div>

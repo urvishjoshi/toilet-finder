@@ -236,6 +236,7 @@
 
 					<script src="https://maps.googleapis.com/maps/api/js?key={{$key->mapkey}}&callback=myMap"></script>
 
+
 				</div>
 				<div class="modal-footer bg-light">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

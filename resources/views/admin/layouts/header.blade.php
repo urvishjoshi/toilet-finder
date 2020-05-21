@@ -22,9 +22,7 @@
 
     <!-- Right Side Of Navbar -->
     <ul class="navbar-nav ml-auto">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
         <!-- Authentication Links -->
         @guest
             @if(isset($url))
@@ -61,8 +59,7 @@
                 </div>
             </li>
         @endguest
-=======
->>>>>>> 2182b64fd4fcba06d290ed2c8a0afe0db727d432
+
       <!-- Authentication Links -->
       @guest
       @if(isset($url))
@@ -111,10 +108,7 @@
         </div>
       </li>
       @endguest
-<<<<<<< HEAD
-=======
->>>>>>> 7b9e507... adf
->>>>>>> 2182b64fd4fcba06d290ed2c8a0afe0db727d432
+
     </ul>
   </nav>
   <!-- /.navbar -->

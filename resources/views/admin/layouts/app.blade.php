@@ -40,6 +40,7 @@
 				<div id="toast" class="mx-auto container row justify-content-center">
 					<div class="alert bg-dark text-white" id="toast-body">
 						{{ Session::get('a.toast') }}
+
 					</div>
 				</div>
 				<script>setTimeout(function() { $('#toast').fadeOut('slow'); }, 3500);</script>
