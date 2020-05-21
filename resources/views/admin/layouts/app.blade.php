@@ -36,7 +36,7 @@
 			@yield('location')
 			@yield('setting')
 
-			@if(Session::has('toast'))
+			@if(Session::has('a.toast'))
 				<div id="toast" class="mx-auto container row justify-content-center">
 					<div class="alert bg-dark text-white" id="toast-body">
 						{{ Session::get('a.toast') }}

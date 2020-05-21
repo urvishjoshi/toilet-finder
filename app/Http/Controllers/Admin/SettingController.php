@@ -24,7 +24,7 @@ class SettingController extends Controller
         $admin = Admin::first();
         $admin->mapkey = $request->mapkey;
         $admin->save();
-        return back()->with('toast','Map Api Key Updated to '.$request->mapkey);
+        return back()->with('a.toast','Map Api Key Updated to '.$request->mapkey);
     }
     /**
      * Show the form for creating a new resource.
