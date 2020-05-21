@@ -69,14 +69,14 @@ class LocationController extends Controller
             $country = new Country;
             $country->country =  $request->addCountry;
             $country->save();
-            return back();
+            return back()->with('a.toast','Country '.$request->addCountry.' added');
         }
         if($request->addState){
             $state = new State;
             $state->country_id =  $request->countryId;
             $state->state =  $request->addState;
             $state->save();
-            return back();
+            return back()->with('a.toast','State '.$request->addState.' added');
         }
         if($request->addCity){
             $city = new City;
@@ -84,7 +84,7 @@ class LocationController extends Controller
             $city->state_id =  $request->stateId;
             $city->city =  $request->addCity;
             $city->save();
-            return back();
+            return back()->with('a.toast','City '.$request->addCity.' added');
         }
     }
 

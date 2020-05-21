@@ -13,11 +13,13 @@
           <h1 class="m-0 text-dark">Dashboard</h1>
         </div><!-- /.col -->
           <!-- <div class="custom-control custom-switch ml-4">
+
           <input type="checkbox" class="custom-control-input" name="autoalloc" id="autoalloc" value={{-- "{{$autoalloc[0]['auto_allocate']==0 ? '0' : '1'}}" {{$autoalloc[0]['auto_allocate']==1 ? 'checked' : ''}} --}}>
           @method('POST') @csrf
           
           <label class="custom-control-label" style="font-size: 18px;" for="autoalloc">Auto approve requests</label>
         </div> -->
+
 
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -36,6 +38,7 @@
                 <h3 >{{$owners}}</h3>
 
                 <h4>Toilet Owners</h4>
+
               </div>
               <div class="icon">
                 <i class="fas fa-user-tie"></i>
@@ -51,6 +54,7 @@
                 <h3>{{$users}}</h3>
 
                 <h4>Toilet Users</h4>
+
               </div>
               <div class="icon">
                 <i class="fas fa-users"></i>
@@ -66,6 +70,7 @@
                 <h3>{{$toilets}}</h3>
 
                 <h4>Active Toilets</h4>
+
               </div>
               <div class="icon">
                 <i class="material-icons" style="color:##006652;">flash_on</i>
@@ -94,6 +99,7 @@
        
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
+
 
   </section>
   <!-- /.content -->

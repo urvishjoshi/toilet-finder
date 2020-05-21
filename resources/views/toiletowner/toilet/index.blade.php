@@ -233,8 +233,8 @@
 
 					<input type="hidden" name="newLat" id="newLat" value="">
 					<input type="hidden" name="newLng" id="newLng" value="">
+
 					<script src="https://maps.googleapis.com/maps/api/js?key={{$key->mapkey}}&callback=myMap"></script>
-				</div>
 
 				</div>
 				<div class="modal-footer bg-light">

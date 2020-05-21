@@ -5,7 +5,7 @@
 	@include('layouts.head')
 	
 	<?php $allRequests=\App\Model\ToiletOwner::where('status','=','0')->get(); ?>
-	
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini layout-fixed">
 	<div class="wrapper">
@@ -39,7 +39,7 @@
 			@if(Session::has('toast'))
 				<div id="toast" class="mx-auto container row justify-content-center">
 					<div class="alert bg-dark text-white" id="toast-body">
-						{{ Session::get('toast') }}
+						{{ Session::get('a.toast') }}
 					</div>
 				</div>
 				<script>setTimeout(function() { $('#toast').fadeOut('slow'); }, 3500);</script>

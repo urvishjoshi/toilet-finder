@@ -25,7 +25,6 @@ class ToiletuserController extends Controller
 
         if($id=='profile')
             return view($this->url.'profile');
-
         return view($this->url.'show',compact('usages','name'));
     }
 
@@ -74,6 +73,6 @@ class ToiletuserController extends Controller
         $delete = User::find($id);
         $msg = 'User '.$delete->email.' has been successfully deleted';
         $delete->delete();
-        return back()->with('toast',$msg);
+        return back()->with('a.toast',$msg);
     }
 }
