@@ -23,12 +23,9 @@ class ToiletuserController extends Controller
         $usages = ToiletUsageInfo::where('user_id','=',$id)->with('user')
                 ->with('owner')->get();
 
-<<<<<<< HEAD
-=======
         if($id=='profile')
             return view($this->url.'profile');
 
->>>>>>> 7b9e507... adf
         return view($this->url.'show',compact('usages','name'));
     }
 
@@ -77,10 +74,6 @@ class ToiletuserController extends Controller
         $delete = User::find($id);
         $msg = 'User '.$delete->email.' has been successfully deleted';
         $delete->delete();
-<<<<<<< HEAD
-        return back()->with('a.toast',$msg);
-=======
         return back()->with('toast',$msg);
->>>>>>> 7b9e507... adf
     }
 }

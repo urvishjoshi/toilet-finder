@@ -19,10 +19,7 @@ class CreateAdminsTable extends Migration
             $table->string('password');
             $table->string('name');
             $table->string('mobileno')->unique()->nullable();
-<<<<<<< HEAD
-=======
             $table->string('mapkey')->nullable();
->>>>>>> 7b9e507... adf
             $table->timestamps();
         });
     }

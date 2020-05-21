@@ -1,11 +1,7 @@
 @section('title','Toilets')
 @extends('admin.layouts.app')
 @section('toilet.index')
-<<<<<<< HEAD
-
-=======
 <?php $key=\App\Model\Admin::first('mapkey'); ?>
->>>>>>> 7b9e507... adf
 <section>
     	<!-- Content Header (Page header) -->
     	<div class="content pt-4">
@@ -75,11 +71,7 @@
 	    <div class="modal-content p-1">
 			<div id="map" style="width:100%;height:500px;">
 			</div>
-<<<<<<< HEAD
-			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGBvEqVEGH6-O3GAzwlH1aon9m0iVslTo&callback=myMap"></script>
-=======
 			<script src="https://maps.googleapis.com/maps/api/js?key={{$key->mapkey}}&callback=myMap"></script>
->>>>>>> 7b9e507... adf
 	    </div>
 	  </div>
 	</div>
