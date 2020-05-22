@@ -52,9 +52,9 @@
 								<form action="{{ route('a.toiletusers.destroy',$user->id) }}" method="POST">
 								@method('DELETE') @csrf
 
-									<a href="{{ route('a.toiletusers.show',[$user->id,'name'=>$user->name]) }}" class="btn btn-sm btn-success" name="btn" type="submit" value="view">View</a>&nbsp;
+									<a href="{{ route('a.toiletusers.show',[$user->id,'view'=>$user->name]) }}" class="btn btn-sm btn-success" name="btn" type="submit" value="view">View</a>&nbsp;
 									
-									<a href="{{ route('a.toiletusers.show','profile') }}" class="btn btn-sm btn-primary" name="btn" type="submit" value="view">Edit</a>&nbsp;
+									<a href="{{ route('a.toiletusers.show',[$user->id,'edit'=>$user->name]) }}" class="btn btn-sm btn-secondary" name="btn" type="submit" value="view">Edit</a>&nbsp;
 
 									<button class="btn btn-sm btn-danger" name="btn" type="submit" value="delete">Delete</button>
 
