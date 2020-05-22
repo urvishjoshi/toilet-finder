@@ -31,7 +31,7 @@
 					<th>Toilet type</th>
 					<th>Status</th>
 					<th width="12%">Created on</th>
-					<th>Map</th>
+					<th width="23%">Map</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -55,7 +55,9 @@
 								</td>
 								<td>{{ $toilet->created_at->format('d/m/Y').' at '.$toilet->created_at->format('g:i A') }}</td>
 								<td>
-									<button class="btn btn-success" id="mapButton" data-toggle="modal"  data-target=".bd-example-modal-lg" onclick="myMap({{ $toilet->toilet_lng }},{{ $toilet->toilet_lng }})">Map</button>&nbsp;&nbsp;
+									<button class="btn btn-success" id="mapButton" data-toggle="modal"  data-target=".bd-example-modal-lg" onclick="myMap({{ $toilet->toilet_lng }},{{ $toilet->toilet_lng }})">Map</button>
+
+									<button class="btn btn-danger ml-3" id="editmap" >Edit</button>
 								</td>
 						    </tr>
 						@endforeach
