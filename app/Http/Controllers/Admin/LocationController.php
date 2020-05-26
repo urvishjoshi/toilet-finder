@@ -27,7 +27,7 @@ class LocationController extends Controller
         if(request()->input('country_id')) {
             $states = State::where('country_id',request()->input('country_id'))->orderBy('state')->get();
             if(count($states)>0) {
-                $data='<option>-select state-</option>';
+                $data='<option value="">-select state-</option>';
                 foreach ($states as $state) {
                     $data = $data.'<option value="'.$state->id.'">'.$state->state.'</option>';
                 }
@@ -38,7 +38,7 @@ class LocationController extends Controller
         if(request()->input('state_id')) {
             $cities = City::where('state_id',request()->input('state_id'))->orderBy('city')->get();
             if(count($cities)>0) {
-                $data='<option>-select city-</option>';
+                $data='<option value="">-select city-</option>';
                 foreach ($cities as $city) {
                     $data = $data.'<option value="'.$city->id.'">'.$city->city.'</option>';
                 }
@@ -115,7 +115,12 @@ class LocationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request->citydelete) {
+            $city = City::findOrFail(request()->input('city'));
+            $city->delete();
+            return back()->with('a.toast','City '.$city->city.' deleted');
+        }
+        return'ccc';
     }
 
     /**
@@ -126,6 +131,21 @@ class LocationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $id = request()->input('formid');
+        if($id==1) {
+            $delete = Country::find(request()->input('countryId'));
+            $msg = 'Country '.$delete->country.' has been successfully deleted';
+        }
+        if($id==2) {
+            $delete = State::find(request()->input('stateId'));
+            $msg = 'State '.$delete->state.' has been successfully deleted';
+        }
+        if($id==3) {
+            $delete = City::find(request()->input('cityId'));
+            $msg = 'City '.$delete->city.' has been successfully deleted';
+        }
+        
+        $delete->delete();
+        return back()->with('a.toast',$msg);
     }
 }

@@ -33,12 +33,12 @@
 							<button type="submit" class="btn btn-primary d-flex align-items-end mt-2" name="countryBtn" value="1">Add Country</button>
 						</div>
 					</div>
-					<div class="col-lg d-flex justify-content-end">
-						<div class="form-group">
-							<label for="addCountry"></label>
-							<button type="button" class="btn btn-danger d-flex align-items-end mt-2" data-toggle="modal" data-target="#exampleModal" id="delCountryBtn">
+					<div class="col-lg">
+						<div class="form-group d-flex justify-content-end">
+							{{-- <label for="addCountry"></label> --}}
+							<a href="{{ route('a.locations.show','deletecountry') }}" class="btn btn-danger d-flex align-items-end mt-2" data-toggle="modal" data-target="#exampleModal" id="delCountryBtn">
 								Delete Country
-							</button>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -70,12 +70,12 @@
 							<button type="submit" class="btn btn-primary d-flex align-items-end mt-2">Add State</button>
 						</div>
 					</div>
-					<div class="col-lg d-flex justify-content-end">
+					<div class="col-lg">
 						<div class="form-group">
 							<label for="addCountry"></label>
-							<button type="button" class="btn btn-danger d-flex align-items-end mt-2" data-toggle="modal" data-target="#exampleModal" id="delStateBtn">
+							<a href="{{ route('a.locations.show','deletestate') }}" class="btn btn-danger d-flex align-items-end mt-2" data-toggle="modal" data-target="#exampleModal" id="delStateBtn">
 								Delete State
-							</button>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -118,12 +118,12 @@
 							<button type="submit" class="btn btn-primary d-flex align-items-end mt-2">Add City</button>
 						</div>
 					</div>
-					<div class="col-lg d-flex justify-content-end">
+					<div class="col-lg">
 						<div class="form-group">
 							<label for="addCountry"></label>
-							<button type="button" class="btn btn-danger d-flex align-items-end mt-2" data-toggle="modal" data-target="#exampleModal" id="delCityBtn">
+							<a href="{{ route('a.locations.show','deletecity') }}" class="btn btn-danger d-flex align-items-end mt-2" data-toggle="modal" data-target="#exampleModal" id="delCityBtn">
 								Delete City
-							</button>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -133,94 +133,90 @@
 	</div>
 </section>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<form action="{{ route('a.locations.destroy',1) }}" method="POST" id="form">
-				@method("DELETE") @csrf
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Delete</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body" id="delCountryDiv">
-					<div class="">
-						<div class="col-lg">
-							<div class="form-group">
-								<label for="countryId">Select Country</label>
-								<select name="countryId" class="form-control" id="countryId">
-									@foreach ($countries as $country)
-										<option value="{{ $country->id }}">{{ $country->country }}</option>
-									@endforeach
-		 						</select>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="modal-body" id="delStateDiv">
-					<div class="">
-						<div class="col-lg">
-							<div class="form-group">
-								<label for="country">Country</label>
-								<select name="country" class="form-control" id="countrydelstate" required>
-									<option value="">select</option>
-									@foreach ($countries as $country)
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body" id="delCountryDiv">
+				<div class="">
+					<div class="col-lg">
+						<div class="form-group">
+							<label for="countryId">Select Country</label>
+							<select name="countryId" class="form-control" id="countryId">
+								@foreach ($countries as $country)
 									<option value="{{ $country->id }}">{{ $country->country }}</option>
-									@endforeach
-								</select>
-							</div>
-						</div>
-						<div class="col-lg">
-							<div class="form-group">
-								<label for="state">State</label>
-								<select name="stateId" class="form-control" id="statedelstate" required>
-									<option value="">-select-</option>
-								</select>
-							</div>
+								@endforeach
+	 						</select>
 						</div>
 					</div>
 				</div>
-				<div class="modal-body" id="delCityDiv">
-					<div class="">
-						<div class="col-lg">
-							<div class="form-group">
-								<label for="country">Country</label>
-								<select name="country" class="form-control" id="countrydelcity" required>
-									<option value="">select</option>
-									@foreach ($countries as $country)
-									<option value="{{ $country->id }}">{{ $country->country }}</option>
-									@endforeach
-								</select>
-							</div>
+			</div>
+			<div class="modal-body" id="delStateDiv">
+				<div class="">
+					<div class="col-lg">
+						<div class="form-group">
+							<label for="country">Country</label>
+							<select name="country" class="form-control" id="country" required>
+								<option value="">select</option>
+								@foreach ($countries as $country)
+								<option value="{{ $country->id }}">{{ $country->country }}</option>
+								@endforeach
+							</select>
 						</div>
-						<div class="col-lg">
-							<div class="form-group">
-								<label for="state">State</label>
-								<select name="state" class="form-control" id="statedelcity" required>
-									<option value="">-select-</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-lg">
-							<div class="form-group">
-								<label for="city">City</label>
-								<select name="cityId" class="form-control" id="citydelcity" required>
-									<option value="">-select-</option>
-								</select>
-							</div>
+					</div>
+					<div class="col-lg">
+						<div class="form-group">
+							<label for="state">State</label>
+							<select name="state" class="form-control" id="state" required>
+								<option value="">-select-</option>
+							</select>
 						</div>
 					</div>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-					<button type="submit" class="btn btn-danger" name="delete" id="deletebtn">Delete</button>
+			</div>
+			<div class="modal-body" id="delCityDiv">
+				<div class="">
+					<div class="col-lg">
+						<div class="form-group">
+							<label for="country">Country</label>
+							<select name="country" class="form-control" id="country" required>
+								<option value="">select</option>
+								@foreach ($countries as $country)
+								<option value="{{ $country->id }}">{{ $country->country }}</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
+					<div class="col-lg">
+						<div class="form-group">
+							<label for="state">State</label>
+							<select name="state" class="form-control" id="state" required>
+								<option value="">-select-</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-lg">
+						<div class="form-group">
+							<label for="city">City</label>
+							<select name="city" class="form-control" id="city" required>
+								<option value="">-select-</option>
+							</select>
+						</div>
+					</div>
 				</div>
-				<input type="hidden" id="formid" name="formid" value="">
-			</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-danger">Delete Country</button>
+			</div>
 		</div>
 	</div>
-</div>
+</div> --}}
 
 <script>
 $(document).ready(function(){
@@ -228,29 +224,23 @@ $(document).ready(function(){
 	$('#delCountryDiv').hide();
 	$('#delStateDiv').hide();
 	$('#delCityDiv').hide();
-	
+
 	$('#delCountryBtn').click(function(event) {
 		$('#delCountryDiv').show();
 		$('#delStateDiv').hide();
 		$('#delCityDiv').hide();
-		
-		$('#formid').val(1);
 	});
 	$('#delStateBtn').click(function(event) {
 		$('#delStateDiv').show();
 		$('#delCountryDiv').hide();
 		$('#delCityDiv').hide();
-		$('#formid').val(2);
 	});
 	$('#delCityBtn').click(function(event) {
 		$('#delCityDiv').show();
 		$('#delCountryDiv').hide();
 		$('#delStateDiv').hide();
-		$('#formid').val(3);
 	});
-	$('#deletebtn').click(function(event) {
-		$('#form').submit();
-	});
+
 
 	$("#country").on('change',function(){
 		$.ajax({
@@ -283,64 +273,6 @@ $(document).ready(function(){
 			dataType:'html',
 			success:function(data){
 				// $("#city").html(data);
-			}
-		});
-	});
-	//////////////////////////////////////////
-	$("#countrydelstate").on('change',function(){
-		$.ajax({
-			method:"GET",
-			url:"{{ route('a.locations.show',1) }}",
-			data: {
-			   'country_id': $(this).val(),
-				'_token': $('input[name=_token]').val(),
-				'_method': '{{method_field('GET')}}',
-			},
-			dataType:'html',
-			success:function(data){
-				if(data<1)
-					$("#statedelstate").html('<option value="">-No state found-</option>');
-				else
-					$("#statedelstate").html(data);
-				$("#citydelstate").html('<option value="">-select-</option>');
-			}
-		});
-	});
-
-	$("#countrydelcity").on('change',function(){
-		$.ajax({
-			method:"GET",
-			url:"{{ route('a.locations.show',1) }}",
-			data: {
-			   'country_id': $(this).val(),
-				'_token': $('input[name=_token]').val(),
-				'_method': '{{method_field('GET')}}',
-			},
-			dataType:'html',
-			success:function(data){
-				if(data<1)
-					$("#statedelcity").html('<option value="">-No state found-</option>');
-				else
-					$("#statedelcity").html(data);
-				$("#citydelcity").html('<option value="">-select-</option>');
-			}
-		});
-	});
-	$("#statedelcity").on('change',function(){
-		$.ajax({
-			method:"GET",
-			url:"{{ route('a.locations.show',1) }}",
-			data: {
-			   'state_id': $(this).val(),
-				'_token': $('input[name=_token]').val(),
-				'_method': '{{method_field('GET')}}',
-			},
-			dataType:'html',
-			success:function(data){
-				if(data<1)
-					$("#citydelcity").html('<option value="">-No city found-</option>');
-				else
-					$("#citydelcity").html(data);
 			}
 		});
 	});
