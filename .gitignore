@@ -1,5 +1,6 @@
 /node_modules
 /public/hot
+/public/profileimages
 /public/storage
 /storage/*.key
 .env.backup
