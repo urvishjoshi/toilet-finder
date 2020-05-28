@@ -39,5 +39,6 @@
 
 		@include('layouts.footer')
 	</div>
+	@yield('jquery')
 </body>
 </html>

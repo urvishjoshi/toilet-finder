@@ -51,11 +51,11 @@
         </a>
 
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="" onclick="" > <i class="fa fa-user" style="font-size:15px;"></i>
+          <a class="dropdown-item" href="{{ route('a.personal.index') }}"> <i class="fa fa-user" style="font-size:15px;"></i>
             <span class=pl-2>My profile</span>
           </a>
 
-          <a class="dropdown-item" href="{{ url("admin/settings") }}" onclick="" > <i class="material-icons" style="font-size:15px;">settings</i>
+          <a class="dropdown-item" href="{{ url("admin/settings") }}"> <i class="material-icons" style="font-size:15px;">settings</i>
             <span class=pl-2>Settings</span>
           </a>
 

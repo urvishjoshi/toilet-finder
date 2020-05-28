@@ -17,7 +17,10 @@
 	<div class="content-header">
 		<div class="container">
  			@method('GET') @csrf
+				<div class="d-flex justify-content-between">
  			<h6 class="heading-small text-muted mb-2">Add Country</h6>
+					<a href="{{ route('a.locations.edit','all') }}" class="btn btn-primary mx-2">Edit locations</a>
+				</div>
  			<form action="{{ route('a.locations.store') }}" method="POST">
  				@method('POST') @csrf
  				<div class="row">
@@ -30,7 +33,7 @@
 					<div class="col-lg-2">
 						<div class="form-group">
 							<label for="addCountry"></label>
-							<button type="submit" class="btn btn-primary d-flex align-items-end mt-2" name="countryBtn" value="1">Add Country</button>
+							<button type="submit" class="btn btn-success d-flex align-items-end mt-2" name="countryBtn" value="1">Add Country</button>
 						</div>
 					</div>
 					<div class="col-lg d-flex justify-content-end">
@@ -46,7 +49,7 @@
 			<hr>
 			<form action="{{ route('a.locations.store') }}" method="POST">
  				@method('POST') @csrf
-				<h6 class="heading-small text-muted mb-2">Add State</h6>
+				<h6 class="heading-small text-muted mb-2">Add Governance</h6>
  				<div class="row">
 					<div class="col-lg-3">
 						<div class="form-group">
@@ -60,21 +63,21 @@
 					</div>
 					<div class="col-lg-4">
 						<div class="form-group">
-							<label for="addState">State</label>
-							<input type="text" name="addState" id="addState" class="form-control" placeholder="Add State">
+							<label for="addState">Governance</label>
+							<input type="text" name="addState" id="addState" class="form-control" placeholder="Add Governance">
 						</div>
 					</div>
 					<div class="col-lg-2">
 						<div class="form-group">
 							<label for="city"></label>
-							<button type="submit" class="btn btn-primary d-flex align-items-end mt-2">Add State</button>
+							<button type="submit" class="btn btn-success d-flex align-items-end mt-2">Add Governance</button>
 						</div>
 					</div>
 					<div class="col-lg d-flex justify-content-end">
 						<div class="form-group">
 							<label for="addCountry"></label>
 							<button type="button" class="btn btn-danger d-flex align-items-end mt-2" data-toggle="modal" data-target="#exampleModal" id="delStateBtn">
-								Delete State
+								Delete Governance
 							</button>
 						</div>
 					</div>
@@ -100,9 +103,9 @@
 					</div>
 					<div class="col-lg-3">
 						<div class="form-group">
-							<label for="state">State</label>
+							<label for="state">Governance</label>
 							<select name="stateId" class="form-control" id="state">
-	 						{{-- <option>-NO CITY FOUND-</option> --}}
+	 						<option value="">-select governance-</option>
 							</select>
 						</div>
 					</div>
@@ -115,7 +118,7 @@
 					<div class="col-lg">
 						<div class="form-group">
 							<label for="city"></label>
-							<button type="submit" class="btn btn-primary d-flex align-items-end mt-2">Add City</button>
+							<button type="submit" class="btn btn-success d-flex align-items-end mt-2">Add City</button>
 						</div>
 					</div>
 					<div class="col-lg d-flex justify-content-end">
@@ -173,7 +176,7 @@
 						</div>
 						<div class="col-lg">
 							<div class="form-group">
-								<label for="state">State</label>
+								<label for="state">Governance</label>
 								<select name="stateId" class="form-control" id="statedelstate" required>
 									<option value="">-select-</option>
 								</select>
@@ -196,7 +199,7 @@
 						</div>
 						<div class="col-lg">
 							<div class="form-group">
-								<label for="state">State</label>
+								<label for="state">Governance</label>
 								<select name="state" class="form-control" id="statedelcity" required>
 									<option value="">-select-</option>
 								</select>
@@ -264,7 +267,7 @@ $(document).ready(function(){
 			dataType:'html',
 			success:function(data){
 				if(data<1)
-					$("#state").html('<option>-No state found-</option>');
+					$("#state").html('<option>-No Governance found-</option>');
 				else
 					$("#state").html(data);
 			}
@@ -299,7 +302,7 @@ $(document).ready(function(){
 			dataType:'html',
 			success:function(data){
 				if(data<1)
-					$("#statedelstate").html('<option value="">-No state found-</option>');
+					$("#statedelstate").html('<option value="">-No Governance found-</option>');
 				else
 					$("#statedelstate").html(data);
 				$("#citydelstate").html('<option value="">-select-</option>');
@@ -319,7 +322,7 @@ $(document).ready(function(){
 			dataType:'html',
 			success:function(data){
 				if(data<1)
-					$("#statedelcity").html('<option value="">-No state found-</option>');
+					$("#statedelcity").html('<option value="">-No Governance found-</option>');
 				else
 					$("#statedelcity").html(data);
 				$("#citydelcity").html('<option value="">-select-</option>');

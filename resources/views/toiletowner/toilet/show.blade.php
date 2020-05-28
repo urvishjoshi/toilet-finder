@@ -113,7 +113,7 @@
 							</div>
 							<div class="col-lg-4">
 								<div class="form-group">
-									<label for="state">State</label>
+									<label for="state">Governance</label>
  									<select name="state" class="form-control" id="state" required>
  										@foreach ($datas->states as $state)
 										    <option value="{{ $state['id'] }}"
@@ -170,7 +170,7 @@ $(document).ready(function(){
 			dataType:'html',
 			success:function(data){
 				if(data<1)
-					$("#state").html('<option>-No state found-</option>');
+					$("#state").html('<option>-No Governance found-</option>');
 				else
 					$("#state").html(data);
 				$("#city").html('<option>-select-</option>');

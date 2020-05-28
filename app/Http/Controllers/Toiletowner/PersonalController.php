@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Model\ToiletOwner;
 use Auth;
 use Illuminate\Http\Request;
+use Validator;
 
 class PersonalController extends Controller
 {
@@ -34,7 +35,36 @@ class PersonalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = Validator::make($request->all(),[
+            'profile' => 'required|image|mimes:jpeg,jpg,png|max:3064'
+        ],
+        [
+            'profile.required' => 'Please select an image',
+            'profile.image' => 'Please select an image type',
+            'profile.mimes' => 'Allowed image types are .jpeg, .jpg & .png',
+            'profile.max' => 'You can only upload image size within 3MB',
+        ] );
+         
+        if($validate->fails())
+        {
+            return back()->withErrors($validate);
+            // return response()->json([
+            //     'message' => $validate->errors()->all(),
+            // ]);
+        }
+
+        $owner = ToiletOwner::find(Auth::user()->id);
+        if($owner->profile!=null)
+            unlink(public_path().'/profileimages/'.$owner->profile);
+
+        $image = $request->file('profile');
+        $name = Auth::user()->id.'_'.$image->getClientOriginalName();
+        $image->move(public_path('profileimages'),$name);
+        
+        $owner->profile = $name;
+        $owner->save();
+
+        return back()->with('toast.o','Profile image '.$image->getClientOriginalName().' Uploaded');
     }
 
     /**

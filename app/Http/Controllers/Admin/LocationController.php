@@ -10,16 +10,12 @@ use Illuminate\Http\Request;
 
 class LocationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $url = 'admin.location.';
     public function index()
     {
         $countries = Country::orderBy('country')->get();
         $states = State::orderBy('state')->get();
-        return view('admin/location',compact('countries','states'));
+        return view($this->url.'index',compact('countries','states'));
     }
 
     public function show($id)
@@ -27,7 +23,7 @@ class LocationController extends Controller
         if(request()->input('country_id')) {
             $states = State::where('country_id',request()->input('country_id'))->orderBy('state')->get();
             if(count($states)>0) {
-                $data='<option value="">-select state-</option>';
+                $data='<option value="">-select governance-</option>';
                 foreach ($states as $state) {
                     $data = $data.'<option value="'.$state->id.'">'.$state->state.'</option>';
                 }
@@ -76,7 +72,7 @@ class LocationController extends Controller
             $state->country_id =  $request->countryId;
             $state->state =  $request->addState;
             $state->save();
-            return back()->with('a.toast','State '.$request->addState.' added');
+            return back()->with('a.toast','Governance '.$request->addState.' added');
         }
         if($request->addCity){
             $city = new City;
@@ -103,7 +99,9 @@ class LocationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $countries = Country::orderBy('country')->get();
+        $states = State::orderBy('state')->get();
+        return view($this->url.'edit',compact('countries','states'));
     }
 
     /**
@@ -115,12 +113,34 @@ class LocationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if ($request->citydelete) {
-            $city = City::findOrFail(request()->input('city'));
-            $city->delete();
-            return back()->with('a.toast','City '.$city->city.' deleted');
+        
+        // return request()->all();
+        if ($request->countryEditBtn) {
+            // return'cunty';
+            $country = Country::findOrFail($request->countryId);
+            $old = $country->country;
+            $country->country = $request->editCountry;
+            $country->save();
+            return back()->with('a.toast','Country '.$old.' edited to '.$request->editCountry);
         }
-        return'ccc';
+        if ($request->stateEditBtn) {
+            // return'stt';
+            $state = State::findOrFail($request->stateId);
+            $old = $state->state;
+            $state->state = $request->editState;
+            $state->save();
+            return back()->with('a.toast','State '.$old.' edited to '.$request->editState);
+        }
+        if ($request->cityEditBtn) {
+            // return'city';
+            $city = City::findOrFail($request->cityId);
+            $old = $city->city;
+            $city->city = $request->editCity;
+            $city->save();
+            return back()->with('a.toast','City '.$old.' edited to '.$request->editCity);
+        }
+
+        return 'error';
     }
 
     /**

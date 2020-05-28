@@ -9,10 +9,10 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="row align-items-center">
-						<div class="col-10">
+						<div class="col-lg-auto">
 							<h3 class="mb-0">Personal Details of <b>{{ $name }}</b></h3>
 						</div>
-						<div class="col-2 d-flex justify-content-end" title="User id is a fixed attribute, thus can't be changed">
+						<div class="col d-flex justify-content-end" title="User id is a fixed attribute, thus can't be changed">
 							<h4 class="mb-0">User ID-<b>{{ $user->id }}</b></h4>
 						</div>
 					</div>

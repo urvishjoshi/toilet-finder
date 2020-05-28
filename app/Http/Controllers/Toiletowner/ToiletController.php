@@ -27,7 +27,7 @@ class ToiletController extends Controller
         if(request()->input('country_id')) {
             $states = State::where('country_id',request()->input('country_id'))->orderBy('state')->get();
             if(count($states)>0) {
-                $data='<option value="">-select state-</option>';
+                $data='<option value="">-select governance-</option>';
                 foreach ($states as $state) {
                     $data = $data.'<option value="'.$state->id.'">'.$state->state.'</option>';
                 }

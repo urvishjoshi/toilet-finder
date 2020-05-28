@@ -5,6 +5,7 @@
 	@include('layouts.head')
 	
 	<?php $allRequests=\App\Model\ToiletOwner::where('status','=','0')->get(); ?>
+	<?php $admin01=\App\Model\Admin::where('id',Auth::user()->id)->get(); ?>
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini layout-fixed">
@@ -49,5 +50,6 @@
 		</div>
 		@include('layouts.footer')
 	</div>
+	@yield('jquery')
 </body>
 </html>

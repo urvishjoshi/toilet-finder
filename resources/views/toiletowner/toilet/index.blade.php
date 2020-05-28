@@ -16,7 +16,7 @@
 		</div>
 	</div>
 
-	<section>
+<section>
 	<div class="content-header pb-0 pt-3">
 		<div class="col-md-12">
 			<div class="card">
@@ -36,7 +36,7 @@
 		</div>	
 	</div>
 @else
-	<section>
+<section>
 	<div class="content-header pb-0 pt-3">
 		<div class="col-md-12">
 			<div class="card">
@@ -106,145 +106,145 @@
 
 	<!-- Modal -->
 	<div class="modal fade bd-example-modal-xl mt-3" id="addNewToilet" tabindex="-1" role="dialog" aria-labelledby="addNewToiletLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-xl" role="document">
-		<div class="modal-content">
-			<div class="modal-header bg-light">
-				<h5 class="modal-title">Create new Toilet</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button>
+		<div class="modal-dialog modal-xl" role="document">
+			<div class="modal-content">
+				<div class="modal-header bg-light">
+					<h5 class="modal-title">Create new Toilet</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form action="{{ route('toilets.store') }}" method="post" class="mb-0">
+					@method('POST') @csrf
+					<div class="modal-body row">
+						<div class="col-6">
+							<h6 class="heading-small text-muted mb-2">Toilet information</h6>
+
+							<div class="lg-4">
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label class="form-control-label" for="toiletname">Toilet name</label>
+											<input type="text" id="toiletname" name="toiletname" class="form-control" placeholder="Toilet name" required>
+											@error('toiletname')
+											<span class="text-danger font-14" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+											@enderror
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label class="form-control-label" for="toiletstatus">Toilet status</label>
+											<select class="custom-select" id="toiletstatus" name="toiletstatus">
+												<option disabled>Status</option>
+												<option value="1" class="text-success">Active</option>
+												<option value="0" class="text-danger">Not active</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="lg-4">
+								<div class="row">
+									<div class="form-group col-md-2">
+										<label class="form-control-label" for="toiletprice">Price in <b>KD</b></label>
+										<input id="toiletprice" name="toiletprice" class="form-control px-1" placeholder="KD" value="" type="number" min="0" step="0.001" required>
+										@error('toiletprice')
+										<span class="text-danger font-14" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+										@enderror
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label class="form-control-label" for="toilettype">Toilet type</label>
+											<select class="custom-select" id="toilettype" name="toilettype">
+												<option disabled>toilet for</option>
+												<option value="2" selected>Male & Female</option>
+												<option value="1">Male only</option>
+												<option value="0">Female only</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label class="form-control-label" for="complexname">Complex name</label>
+											<input id="complexname" name="complexname" class="form-control" placeholder="Toilet Complex" value="" type="text" required>
+											@error('complexname')
+											<span class="text-danger font-14" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+											@enderror
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-lg-12">
+										<label class="form-control-label" for="address">Street Address</label>
+										<input type="text" id="address" name="address" class="form-control" placeholder="Street address of your toilet" required>
+										@error('address')
+										<span class="text-danger font-14" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+										@enderror
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-4">
+										<div class="form-group">
+											<label for="country">Country</label>
+											<select name="country" class="form-control" id="country" required>
+												<option value="">select</option>
+												@foreach ($countries as $country)
+												<option value="{{ $country->id }}">{{ $country->country }}</option>
+												@endforeach
+											</select>
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="form-group">
+											<label for="state">Governance</label>
+											<select name="state" class="form-control" id="state" required>
+												<option value="">-select-</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="form-group">
+											<label for="city">City</label>
+											<select name="city" class="form-control" id="city" required>
+												<option value="">-select-</option>
+											</select>
+										</div>
+									</div>
+									<span class="text-secondary font-14 pl-2 align-self-end">*All fields are mandatory to fill</span>
+								</div>
+							</div>
+						</div> {{-- modal-body-row --}}
+						<div class="col-6" >
+							<div class="alert bg-primary text-dark alert-dismissible fade show" role="alert" style="position: fixed;z-index: 99;max-width: 50%;float: right;opacity: 0.6">
+								Click anywhere on the map to put a marker for your toilet
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div id="map" style="width:100%;height:400px;"></div>
+
+							<input type="hidden" name="newLat" id="newLat" value="">
+							<input type="hidden" name="newLng" id="newLng" value="">
+
+							<script src="https://maps.googleapis.com/maps/api/js?key={{$key->mapkey}}&callback=myMap"></script>
+
+						</div>
+						<div class="modal-footer bg-light">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="submit" id="btn-addtoilet" name="btn-addtoilet" class="btn btn-primary">Add Toilet</button>
+						</div>
+					</div>
+				</form>
 			</div>
-			<form action="{{ route('toilets.store') }}" method="post" class="mb-0">
-			@method('POST') @csrf
-				<div class="modal-body row">
-				<div class="col-6">
-					<h6 class="heading-small text-muted mb-2">Toilet information</h6>
-        			
-					<div class="lg-4">
-						<div class="row">
-							<div class="col-lg-6">
-								<div class="form-group">
-									<label class="form-control-label" for="toiletname">Toilet name</label>
-									<input type="text" id="toiletname" name="toiletname" class="form-control" placeholder="Toilet name" required>
-									@error('toiletname')
-										<span class="text-danger font-14" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="form-group">
-									<label class="form-control-label" for="toiletstatus">Toilet status</label>
-									<select class="custom-select" id="toiletstatus" name="toiletstatus">
-										<option disabled>Status</option>
-										<option value="1" class="text-success">Active</option>
-										<option value="0" class="text-danger">Not active</option>
-									</select>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="lg-4">
-						<div class="row">
-							<div class="form-group col-md-2">
-								<label class="form-control-label" for="toiletprice">Price in <b>$</b></label>
-								<input id="toiletprice" name="toiletprice" class="form-control" placeholder="$" value="" type="number" min="0" required>
-								@error('toiletprice')
-									<span class="text-danger font-14" role="alert">
-										<strong>{{ $message }}</strong>
-									</span>
-								@enderror
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label class="form-control-label" for="toilettype">Toilet type</label>
-									<select class="custom-select" id="toilettype" name="toilettype">
-										<option disabled>toilet for</option>
-										<option value="2" selected>Male & Female</option>
-										<option value="1">Male only</option>
-										<option value="0">Female only</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label class="form-control-label" for="complexname">Complex name</label>
-									<input id="complexname" name="complexname" class="form-control" placeholder="Toilet Complex" value="" type="text" required>
-									@error('complexname')
-										<span class="text-danger font-14" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="form-group col-lg-12">
-								<label class="form-control-label" for="address">Street Address</label>
-								<input type="text" id="address" name="address" class="form-control" placeholder="Street address of your toilet" required>
-								@error('address')
-									<span class="text-danger font-14" role="alert">
-										<strong>{{ $message }}</strong>
-									</span>
-								@enderror
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-lg-4">
-								<div class="form-group">
-									<label for="country">Country</label>
-									<select name="country" class="form-control" id="country" required>
-										<option value="">select</option>
-										@foreach ($countries as $country)
-											<option value="{{ $country->id }}">{{ $country->country }}</option>
-										@endforeach
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-4">
-								<div class="form-group">
-									<label for="state">State</label>
-									<select name="state" class="form-control" id="state" required>
-										<option value="">-select-</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-4">
-								<div class="form-group">
-									<label for="city">City</label>
-									<select name="city" class="form-control" id="city" required>
-										<option value="">-select-</option>
-									</select>
-								</div>
-							</div>
-							<span class="text-secondary font-14 pl-2 align-self-end">*All fields are mandatory to fill</span>
-						</div>
-					</div>
-				</div> {{-- modal-body-row --}}
-				<div class="col-6" >
-                    <div class="alert bg-primary text-dark alert-dismissible fade show" role="alert" style="position: fixed;z-index: 99;max-width: 50%;float: right;opacity: 0.6">
-                        Click anywhere on the map to put a marker for your toilet
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-					<div id="map" style="width:100%;height:400px;"></div>
-
-					<input type="hidden" name="newLat" id="newLat" value="">
-					<input type="hidden" name="newLng" id="newLng" value="">
-
-					<script src="https://maps.googleapis.com/maps/api/js?key={{$key->mapkey}}&callback=myMap"></script>
-
-
-				</div>
-				<div class="modal-footer bg-light">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" id="btn-addtoilet" name="btn-addtoilet" class="btn btn-primary">Add Toilet</button>
-				</div>
-			</form>
 		</div>
-	  </div>
 	</div>
 <script>
 
@@ -261,7 +261,7 @@ $(document).ready(function(){
 			dataType:'html',
 			success:function(data){
 				if(data<1)
-					$("#state").html('<option value="">-No state found-</option>');
+					$("#state").html('<option value="">-No Governance found-</option>');
 				else
 					$("#state").html(data);
 				$("#city").html('<option value="">-select-</option>');

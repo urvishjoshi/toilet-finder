@@ -19,6 +19,7 @@ class CreateAdminsTable extends Migration
             $table->string('password');
             $table->string('name');
             $table->string('mobileno')->unique()->nullable();
+            $table->string('profile')->nullable();
             $table->string('mapkey')->nullable();
             $table->timestamps();
         });

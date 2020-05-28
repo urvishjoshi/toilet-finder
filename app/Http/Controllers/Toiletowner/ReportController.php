@@ -62,8 +62,8 @@ class ReportController extends Controller
                     <th>Transact Id</th>
                     <th>Toilet name</th>
                     <th>User email</th>
-                    <th title="Total revenue is $'.$total.'" width=10%>
-                        Paid | <b style="color:#28a745;">$'.$total.'</b>
+                    <th title="Total revenue is KD'.$total.'" width=10%>
+                        Paid | <b style="color:#28a745;">KD'.$total.'</b>
                     </th>
                     <th>Used on</th>
                 </tr>
@@ -75,7 +75,7 @@ class ReportController extends Controller
             foreach($sales as $sale) {
                 if($sale->toilet['price']==0)
                     $sale->toilet['price']='<b style="color:#28a745;">Free</b>';
-                else $sale->toilet['price']='$'.$sale->toilet['price'];
+                else $sale->toilet['price']='KD'.$sale->toilet['price'];
                 $data.='<tr>
                     <td>'.$sale->transaction_id.'</td>
                     <td title="id='.$sale->toilet_id.'">
