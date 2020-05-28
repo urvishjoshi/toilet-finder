@@ -56,52 +56,7 @@
 			</div>
 			<!-- /.row -->
 
-			{{--   <h3 class="mt-4 mb-4">Social Widgets</h3>
-
-        		<div class="row d-flex justify-content-center">
-        			<div class="col-md-7">
-            <!-- Widget: user widget style 1 -->
-            <div class="card card-widget widget-user">
-              <!-- Add the bg color to the header using any of the bg-* classes -->
-              <div class="widget-user-header bg-info ">
-                <h3 class="widget-user-username">Toilet owner Name</h3>
-                <h5 class="widget-user-desc">Abc Def</h5>
-              </div>
-              <div class="widget-user-image">
-                <img class="img-circle elevation-2" src="../dist/img/user1-128x128.jpg" alt="User Avatar">
-              </div>
-              <div class="card-footer">
-                <div class="row">
-                  <div class="col-sm-4 border-right">
-                    <div class="description-block">
-                      <h5 class="description-header">5</h5>
-                      <span class="description-text">Toilets</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-4 border-right">
-                    <div class="description-block">
-                      <h5 class="description-header">10</h5>
-                      <span class="description-text">Users</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-4">
-                    <div class="description-block">
-                      <h5 class="description-header">Rattings</h5>
-                      <span class="description-text">In star</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                  <!-- /.col -->
-                </div>
-                <!-- /.row -->
-              </div>
-            </div> --}}
-            <!-- /.widget-user -->
-          {{-- </div> --}}
+			
           <!-- /.col -->
       	</div><!-- Row 2nd end -->
 

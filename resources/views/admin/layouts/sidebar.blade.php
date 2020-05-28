@@ -33,7 +33,7 @@
 			<li class="nav-item">
 			  <a href="{{ route('a.locations.index') }}" class="nav-link {{ (request()->is('admin/locations*')) ? 'active' : '' }}"><!--Kishan changed link-->
 				<i class="fas fa-map-marker-alt pl-2"></i>&nbsp;&nbsp;&nbsp;
-				<p>Add Location</p><!--Kishan changed Menu-->
+				<p>Toilet Locations</p><!--Kishan changed Menu-->
 			  </a>
 			</li>  
 

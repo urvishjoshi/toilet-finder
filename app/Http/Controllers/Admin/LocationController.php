@@ -129,7 +129,7 @@ class LocationController extends Controller
             $old = $state->state;
             $state->state = $request->editState;
             $state->save();
-            return back()->with('a.toast','State '.$old.' edited to '.$request->editState);
+            return back()->with('a.toast','Governance '.$old.' edited to '.$request->editState);
         }
         if ($request->cityEditBtn) {
             // return'city';
@@ -158,7 +158,7 @@ class LocationController extends Controller
         }
         if($id==2) {
             $delete = State::find(request()->input('stateId'));
-            $msg = 'State '.$delete->state.' has been successfully deleted';
+            $msg = 'Governance '.$delete->state.' has been successfully deleted';
         }
         if($id==3) {
             $delete = City::find(request()->input('cityId'));

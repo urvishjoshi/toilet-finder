@@ -72,15 +72,15 @@
 								</div>
 							</div>
 						</div>
-							<div class="row">
-								<div class="col-lg mt-2 ml-3">
-									<div class="form-group">
-										<label class="form-control-label" for="password">Password Hash</label>
-										<input type="text" id="password" name="password" class="form-control" placeholder="Hash value" value="{{$info[0]['password']}}">
-										<span class="text-muted">This is not the actual password, this is a hash value of registered password</span>
-									</div>
+						<div class="row">
+							<div class="col-lg mt-2 ml-3">
+								<div class="form-group">
+									<label class="form-control-label" for="password">Password Hash</label>
+									<input type="text" id="password" name="password" class="form-control" placeholder="Hash value" value="{{$info[0]['password']}}">
+									<span class="text-muted">This is not the actual password, this is a hash value of registered password</span>
 								</div>
 							</div>
+						</div>
 						<hr class="my-2" />
 						<!-- Address -->
 						<h6 class="heading-small text-muted mb-4">Contact information</h6>

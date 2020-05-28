@@ -39,36 +39,41 @@ class PersonalController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = Validator::make($request->all(),[
-            'profile' => 'required|image|mimes:jpeg,jpg,png|max:3064'
-        ],
-        [
-            'profile.required' => 'Please select an image',
-            'profile.image' => 'Please select an image type',
-            'profile.mimes' => 'Allowed image types are .jpeg, .jpg & .png',
-            'profile.max' => 'You can only upload image size within 3MB',
-        ] );
-         
-        if($validate->fails())
-        {
-            return back()->withErrors($validate);
-            // return response()->json([
-            //     'message' => $validate->errors()->all(),
-            // ]);
+
+        if($request->profileBtn) {
+
+            $validate = Validator::make($request->all(),[
+                'profile' => 'required|image|mimes:jpeg,jpg,png|max:3064'
+            ],
+            [
+                'profile.required' => 'Please select an image',
+                'profile.image' => 'Please select an image type',
+                'profile.mimes' => 'Allowed image types are .jpeg, .jpg & .png',
+                'profile.max' => 'You can only upload image size within 3MB',
+            ] );
+             
+            if($validate->fails())
+            {
+                return back()->withErrors($validate);
+                // return response()->json([
+                //     'message' => $validate->errors()->all(),
+                // ]);
+            }
+
+            $admin = Admin::find(Auth::user()->id);
+            if($admin->profile!=null)
+                unlink(public_path().'/profileimages/admin/'.$admin->profile);
+
+            $image = $request->file('profile');
+            $name = Auth::user()->id.'_'.$image->getClientOriginalName();
+            $image->move(public_path('profileimages/admin'),$name);
+            
+            $admin->profile = $name;
+            $admin->save();
+
+            return back()->with('a.toast','Profile image '.$image->getClientOriginalName().' Uploaded');
         }
-
-        $admin = Admin::find(Auth::user()->id);
-        if($admin->profile!=null)
-            unlink(public_path().'/profileimages/admin/'.$admin->profile);
-
-        $image = $request->file('profile');
-        $name = Auth::user()->id.'_'.$image->getClientOriginalName();
-        $image->move(public_path('profileimages/admin'),$name);
-        
-        $admin->profile = $name;
-        $admin->save();
-
-        return back()->with('a.toast','Profile image '.$image->getClientOriginalName().' Uploaded');
+        return 'error occured';
     }
 
     /**
@@ -102,7 +107,14 @@ class PersonalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $admin = Admin::find($id);
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+        $admin->password = $request->password;
+        $admin->mobileno = $request->contactno;
+        $admin->save();
+        return back()->with('a.toast','Personal information changed successfully');
+
     }
 
     /**

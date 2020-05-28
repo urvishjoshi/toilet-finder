@@ -29,7 +29,7 @@
 											</div><br>
 										</div>
 										<div class="d-flex justify-content-center">
-											<button class="text-primary btn btn-sm pointer" id="uploadImg">Upload</button>
+											<button class="text-primary btn btn-sm pointer" name="profileBtn" id="uploadImg" value="1">Upload</button>
 										</div>
 										<div id="uploadText" class="font-14 text-center"></div>
 										@error('profile')
@@ -44,13 +44,22 @@
 									<form action="{{ route('a.personal.update',Auth::user()->id) }}" method="post"> @method('PUT') @csrf
 									<div class="form-group">
 										<label class="form-control-label" for="name">Your name</label>
-										<input type="text" id="ownername" name="ownername" class="form-control" placeholder="Name" value="{{$admin01[0]['name']}}"><!-- Owner Name -->
+										<input type="text" id="name" name="name" class="form-control" placeholder="Name" value="{{$admin01[0]['name']}}"><!-- Owner Name -->
 									</div>
 								</div>
 								<div class="col-lg">
 									<div class="form-group">
 										<label class="form-control-label" for="email">Email address</label>
 										<input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{$admin01[0]['email']}}"><!-- Owner Email -->
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg mt-2 ml-3">
+									<div class="form-group">
+										<label class="form-control-label" for="password">Password Hash</label>
+										<input type="text" id="password" name="password" class="form-control" placeholder="Hash value" value="{{$admin01[0]['password']}}">
+										<span class="text-muted">This is not the actual password, this is a hash value of registered password</span>
 									</div>
 								</div>
 							</div>
@@ -66,7 +75,7 @@
 										<input type="text" id="contactno" name="contactno" class="form-control" placeholder="Contact" value="{{$admin01[0]['mobileno']}}"><!-- Owner Contact No. -->
 									</div>
 								</div>
-								<div class="col-md-8">
+								{{-- <div class="col-md-8">
 									<div class="form-group">
 										<label class="form-control-label" for="address">Address</label>
 										<input id="address" class="form-control" name="address"  placeholder="Home Address" value="{{$admin01[0]['address']}}" type="text"><!-- Owner Address -->
@@ -90,8 +99,8 @@
 									<div class="form-group">
 										<label class="form-control-label" for="postal-code">Postal code</label>
 										<input type="number" id="postalcode" name="postalcode" class="form-control" placeholder="6 digit code"><!-- Owner Postal code -->
-									</div>
-								</div>
+									</div> --}}
+								{{-- </div> --}}
 							</div>
 						<button type="submit" id="submitbtn" name="submitbtn" class="btn btn-primary">Submit</button>
 						</div>
@@ -113,30 +122,6 @@
 	    		var file = $('#file')[0].files[0].name;
 	    		$('#uploadText').text(file);
 	    	});
-	    		// var i = $(this).prev('label').clone();
-	    		// $(this).prev('label').text(file);
-
-	    		// $('#imgform').submit(function(event) {
-	    		// 	event.preventDefault();
-
-	    		// 	$.ajax({
-	    		// 		url: '{{ route('personal.store') }}',
-	    		// 		data: {
-	    		// 			'data': new FormData(this),
-	    		// 			'_token': $('input[name=_token]').val(),
-	    		// 			'_method': '{{method_field('POST')}}',
-	    		// 		},
-	    		// 		dataType: 'JSON',
-	    		// 		cache: false,
-	    		// 		contentType: false,
-	    		// 		processData: false,
-	    		// 		success:function(data) {
-			    // 			console.log(data)
-
-	    		// 		}
-	    		// 	});
-	    			
-	    		// });
     	});
     </script>
 @endsection

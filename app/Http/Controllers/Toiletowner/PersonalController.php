@@ -18,8 +18,12 @@ class PersonalController extends Controller
 
     public function update(Request $request, $id)
     {
-        return $request;
-        return back();
+        $owner = ToiletOwner::findOrFail($id);
+        $owner->name = $request->ownername;
+        $owner->email = $request->email;
+        $owner->mobileno = $request->contactno;
+        $owner->save();
+        return back()->with('toast.o','Personal information changed successfully');
     }
 
     public function create()
