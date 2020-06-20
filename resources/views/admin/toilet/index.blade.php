@@ -4,70 +4,80 @@
 <?php $key=\App\Model\Admin::first('mapkey'); ?>
 
 <section>
-    	<!-- Content Header (Page header) -->
-    	<div class="content pt-4">
-    		<div class="container-fluid">
-    			<div class="row">
-					<div class="col-md text-center">
-    					<h2>All Toilets</h2>
-    				</div><!-- /.col -->
-    			</div><!-- /.row -->
-				<HR width=20%>
-    		</div><!-- /.container-fluid -->
-    	</div>
-    	<!-- /.content-header -->
-		<div class="content-header">
+	<!-- Content Header (Page header) -->
+	<div class="content pt-4">
 		<div class="container-fluid">
-		<div class="container justify-content-center" id="requestTable">
-			<table class="table table-hover">
-				<thead>
-				<tr class="thead-light">
-					<th width="1%">Id</th>
-					<th width="1%">Owner id</th>
-					<th>Toilet name</th>
-					<th width="1%">Price</th>
-					<th>Complex</th>
-					<th>Address</th>
-					<th>Toilet type</th>
-					<th>Status</th>
-					<th width="12%">Created on</th>
-					<th width="5%">Map</th>
-					<th width="5%">Edit</th>
-				</tr>
-				</thead>
-				<tbody>
-					@if( count($toilets) == 0 )
-						<tr><td colspan="6"><center><h2>No Toilets registered</h2><hr></center></td></tr>
-					@else
-						@foreach($toilets as $toilet)
-						    <tr>
-								<th scope="row">{{ $toilet->id }}</th>
-								<td title="{{ $toilet->owner['email'] }}">
-									{{ $toilet->owner['id'] }}
-								</td>
-								<td>{{ $toilet->toilet_name }}</td>
-								<td><b>${{ $toilet->price }}</b></td>
-								<td>{{ $toilet->complex_name }}</td>
-								<td>{{ $toilet->address.$toilet->getFullAddress() }}</td>
-								<td>{{ $toilet->type==1 ? 'Male' : 'Female'}}</td>
+			<div class="row">
+				<div class="col-md text-center">
+					<h2>All Toilets</h2>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+			<HR width=20%>
+		</div><!-- /.container-fluid -->
+	</div>
+	<!-- /.content-header -->
+	<div class="content-header">
+		<div class="container-fluid">
+			<div class="container justify-content-center" id="requestTable">
+				<div class="card">
+					<div class="card-header border-0 p-0">
+						<div class="container justify-content-center p-0" id="requestTable">
+							<table class="table align-items-center table-hover table-flush text-center mb-0">
+								<thead>
+									<tr class="thead-light">
+										<th width="1%">Id</th>
+										<th width="1%">Owner id</th>
+										<th>Toilet name</th>
+										<th width="1%">Price</th>
+										<th>Complex</th>
+										<th>Address</th>
+										<th>Toilet type</th>
+										<th>Status</th>
+										<th width="12%">Created on</th>
+										<th width="5%">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									@if( count($toilets) == 0 )
+									<tr><td colspan="10"><center><h2>No Toilets registered</h2></center></td></tr>
+									@else
+									@foreach($toilets as $toilet)
+									<tr>
+										<th scope="row">{{ $toilet->id }}</th>
+										<td title="{{ $toilet->owner['email'] }}">
+											{{ $toilet->owner['id'] }}
+										</td>
+										<td>{{ $toilet->toilet_name }}</td>
+										<td><b>KD{{ $toilet->price }}</b></td>
+										<td>{{ $toilet->complex_name }}</td>
+										<td>{{ $toilet->address.$toilet->getFullAddress() }}</td>
+										<td>{{ $toilet->type==1 ? 'Male' : 'Female'}}</td>
 
-								<td>
-									@if($toilet->status==1) <f class="text-success">Active</f> @else <f class="text-warning">Not Active</f> @endif
-								</td>
-								<td>{{ $toilet->created_at->format('d/m/Y').' at '.$toilet->created_at->format('g:i A') }}</td>
-								<td>
-									<button class="btn btn-success" id="mapButton" data-toggle="modal"  data-target=".bd-example-modal-lg" onclick="myMap({{ $toilet->toilet_lng }},{{ $toilet->toilet_lng }})">Map</button>
-								</td>
-								<td>
-									<a href="{{ route('a.toilets.show',$toilet->id) }}" class="btn btn-secondary" name="edit">Edit</a>
-								</td>
-						    </tr>
-						@endforeach
-					@endif
-				</tbody>
-			</table>
+										<td>
+											@if($toilet->status==1) <f class="text-success">Active</f> @else <f class="text-warning">Not Active</f> @endif
+										</td>
+										<td>{{ $toilet->created_at->format('d/m/Y').' at '.$toilet->created_at->format('g:i A') }}</td>
+										<td>
+											{{-- <div > --}}
+											<form action="{{ route('a.toilets.destroy',$toilet->id) }}" method="POST"class="d-flex">
+												
+											<a class="btn btn-sm btn-primary text-white" id="mapButton" data-toggle="modal"  data-target=".bd-example-modal-lg" onclick="myMap({{ $toilet->toilet_lng }},{{ $toilet->toilet_lng }})">Map</a>
+											<a href="{{ route('a.toilets.show',$toilet->id) }}" class="btn btn-sm btn-secondary mx-2" name="edit">Edit</a>
+												@csrf @method('DELETE')
+												<button type="submit" class="btn btn-sm btn-danger" name="delete">Delete</button>
+											</form>
+											{{-- </div> --}}
+										</td>
+									</tr>
+									@endforeach
+									@endif
+								</tbody>
+							</table>
+						</div>
+					</div>	
+				</div>
 			</div>
-			</div>	
+		</div>
 	</div>
 </section>
 

@@ -8,7 +8,7 @@
 				<div class="container col-md-auto">
 				<div class="row">
 					<div class="col-md-1">
-						<a href="{{ url('admin/toilets') }}" class="fas fa-arrow-left pt-3 pl-2" style="font-size: 30px;text-decoration:none; "></a>
+						<a href="{{ url()->previous() }}" class="fas fa-arrow-left pt-3 pl-2" style="font-size: 30px;text-decoration:none; "></a>
 					</div>
 					<div class="col-md text-center mr-4">
 						<h2>Edit toilet<b></b></h2>
@@ -49,9 +49,9 @@
 					</div>
 					<div class="lg-4">
 						<div class="row">
-							<div class="form-group col-md-2">
-								<label class="form-control-label" for="toiletprice">Price in <b>$</b></label>
-								<input id="toiletprice" name="toiletprice" class="form-control" placeholder="$" value="{{ $toilet[0]->price }}" type="number">
+							<div class="form-group col-md-2 px-1">
+								<label class="form-control-label" for="toiletprice">Price in <b>KD</b></label>
+								<input id="toiletprice" name="toiletprice" class="form-control px-1" placeholder="KD" value="{{ $toilet[0]->price }}" type="number" min="0" step="0.001" required>
 								@error('toiletprice')
 								    <span class="text-danger font-14" role="alert">
 								        <strong>{{ $message }}</strong>

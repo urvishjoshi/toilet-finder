@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Model\ToiletOwner;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 
 class PersonalController extends Controller
@@ -18,9 +20,33 @@ class PersonalController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validate = Validator::make($request->all(),[
+            'ownername'   => 'required',
+            'email'   => 'required|email',
+            'contactno'   => 'required|numeric|min:10',
+        ],
+        [
+            'email.exists' => 'Email doesn'."'".'t exist!',
+            'email.required' => 'Please enter an Email!',
+            'mobileno.required' => 'Please enter a mobile number!',
+        ] );
+         
+        if($validate->fails())
+        {
+            return back()->withErrors($validate);
+        }
+
+        if(($request->password != $request->password_confirmation)){
+            return back()->withErrors(["password"=>"Password doesn't match!"]);
+            if ($request->password < 5) {
+                return back()->withErrors(["password"=>"Password must be atleast 6 characters long."]);
+            }
+        }
+
         $owner = ToiletOwner::findOrFail($id);
         $owner->name = $request->ownername;
         $owner->email = $request->email;
+        $owner->password = Hash::make($request->password);
         $owner->mobileno = $request->contactno;
         $owner->save();
         return back()->with('toast.o','Personal information changed successfully');
@@ -52,23 +78,19 @@ class PersonalController extends Controller
         if($validate->fails())
         {
             return back()->withErrors($validate);
-            // return response()->json([
-            //     'message' => $validate->errors()->all(),
-            // ]);
         }
 
         $owner = ToiletOwner::find(Auth::user()->id);
         if($owner->profile!=null)
-            unlink(public_path().'/profileimages/'.$owner->profile);
+            Storage::delete('public/profileimages/'.$owner->profile);
 
-        $image = $request->file('profile');
-        $name = Auth::user()->id.'_'.$image->getClientOriginalName();
-        $image->move(public_path('profileimages'),$name);
+        $name = Auth::user()->id.'_'.$request->profile->getClientOriginalName();
+        $image = $request->profile->storeAs('profileimages',$name,'public');
         
         $owner->profile = $name;
         $owner->save();
 
-        return back()->with('toast.o','Profile image '.$image->getClientOriginalName().' Uploaded');
+        return back()->with('toast.o','Profile picture '.$name.' Uploaded');
     }
 
     /**

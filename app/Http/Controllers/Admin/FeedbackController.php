@@ -77,6 +77,9 @@ class FeedbackController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = Feedback::findOrFail($id);
+        $msg = 'Feedback ID-'.$id.' has been successfully deleted';
+        $delete->delete();
+        return back()->with('a.toast',$msg);
     }
 }

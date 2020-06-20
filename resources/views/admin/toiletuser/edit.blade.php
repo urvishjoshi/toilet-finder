@@ -26,22 +26,42 @@
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label class="form-control-label" for="name">Name</label>
-										<input type="text" id="name" name="name" class="form-control" placeholder="Name" value="{{$user->name}}"><!--  Name -->
+										<input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Name" value="{{$user->name}}">
+										@error('name')
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+										@enderror
 									</div>
 								</div>
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label class="form-control-label" for="email">Email address</label>
-										<input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{$user->email}}"><!-- Email -->
+										<input type="email" id="email" name="email" class="form-control @error('password') is-invalid @enderror" placeholder="Email" value="{{$user->email}}">
+										@error('email')
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+										@enderror
 									</div>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-lg">
+								<div class="col-lg mt-2">
 									<div class="form-group">
-										<label class="form-control-label" for="password">Password Hash</label>
-										<input type="text" id="password" name="password" class="form-control" placeholder="Hash value" value="{{$user->password}}">
-										<span class="text-muted">This is not the actual password, this is a hash value of registered password</span>
+										<label class="form-control-label" for="password">New Password</label>
+										<input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="New password" value="">
+										@error('password')
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+										@enderror
+									</div>
+								</div>
+								<div class="col-lg mt-2">
+									<div class="form-group">
+										<label class="form-control-label" for="password_confirmation">Password confirmation</label>
+										<input type="text" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Re-type password" value="">
 									</div>
 								</div>
 							</div>
@@ -54,7 +74,12 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label class="form-control-label" for="mobileno">Contact no</label>
-										<input type="text" id="mobileno" name="mobileno" class="form-control" placeholder="Contact" value="{{$user->mobileno}}"><!-- Owner Contact No. -->
+										<input type="text" id="mobileno" name="mobileno" class="form-control @error('mobileno') is-invalid @enderror" placeholder="Contact" value="{{$user->mobileno}}">
+										@error('mobileno')
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+										@enderror
 									</div>
 								</div>
 								<div class="col-md-4">
@@ -69,7 +94,12 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label class="form-control-label" for="age">Age</label>
-										<input id="age" class="form-control" name="age"  placeholder="Age" value="{{$user->age}}" type="text"><!-- Owner Address -->
+										<input id="age" class="form-control @error('age') is-invalid @enderror" name="age"  placeholder="Age" value="{{$user->age}}" type="text">
+										@error('age')
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+										@enderror
 									</div>
 								</div>
 							</div>

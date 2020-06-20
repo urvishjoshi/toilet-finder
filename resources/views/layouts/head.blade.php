@@ -37,7 +37,8 @@
         background-color: #6c757d!important;
     }
     .pointer{cursor: pointer;}
-    th,td{text-align: center;} 
+    tr:hover{background-color: hsla(0, 0%, 48%, 0.09)!important}
+    th,td{text-align: center;vertical-align: middle!important;} 
     .font-14{ font-size: 14px!important; } 
     .font-20{ font-size: 24px!important; } 
     .style{float:right;margin: 0px -5px -10px 0px;padding: 2.6px 5px!important;z-index: 1;}

@@ -11,7 +11,7 @@
 	  <!-- Sidebar user panel (optional) -->
 	  <div class="user-panel mt-3 pb-3 mb-3 d-flex">
 		<div class="image">
-		  <img src="{{ asset('profileimages/admin/'.$admin01[0]['profile']) }}" class="img-circle elevation-2" alt="User Image">
+		  <img src="{{ asset('storage/profileimages/admin/'.$admin01[0]['profile']) }}" class="img-circle elevation-2" alt="User Image" style="width: 35px;height: 35px;">
 		</div>
 		<div class="info">
 		  <a href="{{ route('a.personal.index') }}" class="d-block">{{ Auth::user()->name }}</a>

@@ -49,9 +49,9 @@
 					</div>
 					<div class="lg-4">
 						<div class="row">
-							<div class="form-group col-md-2">
-								<label class="form-control-label" for="toiletprice">Price in <b>$</b></label>
-								<input id="toiletprice" name="toiletprice" class="form-control" placeholder="$" value="{{ $toilet[0]->price }}" type="number">
+							<div class="form-group col-md-2 px-1">
+								<label class="form-control-label" for="toiletprice">Price in <b>KD</b></label>
+								<input id="toiletprice" name="toiletprice" class="form-control" placeholder="KD" value="{{ $toilet[0]->price }}" type="number">
 								@error('toiletprice')
 								    <span class="text-danger font-14" role="alert">
 								        <strong>{{ $message }}</strong>

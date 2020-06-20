@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Model\ToiletInfo;
 use App\Model\ToiletOwner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
+use Validator;
 
 class ToiletownerController extends Controller
 {
@@ -57,15 +60,32 @@ class ToiletownerController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validate = Validator::make($request->all(), [
+            'email'   => 'required|email',
+            'password' => 'required|min:6|confirmed',
+            'contactno'   => 'required|numeric|min:10',
+        ],
+        [
+            'email.exists' => 'Email doesn'."'".'t exist!',
+            'email.required' => 'Please enter an Email!',
+            'password.required' => 'Please enter a Password!',
+            'contactno.required' => 'Please enter a mobile number!',
+        ] );
+
+        if($validate->fails())
+        {
+            return back()->withInput($request->except('password'))->withErrors($validate);
+        }
+
         $owner = ToiletOwner::findOrFail($id);
         // return $request;
         $owner->name = $request->ownername;
         $owner->email = $request->email;
-        $owner->password = $request->password;
+        $owner->password = Hash::make($request->password);
         $owner->mobileno = $request->contactno;
         $owner->save();
-        // return back()->with('a.toast','ToiletOwner with ID-'.$owner->id.' updated manually!');
-        return redirect()->route('a.toiletowners.show',[$owner->id,'name'=>$request->ownername])->with('a.toast','ToiletOwner with ID-'.$owner->id.' updated manually!');
+        return back()->with('a.toast','ToiletOwner with ID-'.$owner->id.' updated manually!');
+        // return redirect()->route('a.toiletowners.show',[$owner->id,'name'=>$request->ownername])->with('a.toast','ToiletOwner with ID-'.$owner->id.' updated manually!');
     }
 
     /**
@@ -76,6 +96,9 @@ class ToiletownerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = ToiletOwner::findOrFail($id);
+        $msg = 'Toilet owner '.$delete->email.' has been successfully deleted';
+        $delete->delete();
+        return back()->with('a.toast',$msg);
     }
 }

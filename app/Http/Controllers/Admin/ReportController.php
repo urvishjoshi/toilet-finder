@@ -71,7 +71,7 @@ class ReportController extends Controller
                 </thead>
                 <tbody>';
         if( count($sales) == 0 )
-            $data.='<tr><td colspan="7"><center><h2>No Reports found</h2><hr></center></td></tr>';
+            $data.='<tr><td colspan="7"><center><h2>No Reports found</h2></center></td></tr>';
         else{
             foreach($sales as $sale) {
 

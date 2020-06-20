@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Model\ToiletUsageInfo;
 use App\User;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Validator;
 
 class ToiletuserController extends Controller
 {
@@ -30,10 +33,33 @@ class ToiletuserController extends Controller
 
     public function update(Request $request, $id)
     {
+        // $user = User::find(1);
+        // $user->password = Hash::make('$request->password');
+        // echo$user->save(); die();
+
+        // return Hash::make($request->password);
+        $validate = Validator::make($request->all(), [
+            'name'   => 'required',
+            'email'   => 'required|email',
+            'password' => 'required|min:6|confirmed',
+            'mobileno'   => 'required|numeric|min:10',
+            'age'   => 'required|numeric',
+        ],
+        [
+            'email.exists' => 'Email doesn'."'".'t exist!',
+            'email.required' => 'Please enter an Email!',
+            'password.required' => 'Please enter a Password!',
+            'mobileno.required' => 'Please enter a mobile number!',
+        ] );
+
+        if($validate->fails())
+        {
+            return back()->withInput($request->except('password'))->withErrors($validate);
+        }
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         $user->mobileno = $request->mobileno;
         $user->gender = $request->gender;
         $user->age = $request->age;

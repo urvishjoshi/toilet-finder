@@ -142,6 +142,9 @@ class ToiletController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = ToiletInfo::findOrFail($id);
+        $msg = 'Toilet '.$delete->toilet_name.' has been successfully deleted';
+        $delete->delete();
+        return back()->with('a.toast',$msg);
     }
 }

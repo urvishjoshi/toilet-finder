@@ -39,9 +39,16 @@
 				</div>
 			</div>
 			<div class="container-fluid justify-content-center mt-3">
-				<table class="table table-hover" id="tableContainer">
-					
-				</table>
+				<div class="card">
+					<div class="card-header border-0 p-0">
+						<div class="container justify-content-center p-0" id="requestTable">
+							<table class="table align-items-center table-hover table-flush text-center mb-0" id="tableContainer">
+
+							</table>
+						</div>
+					</div>
+				</div>
+				<h5 class="text-center text-muted">Click to get records</h5>
 			</div>
 		</div>
 	</div>
@@ -64,6 +71,7 @@ $(document).ready(function(){
 				$('#pdfLink').attr('hidden',false);
 				$('#pdfLink').attr('href','?pdf='+value);
 				$("#tableContainer").html(data);
+				$('h5').hide();
 			}
 		});
 	});

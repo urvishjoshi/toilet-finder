@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Model\Admin;
-use Illuminate\Http\Request;
-use Validator;
 use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Validator;
 
 class PersonalController extends Controller
 {
@@ -55,23 +57,19 @@ class PersonalController extends Controller
             if($validate->fails())
             {
                 return back()->withErrors($validate);
-                // return response()->json([
-                //     'message' => $validate->errors()->all(),
-                // ]);
             }
 
             $admin = Admin::find(Auth::user()->id);
             if($admin->profile!=null)
-                unlink(public_path().'/profileimages/admin/'.$admin->profile);
+                Storage::delete('public/profileimages/admin/'.$admin->profile);
 
-            $image = $request->file('profile');
-            $name = Auth::user()->id.'_'.$image->getClientOriginalName();
-            $image->move(public_path('profileimages/admin'),$name);
+            $name = Auth::user()->id.'_'.$request->profile->getClientOriginalName();
+            $image = $request->profile->storeAs('profileimages/admin',$name,'public');
             
             $admin->profile = $name;
             $admin->save();
 
-            return back()->with('a.toast','Profile image '.$image->getClientOriginalName().' Uploaded');
+            return back()->with('a.toast','Profile picture '.$name.' Uploaded successfully');
         }
         return 'error occured';
     }
@@ -107,11 +105,34 @@ class PersonalController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validate = Validator::make($request->all(),[
+            'name'   => 'required',
+            'email'   => 'required|email',
+            'contactno'   => 'required|numeric|min:10',
+        ],
+        [
+            'email.exists' => 'Email doesn'."'".'t exist!',
+            'email.required' => 'Please enter an Email!',
+            'mobileno.required' => 'Please enter a mobile number!',
+        ] );
+         
+        if($validate->fails())
+        {
+            return back()->withErrors($validate);
+        }
+
+        if(($request->password != $request->password_confirmation)){
+            return back()->withErrors(["password"=>"Password doesn't match!"]);
+            if ($request->password < 5) {
+                return back()->withErrors(["password"=>"Password must be atleast 6 characters long."]);
+            }
+        }
+
         $admin = Admin::find($id);
         $admin->name = $request->name;
         $admin->email = $request->email;
-        $admin->password = $request->password;
-        $admin->mobileno = $request->contactno;
+        $admin->password = Hash::make($request->password);
+        $admin->mobileno = (int)$request->contactno;
         $admin->save();
         return back()->with('a.toast','Personal information changed successfully');
 

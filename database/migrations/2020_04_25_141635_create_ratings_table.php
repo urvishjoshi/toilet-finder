@@ -32,6 +32,7 @@ class CreateRatingsTable extends Migration
                     ->onDelete('cascade');
             $table->string('rating')->nullable();
             $table->text('desc')->nullable();
+            $table->enum('visible', ['0', '1'])->default('1')->comment('0-Hidden,1-Visible');
             $table->timestamps();
         });
     }

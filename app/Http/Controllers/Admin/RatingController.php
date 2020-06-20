@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Rating;
 use App\Model\ToiletInfo;
 use Illuminate\Http\Request;
+use Auth;
 
 class RatingController extends Controller
 {
@@ -25,6 +26,22 @@ class RatingController extends Controller
 
         return view($this->url.'show',compact('ratings','name'));
     }
+
+    public function store(Request $request)
+    {
+        $rating = Rating::find($request->input('id'));
+        $status = $request->input('visible');
+        if ($status=='0') {
+            $rating->visible = '1';
+            $rating->save();
+            return response()->json(['visible'=>'1']);
+        }
+        else {
+            $rating->visible = '0';
+            $rating->save();
+            return response()->json(['visible'=>'0']);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -41,10 +58,6 @@ class RatingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.

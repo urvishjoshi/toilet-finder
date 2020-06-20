@@ -46,8 +46,8 @@
 							<h3 class="mb-0" class="tooltip-test">Your Toilets</h3>
 						</div>
 						<div class="col-4 text-right">
-						  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewToilet">
-							  Add new Toilet
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewToilet">
+								Add new Toilet
 							</button>
 						</div>
 					</div>
@@ -57,52 +57,58 @@
 	</div>
 	<div class="content-header pt-0">
 		<div class="container-fluid">
-		<div class="container justify-content-center pt-3" id="requestTable">
-			<table class="table table-hover">
-				<thead>
-				<tr class="thead-light">
-					<th center>Id</th>
-					<th>Toilet name</th>
-					<th>Complex</th>
-					<th>Address</th>
-					<th>Status</th>
-					<th>Price</th>
-					<th>Created on</th>
-					<th>Action</th>
-				</tr>
-				</thead>
-				<tbody>
-					@if( count($toilets) == 0 )
-						<tr><td colspan="8"><center><h2>No Toilets created</h2><hr></center></td></tr>
-					@else
-						@foreach($toilets as $toilet)
-							<tr>
-								<th scope="row">{{ $toilet->id }}</th>
-								<td>{{ $toilet->toilet_name }}</td>
-								<td>{{ $toilet->complex_name }}</td>
-								<td>{{ $toilet->address }}</td>
-								<td>
-									@if($toilet->status==1) <f class="text-success">Active</f> @else <f class="text-danger">Not Active</f> @endif
-								</td>
-								<td><b>${{ $toilet->price }}</b></td>
-								<td>{{ $toilet->created_at->format('d/m/Y').' at '.$toilet->created_at->format('g:i A') }}</td>
-								<td>
-									<form action="{{ route('toilets.destroy',$toilet->id) }}" method="POST">
-									@method('DELETE') @csrf
-									<a href="{{ route('toilets.show',$toilet->id) }}" class="btn btn-success" name="btn">Edit</a>&nbsp;&nbsp;
-										<button type="submit" class="btn btn-danger" name="btn">Delete</button>
-									</form>
-								</td>
-							</tr>
-						@endforeach
-					@endif
-				</tbody>
-			</table>
+			<div class="container justify-content-center pt-3" id="requestTable">
+				<div class="card">
+					<div class="card-header border-0 p-0">
+						<div class="container justify-content-center p-0" id="requestTable">
+							<table class="table align-items-center table-hover table-flush text-center mb-0">
+								<thead>
+									<tr class="thead-light">
+										<th center>Id</th>
+										<th>Toilet name</th>
+										<th>Complex</th>
+										<th>Address</th>
+										<th>Status</th>
+										<th>Price</th>
+										<th>Created on</th>
+										<th width="5%">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									@if( count($toilets) == 0 )
+									<tr><td colspan="8"><center><h2>No Toilets created</h2></center></td></tr>
+									@else
+									@foreach($toilets as $toilet)
+									<tr>
+										<th scope="row">{{ $toilet->id }}</th>
+										<td>{{ $toilet->toilet_name }}</td>
+										<td>{{ $toilet->complex_name }}</td>
+										<td>{{ $toilet->address }}</td>
+										<td>
+											@if($toilet->status==1) <f class="text-success">Active</f> @else <f class="text-danger">Not Active</f> @endif
+										</td>
+										<td><b>${{ $toilet->price }}</b></td>
+										<td>{{ $toilet->created_at->format('d/m/Y').' at '.$toilet->created_at->format('g:i A') }}</td>
+										<td>
+											<form action="{{ route('toilets.destroy',$toilet->id) }}" method="POST" class="d-flex mb-0">
+												@method('DELETE') @csrf
+												<a href="{{ route('toilets.show',$toilet->id) }}" class="btn btn-success" name="btn">Edit</a>&nbsp;&nbsp;
+												<button type="submit" class="btn btn-danger" name="btn">Delete</button>
+											</form>
+										</td>
+									</tr>
+									@endforeach
+									@endif
+								</tbody>
+							</table>
+						</div>
+					</div>	
+				</div>
 			</div>
-			</div>	
+		</div>
 	</div>
 
-	</section>
+</section>
 
 	<!-- Modal -->
 	<div class="modal fade bd-example-modal-xl mt-3" id="addNewToilet" tabindex="-1" role="dialog" aria-labelledby="addNewToiletLabel" aria-hidden="true">
@@ -147,7 +153,7 @@
 							</div>
 							<div class="lg-4">
 								<div class="row">
-									<div class="form-group col-md-2">
+									<div class="form-group col-md-2 px-1">
 										<label class="form-control-label" for="toiletprice">Price in <b>KD</b></label>
 										<input id="toiletprice" name="toiletprice" class="form-control px-1" placeholder="KD" value="" type="number" min="0" step="0.001" required>
 										@error('toiletprice')
@@ -237,15 +243,16 @@
 							<script src="https://maps.googleapis.com/maps/api/js?key={{$key->mapkey}}&callback=myMap"></script>
 
 						</div>
-						<div class="modal-footer bg-light">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							<button type="submit" id="btn-addtoilet" name="btn-addtoilet" class="btn btn-primary">Add Toilet</button>
-						</div>
 					</div>
-				</form>
-			</div>
+					<div class="modal-footer bg-light">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="submit" id="btn-addtoilet" name="btn-addtoilet" class="btn btn-primary">Add Toilet</button>
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
+</div>
 <script>
 
 $(document).ready(function(){
