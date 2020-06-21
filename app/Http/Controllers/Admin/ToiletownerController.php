@@ -58,7 +58,6 @@ class ToiletownerController extends Controller
                 return back()->withInput($request->except('password'))->withErrors($validate);
             }
 
-        // return$request;
             $writer = ToiletOwner::create([
                 'name' => $request['name'],
                 'email' => $request['email'],
@@ -92,13 +91,11 @@ class ToiletownerController extends Controller
     {
         $validate = Validator::make($request->all(), [
             'email'   => 'required|email',
-            'password' => 'required|min:6|confirmed',
             'contactno'   => 'required|numeric|min:10',
         ],
         [
             'email.exists' => 'Email doesn'."'".'t exist!',
             'email.required' => 'Please enter an Email!',
-            'password.required' => 'Please enter a Password!',
             'contactno.required' => 'Please enter a mobile number!',
         ] );
 
@@ -107,8 +104,14 @@ class ToiletownerController extends Controller
             return back()->withInput($request->except('password'))->withErrors($validate);
         }
 
+        if(($request->password != $request->password_confirmation)){
+            return back()->withErrors(["password"=>"Password doesn't match!"]);
+            if ($request->password < 5) {
+                return back()->withErrors(["password"=>"Password must be atleast 6 characters long."]);
+            }
+        }
+
         $owner = ToiletOwner::findOrFail($id);
-        // return $request;
         $owner->name = $request->ownername;
         $owner->email = $request->email;
         $owner->password = Hash::make($request->password);

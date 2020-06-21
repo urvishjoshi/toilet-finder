@@ -65,6 +65,7 @@ class PersonalController extends Controller
      */
     public function store(Request $request)
     {
+        // return var_dump($request->ownerId);
         $validate = Validator::make($request->all(),[
             'profile' => 'required|image|mimes:jpeg,jpg,png|max:3064'
         ],
@@ -80,11 +81,19 @@ class PersonalController extends Controller
             return back()->withErrors($validate);
         }
 
-        $owner = ToiletOwner::find(Auth::user()->id);
+        if ($request->ownerId)
+            $owner = ToiletOwner::find($request->ownerId);
+        else
+            $owner = ToiletOwner::find(Auth::user()->id);
+
         if($owner->profile!=null)
             Storage::delete('public/profileimages/'.$owner->profile);
 
-        $name = Auth::user()->id.'_'.$request->profile->getClientOriginalName();
+        if ($request->ownerId)
+            $name = $request->ownerId.'_'.$request->profile->getClientOriginalName();
+        else
+            $name = Auth::user()->id.'_'.$request->profile->getClientOriginalName();
+
         $image = $request->profile->storeAs('profileimages',$name,'public');
         
         $owner->profile = $name;

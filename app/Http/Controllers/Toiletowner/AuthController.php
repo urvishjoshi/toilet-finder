@@ -53,6 +53,7 @@ class AuthController extends Controller
 
     protected function create(Request $request)
     {
+        // return$request;
         $validate = Validator::make($request->all(), [
             'name'   => 'required|string|max:255',
             'email'   => 'required|email|unique:toilet_owners,email',
@@ -76,7 +77,7 @@ class AuthController extends Controller
             'mobileno' => $request['mobileno'],
             'password' => Hash::make($request['password']),
         ]);
-        return redirect()->intended('toiletowner/login')->withInput($request->only('email'))->with('reg.msg',' Registered successfully, please login');
+        return redirect('toiletowner/login')->withInput($request->only('email'))->with('reg.msg',' Registered successfully, please login');
     }
     
 	public function logout(Request $request)

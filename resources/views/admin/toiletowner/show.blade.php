@@ -40,21 +40,22 @@
 								<form method="POST" action="{{ route('personal.store') }}" enctype="multipart/form-data" id="imgform"> @csrf @method('POST')
 									<div id="profileDiv" style="height: 100px;width: 100px;border: 1px dashed lightgrey;">
 
-										<img src="{{ asset('profileimages/'.$info[0]['profile']) }}" alt="No image" class="profileimg" width="100" height="100">
+										<img src="{{ asset('storage/profileimages/'.$info[0]['profile']) }}" alt="No image" class="profileimg" width="100" height="100">
 										<div class="hoverabletext">
 											<a href="#" class="imgtext fas fa-camera"></a>
 										</div><br>
 									</div>
-									<div class="d-flex justify-content-center">
+									<div class="d-flex justify-content-center mt-2">
 										<button class="text-primary btn btn-sm pointer" id="uploadImg">Upload</button>
 									</div>
-									<div id="uploadText" class="font-14 text-center"></div>
+									<div id="uploadText" class="font-14 text-center text-success"></div>
 									@error('profile')
 									<span class="text-danger font-14" role="alert">
 										<strong>{{ $message }}</strong>
 									</span>
 									@enderror
 									<input type="file" name="profile" id="file" hidden>
+									<input type="hidden" name="ownerId" value="{{ $info[0]['id'] }}" hidden>
 								</form>
 							</div>
 							<div class="col-lg">
@@ -163,6 +164,18 @@
 <script>
 	$(document).ready(function()
 	{
+		$(function() {
+    		$('.imgtext').click(function(event) {
+    			$('#file').trigger('click');
+    		});
+
+	    	$('#file').change(function() {
+	    		var file = $('#file')[0].files[0].name;
+	    		$('#uploadText').text(file);
+	    		$('#uploadImg').removeClass('text-primary').addClass('btn-primary');
+	    	});
+    	});
+
 		$('#autoalloc').change(function() {
         if($('#autoalloc').val()=='0')
         	$("#requestlink").hide();
