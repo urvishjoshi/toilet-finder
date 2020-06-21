@@ -34,11 +34,41 @@ class ToiletownerController extends Controller
 
     public function create()
     {
-        //
+        return view($this->url.'add');
     }
 
     public function store(Request $request)
     {
+        if ($request->byAdmin) {
+            $validate = Validator::make($request->all(), [
+                'name'   => 'required|string|max:255',
+                'email'   => 'required|email|unique:toilet_owners,email',
+                'password' => 'required|min:6|confirmed',
+                'mobileno' => 'required|numeric|min:10|unique:toilet_owners,mobileno',
+            ],
+            [
+                'email.unique' => 'Email already exists try logging-in or use another!',
+                'mobileno.unique' => 'Phone number exists try logging-in or use another!',
+                'email.required' => 'Please enter an Email!',
+                'password.required' => 'Please enter a Password!',
+            ] );
+
+            if($validate->fails())
+            {
+                return back()->withInput($request->except('password'))->withErrors($validate);
+            }
+
+        // return$request;
+            $writer = ToiletOwner::create([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'mobileno' => $request['mobileno'],
+                'status' => '1',
+                'password' => Hash::make($request['password']),
+            ]);
+            return redirect()->route('a.toiletowners.index')->with('a.toast','Toiletowner '.$request['email'].' Added & Approved successfully');
+        }
+        
         $owner = ToiletOwner::find($request->input('id'));
         $status = $request->input('autoalloc');
         if ($status=='0') {

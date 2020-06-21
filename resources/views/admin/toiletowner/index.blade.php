@@ -6,8 +6,12 @@
 	<div class="container pt-4 px-3">
 		<div class="container col-md-auto">
 			<div class="row">
+				<div class="col-3"></div>
 				<div class="col-md text-center">
-					<h2>Active Toilet owners</h2>
+					<h2 class="m-0">Active Toilet owners</h2>
+				</div>
+				<div class="col-md-3 text-right">
+					<a href="{{route('a.toiletowners.create')}}" class="btn btn-primary">Add Toilet owners</a>
 				</div>
 			</div>
 			<hr width=35%>
@@ -45,7 +49,7 @@
 								</td>
 								<td>{{ $owner->created_at->format('d/m/Y').' at '.$owner->created_at->format('g:i A') }}</td>
 								<td class="d-flex">
-									<a href="{{ route('a.toilets.show',['id'=>$owner->id,'name'=>$owner->name]) }}" class="btn btn-success" name="view">View</a>
+									<a href="{{ route('a.toilets.show',['id'=>$owner->id,'name'=>$owner->name]) }}" class="btn btn-success" name="view">Toilets</a>
 									<a href="{{ route('a.toiletowners.show',['id'=>$owner->id,'name'=>$owner->name]) }}" class="btn btn-secondary mx-2" name="edit">Edit</a>
 									<form action="{{ route('a.toiletowners.destroy',$owner->id) }}" method="POST">
 										@csrf @method('DELETE')

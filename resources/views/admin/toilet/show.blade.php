@@ -12,7 +12,8 @@
 				</div>
 				<div class="col-md text-center">
 					<h2>Toilets of <b>{{ $name }}</b></h2>
-				</div><!-- /.col -->
+				</div>
+				<div class="col-1"></div>
 			</div><!-- /.row -->
 			<HR width=20%>
 		</div><!-- /.container-fluid -->
