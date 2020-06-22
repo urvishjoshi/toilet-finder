@@ -31,13 +31,14 @@
 						<div class="col d-flex justify-content-end" title="Toiletowner id is a fixed attribute, thus can't be changed">
 							<h4 class="mb-0">Toiletowner ID-<b>{{ $info[0]['id'] }}</b></h4>
 						</div>
-					</div>				</div>
+					</div>				
+				</div>
 				<div class="card-body">
 					<h6 class="heading-small text-muted pl-3 mb-3">Profile Picture<span class="mx-3"></span> User information</h6>
 					<div class="">
 						<div class="row">
 							<div class="px-4">
-								<form method="POST" action="{{ route('personal.store') }}" enctype="multipart/form-data" id="imgform"> @csrf @method('POST')
+								<form method="POST" action="{{ route('a.toiletowners.update',1) }}" enctype="multipart/form-data" id="imgform"> @csrf @method('PUT')
 									<div id="profileDiv" style="height: 100px;width: 100px;border: 1px dashed lightgrey;">
 
 										<img src="{{ asset('storage/profileimages/'.$info[0]['profile']) }}" alt="No image" class="profileimg" width="100" height="100">

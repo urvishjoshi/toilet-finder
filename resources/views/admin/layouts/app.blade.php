@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	@yield('link')
 	@section('session','Admin')
 	@include('layouts.head')
-	
 	<?php $allRequests=\App\Model\ToiletOwner::where('status','=','0')->get(); ?>
 	<?php $admin01=\App\Model\Admin::where('id',Auth::user()->id)->get(); ?>
 

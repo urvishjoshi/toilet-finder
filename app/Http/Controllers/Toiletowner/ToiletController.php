@@ -63,7 +63,7 @@ class ToiletController extends Controller
             'toiletname'   => 'required|unique:toilet_infos,toilet_name',
             'complexname' => 'required',
             'address' => 'required',
-            'toiletprice' => 'required|integer|min:0',
+            'toiletprice' => 'required|min:0',
         ],
         [
             'toiletname.required' => 'Please enter a toilet name',

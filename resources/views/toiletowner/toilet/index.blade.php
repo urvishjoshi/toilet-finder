@@ -68,6 +68,7 @@
 										<th>Toilet name</th>
 										<th>Complex</th>
 										<th>Address</th>
+										<th>Type type</th>
 										<th>Status</th>
 										<th>Price</th>
 										<th>Created on</th>
@@ -76,7 +77,7 @@
 								</thead>
 								<tbody>
 									@if( count($toilets) == 0 )
-									<tr><td colspan="8"><center><h2>No Toilets created</h2></center></td></tr>
+									<tr><td colspan="9"><center><h2>No Toilets created</h2></center></td></tr>
 									@else
 									@foreach($toilets as $toilet)
 									<tr>
@@ -84,6 +85,9 @@
 										<td>{{ $toilet->toilet_name }}</td>
 										<td>{{ $toilet->complex_name }}</td>
 										<td>{{ $toilet->address }}</td>
+										<td>
+											@if($toilet->type==1) Male @elseif($toilet->type==0) Female @else Male & Female @endif
+										</td>
 										<td>
 											@if($toilet->status==1) <f class="text-success">Active</f> @else <f class="text-danger">Not Active</f> @endif
 										</td>
@@ -304,7 +308,7 @@ $(document).ready(function(){
 
 	function myMap() {
 		var mapProp= {
-			center:new google.maps.LatLng(51.508742,-0.120850),
+			center:new google.maps.LatLng(29.3117,47.4818),
 			zoom:8,
 			gestureHandling: 'greedy'
 		};

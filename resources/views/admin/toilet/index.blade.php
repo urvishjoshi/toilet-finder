@@ -5,12 +5,16 @@
 
 <section>
 	<!-- Content Header (Page header) -->
-	<div class="content pt-4">
+	<div class="content pt-4 px-3">
 		<div class="container-fluid">
 			<div class="row">
+				<div class="col-3"></div>
 				<div class="col-md text-center">
 					<h2>All Toilets</h2>
-				</div><!-- /.col -->
+				</div>
+				<div class="col-md-3 text-right">
+					<a href="{{route('a.toilets.create')}}" class="btn btn-primary">Add Toilets</a>
+				</div>
 			</div><!-- /.row -->
 			<HR width=20%>
 		</div><!-- /.container-fluid -->
@@ -51,8 +55,9 @@
 										<td><b>KD{{ $toilet->price }}</b></td>
 										<td>{{ $toilet->complex_name }}</td>
 										<td>{{ $toilet->address.$toilet->getFullAddress() }}</td>
-										<td>{{ $toilet->type==1 ? 'Male' : 'Female'}}</td>
-
+										<td>
+											@if($toilet->type==1) Male @elseif($toilet->type==0) Female @else Male & Female @endif
+										</td>
 										<td>
 											@if($toilet->status==1) <f class="text-success">Active</f> @else <f class="text-warning">Not Active</f> @endif
 										</td>

@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use App\Model\City;
 use App\Model\Country;
 use App\Model\State;
 use App\Model\ToiletInfo;
+use App\Model\ToiletOwner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ToiletController extends Controller
 {
@@ -66,7 +67,7 @@ class ToiletController extends Controller
             'toiletname'   => 'required',
             'complexname' => 'required',
             'address' => 'required',
-            'toiletprice' => 'required|integer|min:0',
+            'toiletprice' => 'required|min:0',
         ],
         [
             'toiletname.required' => 'Please enter a toilet name',
@@ -99,14 +100,51 @@ class ToiletController extends Controller
 
     public function create()
     {
-        //
+        $countries = Country::orderBy('country')->get();
+        $owners = ToiletOwner::where('status','1')->get();
+        return view($this->url.'add',compact('countries','owners'));
     }
 
 
     public function store(Request $request)
     {
-        
-        //
+        // return $request;
+        $validate = Validator::make($request->all(), [
+            'toiletname'   => 'required|unique:toilet_infos,toilet_name',
+            'complexname' => 'required',
+            'address' => 'required',
+            'toiletprice' => 'required|min:0',
+        ],
+        [
+            'toiletname.required' => 'Please enter a toilet name',
+            'toiletname.unique' => 'This name is already in use, try another',
+            'complexname.required' => 'Please enter complex name of your toilet',
+            'address.required' => 'Please enter address of your toilet',
+            'toiletprice.required' => 'Minimum value is 0',
+            'toiletprice.min' => 'Minimum value is 0',
+        ] );
+
+        if($validate->fails())
+        {
+            return (back()->withInput($request->all())->withErrors($validate));
+        }
+
+        $toilet = new ToiletInfo;
+        $toilet->owner_id = $request->owner_id;
+        $toilet->toilet_name = $request->toiletname;
+        $toilet->status = $request->toiletstatus;
+        $toilet->price = $request->toiletprice;
+        $toilet->type = $request->toilettype;
+        $toilet->complex_name = $request->complexname;
+        $toilet->address = $request->address;
+        $toilet->country_id = $request->country;
+        $toilet->type = $request->toilettype;
+        $toilet->state_id = $request->state;
+        $toilet->city_id = $request->city;
+        $toilet->toilet_lat = $request->newLat;
+        $toilet->toilet_lng = $request->newLng;
+        $toilet->save();
+        return back()->with('a.toast','Toilet '.$request->toiletname.' created');
     }
     /**
      * Display the specified resource.

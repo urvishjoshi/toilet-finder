@@ -7,6 +7,7 @@ use App\Model\ToiletInfo;
 use App\Model\ToiletOwner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use Validator;
 
@@ -89,6 +90,37 @@ class ToiletownerController extends Controller
 
     public function update(Request $request, $id)
     {
+        if ($request->ownerId) {
+            $validate = Validator::make($request->all(),[
+                'profile' => 'required|image|mimes:jpeg,jpg,png|max:3064'
+            ],
+            [
+                'profile.required' => 'Please select an image',
+                'profile.image' => 'Please select an image type',
+                'profile.mimes' => 'Allowed image types are .jpeg, .jpg & .png',
+                'profile.max' => 'You can only upload image size within 3MB',
+            ] );
+             
+            if($validate->fails())
+            {
+                return back()->withErrors($validate);
+            }
+
+            $owner = ToiletOwner::find($request->ownerId);
+
+            if($owner->profile!=null)
+                Storage::delete('public/profileimages/'.$owner->profile);
+
+            $name = $request->ownerId.'_'.$request->profile->getClientOriginalName();
+
+            $image = $request->profile->storeAs('profileimages',$name,'public');
+            
+            $owner->profile = $name;
+            $owner->save();
+
+            return back()->with('a.toast','Profile picture '.$name.' Uploaded manually!');
+        }
+
         $validate = Validator::make($request->all(), [
             'email'   => 'required|email',
             'contactno'   => 'required|numeric|min:10',

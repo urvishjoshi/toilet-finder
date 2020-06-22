@@ -21,7 +21,7 @@ class CreateToiletInfosTable extends Migration
                     ->on('toilet_owners')
                     ->onDelete('cascade');
             $table->string('toilet_name');
-            $table->unsignedBigInteger('price')->index()->fillable();
+            $table->decimal('price',20,3)->index()->fillable();
             $table->string('complex_name')->nullable();
             $table->string('address');
             $table->unsignedBigInteger('city_id');

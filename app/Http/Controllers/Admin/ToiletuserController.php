@@ -69,12 +69,39 @@ class ToiletuserController extends Controller
 
     public function create()
     {
-        //
+        return view($this->url.'add');
     }
 
     public function store(Request $request)
     {
-        //
+        $validate = Validator::make($request->all(), [
+            'name'   => 'required',
+            'email'   => 'required|email|unique:users,email',
+            'password' => 'required|min:6|confirmed',
+            'mobileno'   => 'required|numeric|min:10|unique:users,mobileno',
+            'age'   => 'required|numeric',
+        ],
+        [
+            'email.exists' => "Email doesn't exist!",
+            'mobileno.unique' => "Mobile no. already exist!",
+            'email.required' => 'Please enter an Email!',
+            'password.required' => 'Please enter a Password!',
+            'mobileno.required' => 'Please enter a mobile number!',
+        ] );
+
+        if($validate->fails())
+        {
+            return back()->withInput($request->except('password'))->withErrors($validate);
+        }
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->mobileno = $request->mobileno;
+        $user->gender = $request->gender;
+        $user->age = $request->age;
+        $user->save();
+        return redirect()->route('a.toiletusers.index')->with('a.toast',"User ".$request->email." created manually!");
     }
 
 

@@ -4,14 +4,16 @@
 
 <section>
 	<!-- Content Header (Page header) -->
-	<div class="content pt-4">
+	<div class="content pt-4 px-3">
 		<div class="container-fluid">
 			<div class="row">
+				<div class="col-3"></div>
 				<div class="col-md text-center">
 					<h2>Toilet Users</h2>
-				</div><!-- /.col -->
-				<!--Kishan changed  (Removed column for breadcrumb)-->
-
+				</div>
+				<div class="col-md-3 text-right">
+					<a href="{{route('a.toiletusers.create')}}" class="btn btn-primary">Add Users</a>
+				</div>
 			</div><!-- /.row -->
 			<HR width=50%>
 		</div><!-- /.container-fluid -->
@@ -39,7 +41,7 @@
 								</thead>
 								<tbody>
 									@if( count($users) == 0 )
-									<tr><td colspan="6"><center><h2>No Requests</h2><hr></center></td></tr>
+									<tr><td colspan="9"><center><h2>No Requests</h2></center></td></tr>
 									@else
 									@foreach($users as $user)
 									<tr>
@@ -55,7 +57,7 @@
 											<form action="{{ route('a.toiletusers.destroy',$user->id) }}" method="POST" class="d-flex">
 												@method('DELETE') @csrf
 
-												<a href="{{ route('a.toiletusers.show',[$user->id,'view'=>$user->name]) }}" class="btn btn-sm btn-primary" name="btn" type="submit" value="view">View</a>&nbsp;
+												<a href="{{ route('a.toiletusers.show',[$user->id,'view'=>$user->name]) }}" class="btn btn-sm btn-success" name="btn" type="submit" value="view">View</a>&nbsp;
 
 												<a href="{{ route('a.toiletusers.show',[$user->id,'edit'=>$user->name]) }}" class="btn btn-sm btn-secondary mx-1" name="btn" type="submit" value="view">Edit</a>&nbsp;
 
