@@ -122,8 +122,8 @@ class ToiletownerController extends Controller
         }
 
         $validate = Validator::make($request->all(), [
-            'email'   => 'required|email',
-            'contactno'   => 'required|numeric|min:10',
+            'email'   => 'required|email|unique:toilet_owners,email,'.$id,
+            'contactno'   => 'required|numeric|min:10|unique:toilet_owners,mobileno,'.$id,
         ],
         [
             'email.exists' => 'Email doesn'."'".'t exist!',
@@ -137,9 +137,9 @@ class ToiletownerController extends Controller
         }
 
         if(($request->password != $request->password_confirmation)){
-            return back()->withErrors(["password"=>"Password doesn't match!"]);
+            return back()->withInput($request->except('password'))->withErrors(["password"=>"Password doesn't match!"]);
             if ($request->password < 5) {
-                return back()->withErrors(["password"=>"Password must be atleast 6 characters long."]);
+                return back()->withInput($request->except('password'))->withErrors(["password"=>"Password must be atleast 6 characters long."]);
             }
         }
 

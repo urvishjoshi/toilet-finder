@@ -40,9 +40,8 @@ class ToiletuserController extends Controller
         // return Hash::make($request->password);
         $validate = Validator::make($request->all(), [
             'name'   => 'required',
-            'email'   => 'required|email',
-            'password' => 'required|min:6|confirmed',
-            'mobileno'   => 'required|numeric|min:10',
+            'email'   => 'required|email|unique:users,email,'.$id,
+            'mobileno'   => 'required|numeric|min:10|unique:users,mobileno,'.$id,
             'age'   => 'required|numeric',
         ],
         [
@@ -55,6 +54,13 @@ class ToiletuserController extends Controller
         if($validate->fails())
         {
             return back()->withInput($request->except('password'))->withErrors($validate);
+        }
+
+        if(($request->password != $request->password_confirmation)){
+            return back()->withInput($request->except('password'))->withErrors(["password"=>"Password doesn't match!"]);
+            if ($request->password < 5) {
+                return back()->withInput($request->except('password'))->withErrors(["password"=>"Password must be atleast 6 characters long."]);
+            }
         }
         $user = User::find($id);
         $user->name = $request->name;

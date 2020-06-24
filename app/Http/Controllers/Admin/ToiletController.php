@@ -64,7 +64,7 @@ class ToiletController extends Controller
     public function update(Request $request, $id)
     {
         $validate = Validator::make($request->all(), [
-            'toiletname'   => 'required',
+            'toiletname'   => 'required|unique:toilet_infos,toilet_name,'.$id,
             'complexname' => 'required',
             'address' => 'required',
             'toiletprice' => 'required|min:0',

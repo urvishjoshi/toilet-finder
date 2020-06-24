@@ -22,8 +22,8 @@ class PersonalController extends Controller
     {
         $validate = Validator::make($request->all(),[
             'ownername'   => 'required',
-            'email'   => 'required|email',
-            'contactno'   => 'required|numeric|min:10',
+            'email'   => 'required|email|unique:toilet_owners,email,'.$id,
+            'contactno'   => 'required|numeric|min:10|unique:toilet_owners,mobileno,'.$id,
         ],
         [
             'email.exists' => 'Email doesn'."'".'t exist!',

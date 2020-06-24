@@ -51,7 +51,7 @@
 						<div class="row">
 							<div class="form-group col-md-2 px-1">
 								<label class="form-control-label" for="toiletprice">Price in <b>KD</b></label>
-								<input id="toiletprice" name="toiletprice" class="form-control" placeholder="KD" value="{{ $toilet[0]->price }}" type="number">
+								<input id="toiletprice" name="toiletprice" class="form-control px-1" placeholder="KD" value="{{ $toilet[0]->price }}" step="0.001" type="number">
 								@error('toiletprice')
 								    <span class="text-danger font-14" role="alert">
 								        <strong>{{ $message }}</strong>

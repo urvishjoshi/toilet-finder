@@ -135,7 +135,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label class="form-control-label" for="toiletname">Toilet name</label>
-											<input type="text" id="toiletname" name="toiletname" class="form-control" placeholder="Toilet name" required>
+											<input type="text" id="toiletname" name="toiletname" class="form-control" placeholder="Toilet name" value="{{old('toiletname')}}" required>
 											@error('toiletname')
 											<span class="text-danger font-14" role="alert">
 												<strong>{{ $message }}</strong>
@@ -159,7 +159,7 @@
 								<div class="row">
 									<div class="form-group col-md-2 px-1">
 										<label class="form-control-label" for="toiletprice">Price in <b>KD</b></label>
-										<input id="toiletprice" name="toiletprice" class="form-control px-1" placeholder="KD" value="" type="number" min="0" step="0.001" required>
+										<input id="toiletprice" name="toiletprice" class="form-control px-1" placeholder="KD" value="{{old('toiletprice')}}" type="number" min="0" step="0.001" required>
 										@error('toiletprice')
 										<span class="text-danger font-14" role="alert">
 											<strong>{{ $message }}</strong>
@@ -180,7 +180,7 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<label class="form-control-label" for="complexname">Complex name</label>
-											<input id="complexname" name="complexname" class="form-control" placeholder="Toilet Complex" value="" type="text" required>
+											<input id="complexname" name="complexname" class="form-control" placeholder="Toilet Complex" value="{{old('complexname')}}" type="text" required>
 											@error('complexname')
 											<span class="text-danger font-14" role="alert">
 												<strong>{{ $message }}</strong>
@@ -192,7 +192,7 @@
 								<div class="row">
 									<div class="form-group col-lg-12">
 										<label class="form-control-label" for="address">Street Address</label>
-										<input type="text" id="address" name="address" class="form-control" placeholder="Street address of your toilet" required>
+										<input type="text" id="address" name="address" class="form-control" placeholder="Street address of your toilet" value="{{old('address')}}" required>
 										@error('address')
 										<span class="text-danger font-14" role="alert">
 											<strong>{{ $message }}</strong>
@@ -241,8 +241,8 @@
 							</div>
 							<div id="map" style="width:100%;height:400px;"></div>
 
-							<input type="hidden" name="newLat" id="newLat" value="">
-							<input type="hidden" name="newLng" id="newLng" value="">
+							<input type="hidden" name="newLat" id="newLat" value="{{old('newLat')}}">
+							<input type="hidden" name="newLng" id="newLng" value="{{old('newLng')}}">
 
 							<script src="https://maps.googleapis.com/maps/api/js?key={{$key->mapkey}}&callback=myMap"></script>
 
@@ -260,6 +260,10 @@
 <script>
 
 $(document).ready(function(){
+	@if($errors->any())
+		$('#addNewToilet').modal('show');
+	@endif
+
 	$("#country").on('change',function(){
 		$.ajax({
 			method:"GET",
