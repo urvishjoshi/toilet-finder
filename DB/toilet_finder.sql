@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2020 at 06:54 PM
+-- Generation Time: Jun 27, 2020 at 02:13 PM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -34,6 +34,7 @@ CREATE TABLE `admins` (
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `mobileno` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `profile` text COLLATE utf8mb4_unicode_ci,
   `mapkey` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -43,8 +44,8 @@ CREATE TABLE `admins` (
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`id`, `email`, `password`, `name`, `mobileno`, `mapkey`, `created_at`, `updated_at`) VALUES
-(1, 'a@b.c', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Urvish Joshi', NULL, NULL, NULL, NULL);
+INSERT INTO `admins` (`id`, `email`, `password`, `name`, `mobileno`, `profile`, `mapkey`, `created_at`, `updated_at`) VALUES
+(1, 'a@b.c', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Urvish Joshi', '9999999999', '1_IMG_1362.jpg', 'AIzaSyBuM60AoMrwB7dnMEOL7bge_3bM4DJtdn8', NULL, '2020-06-20 17:55:05');
 
 -- --------------------------------------------------------
 
@@ -66,9 +67,7 @@ CREATE TABLE `cities` (
 --
 
 INSERT INTO `cities` (`id`, `city`, `country_id`, `state_id`, `created_at`, `updated_at`) VALUES
-(1, 'Vidalborough', 2, 2, '2020-05-09 15:01:52', '2020-05-09 15:01:52'),
 (2, 'Kochmouth', 2, 20, '2020-05-09 15:01:52', '2020-05-09 15:01:52'),
-(3, 'South Nettie', 9, 14, '2020-05-09 15:01:52', '2020-05-09 15:01:52'),
 (4, 'Lake Murielfort', 8, 18, '2020-05-09 15:01:52', '2020-05-09 15:01:52'),
 (5, 'Lake Emanuel', 4, 4, '2020-05-09 15:01:52', '2020-05-09 15:01:52'),
 (6, 'East Rita', 2, 20, '2020-05-09 15:01:52', '2020-05-09 15:01:52'),
@@ -82,8 +81,6 @@ INSERT INTO `cities` (`id`, `city`, `country_id`, `state_id`, `created_at`, `upd
 (14, 'New Myrl', 7, 1, '2020-05-09 15:01:52', '2020-05-09 15:01:52'),
 (15, 'Curtland', 6, 15, '2020-05-09 15:01:52', '2020-05-09 15:01:52'),
 (16, 'Schulistmouth', 7, 9, '2020-05-09 15:01:52', '2020-05-09 15:01:52'),
-(17, 'North Koryhaven', 9, 3, '2020-05-09 15:01:52', '2020-05-09 15:01:52'),
-(18, 'South Anabel', 10, 19, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
 (19, 'South Zoilaview', 2, 20, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
 (20, 'Dionfort', 7, 1, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
 (21, 'Marianeview', 8, 18, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
@@ -96,26 +93,22 @@ INSERT INTO `cities` (`id`, `city`, `country_id`, `state_id`, `created_at`, `upd
 (28, 'Jessieburgh', 5, 17, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
 (29, 'New Chauncey', 3, 7, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
 (30, 'South Florianburgh', 6, 15, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
-(31, 'Tremblayberg', 9, 14, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
 (32, 'West Cecile', 6, 15, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
 (33, 'Greenfeldershire', 7, 1, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
 (34, 'McKenzieborough', 2, 2, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
-(35, 'Klockobury', 9, 3, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
 (36, 'Cartwrighthaven', 3, 7, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
 (37, 'Idellton', 2, 2, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
 (38, 'Abelardoport', 1, 12, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
 (39, 'New Leda', 6, 15, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
 (40, 'West Reynold', 6, 15, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
 (41, 'Lake Verona', 3, 16, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
-(42, 'New Logan', 9, 3, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
 (43, 'Eduardoport', 2, 2, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
 (44, 'New Floymouth', 3, 16, '2020-05-09 15:01:53', '2020-05-09 15:01:53'),
-(45, 'South Garnet', 9, 3, '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
 (46, 'Hayleetown', 2, 20, '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
 (47, 'Kyleeport', 2, 2, '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
 (48, 'New Carlotta', 6, 15, '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
 (49, 'East Godfrey', 6, 15, '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
-(50, 'Beerberg', 3, 16, '2020-05-09 15:01:54', '2020-05-09 15:01:54');
+(50, 'Beerbergh', 3, 16, '2020-05-09 15:01:54', '2020-05-28 13:13:31');
 
 -- --------------------------------------------------------
 
@@ -137,14 +130,12 @@ CREATE TABLE `countries` (
 INSERT INTO `countries` (`id`, `country`, `created_at`, `updated_at`) VALUES
 (1, 'Jamaica', '2020-05-09 15:01:50', '2020-05-09 15:01:50'),
 (2, 'New Caledonia', '2020-05-09 15:01:50', '2020-05-09 15:01:50'),
-(3, 'Cote d\'Ivoire', '2020-05-09 15:01:50', '2020-05-09 15:01:50'),
+(3, 'Cotte d\'Ivoire', '2020-05-09 15:01:50', '2020-05-28 13:12:28'),
 (4, 'French Southern Territories', '2020-05-09 15:01:50', '2020-05-09 15:01:50'),
 (5, 'Togo', '2020-05-09 15:01:50', '2020-05-09 15:01:50'),
 (6, 'New Caledonia', '2020-05-09 15:01:50', '2020-05-09 15:01:50'),
 (7, 'Mexico', '2020-05-09 15:01:50', '2020-05-09 15:01:50'),
 (8, 'United States Minor Outlying Islands', '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
-(9, 'Bangladesh', '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
-(10, 'Bosnia and Herzegovina', '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
 (11, 'Hungary', '2020-05-13 02:58:14', '2020-05-13 02:58:14');
 
 -- --------------------------------------------------------
@@ -170,7 +161,6 @@ CREATE TABLE `feedback` (
 INSERT INTO `feedback` (`id`, `feedbacker_id`, `feedbacker_type`, `subject`, `desc`, `created_at`, `updated_at`) VALUES
 (1, 10, '2', 'Doloremque libero quia suscipit porro nostrum officiis sequi.', 'Sed sint aspernatur aut animi eos. Sint fugit ut eligendi pariatur sed. Animi ut quia illo error.', '2020-05-09 15:02:00', '2020-05-09 15:02:00'),
 (2, 1, '1', 'Sed vel iste tempore delectus eaque.', 'Accusantium et asperiores non natus. Neque aut veniam reprehenderit deleniti molestiae ut. At consequuntur quia maiores voluptatibus sint voluptate iusto quia.', '2020-05-09 15:02:00', '2020-05-09 15:02:00'),
-(3, 10, '1', 'Dignissimos est reiciendis modi totam enim nisi ut.', 'Dolore sequi necessitatibus sapiente in eveniet aliquid molestiae. Voluptate optio autem maxime. Qui alias repellat consequuntur ducimus.', '2020-05-09 15:02:00', '2020-05-09 15:02:00'),
 (4, 6, '1', 'Nobis rerum consequatur quia numquam est.', 'Pariatur quibusdam maxime veritatis ipsam dolor a. Nisi beatae reiciendis ea placeat et.', '2020-05-09 15:02:00', '2020-05-09 15:02:00'),
 (5, 6, '2', 'Architecto qui voluptate odio sit ducimus velit.', 'Voluptatem labore optio quae impedit enim ut. Labore officia ratione quidem dolor enim enim. Fuga earum eligendi quia est libero aliquid.', '2020-05-09 15:02:00', '2020-05-09 15:02:00'),
 (6, 4, '2', 'Sunt beatae omnis rem id sint.', 'Voluptatem quia est tempora earum magnam. Vel ducimus aliquam beatae qui qui a sequi. Numquam voluptas quam dolores eum amet rerum nulla. Qui officia odio ad molestias commodi deleniti quia.', '2020-05-09 15:02:00', '2020-05-09 15:02:00'),
@@ -278,6 +268,7 @@ CREATE TABLE `ratings` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `rating` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `desc` text COLLATE utf8mb4_unicode_ci,
+  `visible` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1' COMMENT '1-Visible, 0-Hidden',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -286,46 +277,20 @@ CREATE TABLE `ratings` (
 -- Dumping data for table `ratings`
 --
 
-INSERT INTO `ratings` (`id`, `owner_id`, `toilet_id`, `user_id`, `rating`, `desc`, `created_at`, `updated_at`) VALUES
-(2, 8, 6, 13, '3', 'Dolorem aut perspiciatis aut nihil nihil. Mollitia sit reiciendis distinctio debitis velit optio. Earum exercitationem dignissimos voluptas culpa magni ut. Voluptas nemo sit dolorem architecto quis.', '2020-05-09 15:01:58', '2020-05-09 15:01:58'),
-(3, 5, 18, 6, '5', 'Aperiam veniam eum est quia. Aut impedit alias dolor praesentium nihil reprehenderit. Sit voluptatem libero animi voluptas itaque rem.', '2020-05-09 15:01:58', '2020-05-09 15:01:58'),
-(4, 1, 20, 3, '4', 'Distinctio dignissimos est enim dolor itaque quis corporis fugiat. Necessitatibus id facere minima facere. Unde totam ipsum excepturi praesentium aut qui.', '2020-05-09 15:01:58', '2020-05-09 15:01:58'),
-(5, 6, 14, 13, '2', 'Beatae a quo consequuntur sint. Maxime eligendi quis praesentium eum non aliquam.', '2020-05-09 15:01:58', '2020-05-09 15:01:58'),
-(6, 4, 11, 4, '5', 'Laudantium quia aliquid quis sit quis. Sint perspiciatis praesentium non exercitationem. Ut temporibus rem vero repellat. Doloremque nihil voluptatibus fugiat illo. Sint recusandae ullam dolorem magnam magnam.', '2020-05-09 15:01:58', '2020-05-09 15:01:58'),
-(8, 2, 11, 1, '5', 'Enim alias totam tempora ut fugit molestias dicta non. Sed optio ipsam est consequatur aut. Porro facere iusto porro rerum quis.', '2020-05-09 15:01:58', '2020-05-09 15:01:58'),
-(9, 6, 2, 3, '5', 'Dolorem distinctio provident aliquid ut soluta at quaerat. Cumque soluta mollitia aspernatur distinctio qui. Voluptate provident sunt odio enim asperiores provident. Voluptatem ad facilis dolores repellendus quo eos. Ab vero sit distinctio odio atque.', '2020-05-09 15:01:58', '2020-05-09 15:01:58'),
-(10, 5, 4, 17, '5', 'At alias totam sequi voluptas eos qui sed. Aliquam dolor ea optio perspiciatis ducimus velit accusantium. Ullam quia voluptas debitis ratione autem minus.', '2020-05-09 15:01:58', '2020-05-09 15:01:58'),
-(13, 5, 13, 19, '4', 'Tenetur explicabo molestias in laboriosam. Rerum officia eos iste quidem officia. Sapiente optio itaque nihil sed harum non perferendis.', '2020-05-09 15:01:58', '2020-05-09 15:01:58'),
-(14, 4, 2, 10, '1', 'Veritatis iusto qui laborum dolores cumque quibusdam repellat. Autem qui doloremque laudantium quia. Quis quisquam fugit nulla ab. Deserunt voluptas fuga id ut accusantium.', '2020-05-09 15:01:58', '2020-05-09 15:01:58'),
-(16, 4, 1, 3, '2', 'Odio qui omnis amet numquam iusto provident. Quisquam ipsum accusantium tenetur pariatur accusantium magnam officiis. Doloribus consequatur soluta velit animi.', '2020-05-09 15:01:58', '2020-05-09 15:01:58'),
-(17, 7, 6, 9, '5', 'Quo et possimus aut nisi provident temporibus quia. Id aliquid ducimus quia excepturi esse illum. Dignissimos ullam voluptatum sit corrupti.', '2020-05-09 15:01:58', '2020-05-09 15:01:58'),
-(18, 8, 19, 8, '1', 'Molestiae ipsam quam et nihil. Et ipsum neque rerum culpa animi et ut. Maiores accusamus accusantium voluptatum omnis. Rerum tenetur sequi animi repudiandae corrupti nihil dicta.', '2020-05-09 15:01:58', '2020-05-09 15:01:58'),
-(20, 8, 7, 7, '4', 'Molestias labore ratione aliquam. Cumque similique ad quidem qui aut non. Officiis veniam voluptatum rem adipisci esse qui quis aliquam.', '2020-05-09 15:01:58', '2020-05-09 15:01:58'),
-(21, 3, 13, 4, '2', 'Dolores distinctio reiciendis quis iure sunt. Mollitia veritatis et architecto et voluptatem est. Ullam vero id et officia esse est reprehenderit. Sed deserunt accusamus dolor sequi nostrum libero. Dolorem alias tenetur sed quo quidem consequatur quod.', '2020-05-09 15:01:58', '2020-05-09 15:01:58'),
-(22, 1, 16, 13, '1', 'Dolorem nostrum temporibus autem explicabo. Consequatur totam enim ut aliquid totam rerum facilis nemo. Cum non et fuga quaerat sed omnis.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(23, 5, 13, 2, '4', 'Enim quasi mollitia hic et maiores eum iste sed. Quisquam dolores laboriosam ducimus eum dignissimos est dolorum. Quia similique voluptatem unde maxime veritatis. Enim recusandae sit reprehenderit id sint eos architecto.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(24, 5, 15, 13, '2', 'Sed et nihil reprehenderit officia accusantium vero eum culpa. Dolorem tempore aut hic consequuntur. Repudiandae ab est alias voluptas velit.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(25, 2, 6, 4, '5', 'A illum est maxime debitis qui reiciendis. Vel ipsa et harum consectetur tempora. Et omnis nemo similique minus nostrum.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(26, 5, 2, 2, '2', 'Odit amet ea vel animi omnis in. Maxime autem ipsum officia. Est deleniti incidunt provident explicabo quia porro ut sapiente. Magnam dolor consequatur quod nostrum qui unde aut rerum.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(28, 3, 2, 19, '4', 'Illum ipsa sit omnis eos ducimus voluptatum officia. Possimus saepe vel magnam in porro similique et eos. Quia ea consequatur rem consequatur suscipit fugiat. Eum provident consequatur unde fugit illo vel quam.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(29, 8, 9, 6, '3', 'Delectus molestiae quas voluptates iusto. Veritatis molestiae tenetur qui vel soluta cupiditate ullam et. Repudiandae fugit suscipit quaerat. Quaerat enim ea molestiae aut ut magni. Sint vel quaerat quo.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(30, 9, 6, 8, '2', 'Ut rem doloremque occaecati sint facilis. Aperiam quisquam placeat vel voluptate dolorem dignissimos.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(31, 1, 12, 11, '1', 'Harum sed et reiciendis repellendus non aut. Pariatur cumque beatae qui est. Perspiciatis occaecati explicabo quia sapiente.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(32, 4, 4, 10, '1', 'Nisi rem tempore et vitae harum et. Quidem recusandae repellendus pariatur aut et sit. Nihil sunt necessitatibus eveniet deleniti quasi quia cupiditate. Asperiores fuga culpa quaerat laborum omnis.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(34, 6, 9, 15, '1', 'Ut sequi voluptatum pariatur molestiae quo dolor non. Blanditiis doloribus nostrum harum aut. Dolorum exercitationem nihil et in.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(35, 5, 20, 1, '3', 'Quia ut at minus voluptates et modi. Quis nemo et sunt nihil in. Dicta nulla sed at quis. Omnis ut non dolor sint adipisci nam quia.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(36, 2, 11, 17, '1', 'Odio sed unde itaque aliquam rerum in. Natus qui doloribus velit aut. Quo magnam sapiente officia illum magni eius.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(37, 8, 12, 17, '5', 'Quos et maiores itaque. Ea qui saepe quidem nemo sint est. Quae consectetur soluta vitae. Velit perspiciatis exercitationem molestiae voluptates officia et commodi.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(39, 2, 5, 7, '3', 'Optio quaerat numquam beatae. Iusto omnis odio et non. Nobis ex et veritatis nam voluptatem nostrum nulla voluptatibus.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(40, 1, 4, 17, '4', 'Nihil autem quod tenetur. Iste dolorem explicabo recusandae sed mollitia. Vero illo aliquam et quibusdam ut illum.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(41, 4, 12, 17, '4', 'Et voluptatum similique nulla rerum facilis nulla. Voluptate occaecati temporibus consequatur delectus occaecati aliquid voluptatum.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(42, 9, 19, 14, '4', 'Fuga non quaerat delectus omnis. Esse quis dolorem natus nobis sed repellendus perspiciatis. Quis sint est ea qui.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(43, 5, 17, 3, '4', 'Sunt accusantium laboriosam laudantium modi. Recusandae optio asperiores laudantium et. Sint iure rem quo quis quia id quae voluptates. Voluptas excepturi aspernatur sint quia.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(45, 9, 9, 5, '1', 'Dolores ut fugit voluptatem voluptatum tenetur corporis. Quidem fugit et ex autem. Est officia quia ad totam facilis sed aut. Distinctio rem omnis saepe architecto illo dolores deserunt.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(46, 7, 19, 1, '3', 'Et saepe similique aut vel sit porro tempore. Enim ut quia vel eius iste. Molestiae repudiandae commodi temporibus sequi necessitatibus. Labore natus maiores voluptate eum sapiente rerum delectus.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(47, 2, 14, 16, '4', 'Aut nobis ab quos dolorem fuga. Id vel voluptatem non debitis nobis qui at. Quaerat accusamus incidunt deleniti sed saepe.', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(48, 5, 1, 14, '3', 'Provident fugiat ea non quo sequi quia. Quod corporis sit qui reprehenderit neque. Eveniet distinctio dolorem earum. Omnis nihil temporibus officia dolor. Dicta a ipsum quo et magni repellendus et.', '2020-05-09 15:02:00', '2020-05-09 15:02:00'),
-(49, 3, 1, 12, '5', 'Nobis neque molestiae consectetur quaerat fugiat mollitia. Amet veniam voluptas autem id repudiandae magnam. Recusandae molestiae error sunt nihil vel eum.', '2020-05-09 15:02:00', '2020-05-09 15:02:00');
+INSERT INTO `ratings` (`id`, `owner_id`, `toilet_id`, `user_id`, `rating`, `desc`, `visible`, `created_at`, `updated_at`) VALUES
+(14, 4, 2, 10, '1', 'Veritatis iusto qui laborum dolores cumque quibusdam repellat. Autem qui doloremque laudantium quia. Quis quisquam fugit nulla ab. Deserunt voluptas fuga id ut accusantium.', '0', '2020-05-09 15:01:58', '2020-06-20 18:25:24'),
+(18, 8, 19, 8, '1', 'Molestiae ipsam quam et nihil. Et ipsum neque rerum culpa animi et ut. Maiores accusamus accusantium voluptatum omnis. Rerum tenetur sequi animi repudiandae corrupti nihil dicta.', '0', '2020-05-09 15:01:58', '2020-05-09 15:01:58'),
+(20, 8, 7, 7, '4', 'Molestias labore ratione aliquam. Cumque similique ad quidem qui aut non. Officiis veniam voluptatum rem adipisci esse qui quis aliquam.', '1', '2020-05-09 15:01:58', '2020-05-09 15:01:58'),
+(22, 1, 16, 13, '1', 'Dolorem nostrum temporibus autem explicabo. Consequatur totam enim ut aliquid totam rerum facilis nemo. Cum non et fuga quaerat sed omnis.', '1', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
+(26, 5, 2, 2, '2', 'Odit amet ea vel animi omnis in. Maxime autem ipsum officia. Est deleniti incidunt provident explicabo quia porro ut sapiente. Magnam dolor consequatur quod nostrum qui unde aut rerum.', '0', '2020-05-09 15:01:59', '2020-06-20 18:25:12'),
+(28, 3, 2, 19, '4', 'Illum ipsa sit omnis eos ducimus voluptatum officia. Possimus saepe vel magnam in porro similique et eos. Quia ea consequatur rem consequatur suscipit fugiat. Eum provident consequatur unde fugit illo vel quam.', '1', '2020-05-09 15:01:59', '2020-06-20 18:25:25'),
+(31, 1, 12, 11, '1', 'Harum sed et reiciendis repellendus non aut. Pariatur cumque beatae qui est. Perspiciatis occaecati explicabo quia sapiente.', '0', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
+(37, 8, 12, 17, '5', 'Quos et maiores itaque. Ea qui saepe quidem nemo sint est. Quae consectetur soluta vitae. Velit perspiciatis exercitationem molestiae voluptates officia et commodi.', '1', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
+(41, 4, 12, 17, '4', 'Et voluptatum similique nulla rerum facilis nulla. Voluptate occaecati temporibus consequatur delectus occaecati aliquid voluptatum.', '0', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
+(42, 9, 19, 14, '4', 'Fuga non quaerat delectus omnis. Esse quis dolorem natus nobis sed repellendus perspiciatis. Quis sint est ea qui.', '1', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
+(43, 5, 17, 3, '4', 'Sunt accusantium laboriosam laudantium modi. Recusandae optio asperiores laudantium et. Sint iure rem quo quis quia id quae voluptates. Voluptas excepturi aspernatur sint quia.', '0', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
+(46, 7, 19, 1, '3', 'Et saepe similique aut vel sit porro tempore. Enim ut quia vel eius iste. Molestiae repudiandae commodi temporibus sequi necessitatibus. Labore natus maiores voluptate eum sapiente rerum delectus.', '1', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
+(47, 2, 14, 16, '4', 'Aut nobis ab quos dolorem fuga. Id vel voluptatem non debitis nobis qui at. Quaerat accusamus incidunt deleniti sed saepe.', '0', '2020-05-09 15:01:59', '2020-05-09 15:01:59');
 
 -- --------------------------------------------------------
 
@@ -348,7 +313,6 @@ CREATE TABLE `states` (
 INSERT INTO `states` (`id`, `state`, `country_id`, `created_at`, `updated_at`) VALUES
 (1, 'Tennessee', 7, '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
 (2, 'Colorado', 2, '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
-(3, 'Nevada', 9, '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
 (4, 'Virginia', 4, '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
 (5, 'Texas', 7, '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
 (6, 'South Dakota', 4, '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
@@ -356,15 +320,11 @@ INSERT INTO `states` (`id`, `state`, `country_id`, `created_at`, `updated_at`) V
 (8, 'Vermont', 4, '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
 (9, 'Missouri', 7, '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
 (10, 'Georgia', 4, '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
-(11, 'Utah', 10, '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
 (12, 'Tennessee', 1, '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
-(13, 'California', 10, '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
-(14, 'New Hampshire', 9, '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
 (15, 'District of Columbia', 6, '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
-(16, 'Maryland', 3, '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
+(16, 'Maryland La', 3, '2020-05-09 15:01:51', '2020-05-28 13:12:58'),
 (17, 'Nebraska', 5, '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
 (18, 'Pennsylvania', 8, '2020-05-09 15:01:51', '2020-05-09 15:01:51'),
-(19, 'Oklahoma', 10, '2020-05-09 15:01:52', '2020-05-09 15:01:52'),
 (20, 'Indiana', 2, '2020-05-09 15:01:52', '2020-05-09 15:01:52');
 
 -- --------------------------------------------------------
@@ -377,7 +337,7 @@ CREATE TABLE `toilet_infos` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `owner_id` bigint(20) UNSIGNED NOT NULL,
   `toilet_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` bigint(20) UNSIGNED NOT NULL,
+  `price` decimal(20,3) NOT NULL,
   `complex_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `city_id` bigint(20) UNSIGNED NOT NULL,
@@ -396,27 +356,17 @@ CREATE TABLE `toilet_infos` (
 --
 
 INSERT INTO `toilet_infos` (`id`, `owner_id`, `toilet_name`, `price`, `complex_name`, `address`, `city_id`, `state_id`, `country_id`, `toilet_lat`, `toilet_lng`, `type`, `status`, `created_at`, `updated_at`) VALUES
-(1, 9, 'molestiae', 2, 'eius', '87651 Kling Estate Apt. 618', 8, 5, 7, '6', '56', '2', '0', '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
-(2, 9, 'soluta', 0, 'id', '22416 Samson Plaza', 36, 16, 8, '36', '41', '0', '1', '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
-(4, 2, 'nostrum', 0, 'doloribus', '625 Nedra Inlet Apt. 646', 35, 14, 3, '2', '25', '2', '0', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
-(5, 9, 'non', 2, 'repudiandae', '7471 Hirthe Haven', 5, 19, 1, '71', '66', '0', '1', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
-(6, 9, 'ea', 8, 'quaerat', '137 Hermann Row', 48, 13, 8, '55', '9', '1', '0', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
-(7, 5, 'hic', 3, 'ab', '6708 Price Row', 27, 17, 4, '74', '25', '1', '1', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
-(9, 6, 'accusamus', 8, 'quia', '32484 Arch Wall', 2, 14, 6, '78', '38', '1', '0', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
-(10, 6, 'sunt', 5, 'ut', '79878 Natalia Route Apt. 965', 32, 17, 1, '56', '64', '0', '0', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
-(11, 3, 'doloribus', 0, 'aut', '2811 Roy Camp Suite 585', 32, 5, 1, '26', '31', '1', '1', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
-(12, 5, 'magni', 2, 'ipsum', '20720 Swift Forge Suite 672', 12, 12, 1, '18', '79', '0', '1', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
-(13, 7, 'ullam', 8, 'aut', '72502 Leonie Meadow', 18, 10, 7, '47', '13', '1', '0', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
-(14, 9, 'eius', 5, 'ut', '672 Jerde Isle', 15, 9, 8, '13', '8', '1', '0', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
-(15, 4, 'officiis', 5, 'deleniti', '3215 Kasandra Manors', 11, 8, 9, '39', '56', '1', '0', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
-(16, 2, 'quia', 2, 'est', '8745 Dulce Mountains', 38, 7, 7, '55', '52', '1', '1', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
-(17, 9, 'laudantium', 6, 'quo', '617 Hammes Loaf Apt. 252', 26, 10, 2, '24', '28', '1', '1', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
-(18, 5, 'voluptatibus', 8, 'eaque', '3998 Sigrid Villages', 44, 14, 4, '43', '70', '0', '1', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
-(19, 4, 'eaque', 1, 'sit', '6777 Nolan Gateway', 33, 1, 1, '13', '98', '0', '1', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
-(20, 3, 'voluptas', 0, 'autem', '74458 Wilber Streets Apt. 412', 10, 14, 3, '2', '36', '2', '0', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
-(21, 2, 'New toilet', 5, 'qwefgnm', 'wd', 16, 9, 7, NULL, NULL, '2', '1', '2020-05-09 15:04:29', '2020-05-09 15:04:29'),
-(22, 11, 'wqedfbn', 2, 'wedn', 'sdfb', 40, 15, 6, '48.78907674130463', '2.457052219022655', '2', '1', '2020-05-10 13:59:23', '2020-05-10 14:11:40'),
-(23, 11, 'WADGXFCG', 1, 'szdxvcbvnm', 'qszdfc', 24, 17, 5, NULL, NULL, '2', '1', '2020-05-13 04:17:00', '2020-05-13 04:17:00');
+(2, 9, 'soluta', '99.104', 'id', '22416 Samson Plaza', 12, 18, 8, '36', '41', '2', '1', '2020-05-09 15:01:54', '2020-06-24 08:24:42'),
+(7, 5, 'soulta', '3.000', 'ab', '6708 Price Row', 26, 8, 4, '74', '25', '1', '1', '2020-05-09 15:01:55', '2020-06-24 08:05:07'),
+(12, 5, 'magni', '2.000', 'ipsum', '20720 Swift Forge Suite 672', 12, 12, 1, '18', '79', '0', '1', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
+(14, 9, 'eius', '5.000', 'ut', '672 Jerde Isle', 15, 9, 8, '13', '8', '1', '0', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
+(16, 2, 'quia', '2.000', 'est', '8745 Dulce Mountains', 38, 7, 7, '55', '52', '1', '1', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
+(17, 9, 'laudantium', '6.000', 'quo', '617 Hammes Loaf Apt. 252', 26, 10, 2, '24', '28', '1', '1', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
+(19, 4, 'eaque', '1.000', 'sit', '6777 Nolan Gateway', 33, 1, 1, '13', '98', '0', '1', '2020-05-09 15:01:55', '2020-05-09 15:01:55'),
+(23, 11, 'WADGXFCG', '1.003', 'szdxvcbvnm', 'qszdfc', 24, 17, 5, NULL, NULL, '2', '1', '2020-05-13 04:17:00', '2020-06-24 08:24:10'),
+(24, 11, 'qswdefr', '0.000', 'wdfgh', 'gghgfd', 25, 15, 6, NULL, NULL, '2', '1', '2020-06-22 13:08:10', '2020-06-22 13:08:10'),
+(25, 1, 'new toilet', '0.002', 'qwerty', 'asdfghjzxcvbnm', 36, 7, 3, NULL, NULL, '2', '1', '2020-06-22 14:49:54', '2020-06-22 14:49:54'),
+(26, 2, 'new toilet 2', '0.001', 'qwerty', 'asdfghjzxcvbnm', 12, 18, 8, '29.274934931557524', '47.9427002978135', '2', '1', '2020-06-22 14:59:25', '2020-06-22 14:59:25');
 
 -- --------------------------------------------------------
 
@@ -430,6 +380,7 @@ CREATE TABLE `toilet_owners` (
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `mobileno` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `profile` text COLLATE utf8mb4_unicode_ci,
   `rating` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` enum('0','1','-1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0' COMMENT '0-Not Active,1-Active',
   `auto_allocate` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1' COMMENT '0-Off,1-On',
@@ -441,20 +392,24 @@ CREATE TABLE `toilet_owners` (
 -- Dumping data for table `toilet_owners`
 --
 
-INSERT INTO `toilet_owners` (`id`, `email`, `password`, `name`, `mobileno`, `rating`, `status`, `auto_allocate`, `created_at`, `updated_at`) VALUES
-(1, 'leonard.mckenzie@example.com', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Prof. Muhammad Bednar', '9854304031', '4', '1', '1', '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
-(2, 'ischimmel@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Dr. Nora Altenwerth', '7721813555', '4', '1', '1', '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
-(3, 'corkery.alexandria@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Jodie Stiedemann', '7212369467', '5', '1', '1', '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
-(4, 'frami.tierra@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Sabryna Ruecker', '9905835294', '2', '-1', '1', '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
-(5, 'dspencer@example.com', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Giovanni Buckridge', '8416270995', '0', '1', '1', '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
-(6, 'darian93@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Nels Walsh', '8817797520', '2', '1', '0', '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
-(7, 'predovic.dax@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Evelyn Jerde', '9884542695', '2', '-1', '0', '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
-(8, 'isaac80@example.org', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Akeem Lakin', '8535489631', '5', '-1', '1', '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
-(9, 'lesch.alexis@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Raleigh Trantow', '9568322124', '5', '0', '0', '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
-(11, 'a@b.c', '$2y$10$kLpvFjjzg9OA0cmkxkC2TuNYeoz5/.Zx2Qr4qgGXF2IImCpS6W23K', 'abc', '9999999999', NULL, '1', '0', '2020-05-09 17:54:18', '2020-05-18 17:33:16'),
-(12, 'a@b.d', '$2y$10$6aHrlrMbupaeBu00vg/MsuwkiKimuYtuwB1dy/vctCjJsRwaMofUO', 'abc', '8888888888', NULL, '0', '1', '2020-05-09 18:05:17', '2020-05-09 18:05:17'),
-(13, 'keyur@yopmail.com', '$2y$10$BRpMhb1un2NnnHcCN/GpVeYrCmelQRPSS5GLSiiyiHYBLDQbq1x22', 'abc', '5555555555', NULL, '0', '1', '2020-05-09 18:13:57', '2020-05-09 18:13:57'),
-(14, 'ashfakjh@gmail.com', '$2y$10$TrfB1rnFY/pZMC.TjG/GZOt8erTLJf7qJ8p.LKnh8kkbH0YJ7kBw6', 'abc', '8888888889', NULL, '0', '1', '2020-05-09 18:15:32', '2020-05-09 18:15:32');
+INSERT INTO `toilet_owners` (`id`, `email`, `password`, `name`, `mobileno`, `profile`, `rating`, `status`, `auto_allocate`, `created_at`, `updated_at`) VALUES
+(1, 'leonard.mckenzie@example.com', '$2y$10$.VpyXxWwnlyOcSJuzAn3B.9JxVznra/9MIESYj6NatyhTLM2aflki', 'Prof. Muhammad Bednar', '9854304031', '1_IMG_1362.jpg', '4', '1', '1', '2020-05-09 15:01:54', '2020-06-24 07:37:52'),
+(2, 'ischimmel@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Dr. Nora Altenwerth', '7721813555', '2_Purple flower.jpg', '4', '1', '1', '2020-05-09 15:01:54', '2020-06-20 23:01:00'),
+(3, 'corkery.alexandria@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Jodie Stiedemann', '7212369467', '3_IMG_1362.jpg', '5', '1', '1', '2020-05-09 15:01:54', '2020-06-22 12:58:20'),
+(4, 'frami.tierra@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Sabryna Ruecker', '9905835294', NULL, '2', '-1', '1', '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
+(5, 'dspencer@example.com', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Giovanni Buckridge', '8416270995', NULL, '0', '1', '1', '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
+(7, 'predovic.dax@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Evelyn Jerde', '9884542695', NULL, '2', '-1', '0', '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
+(8, 'isaac80@example.org', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Akeem Lakin', '8535489631', NULL, '5', '-1', '1', '2020-05-09 15:01:54', '2020-05-09 15:01:54'),
+(9, 'lesch.alexis@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Raleigh Trantow', '9568322124', NULL, '5', '0', '1', '2020-05-09 15:01:54', '2020-06-18 09:21:57'),
+(11, 'a@b.c', '$2y$10$PT8qeLoebpaOU0t4a21LrOgP0gOstc4uQAQTWQCAXNWmIy8kGCEbS', 'abc', '9999999999', '11_CRASH.JPG', NULL, '1', '0', '2020-05-09 17:54:18', '2020-06-24 08:21:54'),
+(12, 'a@b.d', '$2y$10$6aHrlrMbupaeBu00vg/MsuwkiKimuYtuwB1dy/vctCjJsRwaMofUO', 'abc', '8888888888', NULL, NULL, '0', '1', '2020-05-09 18:05:17', '2020-05-09 18:05:17'),
+(13, 'keyur@yopmail.com', '$2y$10$BRpMhb1un2NnnHcCN/GpVeYrCmelQRPSS5GLSiiyiHYBLDQbq1x22', 'abc', '5555555555', NULL, NULL, '0', '1', '2020-05-09 18:13:57', '2020-05-09 18:13:57'),
+(14, 'ashfakjh@gmail.com', '$2y$10$TrfB1rnFY/pZMC.TjG/GZOt8erTLJf7qJ8p.LKnh8kkbH0YJ7kBw6', 'abc', '8888888889', NULL, NULL, '0', '1', '2020-05-09 18:15:32', '2020-05-09 18:15:32'),
+(17, 'urvishjoshi49@gmail.com', '$2y$10$Ks/n8kjN44RK3sFJEYDCHufUNMwTtfR2Rtb4relMAMlKVAdCKbvHS', 'qwerty', '9999999990', NULL, NULL, '0', '1', '2020-06-20 18:56:23', '2020-06-20 18:56:23'),
+(18, 'a@f.f', '$2y$10$Qtm.R0DvKhzoU5A5TvGz1.rC1TdAEOb1Nt//EBrQysfX/MgJYhyAq', 'qwerty', '7418520963', NULL, NULL, '1', '1', '2020-06-20 18:57:43', '2020-06-20 18:57:43'),
+(19, 'urvishjoshi@gmail.com', '$2y$10$MX/s086fLpJ43eXituUVsO1CQObai3Vk1/FA6FgULVT7yvtWIGdpm', 'qwert', '7777777777', NULL, NULL, '1', '1', '2020-06-20 18:59:20', '2020-06-20 18:59:20'),
+(20, 'new@gmail.com', '$2y$10$I56tZf7v56XiWXPgvvRaZ.Vu1k6Oo4Hoc6jNMCuFbfFdi5Z0W1F9y', 'qwert', '6666666666', NULL, NULL, '1', '1', '2020-06-20 19:15:48', '2020-06-20 19:15:48'),
+(22, 'a@b.com', '$2y$10$xADuBGwEW/6QTvNKWYdeFuMuVGA29dKu8PU.wIZf1RyWsM6oAp0P.', 'qwe', '7777777774', NULL, NULL, '0', '1', '2020-06-20 23:11:19', '2020-06-20 23:11:19');
 
 -- --------------------------------------------------------
 
@@ -478,38 +433,16 @@ CREATE TABLE `toilet_usage_infos` (
 --
 
 INSERT INTO `toilet_usage_infos` (`id`, `transaction_id`, `owner_id`, `user_id`, `toilet_id`, `status`, `created_at`, `updated_at`) VALUES
-(2, '104939', 2, 1, 18, '1', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
-(3, '535831', 1, 12, 18, '1', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
 (4, '314678', 9, 7, 16, '0', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
 (5, '643125', 8, 1, 17, '1', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
-(6, '181416', 6, 11, 2, '1', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
-(7, '918078', 8, 15, 1, '1', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
 (8, '929095', 5, 6, 7, '0', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
 (9, '11297', 4, 17, 14, '0', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
 (10, '453475', 8, 16, 17, '1', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
 (11, '581529', 2, 19, 12, '0', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
 (12, '299937', 4, 6, 12, '0', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
-(13, '113965', 9, 8, 4, '0', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
-(14, '427474', 3, 3, 10, '1', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
-(15, '848288', 7, 10, 13, '0', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
-(16, '157195', 1, 15, 6, '0', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
-(18, '263217', 3, 17, 9, '0', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
-(22, '597923', 9, 20, 11, '0', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
-(23, '277781', 6, 17, 5, '0', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
 (24, '443685', 9, 8, 16, '1', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
-(25, '947466', 8, 3, 5, '0', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
-(26, '851283', 9, 2, 9, '1', '2020-05-09 15:01:56', '2020-05-09 15:01:56'),
 (27, '772107', 9, 4, 14, '0', '2020-05-09 15:01:57', '2020-05-09 15:01:57'),
-(28, '480746', 8, 8, 6, '0', '2020-05-09 15:01:57', '2020-05-09 15:01:57'),
-(31, '613999', 6, 17, 11, '1', '2020-05-09 15:01:57', '2020-05-09 15:01:57'),
-(32, '561477', 9, 6, 20, '1', '2020-05-09 15:01:57', '2020-05-09 15:01:57'),
-(35, '822618', 6, 9, 19, '0', '2020-05-09 15:01:57', '2020-05-09 15:01:57'),
-(36, '290157', 9, 2, 5, '0', '2020-05-09 15:01:57', '2020-05-09 15:01:57'),
-(38, '759447', 6, 17, 5, '1', '2020-05-09 15:01:57', '2020-05-09 15:01:57'),
 (39, '983676', 5, 15, 12, '1', '2020-05-09 15:01:57', '2020-05-09 15:01:57'),
-(40, '232557', 8, 3, 10, '1', '2020-05-09 15:01:57', '2020-05-09 15:01:57'),
-(43, '19016', 4, 17, 10, '0', '2020-05-09 15:01:57', '2020-05-09 15:01:57'),
-(46, '533153', 1, 12, 4, '0', '2020-05-09 15:01:57', '2020-05-09 15:01:57'),
 (48, '838769', 1, 20, 19, '0', '2020-05-09 15:01:57', '2020-05-09 15:01:57'),
 (49, '272368', 9, 3, 12, '1', '2020-05-09 15:01:57', '2020-05-09 15:01:57');
 
@@ -536,8 +469,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `name`, `mobileno`, `gender`, `age`, `created_at`, `updated_at`) VALUES
-(1, 'herman.hubert@example.com', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Dr. Barton Gulgowski III', '7402034970', '0', '57', '2020-05-09 15:01:49', '2020-05-09 15:01:49'),
-(2, 'vella.pacocha@example.com', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Dagmar Ebert Sr.', '7074012284', '0', '38', '2020-05-09 15:01:49', '2020-05-09 15:01:49'),
+(1, 'herman.hubert@example.com', '$2y$10$0tV8ln.9JhNyBdVfQ0Yg/uY54yOEbTEuiO0HjF.cv/6QYpuy6fxoC', 'Dr. Barton Gulgowski III', '7402034970', '1', '57', '2020-05-09 15:01:49', '2020-06-18 18:28:58'),
+(2, 'vella.pacocha@example.com', '$2y$10$eYofDRpgZVRJTAM/ywn/4uy6LcSO.DUQyhni/Km7RoGTgJriECfxy', 'Dagmar Ebert Sr.', '7074012284', '0', '38', '2020-05-09 15:01:49', '2020-06-24 08:14:20'),
 (3, 'sibyl.fadel@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Eladio Konopelski', '7794256249', '0', '59', '2020-05-09 15:01:50', '2020-05-09 15:01:50'),
 (4, 'harvey.tyra@example.org', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Damion Dickinson', '8889262320', '1', '28', '2020-05-09 15:01:50', '2020-05-09 15:01:50'),
 (5, 'smitham.heaven@example.org', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Kaylin Ziemann', '9240776428', '1', '23', '2020-05-09 15:01:50', '2020-05-09 15:01:50'),
@@ -554,7 +487,9 @@ INSERT INTO `users` (`id`, `email`, `password`, `name`, `mobileno`, `gender`, `a
 (16, 'kuhlman.elaina@example.com', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Marie Haag', '9448371055', '1', '47', '2020-05-09 15:01:50', '2020-05-09 15:01:50'),
 (17, 'elizabeth85@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Cary McKenzie PhD', '8455707624', '0', '39', '2020-05-09 15:01:50', '2020-05-09 15:01:50'),
 (19, 'jennyfer.farrell@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Jo Gerhold', '9148592649', '0', '67', '2020-05-09 15:01:50', '2020-05-09 15:01:50'),
-(20, 'bconn@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Daisha Monahan', '8497794785', '0', '56', '2020-05-09 15:01:50', '2020-05-09 15:01:50');
+(20, 'bconn@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Daisha Monahan', '8497794785', '0', '56', '2020-05-09 15:01:50', '2020-05-09 15:01:50'),
+(21, 'a@b.c', '$2y$10$IAO3NFzXfUG2idEv8tnfdOjoFB7EpjPfC5.qmCinqoRCMskcL4A92', 'werr', '8888888888', '1', '88', '2020-06-22 16:08:30', '2020-06-24 07:46:48'),
+(23, 'a@gmail.com', '$2y$10$tr4nRHzo8fzExf5eaITKYOxMURDcFZ1.hef0QyIT/VFuHPW0awSdy', 'New added', '5555555555', '1', '1', '2020-06-22 16:22:30', '2020-06-22 16:22:30');
 
 --
 -- Indexes for dumped tables
@@ -691,7 +626,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `states`
@@ -703,13 +638,13 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT for table `toilet_infos`
 --
 ALTER TABLE `toilet_infos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `toilet_owners`
 --
 ALTER TABLE `toilet_owners`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `toilet_usage_infos`
@@ -721,7 +656,7 @@ ALTER TABLE `toilet_usage_infos`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
