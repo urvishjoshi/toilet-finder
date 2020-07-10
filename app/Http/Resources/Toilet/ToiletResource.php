@@ -15,9 +15,10 @@ class ToiletResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'toilet_owner' => $this->getOwner(),
             'name' => $this->toilet_name,
-            'price' => $this->price,
+            'price' => (int)$this->price,
             'complex' => $this->complex_name,
             'address' => $this->address,
             'country' => $this->getCountry(),
@@ -25,12 +26,12 @@ class ToiletResource extends JsonResource
             'city' => $this->getCity(),
             'toilet_type' => $this->getType(),
             'toilet_status' => $this->getStatus(),
-            'latitude' => $this->toilet_lat,
-            'longitude' => $this->toilet_lng,
-            'rating' => $this->getAverageRating(),
+            'latitude' => (int)$this->toilet_lat,
+            'longitude' => (int)$this->toilet_lng,
+            'rating' => (int)$this->getAverageRating(),
             'href' => [
-                'book' => route('api.book.index',$this->id),
-                'reviews' => route('api.ratings.show',[$this->id,$this->id]),
+                'book' => route('api.book.store',$this->id),
+                'reviews' => route('api.showRating',$this->id),
             ],
         ];
     }

@@ -16,7 +16,7 @@ class RatingResource extends JsonResource
     {
         return [
             'user_id' => $this->user_id,
-            'star' => $this->rating,
+            'star' => (int)$this->rating,
             'description' => $this->desc,
             'time' => $this->created_at,
         ];

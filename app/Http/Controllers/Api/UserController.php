@@ -3,25 +3,27 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Model\ToiletInfo;
+use App\Http\Resources\UserResource;
 use App\Http\Traits\ResponseTrait;
 use App\Http\Controllers\Controller;
+use App\User;
 
-class BookController extends Controller
+class UserController extends Controller
 {
     use ResponseTrait;
 
-    public function store($id, Request $request)
+    public function user($id)
     {
-        $data = ToiletInfo::find($id);
-        if ($data!=null) return $this->sendResponse(($data));
-    }
-    
-    public function index()
-    {
-        
+        $user = User::find($id);
+        if($user!=null)
+        return $this->sendResponse(new UserResource($user));
+        return $this->sendError('Not found', ["Doesn't exists" => "User data with ID-".$id." is not available"], 404);
     }
 
+    public function index()
+    {
+        return;
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -38,6 +40,10 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function store(Request $request)
+    {
+        //
+    }
 
     /**
      * Display the specified resource.

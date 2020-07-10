@@ -15,14 +15,13 @@ class UserResource extends JsonResource
      */
     public function toArray($request)
     {
-        $user = User::where('email',$this->email)->first();
         return [
-            "user_id" => $user->id,
-            "name" => ucwords($user->name),
-            "email" => $user->email,
-            "phone" => $user->mobileno,
-            "gender" => $user->gender,
-            "age" => $user->age,
+            "user_id" => $this->id,
+            "name" => ucwords($this->name),
+            "email" => $this->email,
+            "phone" => (int)$this->mobileno,
+            "gender" => $this->gender==1 ? 'Male' : 'Female',
+            "age" => (int)$this->age,
         ];
     }
 }

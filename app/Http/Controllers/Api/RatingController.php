@@ -5,22 +5,25 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RatingResource;
 use App\Model\ToiletInfo;
+use App\Http\Traits\ResponseTrait;
 use Illuminate\Http\Request;
 
 class RatingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    use ResponseTrait;
+
     public function index()
     {
     }
-    public function show(ToiletInfo $toilet)
+    public function showRating($id)
     {
-        return RatingResource::collection($toilet->ratings);
-        //
+        $toilet = ToiletInfo::find($id);
+        if ($toilet==null)
+            return $this->sendError('Not found', ["Doesn't exists" => "Toilet with ID-".$id." is not available"], 404);
+
+        if (count($toilet->ratings)==0) return $this->sendResponse($toilet->ratings,'No ratings yet');
+            
+        else return $this->sendResponse(RatingResource::collection($toilet->ratings));
     }
 
     /**

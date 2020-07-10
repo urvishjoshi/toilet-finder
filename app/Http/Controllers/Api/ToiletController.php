@@ -6,20 +6,25 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Toilet\ToiletCollection;
 use App\Http\Resources\Toilet\ToiletResource;
 use App\Model\ToiletInfo;
+use App\Http\Traits\ResponseTrait;
 use Illuminate\Http\Request;
 
 class ToiletController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    use ResponseTrait;
+
     public function index()
     {
-        return ToiletCollection::collection(ToiletInfo::all());
+        $data = ToiletCollection::collection(ToiletInfo::all());
+        return $this->sendResponse($data);
     }
 
+    public function show($toilet)
+    {
+        $data = ToiletInfo::find($toilet);
+        if ($data!=null) return $this->sendResponse(new ToiletResource($data));
+        return $this->sendError('Not found', ["Doesn't exists" => "Toilet data with ID-".$toilet." is not available"], 404);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -47,10 +52,6 @@ class ToiletController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ToiletInfo $toilet)
-    {
-        return new ToiletResource($toilet);
-    }
 
     /**
      * Show the form for editing the specified resource.
