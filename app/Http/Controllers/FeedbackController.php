@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\FeedbackResource;
+use App\Http\Traits\ResponseTrait;
 use App\Model\Feedback;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FeedbackController extends Controller
 {
+    use ResponseTrait;
+
     public function index()
     {
         $feedbacks = Feedback::where('feedbacker_id',Auth::user()->id)->where('feedbacker_type','1')->get();
@@ -19,7 +23,7 @@ class FeedbackController extends Controller
     {
         $validate = Validator::make($request->all(), [
             'subject'   => 'required|string|max:255',
-            'description'   => 'required|min:25',
+            'description'   => 'required',
         ]);
 
         if($validate->fails())
@@ -36,6 +40,32 @@ class FeedbackController extends Controller
         return back()->with('toast.o','Thanks for your feedback');
     }
 
+    public function user($id, Request $request)
+    {
+        $validate = Validator::make($request->all(), [
+            'subject'   => 'required|string|max:255',
+            'description'   => 'required',
+        ]);
+
+        if($validate->fails())
+            return $this->sendError('Validation Error',$validate->errors());
+        
+        $feedback = new Feedback;
+        $feedback->feedbacker_id = $id;
+        $feedback->feedbacker_type = '2';
+        $feedback->subject = $request->subject;
+        $feedback->desc = $request->description;
+        $feedback->save();
+        return $this->sendResponse($feedback,'Feedback sent',201);
+    }
+
+    public function show($id)
+    {
+        $feedback = Feedback::where('feedbacker_id',$id)->where('feedbacker_type','2')->get();
+        if (count($feedback)<1)
+            return $this->sendResponse($feedback,'No feedbacks given yet');
+        return $this->sendResponse($feedback);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -59,10 +89,6 @@ class FeedbackController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

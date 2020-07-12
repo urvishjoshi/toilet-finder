@@ -22,6 +22,9 @@ class UserResource extends JsonResource
             "phone" => (int)$this->mobileno,
             "gender" => $this->gender==1 ? 'Male' : 'Female',
             "age" => (int)$this->age,
+            "href" => [
+                "history" => route('api.usages',$this->id)
+            ],
         ];
     }
 }

@@ -20,6 +20,19 @@ class UserController extends Controller
         return $this->sendError('Not found', ["Doesn't exists" => "User data with ID-".$id." is not available"], 404);
     }
 
+    public function usages($id)
+    {
+        $user = User::find($id);
+        if($user==null)
+        return $this->sendError('Not found', ["Doesn't exists" => "User data with ID-".$id." is not available"], 404);
+        $user = new UserResource($user);
+        $usages = $user->toiletusages;
+        if (count($usages)==0)
+            return $this->sendResponse($user->toiletusages,'No usages done yet');
+        return $this->sendResponse($user->toiletusages);
+
+    }
+
     public function index()
     {
         return;
@@ -28,6 +41,7 @@ class UserController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
+     * Store a newly created resource in storage.
      */
     public function create()
     {
@@ -35,7 +49,6 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -51,10 +64,6 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
