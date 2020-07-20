@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 27, 2020 at 02:13 PM
+-- Generation Time: Jul 20, 2020 at 02:09 AM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -45,7 +45,21 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `email`, `password`, `name`, `mobileno`, `profile`, `mapkey`, `created_at`, `updated_at`) VALUES
-(1, 'a@b.c', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Urvish Joshi', '9999999999', '1_IMG_1362.jpg', 'AIzaSyBuM60AoMrwB7dnMEOL7bge_3bM4DJtdn8', NULL, '2020-06-20 17:55:05');
+(1, 'a@b.c', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Urvish Joshi', '9999999999', '1_IMG_1362.jpg', 'AIzaSyBuM60AoMrwB7dnMEOL7bge_3bM4DJtdn8', NULL, '2020-07-19 17:12:53');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `baners`
+--
+
+CREATE TABLE `baners` (
+  `id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `url` text NOT NULL,
+  `created_at` date NOT NULL,
+  `updated_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -207,7 +221,11 @@ INSERT INTO `feedback` (`id`, `feedbacker_id`, `feedbacker_type`, `subject`, `de
 (49, 8, '2', 'Ipsam magnam ut quae qui nesciunt magnam blanditiis.', 'Consequatur ullam corporis sint officiis vitae laborum neque. Et qui saepe similique voluptates quaerat. Est cum ea est quas cum tempore. Nihil ad ut consequuntur exercitationem.', '2020-05-09 15:02:02', '2020-05-09 15:02:02'),
 (50, 3, '1', 'Dolores sed quidem debitis perferendis repudiandae provident.', 'Perspiciatis rerum vitae mollitia sit et qui modi. Voluptatibus rem voluptates quaerat repudiandae. Voluptates odit harum odit nihil provident ut. Aspernatur qui corrupti molestias et laudantium.', '2020-05-09 15:02:02', '2020-05-09 15:02:02'),
 (51, 14, '1', 'ha mojj haa', 'hohohohohouppppp', '2020-05-09 18:24:47', '2020-05-09 18:24:47'),
-(52, 14, '1', 'qwerh', 'hello this is my feedback', '2020-05-09 18:32:46', '2020-05-09 18:32:46');
+(52, 14, '1', 'qwerh', 'hello this is my feedback', '2020-05-09 18:32:46', '2020-05-09 18:32:46'),
+(53, 1, '2', 'ghio', 'fghjkuyttyukkjtjtjtjyjytrtyrtyttrttertrt', '2020-07-12 14:55:40', '2020-07-12 14:55:40'),
+(54, 1, '2', 'ghio', 'fghjkuyttyukkjtjtjtjyjytrtyrtyttrttertrt', '2020-07-12 15:02:23', '2020-07-12 15:02:23'),
+(55, 1, '2', 'ghio', 'fghjkuyttyukkjtjtjtjyjytrtyrtyttrttertrt', '2020-07-12 15:02:51', '2020-07-12 15:02:51'),
+(56, 2, '2', 'ghio', 'fghjkuyttyukkjtjtjtjyjytrtyrtyttrttertrt', '2020-07-13 04:25:11', '2020-07-13 04:25:11');
 
 -- --------------------------------------------------------
 
@@ -289,8 +307,7 @@ INSERT INTO `ratings` (`id`, `owner_id`, `toilet_id`, `user_id`, `rating`, `desc
 (41, 4, 12, 17, '4', 'Et voluptatum similique nulla rerum facilis nulla. Voluptate occaecati temporibus consequatur delectus occaecati aliquid voluptatum.', '0', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
 (42, 9, 19, 14, '4', 'Fuga non quaerat delectus omnis. Esse quis dolorem natus nobis sed repellendus perspiciatis. Quis sint est ea qui.', '1', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
 (43, 5, 17, 3, '4', 'Sunt accusantium laboriosam laudantium modi. Recusandae optio asperiores laudantium et. Sint iure rem quo quis quia id quae voluptates. Voluptas excepturi aspernatur sint quia.', '0', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(46, 7, 19, 1, '3', 'Et saepe similique aut vel sit porro tempore. Enim ut quia vel eius iste. Molestiae repudiandae commodi temporibus sequi necessitatibus. Labore natus maiores voluptate eum sapiente rerum delectus.', '1', '2020-05-09 15:01:59', '2020-05-09 15:01:59'),
-(47, 2, 14, 16, '4', 'Aut nobis ab quos dolorem fuga. Id vel voluptatem non debitis nobis qui at. Quaerat accusamus incidunt deleniti sed saepe.', '0', '2020-05-09 15:01:59', '2020-05-09 15:01:59');
+(46, 7, 19, 1, '3', 'Et saepe similique aut vel sit porro tempore. Enim ut quia vel eius iste. Molestiae repudiandae commodi temporibus sequi necessitatibus. Labore natus maiores voluptate eum sapiente rerum delectus.', '1', '2020-05-09 15:01:59', '2020-05-09 15:01:59');
 
 -- --------------------------------------------------------
 
@@ -444,7 +461,14 @@ INSERT INTO `toilet_usage_infos` (`id`, `transaction_id`, `owner_id`, `user_id`,
 (27, '772107', 9, 4, 14, '0', '2020-05-09 15:01:57', '2020-05-09 15:01:57'),
 (39, '983676', 5, 15, 12, '1', '2020-05-09 15:01:57', '2020-05-09 15:01:57'),
 (48, '838769', 1, 20, 19, '0', '2020-05-09 15:01:57', '2020-05-09 15:01:57'),
-(49, '272368', 9, 3, 12, '1', '2020-05-09 15:01:57', '2020-05-09 15:01:57');
+(49, '272368', 9, 3, 12, '1', '2020-05-09 15:01:57', '2020-05-09 15:01:57'),
+(50, '745896', 9, 2, 2, '1', '2020-07-12 10:58:10', '2020-07-12 10:58:10'),
+(52, '74589', 9, 2, 2, '1', '2020-07-12 10:59:53', '2020-07-12 10:59:53'),
+(56, '7458', 9, 2, 2, '1', '2020-07-12 11:40:45', '2020-07-12 11:40:45'),
+(68, '74582', 9, 5, 2, '1', '2020-07-12 13:32:49', '2020-07-12 13:32:49'),
+(69, '74587', 9, 5, 2, '1', '2020-07-12 13:41:14', '2020-07-12 13:41:14'),
+(70, '745877', 9, 5, 2, '1', '2020-07-12 13:42:56', '2020-07-12 13:42:56'),
+(71, '654123', 9, 2, 2, '1', '2020-07-12 15:56:51', '2020-07-12 15:56:51');
 
 -- --------------------------------------------------------
 
@@ -488,8 +512,13 @@ INSERT INTO `users` (`id`, `email`, `password`, `name`, `mobileno`, `gender`, `a
 (17, 'elizabeth85@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Cary McKenzie PhD', '8455707624', '0', '39', '2020-05-09 15:01:50', '2020-05-09 15:01:50'),
 (19, 'jennyfer.farrell@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Jo Gerhold', '9148592649', '0', '67', '2020-05-09 15:01:50', '2020-05-09 15:01:50'),
 (20, 'bconn@example.net', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'Daisha Monahan', '8497794785', '0', '56', '2020-05-09 15:01:50', '2020-05-09 15:01:50'),
-(21, 'a@b.c', '$2y$10$IAO3NFzXfUG2idEv8tnfdOjoFB7EpjPfC5.qmCinqoRCMskcL4A92', 'werr', '8888888888', '1', '88', '2020-06-22 16:08:30', '2020-06-24 07:46:48'),
-(23, 'a@gmail.com', '$2y$10$tr4nRHzo8fzExf5eaITKYOxMURDcFZ1.hef0QyIT/VFuHPW0awSdy', 'New added', '5555555555', '1', '1', '2020-06-22 16:22:30', '2020-06-22 16:22:30');
+(21, 'a@b.c', '$2y$10$mZR9Jo7H9mEqCP1Jq8OJlu8k.3nQa3LT8I545Kda5Qp43rGYEtrZC', 'werr', '8888888888', '1', '88', '2020-06-22 16:08:30', '2020-06-24 07:46:48'),
+(23, 'a@gmail.com', '$2y$10$tr4nRHzo8fzExf5eaITKYOxMURDcFZ1.hef0QyIT/VFuHPW0awSdy', 'New added', '5555555555', '1', '1', '2020-06-22 16:22:30', '2020-06-22 16:22:30'),
+(24, 'a@a.a', '$2y$10$1WxY3WIxzZ2OcaDk8APSXueEiSFSqzUorWCPW9mXsbtQrTJXiGwjC', 'aaa', NULL, '1', NULL, '2020-07-07 04:55:26', '2020-07-07 04:55:26'),
+(25, 'b@b.b', '$2y$10$4yxMKuZJLMbl1xtccT31jeicOhwlDdan2kmuDDwFvZcBQ.s/0G0hy', 'bbb', NULL, '1', NULL, '2020-07-07 04:59:12', '2020-07-07 04:59:12'),
+(26, 'a@l.c', '$2y$10$O/Krb24jHxxWQ8v7/5iDCu/cV.0nr/Nm2Sru.ZF2oR62SP1l6KDwm', 'a@d.k', NULL, '1', NULL, '2020-07-13 04:25:57', '2020-07-13 04:25:57'),
+(27, 'a@d.k', '$2y$10$xaxwF.LlTj/bzF2voR6we.o1ODaww4uZ29oOhbwXkpnO5ns1f07.W', 'rtyrytr', NULL, '1', NULL, '2020-07-13 04:27:29', '2020-07-13 04:27:29'),
+(28, 'a@d.kt', '$2y$10$EH289QXPnHbsOAa5Coks.Oh5lqHzGbGae8p2YRdoZ1zEAZ4YLCX4K', 'rtyrytr', NULL, '1', NULL, '2020-07-13 04:27:52', '2020-07-13 04:27:52');
 
 --
 -- Indexes for dumped tables
@@ -502,6 +531,12 @@ ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `admins_email_unique` (`email`),
   ADD UNIQUE KEY `admins_mobileno_unique` (`mobileno`);
+
+--
+-- Indexes for table `baners`
+--
+ALTER TABLE `baners`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `cities`
@@ -599,6 +634,12 @@ ALTER TABLE `admins`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `baners`
+--
+ALTER TABLE `baners`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `cities`
 --
 ALTER TABLE `cities`
@@ -614,7 +655,7 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -626,7 +667,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `states`
@@ -650,13 +691,13 @@ ALTER TABLE `toilet_owners`
 -- AUTO_INCREMENT for table `toilet_usage_infos`
 --
 ALTER TABLE `toilet_usage_infos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables

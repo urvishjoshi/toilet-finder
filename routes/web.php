@@ -21,6 +21,7 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::resource("feedbacks",'FeedbackController');
 		Route::resource("settings",'SettingController');
 		Route::resource("personal",'PersonalController');
+		Route::resource("baners",'BanerController');
 	});
 });
 //					toiletowner

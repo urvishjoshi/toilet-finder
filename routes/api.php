@@ -10,6 +10,7 @@ Route::group(['as'=>'api.'],function(){
 		Route::get("toilets/{id}/ratings",'RatingController@showRating')->name('showRating');
 		Route::get("user/{id}",'UserController@user')->name('user');
 		Route::get("user/{id}/usages",'UserController@usages')->name('usages');
+		Route::get("baners",'BanerController@index');
 		// Route::group(['middleware'=>'auth:user'],function(){
 		// });
 	});

@@ -1,7 +1,7 @@
  <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
 	<!-- Brand Logo -->
-	<a href="{{ route('a.dashboard.index') }}" class="brand-link"><!--Kishan changed Link-->
+	<a href="{{ route('a.dashboard.index') }}" class="brand-link">
 	  <img src="{{ asset('favicon.png') }}" alt="Logo" class="brand-image img-circle elevation-3">
 	  <span class="brand-text font-weight-light"> <b> 7as 7as</b></span>
 	</a>
@@ -27,17 +27,24 @@
 		<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
 			<li class="nav-item">
-			  <a href="{{ route('a.requests.index') }}" class="nav-link {{ (request()->is('admin/requests*')) ? 'active' : '' }}"><!--Kishan changed link-->
+			  <a href="{{ route('a.baners.index') }}" class="nav-link {{ (request()->is('admin/baners*')) ? 'active' : '' }}">
+				<i class="fas fa-images pl-2"></i>&nbsp;
+				<p>App Baners</p>
+			  </a>
+			</li>  
+
+			<li class="nav-item">
+			  <a href="{{ route('a.requests.index') }}" class="nav-link {{ (request()->is('admin/requests*')) ? 'active' : '' }}">
 				<i class="fas fa-user-edit pl-2"></i>&nbsp;
-				<p>Requests</p><!--Kishan changed Menu-->
+				<p>Requests</p>
 				<span class="badge badge-info right font-14 py-1">{{ count($allRequests) }}</span>
 			  </a>
 			</li>  
 
 			<li class="nav-item">
-			  <a href="{{ route('a.locations.index') }}" class="nav-link {{ (request()->is('admin/locations*')) ? 'active' : '' }}"><!--Kishan changed link-->
+			  <a href="{{ route('a.locations.index') }}" class="nav-link {{ (request()->is('admin/locations*')) ? 'active' : '' }}">
 				<i class="fas fa-map-marker-alt pl-2"></i>&nbsp;&nbsp;&nbsp;
-				<p>Toilet Locations</p><!--Kishan changed Menu-->
+				<p>Toilet Locations</p>
 			  </a>
 			</li>  
 
@@ -53,15 +60,15 @@
 				<p>Toilet Users</p>
 			  </a>
 			</li>
-			<li class="nav-item"><!--Kishan changed link-->
+			<li class="nav-item">
 			  <a href="{{ route('a.toilets.index') }}" class="nav-link {{ (request()->is('admin/toilets*')) ? 'active' : '' }}">
 				<i class="fas fa-restroom pl-1 pr-1"></i>
 				  <p>Toilets All</p>
 			  </a>
 			</li> 
-			<li class="nav-item"><!--Kishan changed link-->
+			<li class="nav-item">
 			  <a href="{{ route('a.sales.index') }}" class="nav-link {{ (request()->is('admin/sales*')) ? 'active' : '' }}">
-				<i class="fa fa-usd nav-icon" style="font-size: 20px"></i>
+				<span style="font-size: 18px">د.ك</span>
 				  <p>Toilet Sales</p>
 			  </a>
 			</li> 

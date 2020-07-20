@@ -39,9 +39,8 @@ class AuthController extends Controller
         }
 
         if (Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-            
-            $data = new UserResource($request);
-            return $this->sendResponse($data,'Login successful');
+            $user = User::where('email', $request->email)->get();
+            return $this->sendResponse(new UserResource($user[0]),'Login successful');
         }
         return $this->sendError('Wrong password');
     }
